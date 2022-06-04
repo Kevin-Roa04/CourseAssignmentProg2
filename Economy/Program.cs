@@ -32,6 +32,9 @@ namespace Economy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var services = new ServiceCollection();
+            
+
+  
 
             services.AddDbContext<EconomyContext>(options =>
             {
@@ -40,7 +43,8 @@ namespace Economy
             services.AddScoped<IEconomyDbContext, EconomyContext>();
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IUsersServices, UsersServices>();
-
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<IProjectServices, ProjectServices>();
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())

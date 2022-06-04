@@ -1,4 +1,6 @@
-﻿using Economy.Domain.Entities;
+﻿using Economy.AppCore.IServices;
+using Economy.Domain.Entities;
+using Economy.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,8 +17,9 @@ namespace Economy.Forms
 {
     public partial class FormCreateProject : Form
     {
+      public  IProjectServices projectServices { get; set; }
         private User GlobalUser;
-        
+        private int Selection = -1;
         public FormCreateProject(User user)
         {
             this.GlobalUser = user;
@@ -90,7 +93,28 @@ namespace Economy.Forms
 
         private void label1_Click(object sender, EventArgs e)
         {
-            // Poner la logica del form para las anualidades
+            Selection = 0;
+            pnCreateProject.Visible = true;            
+
+        }
+
+        private void btnCreateProject_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtProjectName.Texts))
+            {
+                MessageBox.Show("Write project name");
+                return;
+            }
+            Project project = new Project()
+            {
+                Name = txtProjectName.Texts,
+                Creation = DateTime.Now,
+                Type = ((TypeProject)Selection).ToString(),
+                User = GlobalUser,
+                UserId = GlobalUser.Id
+            };
+            projectServices.Create(project);
+            
         }
     }
 }

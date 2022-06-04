@@ -69,9 +69,11 @@ namespace Economy.Forms
 
         #endregion
         public IUsersServices UsersServices { get; set; }
+        public IProjectServices projectServices { get; set; }
         private User User;
-        public FormLogin(IUsersServices services)
+        public FormLogin(IUsersServices services,IProjectServices project)
         {
+            this.projectServices = project;
             this.UsersServices = services;
             InitializeComponent();
         }
@@ -134,6 +136,7 @@ namespace Economy.Forms
                 User = user;
                 this.Hide();
                 FormCreateProject formCreateProject = new FormCreateProject(User);
+                formCreateProject.projectServices = this.projectServices;
                 formCreateProject.ShowDialog();
              
             }

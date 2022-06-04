@@ -34,14 +34,20 @@ namespace Economy.Forms
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.customPanel2 = new Economy.BeatifulComponents.CustomPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnCreateProject = new System.Windows.Forms.Panel();
+            this.btnCreateProject = new Economy.BeatifulComponents.RJButton();
+            this.txtProjectName = new Economy.RJTextBox();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.pnCreateProject.SuspendLayout();
             this.SuspendLayout();
             // 
             // customPanel1
             // 
             this.customPanel1.BackColor = System.Drawing.Color.White;
-            this.customPanel1.BorderRadius = 1;
+            this.customPanel1.BorderRadius = 10;
             this.customPanel1.Controls.Add(this.pictureBox1);
             this.customPanel1.Controls.Add(this.label1);
             this.customPanel1.Controls.Add(this.customPanel2);
@@ -49,7 +55,7 @@ namespace Economy.Forms
             this.customPanel1.GradientAngle = 90F;
             this.customPanel1.GradientBottomColor = System.Drawing.Color.White;
             this.customPanel1.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel1.Location = new System.Drawing.Point(53, 22);
+            this.customPanel1.Location = new System.Drawing.Point(25, 9);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Size = new System.Drawing.Size(209, 133);
             this.customPanel1.TabIndex = 0;
@@ -80,7 +86,7 @@ namespace Economy.Forms
             // customPanel2
             // 
             this.customPanel2.BackColor = System.Drawing.Color.White;
-            this.customPanel2.BorderRadius = 0;
+            this.customPanel2.BorderRadius = 10;
             this.customPanel2.ForeColor = System.Drawing.Color.Black;
             this.customPanel2.GradientAngle = 360F;
             this.customPanel2.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
@@ -90,13 +96,74 @@ namespace Economy.Forms
             this.customPanel2.Size = new System.Drawing.Size(10, 200);
             this.customPanel2.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.customPanel1);
+            this.panel1.Location = new System.Drawing.Point(1, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(479, 446);
+            this.panel1.TabIndex = 1;
+            // 
+            // pnCreateProject
+            // 
+            this.pnCreateProject.Controls.Add(this.btnCreateProject);
+            this.pnCreateProject.Controls.Add(this.txtProjectName);
+            this.pnCreateProject.Location = new System.Drawing.Point(482, 3);
+            this.pnCreateProject.Name = "pnCreateProject";
+            this.pnCreateProject.Size = new System.Drawing.Size(322, 446);
+            this.pnCreateProject.TabIndex = 2;
+            this.pnCreateProject.Visible = false;
+            // 
+            // btnCreateProject
+            // 
+            this.btnCreateProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCreateProject.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCreateProject.BorderColor = System.Drawing.Color.White;
+            this.btnCreateProject.BorderRadius = 25;
+            this.btnCreateProject.BorderSize = 1;
+            this.btnCreateProject.FlatAppearance.BorderSize = 0;
+            this.btnCreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreateProject.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreateProject.ForeColor = System.Drawing.Color.White;
+            this.btnCreateProject.Location = new System.Drawing.Point(77, 125);
+            this.btnCreateProject.Name = "btnCreateProject";
+            this.btnCreateProject.Size = new System.Drawing.Size(182, 49);
+            this.btnCreateProject.TabIndex = 16;
+            this.btnCreateProject.Text = "CREATE PROJECT";
+            this.btnCreateProject.TextColor = System.Drawing.Color.White;
+            this.btnCreateProject.UseVisualStyleBackColor = false;
+            this.btnCreateProject.Click += new System.EventHandler(this.btnCreateProject_Click);
+            // 
+            // txtProjectName
+            // 
+            this.txtProjectName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtProjectName.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtProjectName.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtProjectName.BorderRadius = 6;
+            this.txtProjectName.BorderSize = 2;
+            this.txtProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtProjectName.Location = new System.Drawing.Point(23, 69);
+            this.txtProjectName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProjectName.Multiline = false;
+            this.txtProjectName.Name = "txtProjectName";
+            this.txtProjectName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtProjectName.PasswordChar = false;
+            this.txtProjectName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.txtProjectName.PlaceholderText = "Project name";
+            this.txtProjectName.Size = new System.Drawing.Size(272, 33);
+            this.txtProjectName.TabIndex = 15;
+            this.txtProjectName.Texts = "";
+            this.txtProjectName.UnderlinedStyle = false;
+            // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.customPanel1);
+            this.Controls.Add(this.pnCreateProject);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCreateProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -106,6 +173,8 @@ namespace Economy.Forms
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.pnCreateProject.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -116,5 +185,9 @@ namespace Economy.Forms
         private BeatifulComponents.CustomPanel customPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnCreateProject;
+        private RJTextBox txtProjectName;
+        private BeatifulComponents.RJButton btnCreateProject;
     }
 }
