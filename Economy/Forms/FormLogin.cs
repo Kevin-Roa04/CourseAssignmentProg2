@@ -70,6 +70,8 @@ namespace Economy.Forms
         #endregion
         public IUsersServices UsersServices { get; set; }
         public IProjectServices projectServices { get; set; }
+
+        private FormCreateUser formCreateUser;
         private User User;
         public FormLogin(IUsersServices services,IProjectServices project)
         {
@@ -108,12 +110,11 @@ namespace Economy.Forms
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-
+            if(this.formCreateUser == null) this.formCreateUser = new FormCreateUser();
             this.Hide();
-            this.Dispose();
-            FormCreateUser formCreateUser = new FormCreateUser();
             formCreateUser.UsersServices = this.UsersServices;
-            formCreateUser.ShowDialog();
+            formCreateUser.formLogin = this;
+            formCreateUser.Show();
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)

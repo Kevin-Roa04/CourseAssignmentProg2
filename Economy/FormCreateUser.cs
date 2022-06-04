@@ -22,6 +22,7 @@ namespace Economy
 
         private Email email;
         private Number number;
+        public Form formLogin;
         public IUsersServices UsersServices { get; set; }
         #region -> FormShadow
 
@@ -105,9 +106,7 @@ namespace Economy
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            FormLogin formLogin = new FormLogin();
-            formLogin.UsersServices = this.UsersServices;
-            formLogin.ShowDialog();
+            formLogin.Show();
         }
 
         private bool ValidateUtil()
