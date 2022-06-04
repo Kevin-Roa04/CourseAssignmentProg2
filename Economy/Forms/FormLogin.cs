@@ -130,6 +130,7 @@ namespace Economy.Forms
             else
             {
                 User = user;
+
             }
         }
     }

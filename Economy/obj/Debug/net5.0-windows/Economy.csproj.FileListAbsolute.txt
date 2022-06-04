@@ -99,3 +99,4 @@ C:\Users\Quezada\source\repos\Economy\Economy\bin\Debug\net5.0-windows\Economy.I
 C:\Users\Quezada\source\repos\Economy\Economy\bin\Debug\net5.0-windows\Economy.Common.pdb
 C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.csproj.CopyComplete
 C:\Users\Quezada\source\repos\Economy\Economy\bin\Debug\net5.0-windows\AppSettings.json
+C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormCreateProject.resources

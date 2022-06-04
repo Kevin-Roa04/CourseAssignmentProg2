@@ -29,10 +29,20 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FormCreateProject
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "FormCreateProject";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateProject";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormCreateProject_MouseDown);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

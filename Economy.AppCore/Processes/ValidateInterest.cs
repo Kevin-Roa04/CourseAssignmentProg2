@@ -11,34 +11,45 @@ namespace Economy.AppCore.Processes
     {
         public static bool Validar<T>(List<object> lists, T t)
         {
-           
-
-            if (lists.Where(x => x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial == (int)t.GetType().GetProperty("Initial").GetValue(t) && (int)t.GetType().GetProperty("End").GetValue(t) > x.End).ToList().Count > 0)
+            if (lists.Where(x =>(string) x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            &&(int) x.GetType().GetProperty("Initial").GetValue(x) == (int)t.GetType().GetProperty("Initial").GetValue(t)
+            && (int)t.GetType().GetProperty("End").GetValue(t) > (int)x.GetType().GetProperty("Emd").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
-            else if (lists.Where(x => x.initial == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial <= (int)t.GetType().GetProperty("Initial").GetValue(t) && (int)t.GetType().GetProperty("End").GetValue(t) <= x.End).ToList().Count > 0)
+            else if (lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            && (int)x.GetType().GetProperty("Initial").GetValue(x) <= (int)t.GetType().GetProperty("Initial").GetValue(t)
+            && (int)t.GetType().GetProperty("End").GetValue(t) <= (int)x.GetType().GetProperty("End").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
-            else if (lists.Where(x => x. == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial < (int)t.GetType().GetProperty("Initial").GetValue(t) && x.End > (int)t.GetType().GetProperty("Initial").GetValue(t)).ToList().Count > 0)
+            else if (lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            &&(int)x.GetType().GetProperty("Initial").GetValue(x) < (int)t.GetType().GetProperty("Initial").GetValue(t)
+            && (int)x.GetType().GetProperty("End").GetValue(x) > (int)t.GetType().GetProperty("Initial").GetValue(t)).ToList().Count > 0)
             {
                 return false;
             }
-            else if (lists.Where(x => x. == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial > (int)t.GetType().GetProperty("Initial").GetValue(t) && (int)t.GetType().GetProperty("End").GetValue(t) > x.Initial).ToList().Count > 0)
+            else if (lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            &&(int) x.GetType().GetProperty("Initial").GetValue(x) > (int)t.GetType().GetProperty("Initial").GetValue(t)
+            && (int)t.GetType().GetProperty("End").GetValue(t) > (int)x.GetType().GetProperty("Initial").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
-            else if (lists.Where(x => x. == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial > (int)t.GetType().GetProperty("Initial").GetValue(t) && (int)t.GetType().GetProperty("End").GetValue(t) == x.Initial).ToList().Count > 0)
+            else if (lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            &&(int)x.GetType().GetProperty("Initial").GetValue(x) > (int)t.GetType().GetProperty("Initial").GetValue(t) 
+            && (int)t.GetType().GetProperty("End").GetValue(t) == (int)x.GetType().GetProperty("Initial").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
-            else if (lists.Where(x => x. == (string)t.GetType().GetProperty("FlowType").GetValue(t) && x.Initial < (int)t.GetType().GetProperty("Initial").GetValue(t) && (int)t.GetType().GetProperty("Initial").GetValue(t) == x.End).ToList().Count > 0)
+            else if (lists.Where(x =>(string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t)
+            &&(int)x.GetType().GetProperty("Initial").GetValue(x) < (int)t.GetType().GetProperty("Initial").GetValue(t)
+            && (int)t.GetType().GetProperty("Initial").GetValue(t) ==(int) x.GetType().GetProperty("End").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
 
             return true;
+
         }
 
     }
