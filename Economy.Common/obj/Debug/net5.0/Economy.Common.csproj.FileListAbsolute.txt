@@ -1,5 +1,6 @@
 C:\Users\Quezada\source\repos\Economy\Economy.Common\bin\Debug\net5.0\Economy.Common.deps.json
 C:\Users\Quezada\source\repos\Economy\Economy.Common\bin\Debug\net5.0\Economy.Common.dll
+C:\Users\Quezada\source\repos\Economy\Economy.Common\bin\Debug\net5.0\ref\Economy.Common.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Common\bin\Debug\net5.0\Economy.Common.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\Economy.Common.csproj.AssemblyReference.cache
 C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\Economy.Common.GeneratedMSBuildEditorConfig.editorconfig
@@ -9,4 +10,3 @@ C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\Economy.Co
 C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\Economy.Common.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\ref\Economy.Common.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Common\obj\Debug\net5.0\Economy.Common.pdb
-C:\Users\Quezada\source\repos\Economy\Economy.Common\bin\Debug\net5.0\ref\Economy.Common.dll

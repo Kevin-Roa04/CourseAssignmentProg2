@@ -108,6 +108,7 @@ namespace Economy.Forms
         {
 
             this.Hide();
+            this.Dispose();
             FormCreateUser formCreateUser = new FormCreateUser();
             formCreateUser.UsersServices = this.UsersServices;
             formCreateUser.ShowDialog();
@@ -129,8 +130,12 @@ namespace Economy.Forms
             }
             else
             {
+             
                 User = user;
-
+                this.Hide();
+                FormCreateProject formCreateProject = new FormCreateProject(User);
+                formCreateProject.ShowDialog();
+             
             }
         }
     }

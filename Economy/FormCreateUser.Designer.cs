@@ -143,6 +143,7 @@ namespace Economy
             this.btnSignIn.BorderColor = System.Drawing.Color.White;
             this.btnSignIn.BorderRadius = 25;
             this.btnSignIn.BorderSize = 1;
+            this.btnSignIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSignIn.FlatAppearance.BorderSize = 0;
             this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignIn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -263,6 +264,7 @@ namespace Economy
             this.btnSignUp.BorderColor = System.Drawing.Color.White;
             this.btnSignUp.BorderRadius = 25;
             this.btnSignUp.BorderSize = 1;
+            this.btnSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSignUp.FlatAppearance.BorderSize = 0;
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
