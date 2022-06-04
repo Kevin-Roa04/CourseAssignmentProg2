@@ -1,26 +1,50 @@
 ﻿using Economy.AppCore.IServices;
+using Economy.AppCore.Processes;
 using Economy.AppCore.Processes.Calculate;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using Economy.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Economy.AppCore.Services.InterestsServices
 {
-    class AnnuityServices : IServices<Annuity>
+    class AnnuityServices : IInterestServices<Annuity>
     {
-        private IRepository<Annuity> repository;
-        private IRepository<Serie> serieRepository;
-        private IRepository<Interest> interestRepository;
+        private IInterestRepository<Annuity> repository;
+        private IInterestRepository<Serie> SerieRepository;
+        private IInterestRepository<Interest> InterestRepository;
         
-        private IInterestServices<Annuity> interestServices = new CalculateAnnuities();
-        public AnnuityServices(IRepository<Annuity> Prepository)
+        private ICalculateServices<Annuity> interestServices = new CalculateAnnuities();
+        public AnnuityServices(IInterestRepository<Annuity> Prepository, IInterestRepository<Serie> serieRepository, IInterestRepository<Interest> interestRepository)
         {
             this.repository = Prepository;
+            this.SerieRepository = serieRepository;
+            this.InterestRepository = interestRepository;
         }
         public int Create(Annuity t)
         {
-            
+            #region Validate period
+            List<object> objects = new List<object>();
+            if (SerieRepository.GetIdProject(t.ProjectId) != null)
+            {
+                objects.AddRange(SerieRepository.GetIdProject(t.ProjectId));
+            }
+            if (InterestRepository.GetIdProject(t.ProjectId) != null)
+            {
+                objects.AddRange(InterestRepository.GetIdProject(t.ProjectId));
+            }
+            if (repository.GetIdProject(t.ProjectId) != null)
+            {
+                objects.AddRange(repository.GetIdProject(t.ProjectId));
+            }
+            if (!ValidateInterest.Validar<Annuity>(objects, t))
+            {
+                throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
+            }
+            #endregion
+
+            #region Assign the annuity type
             if (t.Initial == 1)
             {
                 t.Type = TypeAnnuities.Ordinary.ToString();
@@ -33,6 +57,7 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 t.Type = TypeAnnuities.Deferred.ToString();
             }
+            #endregion
             t.Future = interestServices.Future(t);
             t.Present = interestServices.Present(t);
             return repository.Create(t);
@@ -46,6 +71,11 @@ namespace Economy.AppCore.Services.InterestsServices
         public List<Annuity> GetAll()
         {
             return repository.GetAll();
+        }
+
+        public List<Annuity> GetIdProject(int Id)
+        {
+            throw new NotImplementedException();
         }
 
         public int Update(Annuity t)

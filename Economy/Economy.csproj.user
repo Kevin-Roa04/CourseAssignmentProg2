@@ -16,6 +16,9 @@
     <Compile Update="FormCreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FormCreateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

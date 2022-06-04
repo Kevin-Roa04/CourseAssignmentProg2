@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Economy.AppCore.Processes.Calculate
 {
-    public class CalculateInterest : IInterestServices<Interest>
+    public class CalculateInterest : ICalculateServices<Interest>
     {
 
         public decimal Future(Interest t)

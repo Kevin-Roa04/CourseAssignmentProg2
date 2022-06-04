@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Economy.Domain.Interfaces
 {
-    public interface IRepository<T>
+    public interface IInterestRepository<T> : IRepository<T>
     {
-        int Create(T t);
-        int Update(T t);
-        bool Delete(T t);
-        List<T> GetAll();
-
-        
+        List<T> GetIdProject(int Id);
     }
 }

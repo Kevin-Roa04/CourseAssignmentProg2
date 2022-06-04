@@ -191,5 +191,10 @@ namespace Economy.Infraestructure.Repository
                 throw;
             }
         }
+
+        public List<User> GetId(int Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

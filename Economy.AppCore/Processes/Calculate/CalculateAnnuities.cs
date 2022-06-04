@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Economy.AppCore.Processes.Calculate
 {
-    public class CalculateAnnuities : IInterestServices<Annuity>
+    public class CalculateAnnuities : ICalculateServices<Annuity>
 
     {
         public decimal Future(Annuity t)

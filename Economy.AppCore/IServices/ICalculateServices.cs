@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Economy.AppCore.IServices
 {
-    public interface IInterestServices<T>: IServices<T>
+    public interface ICalculateServices<T>
     {
-        List<T> GetIdProject(int Id);
+        decimal Present(T t);
+        decimal Future(T t);
     }
 }

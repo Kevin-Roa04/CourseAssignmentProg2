@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Economy.AppCore.Processes.Calculate
 {
-    public class CalculateSerie : IInterestServices<Serie>
+    public class CalculateSerie : ICalculateServices<Serie>
     {
         public decimal Future(Serie t)
         {

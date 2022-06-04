@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Economy.Infraestructure.Repository.Interests
 {
-    public class AnnuityRepository : IRepository<Annuity>
+    public class AnnuityRepository : IInterestRepository<Annuity>
     {
         public IEconomyDbContext economyDbContext;
         public AnnuityRepository(IEconomyDbContext economyDbContext)
@@ -58,6 +58,11 @@ namespace Economy.Infraestructure.Repository.Interests
         public List<Annuity> GetAll()
         {
             return economyDbContext.Annuities.ToList();
+        }
+
+        public List<Annuity> GetIdProject(int Id)
+        {
+            return economyDbContext.Annuities.Where(x => x.ProjectId == Id).ToList();
         }
 
         public int Update(Annuity t)
