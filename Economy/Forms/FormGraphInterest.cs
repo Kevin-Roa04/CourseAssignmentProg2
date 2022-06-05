@@ -1,4 +1,5 @@
-﻿using Economy.Domain.Enums;
+﻿using Economy.Domain.Entities;
+using Economy.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,7 +46,7 @@ namespace Economy.Forms
             graphicsPath.CloseFigure();
             return graphicsPath;
         }
-       
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -72,9 +73,10 @@ namespace Economy.Forms
         #endregion
 
         private int TotalPeriod = -1;
-        public FormGraphInterest()
+        private Project Project;
+        public FormGraphInterest(Project project)
         {
-
+            this.Project = project;
             InitializeComponent();
 
         }
@@ -99,6 +101,7 @@ namespace Economy.Forms
 
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
+            this.cmbTypeIdgv.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
             this.cmbTypeSA.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
             this.cmbTypeSerie.Items.AddRange(Enum.GetValues(typeof(TypeSeries)).Cast<object>().ToArray());
             this.cmbFlowType.Items.AddRange(Enum.GetValues(typeof(FlowType)).Cast<object>().ToArray());
@@ -161,10 +164,7 @@ namespace Economy.Forms
         {
             lblDuration.Visible = false;
             txtDuration.Visible = false;
-
-           
             pbNext.Visible = false;
-
             lblTI.Visible = true;
             cmbTypeSA.Visible = true;
         }
@@ -199,14 +199,13 @@ namespace Economy.Forms
                     txtDownPayment.Visible = false;
                     lblFinalPayment.Visible = false;
                     txtFinalPayment.Visible = false;
-
+                    lblWI.Text = "C$";
                     lblEnd.Visible = false;
                     txtEnd.Visible = false;
                 }
                 if (cmbTypeSA.SelectedIndex == 0)
                 {
                     lblWI.Text = "C$";
-
 
                     lblDownPayment.Visible = false;
                     txtDownPayment.Visible = false;
@@ -219,6 +218,7 @@ namespace Economy.Forms
                     lblTypeSerie.Visible = true;
                     cmbTypeSerie.Visible = true;
                     lblDecremental.Visible = true;
+                    cbDecremental.Visible = true;
                     lblWI.Visible = false;
                     txtQuantity.Visible = false;
                 }
@@ -228,6 +228,7 @@ namespace Economy.Forms
                     cmbTypeSerie.Visible = false;
                     cmbTypeSerie.SelectedIndex = -1;
                     lblDecremental.Visible = false;
+                    cbDecremental.Visible = false;
                 }
 
             }
@@ -236,6 +237,7 @@ namespace Economy.Forms
                 lblTypeSerie.Visible = false;
                 cmbTypeSA.Visible = false;
                 lblDecremental.Visible = false;
+                cbDecremental.Visible = false;
                 lblInitial.Visible = false;
                 lblEnd.Visible = false;
                 txtInitial.Visible = false;
@@ -264,7 +266,6 @@ namespace Economy.Forms
                 if (cmbTypeSerie.SelectedIndex == 0)
                 {
                     lblWI.Text = "G";
-
                 }
                 if (cmbTypeSerie.SelectedIndex == 1)
                 {
@@ -277,6 +278,7 @@ namespace Economy.Forms
         {
 
         }
+        #region -> Interest rate validators
         private bool ValidateFormAnnuity()
         {
             if (String.IsNullOrEmpty(txtInitial.Texts)
@@ -288,10 +290,60 @@ namespace Economy.Forms
             {
                 return false;
             }
-         
+
             return true;
         }
 
+        private bool ValidateFormInterest()
+        {
+            if (String.IsNullOrEmpty(txtInitial.Texts)
+                || String.IsNullOrEmpty(txtQuantity.Texts)
+                || string.IsNullOrEmpty(txtRate.Texts)
+                || cmbFlowType.SelectedIndex < 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool ValidateFormSeriePayment()
+        {
+            if (String.IsNullOrEmpty(txtFinalPayment.Texts)
+                && String.IsNullOrEmpty(txtDownPayment.Texts)
+                && String.IsNullOrEmpty(txtQuantity.Texts))
+            {
+                return false;
+            }
+            else if (String.IsNullOrEmpty(txtQuantity.Texts)
+                && String.IsNullOrEmpty(txtDownPayment.Texts))
+            {
+                return false;
+            }
+            else if (String.IsNullOrEmpty(txtQuantity.Texts)
+                && String.IsNullOrEmpty(txtFinalPayment.Texts))
+            {
+                return false;
+            }
+            else if (String.IsNullOrEmpty(txtFinalPayment.Texts)
+                && String.IsNullOrEmpty(txtDownPayment.Texts))
+            {
+                return false;
+            }
+            return true;
+        }
+        private bool ValidateFormSerie()
+        {
+            if (String.IsNullOrEmpty(txtInitial.Texts)
+                || String.IsNullOrEmpty(txtEnd.Texts)
+                || String.IsNullOrEmpty(txtRate.Texts)
+                || cmbFlowType.SelectedIndex < 0
+                || cmbTypeSerie.SelectedIndex < 0
+            )
+            {
+                return false;
+            }
+            return true;
+        }
+        #endregion
         private void btnCreate_Click(object sender, EventArgs e)
         {
 
@@ -301,22 +353,54 @@ namespace Economy.Forms
              * 2=Interest
              * 
              */
+            
             try
             {
                 if (cmbTypeSA.SelectedIndex == 0)
                 {
                     if (!ValidateFormAnnuity())
                     {
-                        MessageBox.Show("fill out the entire form");
+                        MessageBox.Show("Fill out the entire form");
+                        return;
+                    }
+                    Annuity annuity = new Annuity
+                    {
+                        ProjectId=Project.Id,
+                        FlowType=((FlowType)cmbFlowType.SelectedIndex).ToString(),
+                               
+                        
+                    };
+                }
+                else if (cmbTypeSA.SelectedIndex == 1)
+                {
+                    if (!ValidateFormSerie())
+                    {
+                        MessageBox.Show("Fill out the entire form");
+                        return;
+                    }
+                    if (!ValidateFormSeriePayment())
+                    {
+                        MessageBox.Show("It is only allowed for a box to be empty, fill in the others (downpayment, finalPayment, Quantity)");
+                        return;
+                    }
+
+                }
+                else if (cmbTypeSA.SelectedIndex == 2)
+                {
+                    if (!ValidateFormInterest())
+                    {
+                        MessageBox.Show("Fill out the entire form");
                         return;
                     }
                 }
-
-
-            }catch(Exception Ex)
+            }
+            catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            lblTypeIdgv.Visible = true;
+            cmbTypeIdgv.Visible = true;
+            customPanel1.Visible = true;
         }
     }
 }

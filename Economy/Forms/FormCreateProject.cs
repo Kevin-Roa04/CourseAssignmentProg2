@@ -115,7 +115,7 @@ namespace Economy.Forms
             };
             projectServices.Create(project);
             this.Hide();
-            FormGraphInterest formGraphInterest = new FormGraphInterest();
+            FormGraphInterest formGraphInterest = new FormGraphInterest(project);
             formGraphInterest.ShowDialog();
         }
     }
