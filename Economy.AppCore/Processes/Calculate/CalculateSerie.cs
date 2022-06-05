@@ -45,11 +45,16 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Present = (decimal)(s.DownPayment * (Numerator / Denominator));
 
             // Gradient present.
-            decimal GradientNumerator = (decimal)(-s.Quantity * (decimal)(Math.Pow((double)(1 + s.Rate), s.End))) + s.Quantity + (s.End + s.Quantity + s.Rate);
-            decimal GradientDenominator = (decimal)(Math.Pow((double)(1 + s.Rate), s.End));
+            decimal GradientNumerator = (decimal)(-s.Quantity * (decimal)(Math.Pow((double)(1 + decimalPercent), s.End))) + s.Quantity + (s.End + s.Quantity + decimalPercent);
+            decimal GradientDenominator = (decimal)(Math.Pow((double)(1 + decimalPercent), s.End));
             decimal GradientPresent = GradientNumerator / GradientDenominator;
 
-            return s.Incremental == true ? Present + GradientPresent : Present - GradientPresent;
+            if (s.Initial == 1)
+            {
+                return s.Incremental == true ? Present + GradientPresent : Present - GradientPresent;
+            }
+            decimal PresentCompound = (decimal)Math.Pow((double)(1+decimalPercent), (s.End - 1));
+            return s.Incremental == true ? (Present + GradientPresent) * (PresentCompound) : (Present - GradientPresent) * (PresentCompound);
         }
         private decimal GeometricPresent(Serie s)
         {

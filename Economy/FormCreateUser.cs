@@ -152,17 +152,11 @@ namespace Economy
                     if (succes)
                     {
                         MessageBox.Show("The user has been successfully created", "User created", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        FormLogin formLogin = new FormLogin();
-                        formLogin.UsersServices = this.UsersServices;
-                        formLogin.Show();
                         this.Close();
                         return;
                     }
                     MessageBox.Show("An error occurred when creating the user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -178,6 +172,6 @@ namespace Economy
             number = await UsersServices.ValidationNumberAsync($"505{txtPhone.Texts}");
         }
 
-       
+
     }
 }

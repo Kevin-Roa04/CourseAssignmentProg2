@@ -100,3 +100,5 @@ C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.d
 C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
 C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.pdb
 C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
+C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormGraphInterest.resources
+C:\Users\Quezada\source\repos\Economy\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.RJComboBox.resources

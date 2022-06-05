@@ -2,6 +2,7 @@
 using Economy.AppCore.Processes;
 using Economy.AppCore.Processes.Calculate;
 using Economy.Domain.Entities;
+using Economy.Domain.Enums;
 using Economy.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,23 @@ namespace Economy.AppCore.Services.InterestsServices
             }
 
             #endregion
-
+            #region Assing value
+            if (t.Type == TypeSeries.Arithmetic.ToString())
+            {
+                if (t.Quantity == 0)
+                {
+                    t.Quantity =(decimal) (t.FinalPayment - t.DownPayment) / (t.End - 1);
+                }
+                else if (t.DownPayment == 0)
+                {
+                    t.DownPayment = (decimal)(t.FinalPayment - ((t.End-1)*t.Quantity));
+                }
+                else if (t.FinalPayment == 0)
+                {
+                    t.FinalPayment = (decimal)(t.DownPayment + ((t.End - 1) * t.FinalPayment));
+                }
+            }
+#endregion
             t.Future = interestServices.Future(t);
             t.Present = interestServices.Present(t);
             return repository.Create(t);

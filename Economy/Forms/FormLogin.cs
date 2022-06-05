@@ -58,7 +58,10 @@ namespace Economy.Forms
                 using (GraphicsPath graphicsPath = GetCustomPanelPath(rectangleF, borderRadius))
                 using (Pen pen = new Pen(this.BackColor, 2))
                 {
+
+                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     this.Region = new Region(graphicsPath);
+                   
                     e.Graphics.DrawPath(pen, graphicsPath);
                 }
 
@@ -110,10 +113,10 @@ namespace Economy.Forms
         {
 
             this.Hide();
-            this.Dispose();
             FormCreateUser formCreateUser = new FormCreateUser();
             formCreateUser.UsersServices = this.UsersServices;
             formCreateUser.ShowDialog();
+            this.ShowDialog();
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)

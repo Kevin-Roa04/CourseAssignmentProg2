@@ -36,12 +36,14 @@ namespace Economy.Forms
             this.customPanel2 = new Economy.BeatifulComponents.CustomPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnCreateProject = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnCreateProject = new Economy.BeatifulComponents.RJButton();
             this.txtProjectName = new Economy.RJTextBox();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnCreateProject.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -106,6 +108,7 @@ namespace Economy.Forms
             // 
             // pnCreateProject
             // 
+            this.pnCreateProject.Controls.Add(this.pictureBox2);
             this.pnCreateProject.Controls.Add(this.btnCreateProject);
             this.pnCreateProject.Controls.Add(this.txtProjectName);
             this.pnCreateProject.Location = new System.Drawing.Point(482, 3);
@@ -114,6 +117,16 @@ namespace Economy.Forms
             this.pnCreateProject.TabIndex = 2;
             this.pnCreateProject.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(13, 76);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 21);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
             // btnCreateProject
             // 
             this.btnCreateProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
@@ -121,6 +134,7 @@ namespace Economy.Forms
             this.btnCreateProject.BorderColor = System.Drawing.Color.White;
             this.btnCreateProject.BorderRadius = 25;
             this.btnCreateProject.BorderSize = 1;
+            this.btnCreateProject.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreateProject.FlatAppearance.BorderSize = 0;
             this.btnCreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateProject.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -143,7 +157,7 @@ namespace Economy.Forms
             this.txtProjectName.BorderSize = 2;
             this.txtProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProjectName.Location = new System.Drawing.Point(23, 69);
+            this.txtProjectName.Location = new System.Drawing.Point(42, 69);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProjectName.Multiline = false;
             this.txtProjectName.Name = "txtProjectName";
@@ -151,7 +165,7 @@ namespace Economy.Forms
             this.txtProjectName.PasswordChar = false;
             this.txtProjectName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
             this.txtProjectName.PlaceholderText = "Project name";
-            this.txtProjectName.Size = new System.Drawing.Size(272, 33);
+            this.txtProjectName.Size = new System.Drawing.Size(253, 33);
             this.txtProjectName.TabIndex = 15;
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
@@ -175,6 +189,7 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnCreateProject.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -189,5 +204,6 @@ namespace Economy.Forms
         private System.Windows.Forms.Panel pnCreateProject;
         private RJTextBox txtProjectName;
         private BeatifulComponents.RJButton btnCreateProject;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

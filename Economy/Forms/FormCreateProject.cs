@@ -114,7 +114,9 @@ namespace Economy.Forms
                 UserId = GlobalUser.Id
             };
             projectServices.Create(project);
-            
+            this.Hide();
+            FormGraphInterest formGraphInterest = new FormGraphInterest();
+            formGraphInterest.ShowDialog();
         }
     }
 }
