@@ -350,10 +350,26 @@ namespace Economy.Forms
                 }
             }
         }
-
+       
         private void pnGraph_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void FillDGV()
+        {
+            dgvInterest.DataSource = null;
+            if (cmbTypeIdgv.SelectedIndex == 0)
+            {
+                dgvInterest.DataSource = AnnuityServices.GetIdProject(Project.Id);
+            }
+            if (cmbTypeIdgv.SelectedIndex == 1)
+            {
+                dgvInterest.DataSource = SerieServices.GetIdProject(Project.Id);
+            }
+            if (cmbTypeIdgv.SelectedIndex == 2)
+            {
+                dgvInterest.DataSource = InterestServices.GetIdProject(Project.Id);
+            }
         }
         #region -> Interest rate validators
         private bool ValidateFormAnnuity()
@@ -424,13 +440,7 @@ namespace Economy.Forms
         private void btnCreate_Click(object sender, EventArgs e)
         {
 
-            /*
-             * 0 = Annuity
-             * 1= serie
-             * 2=Interest
-             * 
-             */
-            
+         
             try
             {
                 if (cmbTypeSA.SelectedIndex == 0)
@@ -504,14 +514,26 @@ namespace Economy.Forms
                     };
                     this.InterestServices.Create(interest);
                 }
+                lblTypeIdgv.Visible = true;
+                cmbTypeIdgv.Visible = true;
+                customPanel1.Visible = true;
+                FillDGV();
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            lblTypeIdgv.Visible = true;
-            cmbTypeIdgv.Visible = true;
-            customPanel1.Visible = true;
+           
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void cmbTypeIdgv_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillDGV();
         }
     }
 }
