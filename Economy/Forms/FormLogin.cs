@@ -61,7 +61,7 @@ namespace Economy.Forms
 
                     e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     this.Region = new Region(graphicsPath);
-                   
+
                     e.Graphics.DrawPath(pen, graphicsPath);
                 }
 
@@ -73,9 +73,20 @@ namespace Economy.Forms
         #endregion
         public IUsersServices UsersServices { get; set; }
         public IProjectServices projectServices { get; set; }
+
+        #region -> Interests service
+        private IInterestServices<Annuity> AnnuityServices { get; set; }
+        private IInterestServices<Serie> SerieServices { get; set; }
+        private IInterestServices<Interest> InterestServices { get; set; }
+        #endregion 
         private User User;
-        public FormLogin(IUsersServices services,IProjectServices project)
+        public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
+            IInterestServices<Serie> Serie, IInterestServices<Interest> interest
+            )
         {
+            this.InterestServices = interest;
+            this.SerieServices = Serie;
+            this.AnnuityServices = annuity;
             this.projectServices = project;
             this.UsersServices = services;
             InitializeComponent();
@@ -102,7 +113,7 @@ namespace Economy.Forms
 
         private bool ValidateForm()
         {
-            if(string.IsNullOrEmpty(txtName.Texts) || String.IsNullOrEmpty(txtPassword.Texts))
+            if (string.IsNullOrEmpty(txtName.Texts) || String.IsNullOrEmpty(txtPassword.Texts))
             {
                 return false;
             }
@@ -135,13 +146,16 @@ namespace Economy.Forms
             }
             else
             {
-             
+
                 User = user;
                 this.Hide();
                 FormCreateProject formCreateProject = new FormCreateProject(User);
                 formCreateProject.projectServices = this.projectServices;
+                formCreateProject.SerieServices = this.SerieServices;
+                formCreateProject.AnnuityServices = this.AnnuityServices;
+                formCreateProject.InterestServices = this.InterestServices;
                 formCreateProject.ShowDialog();
-             
+
             }
         }
     }

@@ -1,9 +1,11 @@
 using Economy.AppCore.IServices;
 using Economy.AppCore.Services;
+using Economy.AppCore.Services.InterestsServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Interfaces;
 using Economy.Forms;
 using Economy.Infraestructure.Repository;
+using Economy.Infraestructure.Repository.Interests;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +47,12 @@ namespace Economy
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IProjectServices, ProjectServices>();
+            services.AddScoped<IInterestRepository<Annuity>,AnnuityRepository>();
+            services.AddScoped<IInterestRepository<Serie>, SerieRepository>();
+            services.AddScoped<IInterestRepository<Interest>, InterestRepository>();
+            services.AddScoped<IInterestServices<Annuity>, AnnuityServices>();
+            services.AddScoped<IInterestServices<Serie>, SerieServices>();
+            services.AddScoped<IInterestServices<Interest>, InterestServices>();
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())

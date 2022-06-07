@@ -13,12 +13,7 @@ namespace Economy.AppCore.Processes.Calculate
     {
         public decimal Future(Serie t)
         {
-            if (t.Type == TypeSeries.Arithmetic.ToString())
-            {
-                return ArithmeticFuture(t);
-            }
-
-            return GeometricFuture(t);
+           return GeneralFuture(t);
         }
 
         public decimal Present(Serie t)
@@ -36,24 +31,25 @@ namespace Economy.AppCore.Processes.Calculate
         #region Present
         private decimal ArithmeticPresent(Serie s)
         {
-            // Arithmetic Present= Ordinary present(+-)Gradient present.
+            // Arithmetic Present= Ordinary present(+-)Gradient present
 
             // Ordinary Present.s
             decimal decimalPercent = s.Rate / 100;
-            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), s.End) - 1;
-            decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), s.End));
+            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (s.End-s.Initial)+1) - 1;
+            decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (s.End-s.Initial)+1));
             decimal Present = (decimal)(s.DownPayment * (Numerator / Denominator));
 
             // Gradient present.
-            decimal GradientNumerator = (decimal)(-s.Quantity * (decimal)(Math.Pow((double)(1 + decimalPercent), s.End))) + s.Quantity + (s.End + s.Quantity + decimalPercent);
-            decimal GradientDenominator = (decimal)(Math.Pow((double)(1 + decimalPercent), s.End));
-            decimal GradientPresent = GradientNumerator / GradientDenominator;
-
+            decimal FirstNumerator = (decimal)(Math.Pow((double)(1 + decimalPercent), ((s.End-s.Initial)+1)) - 1);
+            decimal FirstDenominator = (decimal)(decimalPercent * (decimal)(Math.Pow((double)(1 + decimalPercent), (s.End-s.Initial)+1)));
+            decimal SecondFraction=(decimal)((-((s.End-s.Initial)+1))/(Math.Pow((double)(1+decimalPercent),(s.End-s.Initial)+1)));
+            decimal FirstEcuation = (FirstNumerator / FirstDenominator) + (SecondFraction);
+            decimal GradientPresent = (s.Quantity / decimalPercent) * FirstEcuation;
             if (s.Initial == 1)
             {
                 return s.Incremental == true ? Present + GradientPresent : Present - GradientPresent;
             }
-            decimal PresentCompound = (decimal)Math.Pow((double)(1+decimalPercent), (s.End - 1));
+            decimal PresentCompound = (decimal)Math.Pow((double)(1+decimalPercent), -(s.Initial - 1));
             return s.Incremental == true ? (Present + GradientPresent) * (PresentCompound) : (Present - GradientPresent) * (PresentCompound);
         }
         private decimal GeometricPresent(Serie s)
@@ -63,49 +59,25 @@ namespace Economy.AppCore.Processes.Calculate
             if (s.Quantity == s.Rate)
             {
 
-                return (decimal)(s.DownPayment * (s.End / (1 + decimalPercent)));
+                return (decimal)(s.DownPayment * (s.End / (1 + decimalPercent))) * (decimal)Math.Pow((double)(1 + decimalPercent), -(s.Initial - 1)); ;
+                
             }
-
-            decimal Numerator = (decimal)((Math.Pow((double)((1 + decimalPresentQuantity) / (1 + decimalPercent)), s.End)) - 1);
+            
+            decimal Numerator = (decimal)((Math.Pow((double)((1 + decimalPresentQuantity) / (1 + decimalPercent)), ((s.End-s.Initial)+1))) - 1);
             decimal Denominator = (decimal)(decimalPresentQuantity - decimalPercent);
-            decimal Present = (decimal)(s.DownPayment * (Numerator / Denominator));
-            return Present;
+            decimal Present = ((decimal)(s.DownPayment * (Numerator / Denominator)));
+            decimal TotalPresent=Present * (decimal)Math.Pow((double)(1 + decimalPercent), -(s.Initial - 1));
+            return TotalPresent;
         }
         #endregion
 
         #region Future
-        private decimal GeometricFuture(Serie s)
+        
+        private decimal GeneralFuture(Serie s)
         {
             decimal decimalPercent = s.Rate / 100;
-            if (s.Rate == s.Quantity)
-            {
-                return (decimal)(s.DownPayment * s.End * (decimal)(Math.Pow((double)(1 + decimalPercent), s.End - 1)));
-            }
-            decimal decimalQuantity = s.Quantity / 100;
-            decimal Numerator = (decimal)(Math.Pow((double)(1 + decimalQuantity), s.End)) - (decimal)(Math.Pow((double)(1 + decimalPercent), s.End));
-            decimal Denominator = decimalQuantity - decimalPercent;
-
-            return (decimal)(s.DownPayment * (Numerator / Denominator));
+            return (decimal)(s.Present * (decimal)(Math.Pow((double)(1 + decimalPercent), s.TotalPeriod)));
         }
-        private decimal ArithmeticFuture(Serie s)
-        {
-            decimal decimalPercent = s.Rate / 100;
-
-            // Ordinary Future
-
-            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), s.End) - 1;
-            decimal OrdinaryFuture = (decimal)s.DownPayment * (Numerator / decimalPercent);
-
-            // Gradient Future
-            decimal FirstFormula = (decimal)((Math.Pow((double)(1 + decimalPercent), s.End) - 1)) / (decimal)Math.Pow((double)decimalPercent, 2);
-            decimal SecondFormula = (decimal)(s.End / decimalPercent);
-            decimal GradientFuture = (decimal)s.Quantity * (FirstFormula - SecondFormula);
-
-            return s.Incremental == true ? OrdinaryFuture + GradientFuture : OrdinaryFuture - GradientFuture;
-
-
-        }
-
         #endregion
     }
 }

@@ -1,4 +1,5 @@
-﻿using Economy.Domain.Entities;
+﻿using Economy.AppCore.IServices;
+using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,12 @@ namespace Economy.Forms
 
         private int TotalPeriod = -1;
         private Project Project;
+
+        #region -> Interests service
+        public IInterestServices<Annuity> AnnuityServices { get; set; }
+        public IInterestServices<Serie> SerieServices { get; set; }
+        public IInterestServices<Interest> InterestServices { get; set; }
+        #endregion
         public FormGraphInterest(Project project)
         {
             this.Project = project;
@@ -124,6 +131,23 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("Unable to letters or Punctuation marks");
             }
+            if (e.KeyChar == 44)
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable comma");
+            }
+
+            if (e.KeyChar.ToString() == "=")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable equal");
+            }
+
+            if (e.KeyChar.ToString() == "+")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable sum");
+            }
 
         }
         private void ValidateNumber(object sender, KeyPressEventArgs e)
@@ -138,6 +162,24 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("Unable comma");
             }
+            if (e.KeyChar.ToString() == "-")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable minus");
+            }
+            if (e.KeyChar.ToString() == "=")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable equal");
+            }
+
+            if (e.KeyChar.ToString() == "+")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable sum");
+            }
+
+
         }
         private void lblQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -146,13 +188,29 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("Unable to letters");
             }
+            if (e.KeyChar == 44)
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable comma");
+            }
+            if (e.KeyChar.ToString() == "=")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable equal");
+            }
+
+            if (e.KeyChar.ToString() == "+")
+            {
+                e.Handled = true;
+                MessageBox.Show("Unable sum");
+            }
         }
 
         private void pbNext_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtDuration.Texts))
             {
-                MessageBox.Show("@rite the total period");
+                MessageBox.Show("Write the total period");
                 return;
             }
             TotalPeriod = Convert.ToInt32(txtDuration.Texts);
@@ -169,6 +227,76 @@ namespace Economy.Forms
             cmbTypeSA.Visible = true;
         }
 
+        #region -> form function
+        private void AnnuityFunction()
+        {
+            lblInitial.Visible = true;
+            txtInitial.Visible = true;
+            lblEnd.Visible = true;
+            txtEnd.Visible = true;
+            lblRate.Visible = true;
+            txtRate.Visible = true;
+            lblFlowType.Visible = true;
+            cmbFlowType.Visible = true;
+            lblWI.Visible = true;
+            lblWI.Text = "C$";
+            txtQuantity.Visible = true;
+        }
+        private void SerieFunction()
+        {
+            lblTypeSerie.Visible = true;
+            cmbTypeSerie.Visible = true;
+            cmbTypeSerie.SelectedIndex = -1;
+            lblDecremental.Visible = true;
+            cbDecremental.Visible = true;
+            lblInitial.Visible = true;
+            txtInitial.Visible = true;
+            lblEnd.Visible = true;
+            txtEnd.Visible = true;
+            lblRate.Visible = true;
+            txtRate.Visible = true;
+            lblFlowType.Visible = true;
+            cmbFlowType.Visible = true;
+            lblDownPayment.Visible = true;
+            txtDownPayment.Visible = true;
+            lblFinalPayment.Visible = true;
+            txtFinalPayment.Visible = true;
+        }
+
+        private void InterestFunction()
+        {
+            lblInitial.Visible = true;
+            txtInitial.Visible = true;
+            lblWI.Visible = true;
+            lblWI.Text = "C$";
+            txtQuantity.Visible = true;
+            lblRate.Visible = true;
+            txtRate.Visible = true;
+            lblFlowType.Visible = true;
+            cmbFlowType.Visible = true;
+        }
+        private void ChangeVisibleForm()
+        {
+            lblTypeSerie.Visible = false;
+            cmbTypeSerie.Visible = false;
+            lblDecremental.Visible = false;
+            cbDecremental.Visible = false;
+            lblInitial.Visible = false;
+            txtInitial.Visible = false;
+            lblEnd.Visible = false;
+            txtEnd.Visible = false;
+            lblRate.Visible = false;
+            txtRate.Visible = false;
+            lblFlowType.Visible = false;
+            cmbFlowType.Visible = false;
+            lblWI.Visible = false;
+            txtQuantity.Visible = false;
+            lblDownPayment.Visible = false;
+            txtDownPayment.Visible = false;
+            lblFinalPayment.Visible = false;
+            txtFinalPayment.Visible = false;
+        }
+        #endregion
         private void cmbTypeSA_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             /*
@@ -179,74 +307,27 @@ namespace Economy.Forms
              */
             if (cmbTypeSA.SelectedIndex > -1)
             {
-                lblFlowType.Visible = true;
-                cmbFlowType.Visible = true;
-                txtQuantity.Visible = true;
                 btnCreate.Visible = true;
-                lblWI.Visible = true;
-                lblRate.Visible = true;
-                txtRate.Visible = true;
-                if (cmbTypeSA.SelectedIndex == 0 || cmbTypeSA.SelectedIndex == 1)
-                {
-                    lblInitial.Visible = true;
-                    lblEnd.Visible = true;
-                    txtInitial.Visible = true;
-                    txtEnd.Visible = true;
-                }
-                if (cmbTypeSA.SelectedIndex == 2)
-                {
-                    lblDownPayment.Visible = false;
-                    txtDownPayment.Visible = false;
-                    lblFinalPayment.Visible = false;
-                    txtFinalPayment.Visible = false;
-                    lblWI.Text = "C$";
-                    lblEnd.Visible = false;
-                    txtEnd.Visible = false;
-                }
                 if (cmbTypeSA.SelectedIndex == 0)
                 {
-                    lblWI.Text = "C$";
-
-                    lblDownPayment.Visible = false;
-                    txtDownPayment.Visible = false;
-                    lblFinalPayment.Visible = false;
-                    txtFinalPayment.Visible = false;
-
+                    ChangeVisibleForm();
+                    AnnuityFunction();
                 }
                 if (cmbTypeSA.SelectedIndex == 1)
                 {
-                    lblTypeSerie.Visible = true;
-                    cmbTypeSerie.Visible = true;
-                    lblDecremental.Visible = true;
-                    cbDecremental.Visible = true;
-                    lblWI.Visible = false;
-                    txtQuantity.Visible = false;
+                    ChangeVisibleForm();
+                    SerieFunction();
                 }
-                else
+                if (cmbTypeSA.SelectedIndex == 2)
                 {
-                    lblTypeSerie.Visible = false;
-                    cmbTypeSerie.Visible = false;
-                    cmbTypeSerie.SelectedIndex = -1;
-                    lblDecremental.Visible = false;
-                    cbDecremental.Visible = false;
+                    ChangeVisibleForm();
+                    InterestFunction();
                 }
-
             }
             else
             {
-                lblTypeSerie.Visible = false;
-                cmbTypeSA.Visible = false;
-                lblDecremental.Visible = false;
-                cbDecremental.Visible = false;
-                lblInitial.Visible = false;
-                lblEnd.Visible = false;
-                txtInitial.Visible = false;
-                txtEnd.Visible = false;
-                lblFlowType.Visible = false;
-                cmbFlowType.Visible = false;
-                lblWI.Visible = false;
-                txtQuantity.Visible = false;
-                btnCreate.Visible = false;
+                btnCreate.Visible = true;
+                ChangeVisibleForm();
             }
         }
 
@@ -259,10 +340,6 @@ namespace Economy.Forms
             {
                 lblWI.Visible = true;
                 txtQuantity.Visible = true;
-                lblDownPayment.Visible = true;
-                txtDownPayment.Visible = true;
-                lblFinalPayment.Visible = true;
-                txtFinalPayment.Visible = true;
                 if (cmbTypeSerie.SelectedIndex == 0)
                 {
                     lblWI.Text = "G";
@@ -367,9 +444,14 @@ namespace Economy.Forms
                     {
                         ProjectId=Project.Id,
                         FlowType=((FlowType)cmbFlowType.SelectedIndex).ToString(),
-                               
-                        
+                        Initial=Convert.ToInt32(txtInitial.Texts),
+                        End=Convert.ToInt32(txtEnd.Texts),
+                        Payment=Convert.ToDecimal(txtQuantity.Texts),
+                        Rate=Convert.ToDecimal(txtRate.Texts),
+                        Project=Project,
+                        TotalPeriod=TotalPeriod
                     };
+                    this.AnnuityServices.Create(annuity);
                 }
                 else if (cmbTypeSA.SelectedIndex == 1)
                 {
@@ -383,7 +465,24 @@ namespace Economy.Forms
                         MessageBox.Show("It is only allowed for a box to be empty, fill in the others (downpayment, finalPayment, Quantity)");
                         return;
                     }
-
+                 
+                    decimal prueba =string.IsNullOrEmpty(txtFinalPayment.Texts)==true?0 : Convert.ToDecimal(txtFinalPayment.Texts);
+                    Serie serie = new Serie
+                    {
+                        DownPayment= string.IsNullOrEmpty(txtDownPayment.Texts) == true ? 0.0M : Convert.ToDecimal(txtDownPayment.Texts),
+                        FinalPayment= string.IsNullOrEmpty(txtFinalPayment.Texts) == true ? 0.0M : Convert.ToDecimal(txtFinalPayment.Texts),
+                        Initial=Convert.ToInt32(txtInitial.Texts),
+                        End=Convert.ToInt32(txtEnd.Texts),
+                        FlowType=((FlowType)cmbFlowType.SelectedIndex).ToString(),
+                        Project=Project,
+                        ProjectId=Project.Id,
+                        Incremental=cbDecremental.Checked==true ? false : true,
+                        Quantity=string.IsNullOrEmpty(txtQuantity.Texts)==true ?0.0M : Convert.ToDecimal(txtQuantity.Texts),
+                        Rate=Convert.ToDecimal(txtRate.Texts),
+                        TotalPeriod=TotalPeriod,
+                        Type=((TypeSeries)cmbTypeSerie.SelectedIndex).ToString()
+                    };
+                    this.SerieServices.Create(serie);
                 }
                 else if (cmbTypeSA.SelectedIndex == 2)
                 {
@@ -392,6 +491,18 @@ namespace Economy.Forms
                         MessageBox.Show("Fill out the entire form");
                         return;
                     }
+                    Interest interest = new Interest
+                    {
+                        Initial=Convert.ToInt32(txtInitial.Texts),
+                        End=Convert.ToInt32(txtInitial.Texts),
+                        FlowType=((FlowType)cmbFlowType.SelectedIndex).ToString(),
+                        Project=Project,
+                        ProjectId=Project.Id,
+                        Rate=Convert.ToDecimal(txtRate.Texts),
+                        Payment=Convert.ToDecimal(txtQuantity.Texts),
+                        TotalPeriod=TotalPeriod
+                    };
+                    this.InterestServices.Create(interest);
                 }
             }
             catch (Exception Ex)

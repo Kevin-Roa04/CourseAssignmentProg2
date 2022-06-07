@@ -22,6 +22,16 @@ namespace Economy.AppCore.Services.InterestsServices
         }
         public int Create(Interest t)
         {
+            #region validate number period
+            if (t.Initial < 0)
+            {
+                throw new ArgumentException("The initial period must not be less than 0");
+            }
+            else if (t.Initial > t.TotalPeriod)
+            {
+                throw new ArgumentException("the initial period must not be longer than the total period");
+            }
+            #endregion
             #region Validate period
             List<object> objects = new List<object>();
             if (SerieRepository.GetIdProject(t.ProjectId) != null)
@@ -30,7 +40,7 @@ namespace Economy.AppCore.Services.InterestsServices
             }
             if (AnnuityRepository.GetIdProject(t.ProjectId) != null)
             {
-                objects.AddRange(repository.GetIdProject(t.ProjectId));
+                objects.AddRange(AnnuityRepository.GetIdProject(t.ProjectId));
             }
             if (repository.GetIdProject(t.ProjectId) != null)
             {
@@ -58,7 +68,7 @@ namespace Economy.AppCore.Services.InterestsServices
 
         public List<Interest> GetIdProject(int Id)
         {
-            throw new System.NotImplementedException();
+            return this.repository.GetIdProject(Id);
         }
 
         public int Update(Interest t)

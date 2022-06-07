@@ -20,6 +20,7 @@ namespace Economy.Domain.Entities
         public string FlowType { get; set; }
         public decimal Rate { get; set; }
         public bool Incremental { get; set; }
+        public int TotalPeriod { get; set; }
 
         public virtual Project Project { get; set; }
     }

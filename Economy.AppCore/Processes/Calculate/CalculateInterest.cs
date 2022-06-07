@@ -25,8 +25,10 @@ namespace Economy.AppCore.Processes.Calculate
         #region Present
         private decimal InterestPresent(Interest i)
         {
+            decimal future = i.Payment;
+            
             decimal decimalPercent = i.Rate / 100;
-            decimal Present = (decimal)i.Future * (decimal)Math.Pow((double)(1 + decimalPercent), (-i.End));
+            decimal Present = (decimal)future * (decimal)Math.Pow((double)(1 + decimalPercent), (-i.End));
             return Present;
         }
 
@@ -36,8 +38,9 @@ namespace Economy.AppCore.Processes.Calculate
         #region Future
         private decimal InterestFuture(Interest i)
         {
+            decimal present = i.Payment;
             decimal decimalPercent = i.Rate / 100;
-            decimal Future = (decimal)i.Present * (decimal)Math.Pow((double)(1 + decimalPercent), i.End);
+            decimal Future = (decimal)present * (decimal)Math.Pow((double)(1 + decimalPercent), (i.TotalPeriod-i.Initial));
             return Future;
         }
         #endregion

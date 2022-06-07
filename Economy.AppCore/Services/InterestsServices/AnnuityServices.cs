@@ -9,13 +9,13 @@ using System.Collections.Generic;
 
 namespace Economy.AppCore.Services.InterestsServices
 {
-    class AnnuityServices : IInterestServices<Annuity>
+    public class AnnuityServices : IInterestServices<Annuity>
     {
         private IInterestRepository<Annuity> repository;
         private IInterestRepository<Serie> SerieRepository;
         private IInterestRepository<Interest> InterestRepository;
         
-        private ICalculateServices<Annuity> interestServices = new CalculateAnnuities();
+        private ICalculateServices<Annuity> AnnuityServicesC = new CalculateAnnuities();
         public AnnuityServices(IInterestRepository<Annuity> Prepository, IInterestRepository<Serie> serieRepository, IInterestRepository<Interest> interestRepository)
         {
             this.repository = Prepository;
@@ -24,6 +24,26 @@ namespace Economy.AppCore.Services.InterestsServices
         }
         public int Create(Annuity t)
         {
+            if (t.Payment < 0)
+            {
+                throw new ArgumentException("The payment must not be negative");
+            }
+
+
+            #region Validate period number
+            if (t.Initial<0 || t.End < 0)
+            {
+                throw new ArgumentException("The initial period or the final period must not be less than 0");
+            }
+            if (t.Initial > t.End)
+            {
+                throw new ArgumentException("The initial period must not be longer than the final period");
+            }
+            else if(t.End>t.TotalPeriod || t.Initial > t.TotalPeriod)
+            {
+                throw new ArgumentException("the initial period or the final period must not be longer than the total period");
+            }
+            #endregion
             #region Validate period
             List<object> objects = new List<object>();
             if (SerieRepository.GetIdProject(t.ProjectId) != null)
@@ -60,8 +80,8 @@ namespace Economy.AppCore.Services.InterestsServices
             #endregion
 
             
-            t.Future = interestServices.Future(t);
-            t.Present = interestServices.Present(t);
+            t.Future = AnnuityServicesC.Future(t);
+            t.Present = AnnuityServicesC.Present(t);
             return repository.Create(t);
         }
 
@@ -77,7 +97,7 @@ namespace Economy.AppCore.Services.InterestsServices
 
         public List<Annuity> GetIdProject(int Id)
         {
-            throw new NotImplementedException();
+            return this.repository.GetIdProject(Id);
         }
 
         public int Update(Annuity t)

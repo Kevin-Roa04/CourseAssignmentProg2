@@ -17,6 +17,7 @@ namespace Economy.Domain.Entities
         public string Type { get; set; }
         public string FlowType { get; set; }
         public decimal Rate { get; set; }
+        public int TotalPeriod { get; set; }
 
         public virtual Project Project { get; set; }
     }

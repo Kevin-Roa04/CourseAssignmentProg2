@@ -58,8 +58,8 @@ namespace Economy.AppCore.Processes.Calculate
         private decimal AnticipatedPresent(Annuity t)
         {
             decimal decimalPercent = t.Rate / 100;
-            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End - 1)) - 1;
-            decimal Denominator = (decimal)(decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (t.End - 1)));
+            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End)) - 1;
+            decimal Denominator = (decimal)(decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (t.End)));
             decimal Present = (decimal)(t.Payment + (t.Payment * (Numerator / Denominator)));
             return Present;
         }
@@ -74,26 +74,28 @@ namespace Economy.AppCore.Processes.Calculate
 
         #endregion
         #region Future
+
+     
         private decimal OrdinaryFuture(Annuity t)
         {
             decimal decimalPercent = t.Rate / 100;
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), t.End) - 1;
-            decimal Future = (decimal)t.Payment * (Numerator / decimalPercent);
+            decimal Future = (decimal)t.Payment * (Numerator / decimalPercent)*(decimal)(Math.Pow((double)(1+decimalPercent),(t.TotalPeriod-t.End)));
             return Future;
         }
         private decimal AnticipatedFuture(Annuity t)
         {
             decimal decimalPercent = t.Rate / 100;
-            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End - 1)) - 1;
-            decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (t.End - 1)));
-            decimal Future = ((decimal)(t.Payment + ((decimal)t.Payment * (Numerator / Denominator)))) * (decimal)Math.Pow((double)(1 + decimalPercent), t.End);
+            decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End)) - 1;
+            decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (t.End)));
+            decimal Future = ((decimal)(t.Payment + ((decimal)t.Payment * (Numerator / Denominator)))) * (decimal)Math.Pow((double)(1 + decimalPercent),(t.TotalPeriod- t.End));
             return Future;
         }
         private decimal DeferredFuture(Annuity t)
         {
             decimal decimalPercent = t.Rate / 100;
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End - (t.Initial - 1))) - 1;
-            decimal Future = (decimal)t.Payment + (Numerator / decimalPercent);
+            decimal Future = (decimal)t.Payment * (Numerator / decimalPercent)*(decimal)(Math.Pow((double)(1 + decimalPercent), t.TotalPeriod-t.End));
             return Future;
         }
         #endregion

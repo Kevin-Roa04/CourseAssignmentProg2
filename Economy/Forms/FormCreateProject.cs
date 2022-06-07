@@ -17,7 +17,13 @@ namespace Economy.Forms
 {
     public partial class FormCreateProject : Form
     {
-      public  IProjectServices projectServices { get; set; }
+        public IProjectServices projectServices { get; set; }
+
+        #region -> Interests service
+        public IInterestServices<Annuity> AnnuityServices { get; set; }
+        public IInterestServices<Serie> SerieServices { get; set; }
+        public IInterestServices<Interest> InterestServices { get; set; }
+        #endregion 
         private User GlobalUser;
         private int Selection = -1;
         public FormCreateProject(User user)
@@ -94,7 +100,7 @@ namespace Economy.Forms
         private void label1_Click(object sender, EventArgs e)
         {
             Selection = 0;
-            pnCreateProject.Visible = true;            
+            pnCreateProject.Visible = true;
 
         }
 
@@ -116,6 +122,9 @@ namespace Economy.Forms
             projectServices.Create(project);
             this.Hide();
             FormGraphInterest formGraphInterest = new FormGraphInterest(project);
+            formGraphInterest.InterestServices = this.InterestServices;
+            formGraphInterest.SerieServices = this.SerieServices;
+            formGraphInterest.AnnuityServices = this.AnnuityServices;
             formGraphInterest.ShowDialog();
         }
     }

@@ -15,6 +15,8 @@ namespace Economy.Domain.Entities
         public decimal? Future { get; set; }
         public string FlowType { get; set; }
         public decimal Rate { get; set; }
+        public decimal Payment { get; set; }
+        public int TotalPeriod { get; set; }
 
         public virtual Project Project { get; set; }
     }

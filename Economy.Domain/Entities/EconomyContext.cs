@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Economy.Domain.Entities
 {
-    public partial class EconomyContext : DbContext,IEconomyDbContext
+    public partial class EconomyContext : DbContext, IEconomyDbContext
     {
         public EconomyContext()
         {
@@ -70,6 +70,8 @@ namespace Economy.Domain.Entities
                     .HasColumnType("decimal(9, 2)")
                     .HasColumnName("rate");
 
+                entity.Property(e => e.TotalPeriod).HasColumnName("totalPeriod");
+
                 entity.Property(e => e.Type)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -102,6 +104,10 @@ namespace Economy.Domain.Entities
 
                 entity.Property(e => e.Initial).HasColumnName("initial");
 
+                entity.Property(e => e.Payment)
+                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnName("payment");
+
                 entity.Property(e => e.Present)
                     .HasColumnType("decimal(9, 2)")
                     .HasColumnName("present");
@@ -111,6 +117,8 @@ namespace Economy.Domain.Entities
                 entity.Property(e => e.Rate)
                     .HasColumnType("decimal(9, 2)")
                     .HasColumnName("rate");
+
+                entity.Property(e => e.TotalPeriod).HasColumnName("totalPeriod");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.Interests)
@@ -191,6 +199,8 @@ namespace Economy.Domain.Entities
                 entity.Property(e => e.Rate)
                     .HasColumnType("decimal(9, 2)")
                     .HasColumnName("rate");
+
+                entity.Property(e => e.TotalPeriod).HasColumnName("totalPeriod");
 
                 entity.Property(e => e.Type)
                     .HasMaxLength(50)

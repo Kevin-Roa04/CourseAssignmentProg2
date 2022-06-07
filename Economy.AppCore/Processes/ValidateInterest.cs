@@ -13,7 +13,7 @@ namespace Economy.AppCore.Processes
         {
             if (lists.Where(x =>(string) x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t) 
             &&(int) x.GetType().GetProperty("Initial").GetValue(x) == (int)t.GetType().GetProperty("Initial").GetValue(t)
-            && (int)t.GetType().GetProperty("End").GetValue(t) > (int)x.GetType().GetProperty("Emd").GetValue(x)).ToList().Count > 0)
+            && (int)t.GetType().GetProperty("End").GetValue(t) > (int)x.GetType().GetProperty("End").GetValue(x)).ToList().Count > 0)
             {
                 return false;
             }
