@@ -90,6 +90,11 @@ namespace Economy.AppCore.Services.InterestsServices
             return repository.Delete(t);
         }
 
+        public List<Annuity> FindByOption(Func<Annuity, bool> where)
+        {
+            return repository.FindByOption(where);  
+        }
+
         public List<Annuity> GetAll()
         {
             return repository.GetAll();

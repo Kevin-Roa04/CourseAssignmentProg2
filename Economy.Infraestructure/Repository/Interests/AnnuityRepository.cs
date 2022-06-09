@@ -55,6 +55,11 @@ namespace Economy.Infraestructure.Repository.Interests
             }
         }
 
+        public List<Annuity> FindByOption(Func<Annuity, bool> where)
+        {
+            return economyDbContext.Annuities.Where(where).ToList();
+        }
+
         public List<Annuity> GetAll()
         {
             return economyDbContext.Annuities.ToList();

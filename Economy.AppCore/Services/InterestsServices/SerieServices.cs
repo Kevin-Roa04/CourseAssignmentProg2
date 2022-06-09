@@ -105,6 +105,11 @@ namespace Economy.AppCore.Services.InterestsServices
             return repository.Delete(t);
         }
 
+        public List<Serie> FindByOption(Func<Serie, bool> where)
+        {
+          return repository.FindByOption(where);
+        }
+
         public List<Serie> GetAll()
         {
             return repository.GetAll();

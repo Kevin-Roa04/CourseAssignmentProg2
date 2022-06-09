@@ -2,7 +2,6 @@ C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.A
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.json
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.dev.json
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.dll
-C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\ref\Economy.AppCore.dll
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.dll
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.pdb
@@ -16,3 +15,4 @@ C:\Users\Quezada\source\repos\Economy\Economy.AppCore\obj\Debug\net5.0\Economy.A
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache
+C:\Users\Quezada\source\repos\Economy\Economy.AppCore\obj\Debug\net5.0\refint\Economy.AppCore.dll

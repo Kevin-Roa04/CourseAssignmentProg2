@@ -2,7 +2,6 @@ C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\E
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.json
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.dev.json
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.dll
-C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\ref\Economy.Infraestructure.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Common.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\bin\Debug\net5.0\Economy.Domain.dll
@@ -18,3 +17,4 @@ C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\obj\Debug\net5.0\E
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\obj\Debug\net5.0\ref\Economy.Infraestructure.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.genruntimeconfig.cache
+C:\Users\Quezada\source\repos\Economy\Economy.Infraestructure\obj\Debug\net5.0\refint\Economy.Infraestructure.dll

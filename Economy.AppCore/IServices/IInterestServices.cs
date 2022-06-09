@@ -9,5 +9,6 @@ namespace Economy.AppCore.IServices
     public interface IInterestServices<T>: IServices<T>
     {
         List<T> GetIdProject(int Id);
+        List<T> FindByOption(Func<T, bool> where);
     }
 }

@@ -12,4 +12,4 @@ C:\Users\Quezada\source\repos\Economy\Economy.Domain\obj\Debug\net5.0\Economy.Do
 C:\Users\Quezada\source\repos\Economy\Economy.Domain\obj\Debug\net5.0\ref\Economy.Domain.dll
 C:\Users\Quezada\source\repos\Economy\Economy.Domain\obj\Debug\net5.0\Economy.Domain.pdb
 C:\Users\Quezada\source\repos\Economy\Economy.Domain\obj\Debug\net5.0\Economy.Domain.genruntimeconfig.cache
-C:\Users\Quezada\source\repos\Economy\Economy.Domain\bin\Debug\net5.0\ref\Economy.Domain.dll
+C:\Users\Quezada\source\repos\Economy\Economy.Domain\obj\Debug\net5.0\refint\Economy.Domain.dll

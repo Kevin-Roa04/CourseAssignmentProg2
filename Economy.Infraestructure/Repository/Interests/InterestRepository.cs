@@ -1,4 +1,5 @@
 ﻿using Economy.Domain.Entities;
+using Economy.Domain.Enums;
 using Economy.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,11 @@ namespace Economy.Infraestructure.Repository.Interests
             }
         }
 
+        public List<Interest> FindByOption(Func<Interest, bool> where)
+        {
+            return economyDbContext.Interests.Where(where).ToList();
+        }
+
         public List<Interest> GetAll()
         {
             return economyDbContext.Interests.ToList();
@@ -67,6 +73,7 @@ namespace Economy.Infraestructure.Repository.Interests
         {
             return economyDbContext.Interests.Where(x => x.ProjectId == Id).ToList();
         }
+
 
         public int Update(Interest t)
         {
