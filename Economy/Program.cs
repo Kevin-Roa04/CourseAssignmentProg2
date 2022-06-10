@@ -1,4 +1,5 @@
 using Economy.AppCore.IServices;
+using Economy.AppCore.Processes.Calculate;
 using Economy.AppCore.Services;
 using Economy.AppCore.Services.InterestsServices;
 using Economy.Domain.Entities;
@@ -53,6 +54,8 @@ namespace Economy
             services.AddScoped<IInterestServices<Annuity>, AnnuityServices>();
             services.AddScoped<IInterestServices<Serie>, SerieServices>();
             services.AddScoped<IInterestServices<Interest>, InterestServices>();
+            services.AddScoped<ICalculateServices<Annuity>, CalculateAnnuities>();
+            services.AddScoped<ICalculateServices<Interest>, CalculateInterest>();
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())

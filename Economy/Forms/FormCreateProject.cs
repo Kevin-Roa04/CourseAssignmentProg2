@@ -23,7 +23,12 @@ namespace Economy.Forms
         public IInterestServices<Annuity> AnnuityServices { get; set; }
         public IInterestServices<Serie> SerieServices { get; set; }
         public IInterestServices<Interest> InterestServices { get; set; }
-        #endregion 
+        #endregion
+
+        #region -> Calculate service
+        public ICalculateServices<Annuity> calculateServicesAnnuity;
+        public ICalculateServices<Interest> CalculateServicesInterest;
+        #endregion
         private User GlobalUser;
         private int Selection = -1;
         public FormCreateProject(User user)
@@ -121,11 +126,25 @@ namespace Economy.Forms
             };
             projectServices.Create(project);
             this.Hide();
-            FormGraphInterest formGraphInterest = new FormGraphInterest(project);
-            formGraphInterest.InterestServices = this.InterestServices;
-            formGraphInterest.SerieServices = this.SerieServices;
-            formGraphInterest.AnnuityServices = this.AnnuityServices;
-            formGraphInterest.ShowDialog();
+            if(Selection == 0)
+            {
+                FormGraphInterest formGraphInterest = new FormGraphInterest(project);
+                formGraphInterest.InterestServices = this.InterestServices;
+                formGraphInterest.SerieServices = this.SerieServices;
+                formGraphInterest.AnnuityServices = this.AnnuityServices;
+                formGraphInterest.ShowDialog();
+            }
+            else if(Selection == 1)
+            {
+                FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest);
+                formExcel.ShowDialog();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Selection = 1;
+            pnCreateProject.Visible = true;
         }
     }
 }

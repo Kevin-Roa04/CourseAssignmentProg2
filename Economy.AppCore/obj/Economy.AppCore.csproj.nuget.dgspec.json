@@ -1,27 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.AppCore\\Economy.AppCore.csproj": {}
+    "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.AppCore\\Economy.AppCore.csproj": {
+    "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.AppCore\\Economy.AppCore.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
         "projectName": "Economy.AppCore",
-        "projectPath": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.AppCore\\Economy.AppCore.csproj",
-        "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.AppCore\\obj\\",
+        "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+        "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.AppCore\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -34,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\Economy.Domain.csproj": {
-                "projectPath": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\Economy.Domain.csproj"
+              "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+                "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
               }
             }
           }
@@ -84,28 +78,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\Economy.Domain.csproj": {
+    "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\Economy.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj",
         "projectName": "Economy.Domain",
-        "projectPath": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\Economy.Domain.csproj",
-        "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quezada\\source\\repos\\Economy\\Economy.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj",
+        "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\Ultimo\\CourseAssignmentProg2\\Economy.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -164,7 +152,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }

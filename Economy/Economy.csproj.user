@@ -25,11 +25,23 @@
     <Compile Update="Forms\FormCreateProject.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FormExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormFX.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FormGraphInterest.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormLogin.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UsersControl\UserControlFunction.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

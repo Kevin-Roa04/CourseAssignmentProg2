@@ -39,11 +39,17 @@ namespace Economy.Forms
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnCreateProject = new Economy.BeatifulComponents.RJButton();
             this.txtProjectName = new Economy.RJTextBox();
+            this.customPanel4 = new Economy.BeatifulComponents.CustomPanel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.customPanel5 = new Economy.BeatifulComponents.CustomPanel();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnCreateProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.customPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -100,6 +106,7 @@ namespace Economy.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.customPanel4);
             this.panel1.Controls.Add(this.customPanel1);
             this.panel1.Location = new System.Drawing.Point(1, 3);
             this.panel1.Name = "panel1";
@@ -170,6 +177,56 @@ namespace Economy.Forms
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
             // 
+            // customPanel4
+            // 
+            this.customPanel4.BackColor = System.Drawing.Color.White;
+            this.customPanel4.BorderRadius = 10;
+            this.customPanel4.Controls.Add(this.pictureBox3);
+            this.customPanel4.Controls.Add(this.label2);
+            this.customPanel4.Controls.Add(this.customPanel5);
+            this.customPanel4.ForeColor = System.Drawing.Color.Black;
+            this.customPanel4.GradientAngle = 90F;
+            this.customPanel4.GradientBottomColor = System.Drawing.Color.White;
+            this.customPanel4.GradientTopColor = System.Drawing.Color.White;
+            this.customPanel4.Location = new System.Drawing.Point(252, 9);
+            this.customPanel4.Name = "customPanel4";
+            this.customPanel4.Size = new System.Drawing.Size(209, 133);
+            this.customPanel4.TabIndex = 2;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(17, 36);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(167, 89);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(51, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 18);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Function in Excel";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // customPanel5
+            // 
+            this.customPanel5.BackColor = System.Drawing.Color.White;
+            this.customPanel5.BorderRadius = 10;
+            this.customPanel5.ForeColor = System.Drawing.Color.Black;
+            this.customPanel5.GradientAngle = 360F;
+            this.customPanel5.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
+            this.customPanel5.GradientTopColor = System.Drawing.Color.White;
+            this.customPanel5.Location = new System.Drawing.Point(202, -12);
+            this.customPanel5.Name = "customPanel5";
+            this.customPanel5.Size = new System.Drawing.Size(10, 200);
+            this.customPanel5.TabIndex = 0;
+            // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -190,6 +247,9 @@ namespace Economy.Forms
             this.panel1.ResumeLayout(false);
             this.pnCreateProject.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.customPanel4.ResumeLayout(false);
+            this.customPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -205,5 +265,9 @@ namespace Economy.Forms
         private RJTextBox txtProjectName;
         private BeatifulComponents.RJButton btnCreateProject;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private BeatifulComponents.CustomPanel customPanel4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label2;
+        private BeatifulComponents.CustomPanel customPanel5;
     }
 }
