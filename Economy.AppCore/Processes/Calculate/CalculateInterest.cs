@@ -29,6 +29,7 @@ namespace Economy.AppCore.Processes.Calculate
             
             decimal decimalPercent = i.Rate / 100;
             decimal Present = (decimal)future * (decimal)Math.Pow((double)(1 + decimalPercent), (-i.End));
+            Present = Math.Round(Present, 2);
             return Present;
         }
 

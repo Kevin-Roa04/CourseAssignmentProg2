@@ -37,7 +37,7 @@ namespace Economy.AppCore.Processes.Calculate
             decimal decimalPercent = s.Rate / 100;
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (s.End-s.Initial)+1) - 1;
             decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (s.End-s.Initial)+1));
-            decimal Present = (decimal)(s.DownPayment * (Numerator / Denominator));
+            decimal OrdinaryPresent = (decimal)(s.DownPayment * (Numerator / Denominator));
 
             // Gradient present.
             decimal FirstNumerator = (decimal)(Math.Pow((double)(1 + decimalPercent), ((s.End-s.Initial)+1)) - 1);
@@ -47,10 +47,12 @@ namespace Economy.AppCore.Processes.Calculate
             decimal GradientPresent = (s.Quantity / decimalPercent) * FirstEcuation;
             if (s.Initial == 1)
             {
-                return s.Incremental == true ? Present + GradientPresent : Present - GradientPresent;
+                return s.Incremental == true ? OrdinaryPresent + GradientPresent : OrdinaryPresent - GradientPresent;
             }
             decimal PresentCompound = (decimal)Math.Pow((double)(1+decimalPercent), -(s.Initial - 1));
-            return s.Incremental == true ? (Present + GradientPresent) * (PresentCompound) : (Present - GradientPresent) * (PresentCompound);
+            decimal Present= s.Incremental == true ? (OrdinaryPresent + GradientPresent) * (PresentCompound) : (OrdinaryPresent - GradientPresent) * (PresentCompound);
+            Present = Math.Round(Present, 2);
+            return Present;
         }
         private decimal GeometricPresent(Serie s)
         {
@@ -58,8 +60,9 @@ namespace Economy.AppCore.Processes.Calculate
             decimal decimalPresentQuantity = s.Quantity / 100;
             if (s.Quantity == s.Rate)
             {
-
-                return (decimal)(s.DownPayment * (s.End / (1 + decimalPercent))) * (decimal)Math.Pow((double)(1 + decimalPercent), -(s.Initial - 1)); ;
+                decimal Total= (decimal)(s.DownPayment * (((s.End-s.Initial)+1) / (1 + decimalPercent))) * (decimal)Math.Pow((double)(1 + decimalPercent), -(s.Initial - 1)); ;
+                Total = Math.Round(Total, 2);
+                return Total;
                 
             }
             
@@ -67,6 +70,7 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Denominator = (decimal)(decimalPresentQuantity - decimalPercent);
             decimal Present = ((decimal)(s.DownPayment * (Numerator / Denominator)));
             decimal TotalPresent=Present * (decimal)Math.Pow((double)(1 + decimalPercent), -(s.Initial - 1));
+            TotalPresent = Math.Round(TotalPresent, 2);
             return TotalPresent;
         }
         #endregion

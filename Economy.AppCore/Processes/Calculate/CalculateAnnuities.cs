@@ -53,6 +53,7 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), t.End) - 1;
             decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), t.End));
             decimal Present = (decimal)(t.Payment * (Numerator / Denominator));
+            Present = Math.Round(Present, 2);
             return Present;
         }
         private decimal AnticipatedPresent(Annuity t)
@@ -61,6 +62,7 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End)) - 1;
             decimal Denominator = (decimal)(decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), (t.End)));
             decimal Present = (decimal)(t.Payment + (t.Payment * (Numerator / Denominator)));
+            Present = Math.Round(Present, 2);
             return Present;
         }
         private decimal DeferredPresent(Annuity t)
@@ -69,6 +71,7 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Numerator = (decimal)Math.Pow((double)(1 + decimalPercent), (t.End - (t.Initial - 1))) - 1;
             decimal Denominator = (decimal)((double)decimalPercent * Math.Pow((double)(1 + decimalPercent), t.End));
             decimal Present = (decimal)(t.Payment * (Numerator / Denominator));
+            Present = Math.Round(Present, 2);
             return Present;
         }
 

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Economy.Domain.Entities
 {
-    public partial class EconomyContext : DbContext, IEconomyDbContext
+    public partial class EconomyContext : DbContext,IEconomyDbContext
     {
         public EconomyContext()
         {
@@ -24,14 +24,14 @@ namespace Economy.Domain.Entities
         public virtual DbSet<Serie> Series { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-O8ROHG3\\SQLEXPRESS;Initial Catalog=Economy;user=sa;password=123456");
-            }
-        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//                optionsBuilder.UseSqlServer("Data Source=DESKTOP-75SE2PC\\SQLEXPRESS;Initial Catalog=Economy;user=sa;password=123456");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace Economy.Domain.Entities
                     .HasColumnName("flowType");
 
                 entity.Property(e => e.Future)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("future");
 
                 entity.Property(e => e.Initial).HasColumnName("initial");
@@ -61,7 +61,7 @@ namespace Economy.Domain.Entities
                     .HasColumnName("payment");
 
                 entity.Property(e => e.Present)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("present");
 
                 entity.Property(e => e.ProjectId).HasColumnName("projectId");
@@ -99,7 +99,7 @@ namespace Economy.Domain.Entities
                     .HasColumnName("flowType");
 
                 entity.Property(e => e.Future)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("future");
 
                 entity.Property(e => e.Initial).HasColumnName("initial");
@@ -109,7 +109,7 @@ namespace Economy.Domain.Entities
                     .HasColumnName("payment");
 
                 entity.Property(e => e.Present)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("present");
 
                 entity.Property(e => e.ProjectId).HasColumnName("projectId");
@@ -179,7 +179,7 @@ namespace Economy.Domain.Entities
                     .HasColumnName("flowType");
 
                 entity.Property(e => e.Future)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("future");
 
                 entity.Property(e => e.Incremental).HasColumnName("incremental");
@@ -187,7 +187,7 @@ namespace Economy.Domain.Entities
                 entity.Property(e => e.Initial).HasColumnName("initial");
 
                 entity.Property(e => e.Present)
-                    .HasColumnType("decimal(9, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("present");
 
                 entity.Property(e => e.ProjectId).HasColumnName("projectId");

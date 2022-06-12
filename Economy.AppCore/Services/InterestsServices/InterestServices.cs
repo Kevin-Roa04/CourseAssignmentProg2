@@ -51,8 +51,8 @@ namespace Economy.AppCore.Services.InterestsServices
                 throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
             }
             #endregion
-            t.Future = interestServices.Future(t);
-            t.Present = interestServices.Present(t);
+            t.Future = Math.Round(interestServices.Future(t), 2);
+            t.Present = Math.Round(interestServices.Present(t), 2);
             return repository.Create(t);
         }
 

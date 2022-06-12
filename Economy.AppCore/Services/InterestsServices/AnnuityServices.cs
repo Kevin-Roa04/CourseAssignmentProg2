@@ -43,6 +43,10 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 throw new ArgumentException("the initial period or the final period must not be longer than the total period");
             }
+            else if (t.End == t.Initial)
+            {
+                throw new ArgumentException("The initial period must not be equal than the final period");
+            }
             #endregion
             #region Validate period
             List<object> objects = new List<object>();
@@ -80,8 +84,8 @@ namespace Economy.AppCore.Services.InterestsServices
             #endregion
 
             
-            t.Future = AnnuityServicesC.Future(t);
-            t.Present = AnnuityServicesC.Present(t);
+            t.Future = Math.Round(AnnuityServicesC.Future(t), 2);
+            t.Present =Math.Round(AnnuityServicesC.Present(t), 2);
             return repository.Create(t);
         }
 

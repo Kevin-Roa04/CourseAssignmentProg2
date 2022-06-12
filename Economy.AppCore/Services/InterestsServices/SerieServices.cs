@@ -38,6 +38,10 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 throw new ArgumentException("the initial period or the final period must not be longer than the total period");
             }
+            else if (t.End == t.Initial)
+            {
+                throw new ArgumentException("The initial period must not be equal than the final period");
+            }
             #endregion
             #region validate period
             List<object> objects = new List<object>();
@@ -64,15 +68,15 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 if (t.Quantity == 0.0M)
                 {
-                    t.Quantity =(decimal) (t.FinalPayment - t.DownPayment) / (t.End - 1);
+                    t.Quantity =Math.Round((decimal) (t.FinalPayment - t.DownPayment) / (t.End - 1),2);
                 }
                 else if (t.DownPayment == 0.0M)
                 {
-                    t.DownPayment = (decimal)(t.FinalPayment - ((t.End-1)*t.Quantity));
+                    t.DownPayment = Math.Round((decimal)(t.FinalPayment - ((t.End-1)*t.Quantity)),2);
                 }
                 else if (t.FinalPayment == 0.0M)
                 {
-                    t.FinalPayment = (decimal)(t.DownPayment + ((t.End - 1) * t.Quantity));
+                    t.FinalPayment = Math.Round((decimal)(t.DownPayment + ((t.End - 1) * t.Quantity)),2);
                 }
             }
             if (t.Type == TypeSeries.Geometric.ToString())
@@ -80,23 +84,23 @@ namespace Economy.AppCore.Services.InterestsServices
                 if (t.Quantity == 0.0M)
                 {
                     double exponent = ((double)1 / (double)(t.End - 1));
-                    t.Quantity = (decimal)(Math.Pow((double)(t.FinalPayment/t.DownPayment), exponent)-1)*100 ;
+                    t.Quantity =Math.Round( (decimal)(Math.Pow((double)(t.FinalPayment/t.DownPayment), exponent)-1)*100 ,2);
                 }
                 else if (t.DownPayment == 0.0M)
                 {
                     decimal decimalPercent = t.Quantity / 100;
-                    t.DownPayment = (decimal)(t.FinalPayment) /(decimal) Math.Pow((double)(1+decimalPercent),t.End-1);
+                    t.DownPayment = Math.Round((decimal)(t.FinalPayment) / (decimal)Math.Pow((double)(1 + decimalPercent), t.End - 1), 2);
                 }
                 else if (t.FinalPayment == 0.0M)
                 {
                     decimal decimalPercent = t.Quantity / 100;
-                    t.FinalPayment = (decimal) t.DownPayment *(decimal)(Math.Pow((double)(1 + decimalPercent), t.End - 1));
+                    t.FinalPayment = Math.Round((decimal)t.DownPayment * (decimal)(Math.Pow((double)(1 + decimalPercent), t.End - 1)), 2);
                 }
                 
             }
 #endregion
-            t.Present = interestServices.Present(t);
-            t.Future = interestServices.Future(t);
+            t.Present = Math.Round(interestServices.Present(t), 2);
+            t.Future = Math.Round(interestServices.Future(t), 2);
             return repository.Create(t);
         }
 

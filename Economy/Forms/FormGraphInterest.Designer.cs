@@ -30,8 +30,8 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbDecremental = new System.Windows.Forms.CheckBox();
             this.lblRate = new System.Windows.Forms.Label();
@@ -61,13 +61,22 @@ namespace Economy.Forms
             this.dgvInterest = new System.Windows.Forms.DataGridView();
             this.cmbTypeIdgv = new Economy.BeatifulComponents.RJComboBox();
             this.lblTypeIdgv = new System.Windows.Forms.Label();
+            this.btnImage = new System.Windows.Forms.PictureBox();
+            this.btnPDF = new System.Windows.Forms.PictureBox();
+            this.btnUpdate = new System.Windows.Forms.PictureBox();
             this.graph = new System.Windows.Forms.Panel();
+            this.lblFuture = new System.Windows.Forms.Label();
             this.lblPresent = new System.Windows.Forms.Label();
+            this.pnScroll = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).BeginInit();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPDF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdate)).BeginInit();
             this.graph.SuspendLayout();
+            this.pnScroll.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -522,31 +531,31 @@ namespace Economy.Forms
             this.dgvInterest.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInterest.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInterest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInterest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInterest.EnableHeadersVisualStyles = false;
             this.dgvInterest.GridColor = System.Drawing.Color.Linen;
-            this.dgvInterest.Location = new System.Drawing.Point(1, 6);
+            this.dgvInterest.Location = new System.Drawing.Point(-3, 6);
             this.dgvInterest.Name = "dgvInterest";
             this.dgvInterest.ReadOnly = true;
             this.dgvInterest.RowHeadersVisible = false;
             this.dgvInterest.RowTemplate.Height = 25;
-            this.dgvInterest.Size = new System.Drawing.Size(683, 307);
+            this.dgvInterest.Size = new System.Drawing.Size(685, 307);
             this.dgvInterest.TabIndex = 0;
             this.dgvInterest.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvInterest_CellContentClick);
             this.dgvInterest.DoubleClick += new System.EventHandler(this.dgvInterest_DoubleClick);
@@ -583,34 +592,96 @@ namespace Economy.Forms
             this.lblTypeIdgv.Text = "Interest type";
             this.lblTypeIdgv.Visible = false;
             // 
+            // btnImage
+            // 
+            this.btnImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImage.Image = ((System.Drawing.Image)(resources.GetObject("btnImage.Image")));
+            this.btnImage.Location = new System.Drawing.Point(1078, 164);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(36, 37);
+            this.btnImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnImage.TabIndex = 49;
+            this.btnImage.TabStop = false;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            // 
+            // btnPDF
+            // 
+            this.btnPDF.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPDF.Image = ((System.Drawing.Image)(resources.GetObject("btnPDF.Image")));
+            this.btnPDF.Location = new System.Drawing.Point(1078, 94);
+            this.btnPDF.Name = "btnPDF";
+            this.btnPDF.Size = new System.Drawing.Size(36, 48);
+            this.btnPDF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnPDF.TabIndex = 48;
+            this.btnPDF.TabStop = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
+            this.btnUpdate.Location = new System.Drawing.Point(1078, 38);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(36, 30);
+            this.btnUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnUpdate.TabIndex = 47;
+            this.btnUpdate.TabStop = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // graph
             // 
+            this.graph.Controls.Add(this.lblFuture);
             this.graph.Controls.Add(this.lblPresent);
-            this.graph.Location = new System.Drawing.Point(366, 8);
+            this.graph.Location = new System.Drawing.Point(12, 4);
             this.graph.Name = "graph";
-            this.graph.Size = new System.Drawing.Size(684, 327);
+            this.graph.Size = new System.Drawing.Size(684, 311);
             this.graph.TabIndex = 44;
             this.graph.Paint += new System.Windows.Forms.PaintEventHandler(this.graph_Paint);
+            // 
+            // lblFuture
+            // 
+            this.lblFuture.AutoSize = true;
+            this.lblFuture.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFuture.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblFuture.Location = new System.Drawing.Point(191, 14);
+            this.lblFuture.Name = "lblFuture";
+            this.lblFuture.Size = new System.Drawing.Size(49, 18);
+            this.lblFuture.TabIndex = 1;
+            this.lblFuture.Text = "Future:";
+            this.lblFuture.Visible = false;
             // 
             // lblPresent
             // 
             this.lblPresent.AutoSize = true;
             this.lblPresent.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPresent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.lblPresent.Location = new System.Drawing.Point(308, 7);
+            this.lblPresent.Location = new System.Drawing.Point(25, 14);
             this.lblPresent.Name = "lblPresent";
             this.lblPresent.Size = new System.Drawing.Size(54, 18);
             this.lblPresent.TabIndex = 0;
             this.lblPresent.Text = "Present:";
             this.lblPresent.Visible = false;
+            this.lblPresent.Click += new System.EventHandler(this.lblPresent_Click);
+            // 
+            // pnScroll
+            // 
+            this.pnScroll.AutoScroll = true;
+            this.pnScroll.Controls.Add(this.graph);
+            this.pnScroll.Location = new System.Drawing.Point(350, 3);
+            this.pnScroll.Name = "pnScroll";
+            this.pnScroll.Size = new System.Drawing.Size(700, 332);
+            this.pnScroll.TabIndex = 50;
             // 
             // FormGraphInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1062, 703);
-            this.Controls.Add(this.graph);
+            this.ClientSize = new System.Drawing.Size(1126, 703);
+            this.Controls.Add(this.pnScroll);
+            this.Controls.Add(this.btnImage);
+            this.Controls.Add(this.btnPDF);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.customPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbTypeIdgv);
@@ -627,8 +698,12 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).EndInit();
             this.customPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvInterest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPDF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnUpdate)).EndInit();
             this.graph.ResumeLayout(false);
             this.graph.PerformLayout();
+            this.pnScroll.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -665,7 +740,12 @@ namespace Economy.Forms
         private System.Windows.Forms.DataGridView dgvInterest;
         private BeatifulComponents.RJComboBox cmbTypeIdgv;
         private System.Windows.Forms.Label lblTypeIdgv;
+        private System.Windows.Forms.PictureBox btnImage;
+        private System.Windows.Forms.PictureBox btnPDF;
+        private System.Windows.Forms.PictureBox btnUpdate;
         private System.Windows.Forms.Panel graph;
+        private System.Windows.Forms.Label lblFuture;
         private System.Windows.Forms.Label lblPresent;
+        private System.Windows.Forms.Panel pnScroll;
     }
 }
