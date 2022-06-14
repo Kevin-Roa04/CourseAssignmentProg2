@@ -6523,28 +6523,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Quezada\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\JADPA23\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
+      "projectUniqueName": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
       "projectName": "Economy.Infraestructure",
-      "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
-      "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Infraestructure\\obj\\",
+      "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
+      "packagesPath": "C:\\Users\\JADPA23\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\JADPA23\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6557,11 +6553,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj"
+            "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
+              "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj"
             },
-            "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             }
           }
         }

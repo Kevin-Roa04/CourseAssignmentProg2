@@ -34,3 +34,15 @@ C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.Common\obj\Debu
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\refint\Economy.Common.dll
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.pdb
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\ref\Economy.Common.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.deps.json
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\ref\Economy.Common.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.pdb
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.csproj.AssemblyReference.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.AssemblyInfoInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.AssemblyInfo.cs
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.csproj.CoreCompileInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\ref\Economy.Common.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.pdb

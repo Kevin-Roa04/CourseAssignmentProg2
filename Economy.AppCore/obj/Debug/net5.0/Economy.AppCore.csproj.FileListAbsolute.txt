@@ -52,3 +52,21 @@ C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.AppCore\obj\Deb
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache
 C:\Users\Quezada\Desktop\Completed\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.deps.json
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.json
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.dev.json
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.pdb
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.pdb
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.AssemblyReference.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.AssemblyInfoInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.AssemblyInfo.cs
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.CoreCompileInputs.cache
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.CopyComplete
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
+C:\Users\Cristina\OneDrive\Escritorio\Nueva carpeta (3)\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache

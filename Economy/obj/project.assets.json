@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "Autofac/6.4.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "4.7.1"
+        },
+        "compile": {
+          "lib/net5.0/Autofac.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Autofac.dll": {}
+        }
+      },
       "BouncyCastle/1.8.9": {
         "type": "package",
         "compile": {
@@ -1915,6 +1927,27 @@
     }
   },
   "libraries": {
+    "Autofac/6.4.0": {
+      "sha512": "tkFxl6wAPuwVhrlN8wuNADnd+k2tv4ReP7ZZSL0vjfcN0RcfC9v25ogxK6b03HC7D4NwWjSLf1G/zTG8Bw43wQ==",
+      "type": "package",
+      "path": "autofac/6.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "autofac.6.4.0.nupkg.sha512",
+        "autofac.nuspec",
+        "icon.png",
+        "lib/net5.0/Autofac.dll",
+        "lib/net5.0/Autofac.xml",
+        "lib/net6.0/Autofac.dll",
+        "lib/net6.0/Autofac.xml",
+        "lib/netstandard2.0/Autofac.dll",
+        "lib/netstandard2.0/Autofac.xml",
+        "lib/netstandard2.1/Autofac.dll",
+        "lib/netstandard2.1/Autofac.xml"
+      ]
+    },
     "BouncyCastle/1.8.9": {
       "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
       "type": "package",
@@ -6607,6 +6640,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
+      "Autofac >= 6.4.0",
       "Economy.AppCore >= 1.0.0",
       "Economy.Domain >= 1.0.0",
       "Economy.Infraestructure >= 1.0.0",
@@ -6618,28 +6652,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Quezada\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\JADPA23\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "projectUniqueName": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
       "projectName": "Economy",
-      "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy\\Economy.csproj",
-      "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy\\obj\\",
+      "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "packagesPath": "C:\\Users\\JADPA23\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\JADPA23\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -6652,14 +6682,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
+            "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
+              "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
             },
-            "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             },
-            "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\Completed\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
+            "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\JADPA23\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
             }
           }
         }
@@ -6674,6 +6704,10 @@
       "net5.0-windows7.0": {
         "targetAlias": "net5.0-windows",
         "dependencies": {
+          "Autofac": {
+            "target": "Package",
+            "version": "[6.4.0, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -6724,7 +6758,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "BouncyCastle",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -6734,7 +6768,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"iTextSharp 5.5.13.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net5.0-windows7.0"

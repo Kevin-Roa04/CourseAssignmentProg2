@@ -78,6 +78,7 @@ namespace Economy.Forms
         private IInterestServices<Annuity> AnnuityServices { get; set; }
         private IInterestServices<Serie> SerieServices { get; set; }
         private IInterestServices<Interest> InterestServices { get; set; }
+        private INominalServices nominalServices { get; set; }
         #endregion
         #region -> Calculate service
         private ICalculateServices<Annuity> calculateServicesAnnuity;
@@ -87,7 +88,7 @@ namespace Economy.Forms
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
-            ICalculateServices<Interest> calculateServicesInterest
+            ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal
             )
         {
             this.InterestServices = interest;
@@ -97,6 +98,7 @@ namespace Economy.Forms
             this.UsersServices = services;
             this.calculateServicesAnnuity = calculateServicesAnnuity;
             this.CalculateServicesInterest = calculateServicesInterest;
+            this.nominalServices = nominal;
             InitializeComponent();
         }
         public FormLogin()
@@ -164,6 +166,8 @@ namespace Economy.Forms
                 formCreateProject.InterestServices = this.InterestServices;
                 formCreateProject.calculateServicesAnnuity = this.calculateServicesAnnuity;
                 formCreateProject.CalculateServicesInterest = this.CalculateServicesInterest;
+                formCreateProject.nominal = this.nominalServices;
+              
                 formCreateProject.ShowDialog();
 
             }

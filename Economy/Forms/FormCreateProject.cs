@@ -1,6 +1,8 @@
-﻿using Economy.AppCore.IServices;
+﻿using Autofac.Core;
+using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
+using InteresPratica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,11 +25,13 @@ namespace Economy.Forms
         public IInterestServices<Annuity> AnnuityServices { get; set; }
         public IInterestServices<Serie> SerieServices { get; set; }
         public IInterestServices<Interest> InterestServices { get; set; }
+       
         #endregion
 
         #region -> Calculate service
         public ICalculateServices<Annuity> calculateServicesAnnuity;
         public ICalculateServices<Interest> CalculateServicesInterest;
+        public INominalServices nominal;
         #endregion
         private User GlobalUser;
         private int Selection = -1;
@@ -138,12 +142,37 @@ namespace Economy.Forms
             {
                 FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest);
                 formExcel.ShowDialog();
+
+                
+            }
+            else if (Selection == 2)
+            {
+
+                FmrInteres fmrInteres = new FmrInteres(nominal);
+                fmrInteres.ShowDialog();
+
             }
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             Selection = 1;
+            pnCreateProject.Visible = true;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            Selection = 2;
             pnCreateProject.Visible = true;
         }
     }

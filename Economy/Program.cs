@@ -1,3 +1,4 @@
+using Autofac;
 using Economy.AppCore.IServices;
 using Economy.AppCore.Processes.Calculate;
 using Economy.AppCore.Services;
@@ -7,6 +8,7 @@ using Economy.Domain.Interfaces;
 using Economy.Forms;
 using Economy.Infraestructure.Repository;
 using Economy.Infraestructure.Repository.Interests;
+using InteresPratica;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -55,7 +57,10 @@ namespace Economy
             services.AddScoped<IInterestServices<Serie>, SerieServices>();
             services.AddScoped<IInterestServices<Interest>, InterestServices>();
             services.AddScoped<ICalculateServices<Annuity>, CalculateAnnuities>();
-            services.AddScoped<ICalculateServices<Interest>, CalculateInterest>();
+            services.AddScoped<INominalServices, NominalServices>();
+            services.AddScoped<IInteresNominal, NominalRepository>();
+            
+
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())
@@ -63,6 +68,7 @@ namespace Economy
                 var main = serviceScope.GetRequiredService<FormLogin>();
                 Application.Run(main);
             }
+
         }
     }
 }
