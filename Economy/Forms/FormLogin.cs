@@ -1,4 +1,5 @@
-﻿using Economy.AppCore.IServices;
+﻿using Appcore.Interface;
+using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -83,12 +84,19 @@ namespace Economy.Forms
         #region -> Calculate service
         private ICalculateServices<Annuity> calculateServicesAnnuity;
         private ICalculateServices<Interest> CalculateServicesInterest;
+        private ICalculateServices<Serie> calculateServicesSerie;
         #endregion
         private User User;
+        private ISimpleService simpleService;
+        private ICompuestoService compuestoService1;
+        private IConvertService convertService1;
+        private IDepreciationService depreciationService;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
-            ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal
+            ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal,
+            ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
+            IConvertService convertService, IDepreciationService depreciationService
             )
         {
             this.InterestServices = interest;
@@ -99,6 +107,12 @@ namespace Economy.Forms
             this.calculateServicesAnnuity = calculateServicesAnnuity;
             this.CalculateServicesInterest = calculateServicesInterest;
             this.nominalServices = nominal;
+            this.calculateServicesSerie = calculateServicesSerie;
+            this.simpleService = simpleService;
+            this.compuestoService1 = compuestoService;
+            this.convertService1 = convertService;
+            this.depreciationService = depreciationService;
+
             InitializeComponent();
         }
         public FormLogin()
@@ -167,7 +181,11 @@ namespace Economy.Forms
                 formCreateProject.calculateServicesAnnuity = this.calculateServicesAnnuity;
                 formCreateProject.CalculateServicesInterest = this.CalculateServicesInterest;
                 formCreateProject.nominal = this.nominalServices;
-              
+                formCreateProject.CalculateServicesSerie = this.calculateServicesSerie;
+                formCreateProject.simpleService = this.simpleService;
+                formCreateProject.compuestoService1 = this.compuestoService1;
+                formCreateProject.convertService1 = this.convertService1;
+                formCreateProject.depreciationService = this.depreciationService;
                 formCreateProject.ShowDialog();
 
             }

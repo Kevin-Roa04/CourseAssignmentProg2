@@ -1,4 +1,7 @@
+using Appcore.Interface;
+using Appcore.Service;
 using Autofac;
+using Dominio.Interface;
 using Economy.AppCore.IServices;
 using Economy.AppCore.Processes.Calculate;
 using Economy.AppCore.Services;
@@ -8,6 +11,7 @@ using Economy.Domain.Interfaces;
 using Economy.Forms;
 using Economy.Infraestructure.Repository;
 using Economy.Infraestructure.Repository.Interests;
+using Infraestructure.Repository;
 using InteresPratica;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -53,13 +57,29 @@ namespace Economy
             services.AddScoped<IInterestRepository<Annuity>,AnnuityRepository>();
             services.AddScoped<IInterestRepository<Serie>, SerieRepository>();
             services.AddScoped<IInterestRepository<Interest>, InterestRepository>();
+            services.AddScoped<ICalculateServices<Interest>, CalculateInterest>();
             services.AddScoped<IInterestServices<Annuity>, AnnuityServices>();
             services.AddScoped<IInterestServices<Serie>, SerieServices>();
             services.AddScoped<IInterestServices<Interest>, InterestServices>();
             services.AddScoped<ICalculateServices<Annuity>, CalculateAnnuities>();
+            services.AddScoped<ICalculateServices<Serie>, CalculateSerie>();
+
             services.AddScoped<INominalServices, NominalServices>();
             services.AddScoped<IInteresNominal, NominalRepository>();
-            
+            //simple
+            services.AddScoped<ISimpleService, SimpleService>();
+            services.AddScoped<IModelSimple, SimpleRepository>();
+            //Compuesto
+            services.AddScoped<ICompuestoService, CompuestoService>();
+            services.AddScoped<IModelCompuesto, CompuestoRepository>();
+            //Converter
+            services.AddScoped<IConvertService, ConvertService>();
+            services.AddScoped<IModelConverticion, ConvertRepository>();
+            //Depreciation
+            services.AddScoped<IDepreciationService, DepreciationService>();
+            services.AddScoped<IModelDepreciation, DepreciationRepository>();
+           
+
 
             services.AddScoped<FormLogin>();
 

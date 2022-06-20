@@ -45,7 +45,117 @@ namespace Economy.AppCore.Processes.Calculate
             }
             return 0;
         }
+        public decimal Annuity(Annuity t)
+        {
+            if (t.Type == TypeAnnuities.Anticipated.ToString())
+            {
+                return AnticipatedAnnuity(t);
+            }
+            else if (t.Type == TypeAnnuities.Deferred.ToString())
+            {
+                return DeferredAnnuity(t);
+            }
+            else if (t.Type == TypeAnnuities.Ordinary.ToString())
+            {
+                return OrdinaryAnnuity(t);
+            }
+            return 0;
+        }
 
+        #region Annuity
+
+        private decimal OrdinaryAnnuity(Annuity t)
+        {
+            if (t.Present == null)
+            {
+                return AnnuityFromOrdinaryFuture(t);
+            }
+            else
+            {
+                return AnnuityFromOrdinaryPresent(t);
+            }
+        }
+        private decimal AnnuityFromOrdinaryPresent(Annuity t)
+        {
+            double p = (double)t.Present;
+            double i = (double)t.Rate;
+            double n = t.End;
+            double Ri = Math.Pow((double)(1 + i), n);
+
+            decimal Annuity = (decimal)(p * ((i * Ri) / (Ri - 1)));
+            return Annuity;
+        }
+
+        private decimal AnnuityFromOrdinaryFuture(Annuity t)
+        {
+            double f = (double)t.Future;
+            double i = (double)t.Rate;
+            double n = t.End;
+            double Ri = Math.Pow((double)(1 + i), n);
+
+            decimal Annuity = (decimal)(f * (i / (Ri - 1)));
+            return Annuity;
+        }
+
+        private decimal AnticipatedAnnuity(Annuity t)
+        {
+            if (t.Present == null)
+            {
+                return AnnuityFromAnticipatedFuture(t);
+            }
+            else
+            {
+                return AnnuityFromAnticipatedPresent(t);
+            }
+
+        }
+
+        private decimal AnnuityFromAnticipatedFuture(Annuity t)
+        {
+            double f = (double)t.Future;
+            double i = (double)t.Rate;
+            double n = t.End;
+            double Ri = Math.Pow((double)(1 + i), n + 1) - 1;
+            double denom = (Ri / i) - 1;
+
+            decimal Annuity = (decimal)(f / denom);
+            return Annuity;
+        }
+
+        private decimal AnnuityFromAnticipatedPresent(Annuity t)
+        {
+            double p = (double)t.Present;
+            double i = (double)t.Rate;
+            double n = t.End;
+            double Ri = (double)(1 - Math.Pow((double)(1 + i), -(n - 1)));
+            double denom = 1 + (Ri / i);
+
+            decimal Annuity = (decimal)(p / denom);
+            return Annuity;
+        }
+
+        private decimal DeferredAnnuity(Annuity t)
+        {
+            if (t.Present == null)
+            {
+                return AnnuityFromDeferredFuture(t);
+            }
+            else
+            {
+                return AnnuityFromDeferredPresent(t);
+            }
+
+        }
+        private decimal AnnuityFromDeferredPresent(Annuity t)
+        {
+            throw new ArgumentException();
+        }
+
+        private decimal AnnuityFromDeferredFuture(Annuity t)
+        {
+            throw new ArgumentException();
+        }
+        #endregion
         #region Present
         private decimal OrdinaryPresent(Annuity t)
         {

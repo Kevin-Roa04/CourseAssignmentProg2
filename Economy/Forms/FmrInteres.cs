@@ -1,6 +1,7 @@
 ﻿
 using Economy.AppCore.IServices;
 using Economy.Domain.Enums;
+using Economy.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace InteresPratica
     public partial class FmrInteres : Form
     {
         public INominalServices nominalServices ;
+        public FormCreateProject FormCreateProject;
      
         public FmrInteres(INominalServices services)
         {

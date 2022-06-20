@@ -8,13 +8,19 @@ namespace Economy.AppCore.Singleton
 {
     public class Singleton
     {
-        public List<double> vs = new List<double>();
         private static Singleton instance = null;
         public int Index;
         public decimal ValueFunction;
         public double ValueTask;
-        public int Row;
-        public int Column;
+        public int MaxRow;
+        public int MaxColumn;
+        public int MinRow;
+        public int MinColumn;
+        public List<double> Entry = new List<double>();
+        public List<double> Exit = new List<double>();
+        public List<double> ValueFunctionList = new List<double>();
+        public bool Selection;
+        public bool Type;
 
         protected Singleton()
         {

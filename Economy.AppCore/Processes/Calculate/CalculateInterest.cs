@@ -44,6 +44,11 @@ namespace Economy.AppCore.Processes.Calculate
             decimal Future = (decimal)present * (decimal)Math.Pow((double)(1 + decimalPercent), (i.TotalPeriod-i.Initial));
             return Future;
         }
+
+        public decimal Annuity(Interest t)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

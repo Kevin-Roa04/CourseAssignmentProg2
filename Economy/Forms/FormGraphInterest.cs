@@ -93,6 +93,7 @@ namespace Economy.Forms
         private int selection = -1;
         private int TotalPeriod = -1;
         private Project Project;
+        public FormCreateProject FormCreateProject;
 
         #region -> Interests service
         public IInterestServices<Annuity> AnnuityServices { get; set; }
@@ -105,10 +106,7 @@ namespace Economy.Forms
             this.Project = project;
             InitializeComponent();
             coord_y = (int)(graph.Height * 0.5);
-            this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
-            this.ReDraws.Interval = 1000;
-            this.ReDraws.AutoReset = true;
-            this.ReDraws.Enabled = true;
+
 
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -155,6 +153,10 @@ namespace Economy.Forms
         }
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
+            this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
+            this.ReDraws.Interval = 1000;
+            this.ReDraws.AutoReset = true;
+            this.ReDraws.Enabled = true;
 
             graph.Refresh();
             lblValues(0, 0);
@@ -632,7 +634,7 @@ namespace Economy.Forms
             }
             if (Interest != null)
             {
-                DrawInterest(Interest, e.Graphics);
+                DrawInterest(Interest, graphics);
                 return;
             }
             Redraw(graphics);

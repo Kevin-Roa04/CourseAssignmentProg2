@@ -18,15 +18,18 @@ namespace Economy.Forms
 
         public ICalculateServices<Annuity> calculateServicesAnnuity;
         public ICalculateServices<Interest> CalculateServicesInterest;
+        public ICalculateServices<Serie> CalculateServicesSerie;
         public int Index;
         private UserControlFunction UserControlFunction;
-        public FormFunction(FormExcel formExcel, int Index, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService)
+        public FormFunction(FormExcel formExcel, int Index, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService,
+            ICalculateServices<Serie> calculateServicesSerie)
         {
             InitializeComponent();
             this.Index = Index;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateService;
-            this.UserControlFunction = new UserControlFunction(Index, formExcel, this.calculateServicesAnnuity, this.CalculateServicesInterest, this);
+            this.CalculateServicesSerie = calculateServicesSerie;
+            this.UserControlFunction = new UserControlFunction(Index, formExcel, this.calculateServicesAnnuity, this.CalculateServicesInterest, this, calculateServicesSerie);
         }
 
         private void FormFunction_Load(object sender, EventArgs e)

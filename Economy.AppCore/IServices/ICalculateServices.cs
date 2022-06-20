@@ -10,5 +10,6 @@ namespace Economy.AppCore.IServices
     {
         decimal Present(T t);
         decimal Future(T t);
+        decimal Annuity(T t);
     }
 }

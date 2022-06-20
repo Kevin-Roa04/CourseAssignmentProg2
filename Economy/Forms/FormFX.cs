@@ -1,4 +1,5 @@
 ﻿using Economy.AppCore.IServices;
+using Economy.AppCore.Singleton;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using System;
@@ -17,13 +18,16 @@ namespace Economy.Forms
     {
         public ICalculateServices<Annuity> calculateServicesAnnuity;
         public ICalculateServices<Interest> CalculateServicesInterest;
+        public ICalculateServices<Serie> CalculateServicesSerie;
         private FormExcel FormExcel;
-        public FormFX(FormExcel formExcel, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService)
+        public FormFX(FormExcel formExcel, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService,
+            ICalculateServices<Serie> calculateServicesSerie)
         {
             InitializeComponent();
             this.FormExcel = formExcel;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateService;
+            this.CalculateServicesSerie = calculateServicesSerie;
         }
 
         private void FormFX_Load(object sender, EventArgs e)
@@ -37,7 +41,13 @@ namespace Economy.Forms
 
         private void lbFX_DoubleClick(object sender, EventArgs e)
         {
-            FormFunction formFunction = new FormFunction(this.FormExcel, (int)lbFX.SelectedIndex, calculateServicesAnnuity, CalculateServicesInterest);
+            if ((int)lbFX.SelectedIndex >= 7)
+            {
+                Singleton singleton = Singleton.instance1;
+                singleton.Selection = true;
+            }
+            FormFunction formFunction = new FormFunction(this.FormExcel, (int)lbFX.SelectedIndex, calculateServicesAnnuity,
+                CalculateServicesInterest, CalculateServicesSerie);
             formFunction.Show();
             formFunction.BringToFront();
             this.Close();

@@ -82,6 +82,11 @@ namespace Economy.AppCore.Processes.Calculate
             decimal decimalPercent = s.Rate / 100;
             return (decimal)(s.Present * (decimal)(Math.Pow((double)(1 + decimalPercent), s.TotalPeriod)));
         }
+
+        public decimal Annuity(Serie t)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

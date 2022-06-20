@@ -1,8 +1,10 @@
-﻿using Autofac.Core;
+﻿using Appcore.Interface;
+using Autofac.Core;
 using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using InteresPratica;
+using Proto1._0;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,10 +33,15 @@ namespace Economy.Forms
         #region -> Calculate service
         public ICalculateServices<Annuity> calculateServicesAnnuity;
         public ICalculateServices<Interest> CalculateServicesInterest;
+        public ICalculateServices<Serie> CalculateServicesSerie;
         public INominalServices nominal;
         #endregion
         private User GlobalUser;
         private int Selection = -1;
+        public ISimpleService simpleService;
+        public ICompuestoService compuestoService1;
+        public IConvertService convertService1;
+        public IDepreciationService depreciationService;
         public FormCreateProject(User user)
         {
             this.GlobalUser = user;
@@ -136,11 +143,12 @@ namespace Economy.Forms
                 formGraphInterest.InterestServices = this.InterestServices;
                 formGraphInterest.SerieServices = this.SerieServices;
                 formGraphInterest.AnnuityServices = this.AnnuityServices;
+                formGraphInterest.FormCreateProject = this;
                 formGraphInterest.ShowDialog();
             }
             else if(Selection == 1)
             {
-                FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest);
+                FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie);
                 formExcel.ShowDialog();
 
                 
@@ -149,9 +157,17 @@ namespace Economy.Forms
             {
 
                 FmrInteres fmrInteres = new FmrInteres(nominal);
+                fmrInteres.FormCreateProject = this;
                 fmrInteres.ShowDialog();
 
             }
+            else if(Selection == 3)
+            {
+                Inicio ins = new Inicio(simpleService, compuestoService1, convertService1, depreciationService);
+                ins.FormCreateProject = this;
+                ins.ShowDialog();
+            }
+            this.Hide();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -173,6 +189,12 @@ namespace Economy.Forms
         private void label3_Click(object sender, EventArgs e)
         {
             Selection = 2;
+            pnCreateProject.Visible = true;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Selection = 3;
             pnCreateProject.Visible = true;
         }
     }

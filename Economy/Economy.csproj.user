@@ -22,6 +22,12 @@
     <Compile Update="FormCreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\CalculateInt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Depreciacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FmrConvertidor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -44,6 +50,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UsersControl\UserControlFunction.cs">

@@ -10,8 +10,8 @@ namespace Economy.Domain.Enums
     {
         InterestWithGraph,
         Excel,
-        RateConversion
-
+        RateConversion,
+        InterestConversion
     }
 
 }

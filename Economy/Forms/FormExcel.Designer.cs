@@ -64,6 +64,7 @@ namespace Economy.Forms
             this.dgvExcel.Size = new System.Drawing.Size(776, 383);
             this.dgvExcel.TabIndex = 2;
             this.dgvExcel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellClick);
+            this.dgvExcel.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvExcel_CellMouseUp);
             this.dgvExcel.CurrentCellChanged += new System.EventHandler(this.dgvExcel_CurrentCellChanged);
             // 
             // A1
@@ -130,12 +131,13 @@ namespace Economy.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(804, 450);
             this.Controls.Add(this.dgvExcel);
             this.Controls.Add(this.btnFX);
             this.Name = "FormExcel";
             this.Text = "FormExcel";
             this.Activated += new System.EventHandler(this.FormExcel_Activated);
+            this.Deactivate += new System.EventHandler(this.FormExcel_Deactivate);
             this.Load += new System.EventHandler(this.FormExcel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvExcel)).EndInit();
             this.ResumeLayout(false);

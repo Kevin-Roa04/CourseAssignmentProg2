@@ -22,9 +22,15 @@ namespace Economy.Forms
         private int NumberOfColumns;
         ICalculateServices<Annuity> calculateServicesAnnuity;
         ICalculateServices<Interest> CalculateServicesInterest;
+        ICalculateServices<Serie> calculateServicesSerie;
         private int Rows;
         private int ColumnsIndex;
-        public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1)
+        private int RowsFunction;
+        private int ColumsnFunction;
+        private Singleton singleton;
+        
+        public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1,
+            ICalculateServices<Serie> calculateServiceSerie)
         {
             InitializeComponent();
             Columns = new List<string>();
@@ -34,8 +40,10 @@ namespace Economy.Forms
             NumberOfColumns = 8;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateServices1;
+            this.calculateServicesSerie = calculateServiceSerie;
             Rows = 0;
             ColumnsIndex = 0;
+            singleton = Singleton.instance1;
         }
 
         private void FormExcel_Load(object sender, EventArgs e)
@@ -51,6 +59,38 @@ namespace Economy.Forms
         {
             try
             {
+                if (dgvExcel.CurrentRow == null)
+                    return;
+
+                int column = dgvExcel.CurrentCell.ColumnIndex;
+                int row = dgvExcel.CurrentCell.RowIndex;
+                int lastrow = dgvExcel.Rows.Count - 1;
+                int lastColumn = dgvExcel.Columns.Count - 1;
+                Form existe = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "FormFunction").SingleOrDefault<Form>();
+                if (existe != null)
+                {
+                    if (singleton.Selection)
+                    {
+                        if (singleton.MinRow == singleton.MaxRow)
+                        {
+                            singleton.MinRow = row;
+                        }
+                        else
+                        {
+                            singleton.MaxRow = row;
+                        }
+
+                        if (singleton.MinColumn == 0 && singleton.MaxColumn == 0)
+                        {
+                            singleton.MinColumn = column;
+                        }
+                        else
+                        {
+                            singleton.MaxColumn = column;
+                        }
+                    }
+                    return;
+                }
                 GetRowAndColumn();
                 if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
                 {
@@ -60,12 +100,6 @@ namespace Economy.Forms
                 {
                     btnFX.Visible = false;
                 }
-
-                if (dgvExcel.CurrentRow == null)
-                    return;
-
-                int column = dgvExcel.CurrentCell.ColumnIndex;
-                int lastColumn = dgvExcel.Columns.Count - 1;
 
                 if (column == lastColumn)
                 {
@@ -80,20 +114,24 @@ namespace Economy.Forms
 
         private void dgvExcel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            singleton.MinRow = dgvExcel.CurrentCell.RowIndex;
             Form existe = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "FormFunction").SingleOrDefault<Form>();
             try
             {
                 if (existe != null)
                 {
-                    GetRowAndColumn();
-                    double ValueCell = double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
-                    if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
+                    if (!singleton.Selection)
                     {
-                        throw new ArgumentException();
+                        GetRowAndColumn();
+                        double ValueCell = double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
+                        if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
+                        {
+                            throw new ArgumentException();
+                        }
+                        singleton.ValueTask = Double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
+                        existe.Activate();
                     }
-                    Singleton singleton = Singleton.instance1;
-                    singleton.ValueTask = Double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
-                    existe.Activate();
+
                 }
             }
             catch
@@ -139,16 +177,17 @@ namespace Economy.Forms
         private void buttonFX_Click(object sender, EventArgs e)
         {
             GetRowAndColumn();
-            if(dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value != null)
+            if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value != null)
             {
                 MessageBox.Show("Select an empty cell", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFX.Visible = false;
                 return;
             }
-            Singleton singleton = Singleton.instance1;
-            singleton.Row = Rows;
-            singleton.Column = ColumnsIndex;
-            FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest);
+            singleton.MinRow = Rows;
+            singleton.MinColumn = ColumnsIndex;
+            ColumsnFunction = ColumnsIndex;
+            RowsFunction = Rows;
+            FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie);
             formsFX.Show();
         }
         private void GetRowAndColumn()
@@ -167,15 +206,88 @@ namespace Economy.Forms
 
         private void FormExcel_Activated(object sender, EventArgs e)
         {
-            Singleton singleton = Singleton.instance1;
+            if (singleton.Selection)
+            {
+                if (singleton.ValueFunctionList.Count > 0)
+                {
+                    if (dgvExcel.Columns.Count < (ColumsnFunction + singleton.MaxColumn))
+                    {
+                        MessageBox.Show("First you must create more columns before doing this operation", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    int sumatoria = 0;
+                    for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
+                    {
+                        dgvExcel.Rows[RowsFunction].Cells[(ColumsnFunction + sumatoria)].Value = singleton.ValueFunctionList[sumatoria];
+                        sumatoria++;
+                    }
+                    singleton.ValueFunctionList.Clear();
+                    singleton.MaxColumn = 0;
+                    singleton.MaxRow = 0;
+                    singleton.MinRow = 0;
+                    singleton.MinColumn = 0;
+                    singleton.Selection = false;
+                    return;
+                }
+            }
             if (singleton.ValueFunction == 0)
             {
                 return;
             }
-            dgvExcel.Rows[singleton.Row].Cells[singleton.Column].Value = singleton.ValueFunction;
+            dgvExcel.Rows[RowsFunction].Cells[ColumsnFunction].Value = singleton.ValueFunction;
             singleton.ValueFunction = 0;
             singleton.ValueTask = 0;
             singleton.Index = 0;
+        }
+
+        private void dgvExcel_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Form existe = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "FormFunction").SingleOrDefault<Form>();
+            try
+            {
+                if (existe != null)
+                {
+                    if (singleton.Selection)
+                    {
+                        if (singleton.Type)
+                        {
+                            singleton.Entry.Clear();
+                            for (int i = singleton.MinRow; i <= singleton.MaxRow; i++)
+                            {
+                                for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
+                                {
+                                    singleton.Entry.Add(double.Parse(dgvExcel.Rows[i].Cells[j].Value.ToString()));
+                                }
+                            }
+                            existe.Activate();
+                            return;
+                        }
+                        else
+                        {
+                            singleton.Exit.Clear();
+                            for (int i = singleton.MinRow; i <= singleton.MaxRow; i++)
+                            {
+                                for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
+                                {
+                                    singleton.Exit.Add(double.Parse((string)dgvExcel.Rows[i].Cells[j].Value));
+                                }
+                            }
+                            existe.Activate();
+                            return;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void FormExcel_Deactivate(object sender, EventArgs e)
+        {
+            this.Close();
+           
         }
     }
 }
