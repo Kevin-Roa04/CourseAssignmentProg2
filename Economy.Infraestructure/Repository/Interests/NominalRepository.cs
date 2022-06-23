@@ -18,7 +18,7 @@ namespace Economy.Infraestructure.Repository.Interests
         public double ConvertEfectiva(double nominal, double M)
         {
             double J = nominal / 100;
-            double x = Math.Pow(Math.Sqrt(1 + J - 1), M) * M;
+            double x = (Math.Pow(Math.Sqrt(1 + J ), M) -1) * M;
             double y = x * 100;
             double efectiva = Math.Round(x, 2);
             return efectiva;

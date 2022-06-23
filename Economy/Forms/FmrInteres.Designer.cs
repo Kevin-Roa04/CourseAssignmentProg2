@@ -218,7 +218,7 @@ namespace InteresPratica
             this.Controls.Add(this.cmbmostrasr);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "FmrInteres";
-            this.Text = "Form1";
+            this.Text = "Interes Nominal";
             this.Load += new System.EventHandler(this.FmrInteres_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

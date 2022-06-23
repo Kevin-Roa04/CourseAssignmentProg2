@@ -28,6 +28,9 @@
     <Compile Update="Forms\Depreciacion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FmrCalendarioDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FmrConvertidor.cs">
       <SubType>Form</SubType>
     </Compile>
