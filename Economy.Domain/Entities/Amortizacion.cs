@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Economy.Domain.Entities
 {
-    public class Amotizacion
+    public class Amortizacion
     {
         public int Id { get; set; }
         public double interes { get; set; }
@@ -15,7 +15,6 @@ namespace Economy.Domain.Entities
 
         public double Abono { get; set; }
         public double Intereses { get; set; }
-        public double Cuota { get; set; }
         public double Saldo { get; set; }
     }
 }

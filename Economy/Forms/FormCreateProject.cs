@@ -42,6 +42,7 @@ namespace Economy.Forms
         public ICompuestoService compuestoService1;
         public IConvertService convertService1;
         public IDepreciationService depreciationService;
+        public IAmortizacionServices amortizacionServices;
         public FormCreateProject(User user)
         {
             this.GlobalUser = user;
@@ -163,9 +164,19 @@ namespace Economy.Forms
             }
             else if(Selection == 3)
             {
-                Inicio ins = new Inicio(simpleService, compuestoService1, convertService1, depreciationService);
+                Inicio ins = new Inicio(simpleService, compuestoService1, convertService1);
                 ins.FormCreateProject = this;
                 ins.ShowDialog();
+            }
+            else if(Selection == 4)
+            {
+                FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices);
+                fmrCalendarioDePago.ShowDialog();
+            }
+            else if(Selection == 5)
+            {
+                Depreciacion depreciacion = new Depreciacion(depreciationService);
+                depreciacion.ShowDialog();
             }
             this.Hide();
         }
@@ -195,6 +206,18 @@ namespace Economy.Forms
         private void label4_Click(object sender, EventArgs e)
         {
             Selection = 3;
+            pnCreateProject.Visible = true;
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            Selection = 4;
+            pnCreateProject.Visible = true;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            Selection = 5;
             pnCreateProject.Visible = true;
         }
     }

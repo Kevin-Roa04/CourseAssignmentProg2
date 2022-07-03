@@ -18,33 +18,23 @@ namespace Proto1._0
         ISimpleService sim;
         ICompuestoService com;
         IConvertService con;
-        IDepreciationService dep;
         public FormCreateProject FormCreateProject; 
         public Inicio()
         {
             InitializeComponent();
         }
-        public Inicio(ISimpleService sim, ICompuestoService com, IConvertService con, IDepreciationService dep)
+        public Inicio(ISimpleService sim, ICompuestoService com, IConvertService con)
         {
-            this.dep = dep;
             this.com = com;
             this.con = con;
             this.sim = sim;
             InitializeComponent();
-            this.dep = dep;
 
         }
-        int x;
 
         private void button1_Click(object sender, EventArgs e)
         {
             CalculateInt x = new CalculateInt(sim, com, con);
-            x.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Depreciacion x = new Depreciacion(dep);
             x.Show();
         }
 

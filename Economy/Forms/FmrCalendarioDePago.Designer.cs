@@ -37,16 +37,16 @@ namespace Economy.Forms
             this.txtknversion = new System.Windows.Forms.TextBox();
             this.txtplazo = new System.Windows.Forms.TextBox();
             this.txtinters = new System.Windows.Forms.TextBox();
-            this.datacalendario = new System.Windows.Forms.DataGridView();
-            this.colaños = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coluabono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Coluinteres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columcuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Colsaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpocaculos = new System.Windows.Forms.GroupBox();
             this.btnAceptar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.datacalendario)).BeginInit();
+            this.dgvAmortization = new System.Windows.Forms.DataGridView();
+            this.Years = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Credit_Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Outstanding_Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpocaculos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             this.SuspendLayout();
             // 
             // cmelegir
@@ -117,46 +117,6 @@ namespace Economy.Forms
             this.txtinters.Size = new System.Drawing.Size(126, 23);
             this.txtinters.TabIndex = 8;
             // 
-            // datacalendario
-            // 
-            this.datacalendario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datacalendario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colaños,
-            this.coluabono,
-            this.Coluinteres,
-            this.columcuota,
-            this.Colsaldo});
-            this.datacalendario.Location = new System.Drawing.Point(327, 84);
-            this.datacalendario.Name = "datacalendario";
-            this.datacalendario.RowTemplate.Height = 25;
-            this.datacalendario.Size = new System.Drawing.Size(520, 229);
-            this.datacalendario.TabIndex = 9;
-            // 
-            // colaños
-            // 
-            this.colaños.HeaderText = "Años";
-            this.colaños.Name = "colaños";
-            // 
-            // coluabono
-            // 
-            this.coluabono.HeaderText = "Abono";
-            this.coluabono.Name = "coluabono";
-            // 
-            // Coluinteres
-            // 
-            this.Coluinteres.HeaderText = "Intereses";
-            this.Coluinteres.Name = "Coluinteres";
-            // 
-            // columcuota
-            // 
-            this.columcuota.HeaderText = "Cuota";
-            this.columcuota.Name = "columcuota";
-            // 
-            // Colsaldo
-            // 
-            this.Colsaldo.HeaderText = "Saldo Insoluto";
-            this.Colsaldo.Name = "Colsaldo";
-            // 
             // grpocaculos
             // 
             this.grpocaculos.Controls.Add(this.label4);
@@ -182,21 +142,62 @@ namespace Economy.Forms
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // dgvAmortization
+            // 
+            this.dgvAmortization.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAmortization.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Years,
+            this.Credit_Memo,
+            this.Interest,
+            this.Payment,
+            this.Outstanding_Balance});
+            this.dgvAmortization.Location = new System.Drawing.Point(326, 108);
+            this.dgvAmortization.Name = "dgvAmortization";
+            this.dgvAmortization.RowTemplate.Height = 25;
+            this.dgvAmortization.Size = new System.Drawing.Size(521, 231);
+            this.dgvAmortization.TabIndex = 12;
+            // 
+            // Years
+            // 
+            this.Years.HeaderText = "Years";
+            this.Years.Name = "Years";
+            // 
+            // Credit_Memo
+            // 
+            this.Credit_Memo.HeaderText = "Credit_Memo";
+            this.Credit_Memo.Name = "Credit_Memo";
+            // 
+            // Interest
+            // 
+            this.Interest.HeaderText = "Interest";
+            this.Interest.Name = "Interest";
+            // 
+            // Payment
+            // 
+            this.Payment.HeaderText = "Payment";
+            this.Payment.Name = "Payment";
+            // 
+            // Outstanding_Balance
+            // 
+            this.Outstanding_Balance.HeaderText = "Outstanding_Balance";
+            this.Outstanding_Balance.Name = "Outstanding_Balance";
+            // 
             // FmrCalendarioDePago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 450);
+            this.ClientSize = new System.Drawing.Size(859, 397);
+            this.Controls.Add(this.dgvAmortization);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.grpocaculos);
-            this.Controls.Add(this.datacalendario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmelegir);
             this.Name = "FmrCalendarioDePago";
             this.Text = "FmrCalendarioDePago";
-            ((System.ComponentModel.ISupportInitialize)(this.datacalendario)).EndInit();
+            this.Load += new System.EventHandler(this.FmrCalendarioDePago_Load);
             this.grpocaculos.ResumeLayout(false);
             this.grpocaculos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,13 +213,13 @@ namespace Economy.Forms
         private System.Windows.Forms.TextBox txtknversion;
         private System.Windows.Forms.TextBox txtplazo;
         private System.Windows.Forms.TextBox txtinters;
-        private System.Windows.Forms.DataGridView datacalendario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colaños;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coluabono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Coluinteres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columcuota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Colsaldo;
         private System.Windows.Forms.GroupBox grpocaculos;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.DataGridView dgvAmortization;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Years;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Credit_Memo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Outstanding_Balance;
     }
 }

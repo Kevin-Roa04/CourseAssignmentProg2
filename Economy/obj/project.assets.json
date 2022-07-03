@@ -6652,19 +6652,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cristina\\.nuget\\packages\\": {}
+    "C:\\Users\\Kevin Roa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy\\Economy.csproj",
       "projectName": "Economy",
-      "projectPath": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy\\Economy.csproj",
-      "packagesPath": "C:\\Users\\Cristina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy\\obj\\",
+      "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6678,14 +6678,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
-              "projectPath": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
+            "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
+              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
             },
-            "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             },
-            "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Cristina\\Videos\\Nueva carpeta\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
+            "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Financiamiento\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
             }
           }
         }
@@ -6737,12 +6737,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[5.0.15, 5.0.15]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -6751,7 +6745,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   },
@@ -6760,7 +6754,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "BouncyCastle",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -6770,7 +6764,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "El paquete \"iTextSharp 5.5.13.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net5.0-windows7.0"

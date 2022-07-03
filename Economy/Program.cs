@@ -78,9 +78,9 @@ namespace Economy
             //Depreciation
             services.AddScoped<IDepreciationService, DepreciationService>();
             services.AddScoped<IModelDepreciation, DepreciationRepository>();
-           
 
-
+            services.AddScoped<IAmortizacionServices, AmortizacionServices>();
+            services.AddScoped<IAmortizacion, AmortizacionRepository>();
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())

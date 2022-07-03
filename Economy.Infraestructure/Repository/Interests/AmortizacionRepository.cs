@@ -1,4 +1,5 @@
 ﻿using Economy.Domain.Entities;
+using Economy.Domain.Entities.DTO;
 using Economy.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,73 +11,63 @@ namespace Economy.Infraestructure.Repository.Interests
 {
     public class AmortizacionRepository : IAmortizacion
     {
-        public int Create(Amotizacion t)
+        public int Create(Amortizacion t)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Amotizacion t)
+        public bool Delete(Amortizacion t)
         {
             throw new NotImplementedException();
         }
 
-        public List<Amotizacion> GetAll()
+        public List<Amortizacion> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Metodo1(Amotizacion amotizacion)
+        public int Update(Amortizacion t)
         {
-          
+            throw new NotImplementedException();
+        }
 
-          
-
-
+        public AmortizationDTO Metodo1(Amortizacion amotizacion)
+        {
+            AmortizationDTO amortizacion = new AmortizationDTO();
             double y = amotizacion.interes / 100;
-            amotizacion.Cuota = Math.Round(amotizacion.inversion * (y * Math.Pow(1 + y, amotizacion.plazo)) / (Math.Pow(1 + y, amotizacion.plazo) - 1));
-
-            for (int i = 1; i <= amotizacion.plazo; i = i + 1)
+            amortizacion.payment = Math.Round(amotizacion.inversion * (y * Math.Pow(1 + y, amotizacion.plazo)) / (Math.Pow(1 + y, amotizacion.plazo) - 1));
+            amortizacion.interest = Math.Round(amotizacion.Saldo * y, 2);
+            amortizacion.Credit_memo = Math.Round(amortizacion.payment - amortizacion.interest, 2);
+            if(amortizacion.Credit_memo > amotizacion.Saldo)
             {
-           
-
-
-                amotizacion.Intereses = Math.Round(amotizacion.inversion * y, 2);
-
-                amotizacion.Abono = Math.Round(amotizacion.Cuota - amotizacion.Intereses, 2);
-                amotizacion.inversion = Math.Round(amotizacion.inversion - amotizacion.Abono, 2);
-
-
-                if (amotizacion.inversion <= 1)
-                {
-
-                     amotizacion.inversion = 0;
-                }
-                
-            
-
+                amortizacion.Credit_memo = amotizacion.Saldo;
+                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
             }
+            else
+            {
+                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+            }
+            return amortizacion;
+
         }
 
-        public void Metodo2(Amotizacion amotizacion)
+        public AmortizationDTO Metodo2(Amortizacion amotizacion)
         {
+            AmortizationDTO amortizacion = new AmortizationDTO();
             double y = amotizacion.interes / 100;
-            amotizacion.Abono = amotizacion.inversion / amotizacion.plazo;
-            for (int i = 1; i <= amotizacion.plazo; i = i + 1)
+            amortizacion.Credit_memo = Math.Round(amotizacion.inversion / amotizacion.plazo, 2);
+            amortizacion.interest = Math.Round(amotizacion.Saldo * y, 2);
+            amortizacion.payment = Math.Round(amortizacion.Credit_memo + amortizacion.interest, 2);
+            if (amortizacion.Credit_memo > amotizacion.Saldo)
             {
-                amotizacion.Intereses = Math.Round(amotizacion.inversion * y, 2);
-                amotizacion.Cuota= Math.Round(amotizacion.Abono + amotizacion.Intereses, 2);
-                amotizacion.Saldo = Math.Round(amotizacion.inversion - amotizacion.Abono, 2);
-                if (amotizacion.Saldo <= 1)
-                {
-
-                    amotizacion.inversion = 0;
-                }
+                amortizacion.Credit_memo = amotizacion.Saldo;
+                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
             }
-        }
-
-        public int Update(Amotizacion t)
-        {
-            throw new NotImplementedException();
+            else
+            {
+                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+            }
+            return amortizacion;
         }
     }
 }

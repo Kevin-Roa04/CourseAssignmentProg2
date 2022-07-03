@@ -11,7 +11,9 @@ namespace Economy.Domain.Enums
         InterestWithGraph,
         Excel,
         RateConversion,
-        InterestConversion
+        InterestConversion,
+        Amortization,  
+        Depreciation
     }
 
 }

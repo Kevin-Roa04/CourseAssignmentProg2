@@ -1,5 +1,6 @@
 ﻿using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
+using Economy.Domain.Entities.DTO;
 using Economy.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,32 +17,32 @@ namespace Economy.AppCore.Services.InterestsServices
         {
             this.amortizacion = amor;
         }
-        public int Create(Amotizacion t)
+        public int Create(Amortizacion t)
         {
             throw new NotImplementedException();
         }
 
-        public bool Delete(Amotizacion t)
+        public bool Delete(Amortizacion t)
         {
             throw new NotImplementedException();
         }
 
-        public List<Amotizacion> GetAll()
+        public List<Amortizacion> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Metodo1(Amotizacion amotizacion)
+        public AmortizationDTO Metodo1(Amortizacion amotizacion)
         {
-            amortizacion.Metodo1(amotizacion);
+            return amortizacion.Metodo1(amotizacion);
         }
 
-        public void Metodo2(Amotizacion amotizacion)
+        public AmortizationDTO Metodo2(Amortizacion amotizacion)
         {
-            amortizacion.Metodo2(amotizacion);
+            return amortizacion.Metodo2(amotizacion);
         }
 
-        public int Update(Amotizacion t)
+        public int Update(Amortizacion t)
         {
             throw new NotImplementedException();
         }

@@ -91,12 +91,13 @@ namespace Economy.Forms
         private ICompuestoService compuestoService1;
         private IConvertService convertService1;
         private IDepreciationService depreciationService;
+        private IAmortizacionServices amortizacionServices;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
             ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal,
             ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
-            IConvertService convertService, IDepreciationService depreciationService
+            IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices
             )
         {
             this.InterestServices = interest;
@@ -112,6 +113,7 @@ namespace Economy.Forms
             this.compuestoService1 = compuestoService;
             this.convertService1 = convertService;
             this.depreciationService = depreciationService;
+            this.amortizacionServices = amortizacionServices;
 
             InitializeComponent();
         }
@@ -186,6 +188,7 @@ namespace Economy.Forms
                 formCreateProject.compuestoService1 = this.compuestoService1;
                 formCreateProject.convertService1 = this.convertService1;
                 formCreateProject.depreciationService = this.depreciationService;
+                formCreateProject.amortizacionServices = this.amortizacionServices;
                 formCreateProject.ShowDialog();
 
             }
