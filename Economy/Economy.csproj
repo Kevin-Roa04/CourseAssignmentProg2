@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\FormFNE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormAddProfit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

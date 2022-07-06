@@ -178,6 +178,11 @@ namespace Economy.Forms
                 Depreciacion depreciacion = new Depreciacion(depreciationService);
                 depreciacion.ShowDialog();
             }
+            else if (Selection == 6)
+            {
+                FormFNE FNE= new FormFNE();
+                FNE.ShowDialog();
+            }
             this.Hide();
         }
 
@@ -218,6 +223,12 @@ namespace Economy.Forms
         private void label6_Click(object sender, EventArgs e)
         {
             Selection = 5;
+            pnCreateProject.Visible = true;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            Selection = 6;
             pnCreateProject.Visible = true;
         }
     }
