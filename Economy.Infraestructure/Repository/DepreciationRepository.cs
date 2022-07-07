@@ -1,5 +1,7 @@
 ﻿using Dominio.Entities;
 using Dominio.Interface;
+using Economy.Domain.Entities.DTO;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,6 @@ namespace Infraestructure.Repository
 {
     public class DepreciationRepository : IModelDepreciation
     {
-        Depreciations DEP;
 
         public void Create(Depreciations t)
         {
@@ -21,14 +22,6 @@ namespace Infraestructure.Repository
         {
             throw new NotImplementedException();
         }
-
-        public List<double> Depreciacion(double valor, double vr, int vida)
-        {
-            double depreciacion = (valor - vr) / vida;
-              return Enumerable.Repeat<double>(depreciacion, vida).ToList<double>();
-
-        }
-
         public List<Depreciations> GetAll()
         {
             throw new NotImplementedException();
@@ -37,6 +30,28 @@ namespace Infraestructure.Repository
         public int Update(Depreciations t)
         {
             throw new NotImplementedException();
+        }
+
+        public double Depreciacion(double valor, double vr, int vida)
+        {
+            return Math.Round((valor - vr) / vida, 2);
+        }
+
+        public double DepreciationSDA(double Residual, double Value, int years, int period)
+        {
+            int Sum = 0;
+            for (int i = 1; i <= years; i++)
+            {
+                Sum = (i * (i + 1)) / 2;
+            }
+
+            return Math.Round(((years - period + 1) / Sum) * (Value - Residual), 2);
+        }
+
+        public double DepreciationDDB(double Residual, double value, int year, int coeficiente)
+        {
+            double division = ((double)coeficiente / year);
+            return division * value;
         }
     }
 }

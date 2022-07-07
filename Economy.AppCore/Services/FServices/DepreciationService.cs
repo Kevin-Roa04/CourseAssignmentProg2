@@ -13,6 +13,10 @@ namespace Appcore.Service
     {
         private IModelDepreciation dep;
 
+        public DepreciationService(IModelDepreciation modelDepreciation)
+        {
+            this.dep = modelDepreciation;
+        }
         public int Create(Depreciations t)
         {
             throw new NotImplementedException();
@@ -23,9 +27,19 @@ namespace Appcore.Service
             throw new NotImplementedException();
         }
 
-        public List<double> Depreciacion(double valor, double vr, int vida)
+        public double Depreciacion(double valor, double vr, int vida)
         {
-            return dep.Depreciacion(valor, vr, vida).ToList();
+            return dep.Depreciacion(valor, vr, vida);
+        }
+
+        public double DepreciationDDB(double Residual, double value, int year, int coeficiente)
+        {
+            return dep.DepreciationDDB(Residual, value, year, coeficiente);
+        }
+
+        public double DepreciationSDA(double Residual, double Value, int years, int period)
+        {
+            return dep.DepreciationSDA(Residual, Value, years, period);
         }
 
         public List<Depreciations> GetAll()
