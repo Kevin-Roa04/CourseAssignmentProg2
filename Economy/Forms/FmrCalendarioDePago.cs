@@ -1,4 +1,5 @@
-﻿using Economy.AppCore.IServices;
+﻿using Economy.AppCore.Helper;
+using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
@@ -17,11 +18,13 @@ namespace Economy.Forms
     public partial class FmrCalendarioDePago : Form
     {
         public IAmortizacionServices amortizacionServices;
-        public FmrCalendarioDePago(IAmortizacionServices services )
+        int years;
+        public FmrCalendarioDePago(IAmortizacionServices services, int years )
         {
             InitializeComponent();
             this.amortizacionServices = services;
             this.cmelegir.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.years = years;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -66,10 +69,32 @@ namespace Economy.Forms
                     FillDGV(cmelegir.SelectedIndex);
                 }
             }
+
+            //extrayendo datos para FNE
+            InterestData();
+        }
+
+        private void InterestData()
+        {
+            FNEData.Prestamo = decimal.Parse(txtknversion.Text);
+            List<decimal> interest = new List<decimal>();
+            List<decimal> amortization = new List<decimal>();
+            for(int i=0; i<years; i++)
+            {
+                interest.Add(decimal.Parse(dgvAmortization.Rows[i+1].Cells[2].Value.ToString()));
+                amortization.Add(decimal.Parse(dgvAmortization.Rows[i + 1].Cells[1].Value.ToString()));
+            }
+            FNEData.Interest = interest;
+            FNEData.Amortization = amortization;
         }
 
         private void FmrCalendarioDePago_Load(object sender, EventArgs e)
         {
+            if(years > 2)
+            {
+                txtplazo.Text = years.ToString();
+                txtplazo.Enabled = false;
+            }
             cmelegir.DataSource = Enum.GetValues(typeof(TypeAmortization));
             cmelegir.SelectedIndex = -1;
             grpocaculos.Visible = true;

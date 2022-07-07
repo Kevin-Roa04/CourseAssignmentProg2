@@ -170,17 +170,17 @@ namespace Economy.Forms
             }
             else if(Selection == 4)
             {
-                FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices);
+                FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0);
                 fmrCalendarioDePago.ShowDialog();
             }
             else if(Selection == 5)
             {
-                Depreciacion depreciacion = new Depreciacion(depreciationService);
+                Depreciacion depreciacion = new Depreciacion(depreciationService, 0);
                 depreciacion.ShowDialog();
             }
             else if (Selection == 6)
             {
-                FormFNE FNE= new FormFNE();
+                FormFNE FNE= new FormFNE(amortizacionServices, depreciationService);
                 FNE.ShowDialog();
             }
             this.Hide();

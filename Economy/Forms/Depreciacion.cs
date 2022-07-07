@@ -1,6 +1,7 @@
 ﻿using Appcore.Interface;
 using Dominio.Entities;
 using Dominio.Enum;
+using Economy.AppCore.Helper;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
 using System;
@@ -19,10 +20,13 @@ namespace Proto1._0
     {
 
         IDepreciationService dep;
-        public Depreciacion(IDepreciationService dep)
+        int years;
+        public Depreciacion(IDepreciationService dep, int years)
         {
             this.dep = dep;
+            this.years = years;
             InitializeComponent();
+            if(years > 2)nudYears.Value = years;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -30,8 +34,21 @@ namespace Proto1._0
             if(Validations())
             {
                 FillDgv();
+                ExtraerData();
             }
             
+        }
+
+        private void ExtraerData()
+        {
+            FNEData.Inversion = decimal.Parse(nudInitialValue.Text);
+            FNEData.ValorDeRescate = decimal.Parse(nudResidualValue.Text);
+            List<decimal> depreciacion = new List<decimal>();
+            for (int i = 0; i < (int)nudYears.Value; i++)
+            {
+                depreciacion.Add(decimal.Parse(DgvDepreciation.Rows[i + 1].Cells[1].Value.ToString()));
+            }
+            FNEData.Depreciacion = depreciacion;
         }
 
         private void Depreciacion_Load(object sender, EventArgs e)
@@ -44,6 +61,14 @@ namespace Proto1._0
 
         private bool Validations()
         {
+            if(years > 2)
+            {
+                if(nudYears.Value < years)
+                {
+                    MessageBox.Show("Years can't be less than the project years", "Error in the data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
             if(nudInitialValue.Value < nudResidualValue.Value)
             {
                 MessageBox.Show("The Initial Value don't be less than the Residual Value", "Error in the data", MessageBoxButtons.OK, MessageBoxIcon.Error);

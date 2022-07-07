@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Update="Forms\FormAddCosts.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FormFNE.cs">
       <SubType>Form</SubType>
     </Compile>

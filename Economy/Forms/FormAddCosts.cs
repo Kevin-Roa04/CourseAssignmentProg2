@@ -15,12 +15,12 @@ using System.Windows.Forms;
 
 namespace Economy.Forms
 {
-    public partial class FormAddProfit : Form
+    public partial class FormAddCosts : Form
     {
         int years;
         int type;
         int profitNumber = 0;
-        public FormAddProfit(int years)
+        public FormAddCosts(int years)
         {
             InitializeComponent();
             this.years = years;
@@ -38,7 +38,7 @@ namespace Economy.Forms
                 }
                 dgvProfit.Columns.Add((i - 1).ToString(), (i - 1).ToString());
             }
-            for(int i=0; i<20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 dgvProfit.Rows.Add();
             }
@@ -76,20 +76,21 @@ namespace Economy.Forms
         {
             decimal montoAcumulado = txtAmount.Value;
             dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
-            for(int i=0; i< years; i++)
+            for (int i = 0; i < years; i++)
             {
-                if(type == 0)
+                if (type == 0)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i+2].Value = txtAmount.Value;
-                }else if(type == 1)
+                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = txtAmount.Value;
+                }
+                else if (type == 1)
                 {
                     dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
                     montoAcumulado = montoAcumulado + numericUpDown1.Value;
                 }
-                else if(type == 2)
+                else if (type == 2)
                 {
                     dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
-                    montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value)/100);
+                    montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value) / 100);
                 }
             }
 
@@ -101,24 +102,24 @@ namespace Economy.Forms
         {
             decimal montoAcumulado;
             dgvProfit.Rows[profitNumber].Cells[0].Value = "Total";
-            for(int i=0; i<years; i++) // cells
+            for (int i = 0; i < years; i++) // cells
             {
                 montoAcumulado = (decimal)dgvProfit.Rows[0].Cells[i + 2].Value;
-                for (int j=0; j<=profitNumber-1; j++) // rows
+                for (int j = 0; j <= profitNumber - 1; j++) // rows
                 {
                     dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
-                    if (j == profitNumber-1) continue;
+                    if (j == profitNumber - 1) continue;
                     montoAcumulado += (decimal)dgvProfit.Rows[j + 1].Cells[i + 2].Value;
                 }
             }
 
             // enviando los datos a FormFNE
             decimal[] array = new decimal[years];
-            for (int i=0; i<years; i++)
+            for (int i = 0; i < years; i++)
             {
                 array[i] = (decimal)dgvProfit.Rows[profitNumber].Cells[i + 2].Value;
             }
-            FNEData.Profit = array.ToList();
+            FNEData.Cost = array.ToList();
         }
     }
 }

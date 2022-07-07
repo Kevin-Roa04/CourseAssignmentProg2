@@ -911,3 +911,4 @@ C:\Users\Kevin Roa\Desktop\Finan\CourseAssignmentProg2\Economy\bin\Debug\net5.0-
 C:\Users\Kevin Roa\Desktop\Finan\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Common.pdb
 C:\Users\Kevin Roa\Desktop\Finan\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.CopyComplete
 C:\Users\Kevin Roa\Desktop\Finan\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAddCosts.resources

@@ -6523,19 +6523,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
       "projectName": "Economy.Infraestructure",
-      "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
-      "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Infraestructure\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6549,11 +6549,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
-              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj"
+            "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj"
             },
-            "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\Finan\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             }
           }
         }
@@ -6602,7 +6602,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
       }
     }
   }
