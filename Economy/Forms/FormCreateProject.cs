@@ -183,7 +183,8 @@ namespace Economy.Forms
                 FormFNE FNE= new FormFNE(amortizacionServices, depreciationService);
                 FNE.ShowDialog();
             }
-            this.Hide();
+            Selection = -1;
+            this.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -230,6 +231,11 @@ namespace Economy.Forms
         {
             Selection = 6;
             pnCreateProject.Visible = true;
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

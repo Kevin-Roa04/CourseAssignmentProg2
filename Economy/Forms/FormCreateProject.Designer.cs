@@ -63,6 +63,7 @@ namespace Economy.Forms
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnCreateProject = new Economy.BeatifulComponents.RJButton();
             this.txtProjectName = new Economy.RJTextBox();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,6 +81,7 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.pnCreateProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -452,6 +454,7 @@ namespace Economy.Forms
             // 
             // pnCreateProject
             // 
+            this.pnCreateProject.Controls.Add(this.PbClose);
             this.pnCreateProject.Controls.Add(this.pictureBox2);
             this.pnCreateProject.Controls.Add(this.btnCreateProject);
             this.pnCreateProject.Controls.Add(this.txtProjectName);
@@ -514,6 +517,19 @@ namespace Economy.Forms
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
             // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(298, 6);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 52;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -552,6 +568,7 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.pnCreateProject.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -591,5 +608,6 @@ namespace Economy.Forms
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label7;
         private BeatifulComponents.CustomPanel customPanel14;
+        private System.Windows.Forms.PictureBox PbClose;
     }
 }

@@ -193,5 +193,10 @@ namespace Economy.Forms
 
             }
         }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -172,6 +172,9 @@ namespace Economy
             number = await UsersServices.ValidationNumberAsync($"505{txtPhone.Texts}");
         }
 
-
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -49,12 +49,14 @@ namespace Economy
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.lblEmailNE = new System.Windows.Forms.Label();
             this.lblPhoneNE = new System.Windows.Forms.Label();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // customPanel1
@@ -344,12 +346,26 @@ namespace Economy
             this.lblPhoneNE.Text = "Phone no exist!";
             this.lblPhoneNE.Visible = false;
             // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(833, 8);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 18;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            // 
             // FormCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(853, 508);
+            this.Controls.Add(this.PbClose);
             this.Controls.Add(this.lblPhoneNE);
             this.Controls.Add(this.lblEmailNE);
             this.Controls.Add(this.pictureBox4);
@@ -377,6 +393,7 @@ namespace Economy
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +420,7 @@ namespace Economy
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label lblEmailNE;
         private System.Windows.Forms.Label lblPhoneNE;
+        private System.Windows.Forms.PictureBox PbClose;
     }
 }
 

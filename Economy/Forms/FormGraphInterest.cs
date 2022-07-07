@@ -1044,6 +1044,11 @@ namespace Economy.Forms
 
         }
 
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void dgvInterest_DoubleClick(object sender, EventArgs e)
         {
 
