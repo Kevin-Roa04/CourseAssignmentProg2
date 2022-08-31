@@ -110,7 +110,6 @@ C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Eco
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.json
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.dev.json
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.dll
-C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\ref\Economy.AppCore.dll
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.dll
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.pdb
@@ -160,3 +159,4 @@ C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\refint\Economy.AppCore.dll

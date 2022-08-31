@@ -20,11 +20,13 @@ namespace Economy.Forms
         int years;
         int type;
         int profitNumber = 0;
-        public FormAddCosts(int years)
+        DataGridView dgvFNE;
+        public FormAddCosts(int years, DataGridView dgvFNE)
         {
             InitializeComponent();
             this.years = years;
             LoadDGV(years);
+            this.dgvFNE = dgvFNE;
         }
 
         private void LoadDGV(int columns)
@@ -96,6 +98,22 @@ namespace Economy.Forms
 
             profitNumber += 1;
             TotalProfits();
+            SetCostos();
+        }
+
+        private void SetCostos()
+        {
+            for (int i = 0; i < years; i++)
+            {
+                if (FNEData.Cost == null)
+                {
+                    dgvFNE.Rows[1].Cells[i + 2].Value = (decimal)0;
+                    continue;
+                };
+                decimal[] array = FNEData.Cost.ToArray();
+                if (array == null) return;
+                dgvFNE.Rows[1].Cells[i + 2].Value = array[i];
+            }
         }
 
         private void TotalProfits()

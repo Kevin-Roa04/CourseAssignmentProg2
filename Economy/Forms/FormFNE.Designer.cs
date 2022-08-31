@@ -47,7 +47,7 @@ namespace Economy.Forms
             // 
             this.txtYears.Location = new System.Drawing.Point(126, 38);
             this.txtYears.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -60,6 +60,7 @@ namespace Economy.Forms
             0,
             0});
             this.txtYears.ValueChanged += new System.EventHandler(this.txtYears_ValueChanged);
+            this.txtYears.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtYears_KeyUp);
             // 
             // label1
             // 
@@ -101,7 +102,7 @@ namespace Economy.Forms
             this.rjButton5.Name = "rjButton5";
             this.rjButton5.Size = new System.Drawing.Size(270, 40);
             this.rjButton5.TabIndex = 5;
-            this.rjButton5.Text = "Accept";
+            this.rjButton5.Text = "Calculate FNE";
             this.rjButton5.TextColor = System.Drawing.Color.White;
             this.rjButton5.UseVisualStyleBackColor = false;
             this.rjButton5.Click += new System.EventHandler(this.rjButton5_Click);

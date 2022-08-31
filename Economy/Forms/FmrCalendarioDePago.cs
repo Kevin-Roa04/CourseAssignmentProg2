@@ -19,12 +19,14 @@ namespace Economy.Forms
     {
         public IAmortizacionServices amortizacionServices;
         int years;
-        public FmrCalendarioDePago(IAmortizacionServices services, int years )
+        DataGridView dgvFNE;
+        public FmrCalendarioDePago(IAmortizacionServices services, int years, DataGridView dgvFNE)
         {
             InitializeComponent();
             this.amortizacionServices = services;
             this.cmelegir.DropDownStyle = ComboBoxStyle.DropDownList;
             this.years = years;
+            this.dgvFNE = dgvFNE;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -72,6 +74,48 @@ namespace Economy.Forms
 
             //extrayendo datos para FNE
             InterestData();
+            if (years == 0) return;
+            setInterest();
+            setPrestamo();
+            setAmortizacionDelPrestamo();
+            setInersionesTotales();
+        }
+
+        private void setInterest()
+        {
+            for (int i = 0; i < years; i++)
+            {
+                if (FNEData.Interest == null)
+                {
+                    dgvFNE.Rows[2].Cells[i + 2].Value = (decimal)0;
+                    continue;
+                };
+                decimal[] array = FNEData.Interest.ToArray();
+                if (array == null) return;
+                dgvFNE.Rows[2].Cells[i + 2].Value = array[i];
+            }
+        }
+        private void setPrestamo()
+        {
+            dgvFNE.Rows[9].Cells[1].Value = (decimal)FNEData.Prestamo;
+        }
+        private void setAmortizacionDelPrestamo()
+        {
+            for (int i = 0; i < years; i++)
+            {
+                if (FNEData.Amortization == null)
+                {
+                    dgvFNE.Rows[10].Cells[i + 2].Value = (decimal)0;
+                    continue;
+                };
+                decimal[] array = FNEData.Amortization.ToArray();
+                if (array == null) return;
+                dgvFNE.Rows[10].Cells[i + 2].Value = array[i];
+            }
+        }
+        private void setInersionesTotales()
+        {
+            dgvFNE.Rows[11].Cells[1].Value = (decimal)FNEData.Inversion;
         }
 
         private void InterestData()

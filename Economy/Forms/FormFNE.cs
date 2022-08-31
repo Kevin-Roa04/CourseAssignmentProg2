@@ -19,16 +19,17 @@ namespace Economy.Forms
         public FormFNE( IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
             InitializeComponent();
-            addProfit = new FormAddProfit((int)txtYears.Value);
-            addCost = new FormAddCosts((int)txtYears.Value);
+            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
+            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
             this.amortizacionServices = amortizacionServices;
             this.depreciationService = depreciationService;
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value);
-            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
+            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
         }
 
         private void FormFNE_Load(object sender, EventArgs e)
         {
+            LoadFNETable();
         }
 
         private void LoadDGV(int columns)
@@ -76,12 +77,7 @@ namespace Economy.Forms
 
         private void rjButton5_Click(object sender, EventArgs e)
         {
-            if(dgvFNE.Rows.Count > 0)
-            {
-                dgvFNE.Columns.Clear();
-                dgvFNE.Rows.Clear();
-            }
-            LoadDGV((int)txtYears.Value);
+            LoadFNETable();
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
@@ -91,14 +87,11 @@ namespace Economy.Forms
 
         private void txtYears_ValueChanged(object sender, EventArgs e)
         {
-            addProfit = new FormAddProfit((int)txtYears.Value);
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value);
-            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value);
-            addCost = new FormAddCosts((int)txtYears.Value);
-            //reesetear valores de FNEData
-            FNEData.resetValues();
+            ResetFNEDataValues();
+            LoadFNETable();
         }
 
+        #region Funcionamiento del FNE
         private void SetIngresos()
         {
             for(int i=0; i<txtYears.Value; i++)
@@ -207,7 +200,7 @@ namespace Economy.Forms
                     dgvFNE.Rows[10].Cells[i + 2].Value = (decimal)0;
                     continue;
                 };
-                decimal[] array = FNEData.Depreciacion.ToArray();
+                decimal[] array = FNEData.Amortization.ToArray();
                 if (array == null) return;
                 dgvFNE.Rows[10].Cells[i + 2].Value = array[i];
             }
@@ -244,6 +237,7 @@ namespace Economy.Forms
             }
         }
 
+        #endregion
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
@@ -258,6 +252,32 @@ namespace Economy.Forms
         private void rjButton4_Click(object sender, EventArgs e)
         {
             fmrCalendarioDePago.ShowDialog();
+        }
+
+        private void txtYears_KeyUp(object sender, KeyEventArgs e)
+        {
+            ResetFNEDataValues();
+            LoadFNETable();
+        }
+
+        private void LoadFNETable()
+        {
+            if (dgvFNE.Rows.Count > 0)
+            {
+                dgvFNE.Columns.Clear();
+                dgvFNE.Rows.Clear();
+            }
+            LoadDGV((int)txtYears.Value);
+        }
+
+        private void ResetFNEDataValues()
+        {
+            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
+            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
+            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
+            //reesetear valores de FNEData
+            FNEData.resetValues();
         }
     }
 }

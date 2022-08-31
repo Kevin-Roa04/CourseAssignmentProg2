@@ -21,12 +21,14 @@ namespace Proto1._0
 
         IDepreciationService dep;
         int years;
-        public Depreciacion(IDepreciationService dep, int years)
+        DataGridView dgvFNE;
+        public Depreciacion(IDepreciationService dep, int years, DataGridView dataGridView)
         {
             this.dep = dep;
             this.years = years;
             InitializeComponent();
-            if(years > 2)nudYears.Value = years;
+            if(years > 0)nudYears.Value = years;
+            this.dgvFNE = dataGridView;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,8 +37,15 @@ namespace Proto1._0
             {
                 FillDgv();
                 ExtraerData();
+                if (years == 0) return;
+                setDepreciation(3);
+                setDepreciation(7);
+                setVR();
             }
-            
+        }
+        private void setVR()
+        {
+            dgvFNE.Rows[8].Cells[years + 1].Value = (decimal)FNEData.ValorDeRescate;
         }
 
         private void ExtraerData()
@@ -51,6 +60,21 @@ namespace Proto1._0
             FNEData.Depreciacion = depreciacion;
         }
 
+        private void setDepreciation(int n)
+        {
+            for (int i = 0; i < years; i++)
+            {
+                if (FNEData.Depreciacion == null)
+                {
+                    dgvFNE.Rows[n].Cells[i + 2].Value = (decimal)0;
+                    continue;
+                };
+                decimal[] array = FNEData.Depreciacion.ToArray();
+                if (array == null) return;
+                dgvFNE.Rows[n].Cells[i + 2].Value = array[i];
+            }
+        }
+
         private void Depreciacion_Load(object sender, EventArgs e)
         {
             cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
@@ -61,7 +85,7 @@ namespace Proto1._0
 
         private bool Validations()
         {
-            if(years > 2)
+            if(years > 0)
             {
                 if(nudYears.Value < years)
                 {

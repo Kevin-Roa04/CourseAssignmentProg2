@@ -92,7 +92,6 @@ C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\Econ
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\Economy.Domain.runtimeconfig.json
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\Economy.Domain.runtimeconfig.dev.json
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\Economy.Domain.dll
-C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\ref\Economy.Domain.dll
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\bin\Debug\net5.0\Economy.Domain.pdb
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\Economy.Domain.csproj.AssemblyReference.cache
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\Economy.Domain.GeneratedMSBuildEditorConfig.editorconfig
@@ -133,3 +132,4 @@ C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\E
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\ref\Economy.Domain.dll
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\Economy.Domain.pdb
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\Economy.Domain.genruntimeconfig.cache
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Domain\obj\Debug\net5.0\refint\Economy.Domain.dll
