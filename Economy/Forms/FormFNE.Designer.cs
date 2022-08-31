@@ -38,6 +38,8 @@ namespace Economy.Forms
             this.rjButton2 = new Economy.BeatifulComponents.RJButton();
             this.rjButton1 = new Economy.BeatifulComponents.RJButton();
             this.dgvFNE = new System.Windows.Forms.DataGridView();
+            this.rbSF = new System.Windows.Forms.RadioButton();
+            this.rbCF = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtYears)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).BeginInit();
@@ -189,17 +191,43 @@ namespace Economy.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvFNE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFNE.Location = new System.Drawing.Point(294, 21);
+            this.dgvFNE.Location = new System.Drawing.Point(294, 37);
             this.dgvFNE.Name = "dgvFNE";
             this.dgvFNE.ReadOnly = true;
             this.dgvFNE.RowTemplate.Height = 25;
             this.dgvFNE.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFNE.Size = new System.Drawing.Size(681, 482);
+            this.dgvFNE.Size = new System.Drawing.Size(681, 466);
             this.dgvFNE.TabIndex = 3;
+            // 
+            // rbSF
+            // 
+            this.rbSF.AutoSize = true;
+            this.rbSF.Location = new System.Drawing.Point(699, 12);
+            this.rbSF.Name = "rbSF";
+            this.rbSF.Size = new System.Drawing.Size(126, 19);
+            this.rbSF.TabIndex = 4;
+            this.rbSF.Text = "Sin Financiamiento";
+            this.rbSF.UseVisualStyleBackColor = true;
+            this.rbSF.CheckedChanged += new System.EventHandler(this.rbSF_CheckedChanged);
+            // 
+            // rbCF
+            // 
+            this.rbCF.AutoSize = true;
+            this.rbCF.Checked = true;
+            this.rbCF.Location = new System.Drawing.Point(445, 12);
+            this.rbCF.Name = "rbCF";
+            this.rbCF.Size = new System.Drawing.Size(132, 19);
+            this.rbCF.TabIndex = 5;
+            this.rbCF.TabStop = true;
+            this.rbCF.Text = "Con Financiamiento";
+            this.rbCF.UseVisualStyleBackColor = true;
+            this.rbCF.CheckedChanged += new System.EventHandler(this.rbCF_CheckedChanged);
             // 
             // FormFNE
             // 
             this.ClientSize = new System.Drawing.Size(987, 515);
+            this.Controls.Add(this.rbCF);
+            this.Controls.Add(this.rbSF);
             this.Controls.Add(this.dgvFNE);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormFNE";
@@ -210,6 +238,7 @@ namespace Economy.Forms
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -224,5 +253,7 @@ namespace Economy.Forms
         private BeatifulComponents.RJButton rjButton2;
         private BeatifulComponents.RJButton rjButton1;
         private System.Windows.Forms.DataGridView dgvFNE;
+        private System.Windows.Forms.RadioButton rbSF;
+        private System.Windows.Forms.RadioButton rbCF;
     }
 }

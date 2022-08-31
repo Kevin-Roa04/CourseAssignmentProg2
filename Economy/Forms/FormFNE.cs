@@ -9,6 +9,8 @@ namespace Economy.Forms
 {
     public partial class FormFNE : Form
     {
+        bool calculated = false;
+
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
 
@@ -60,24 +62,49 @@ namespace Economy.Forms
             dgvFNE.Rows[10].Cells[0].Value = "Amortizacion del prestamo";
             dgvFNE.Rows[11].Cells[0].Value = "Inversiones Totales";
             dgvFNE.Rows[12].Cells[0].Value = "FNE";
-            SetIngresos();
-            SetCostos();
-            setInterest();
-            setDepreciation(3);
-            setUtilidadAntesDeImpuestos();
-            setIR();
-            setUtilidadDespuesDeImpuestos();
-            setDepreciation(7);
-            setVR();
-            setPrestamo();
-            setAmortizacionDelPrestamo();
-            setInersionesTotales();
+            FNEnotFinanced();
             calculateFNE();
         }
 
+        private void FNEFinanced()
+        {
+            SetIngresos();
+            SetCostos();
+            setInterest(true);
+            setDepreciation(3);
+            //setUtilidadAntesDeImpuestos();
+            //setIR();
+            //setUtilidadDespuesDeImpuestos();
+            setDepreciation(7);
+            setVR();
+            setPrestamo(true);
+            setAmortizacionDelPrestamo(true);
+            setInersionesTotales();
+            //calculateFNE();
+        }
+
+        private void FNEnotFinanced()
+        {
+            SetIngresos();
+            SetCostos();
+            setInterest(false);
+            setDepreciation(3);
+            //setUtilidadAntesDeImpuestos();
+            //setIR();
+            //setUtilidadDespuesDeImpuestos();
+            setDepreciation(7);
+            setVR();
+            setPrestamo(false);
+            setAmortizacionDelPrestamo(false);
+            setInersionesTotales();
+            //calculateFNE();
+        }
+
+
         private void rjButton5_Click(object sender, EventArgs e)
         {
-            LoadFNETable();
+            calculateFNE();
+            calculated = true;
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
@@ -121,11 +148,11 @@ namespace Economy.Forms
             }
         }
 
-        private void setInterest()
+        private void setInterest(bool financed)
         {
             for (int i = 0; i < txtYears.Value; i++)
             {
-                if (FNEData.Interest == null)
+                if (FNEData.Interest == null || financed == false)
                 {
                     dgvFNE.Rows[2].Cells[i + 2].Value = (decimal)0;
                     continue;
@@ -186,16 +213,21 @@ namespace Economy.Forms
             dgvFNE.Rows[8].Cells[(int)txtYears.Value + 1].Value = (decimal)FNEData.ValorDeRescate;
         }
 
-        private void setPrestamo()
+        private void setPrestamo(bool financed)
         {
+            if(financed == false)
+            {
+                dgvFNE.Rows[9].Cells[1].Value = (decimal)0;
+                return;
+            }
             dgvFNE.Rows[9].Cells[1].Value = (decimal)FNEData.Prestamo;
         }
 
-        private void setAmortizacionDelPrestamo()
+        private void setAmortizacionDelPrestamo(bool financed)
         {
             for (int i = 0; i < txtYears.Value; i++)
             {
-                if (FNEData.Amortization == null)
+                if (FNEData.Amortization == null || financed == false)
                 {
                     dgvFNE.Rows[10].Cells[i + 2].Value = (decimal)0;
                     continue;
@@ -213,6 +245,9 @@ namespace Economy.Forms
 
         private void calculateFNE() // 6 - 9
         {
+            setUtilidadAntesDeImpuestos();
+            setIR();
+            setUtilidadDespuesDeImpuestos();
             decimal montoAcumulado =0;
             for (int i = 0; i <= (int)txtYears.Value; i++) // cells
             {
@@ -278,6 +313,25 @@ namespace Economy.Forms
             addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
             //reesetear valores de FNEData
             FNEData.resetValues();
+        }
+
+        private void rbCF_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbCF.Checked == true)
+            {
+                FNEFinanced();
+                if(calculated == true) calculateFNE();
+            }
+        }
+
+        private void rbSF_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbSF.Checked == true)
+            {
+                FNEnotFinanced();
+                if (calculated == true) calculateFNE();
+            }
+
         }
     }
 }

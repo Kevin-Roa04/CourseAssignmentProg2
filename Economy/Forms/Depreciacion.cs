@@ -40,6 +40,7 @@ namespace Proto1._0
                 if (years == 0) return;
                 setDepreciation(3);
                 setDepreciation(7);
+                setInersionesTotales();
                 setVR();
             }
         }
@@ -73,6 +74,10 @@ namespace Proto1._0
                 if (array == null) return;
                 dgvFNE.Rows[n].Cells[i + 2].Value = array[i];
             }
+        }
+        private void setInersionesTotales()
+        {
+            dgvFNE.Rows[11].Cells[1].Value = (decimal)FNEData.Inversion;
         }
 
         private void Depreciacion_Load(object sender, EventArgs e)
