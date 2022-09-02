@@ -32,6 +32,9 @@ namespace Economy.Forms
             this.txtYears = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtTMAR = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             this.rjButton5 = new Economy.BeatifulComponents.RJButton();
             this.rjButton4 = new Economy.BeatifulComponents.RJButton();
             this.rjButton3 = new Economy.BeatifulComponents.RJButton();
@@ -42,6 +45,7 @@ namespace Economy.Forms
             this.rbCF = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtYears)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTMAR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +58,7 @@ namespace Economy.Forms
             0,
             0});
             this.txtYears.Name = "txtYears";
-            this.txtYears.Size = new System.Drawing.Size(67, 23);
+            this.txtYears.Size = new System.Drawing.Size(82, 23);
             this.txtYears.TabIndex = 0;
             this.txtYears.Value = new decimal(new int[] {
             3,
@@ -75,6 +79,9 @@ namespace Economy.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtTMAR);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.rjButton5);
             this.groupBox1.Controls.Add(this.rjButton4);
             this.groupBox1.Controls.Add(this.rjButton3);
@@ -89,6 +96,44 @@ namespace Economy.Forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Project Settings";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(214, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(17, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "%";
+            // 
+            // txtTMAR
+            // 
+            this.txtTMAR.DecimalPlaces = 2;
+            this.txtTMAR.Location = new System.Drawing.Point(126, 73);
+            this.txtTMAR.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtTMAR.Name = "txtTMAR";
+            this.txtTMAR.Size = new System.Drawing.Size(82, 23);
+            this.txtTMAR.TabIndex = 7;
+            this.txtTMAR.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtTMAR.ValueChanged += new System.EventHandler(this.txtTMAR_ValueChanged);
+            this.txtTMAR.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTMAR_KeyUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(69, 75);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "TMAR";
+            // 
             // rjButton5
             // 
             this.rjButton5.BackColor = System.Drawing.Color.SlateGray;
@@ -100,7 +145,7 @@ namespace Economy.Forms
             this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rjButton5.ForeColor = System.Drawing.Color.White;
-            this.rjButton5.Location = new System.Drawing.Point(0, 229);
+            this.rjButton5.Location = new System.Drawing.Point(0, 269);
             this.rjButton5.Name = "rjButton5";
             this.rjButton5.Size = new System.Drawing.Size(270, 40);
             this.rjButton5.TabIndex = 5;
@@ -119,9 +164,9 @@ namespace Economy.Forms
             this.rjButton4.FlatAppearance.BorderSize = 0;
             this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton4.ForeColor = System.Drawing.Color.White;
-            this.rjButton4.Location = new System.Drawing.Point(69, 180);
+            this.rjButton4.Location = new System.Drawing.Point(69, 220);
             this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(124, 31);
+            this.rjButton4.Size = new System.Drawing.Size(139, 31);
             this.rjButton4.TabIndex = 3;
             this.rjButton4.Text = "Add Loan";
             this.rjButton4.TextColor = System.Drawing.Color.White;
@@ -138,9 +183,9 @@ namespace Economy.Forms
             this.rjButton3.FlatAppearance.BorderSize = 0;
             this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Location = new System.Drawing.Point(69, 142);
+            this.rjButton3.Location = new System.Drawing.Point(69, 182);
             this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(124, 32);
+            this.rjButton3.Size = new System.Drawing.Size(139, 32);
             this.rjButton3.TabIndex = 3;
             this.rjButton3.Text = "Add Depreciations";
             this.rjButton3.TextColor = System.Drawing.Color.White;
@@ -157,9 +202,9 @@ namespace Economy.Forms
             this.rjButton2.FlatAppearance.BorderSize = 0;
             this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Location = new System.Drawing.Point(69, 103);
+            this.rjButton2.Location = new System.Drawing.Point(69, 143);
             this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(124, 33);
+            this.rjButton2.Size = new System.Drawing.Size(139, 33);
             this.rjButton2.TabIndex = 4;
             this.rjButton2.Text = "Add Costs";
             this.rjButton2.TextColor = System.Drawing.Color.White;
@@ -176,9 +221,9 @@ namespace Economy.Forms
             this.rjButton1.FlatAppearance.BorderSize = 0;
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(69, 67);
+            this.rjButton1.Location = new System.Drawing.Point(69, 107);
             this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(124, 30);
+            this.rjButton1.Size = new System.Drawing.Size(139, 30);
             this.rjButton1.TabIndex = 3;
             this.rjButton1.Text = "Add Profits";
             this.rjButton1.TextColor = System.Drawing.Color.White;
@@ -236,6 +281,7 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.txtYears)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTMAR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -255,5 +301,8 @@ namespace Economy.Forms
         private System.Windows.Forms.DataGridView dgvFNE;
         private System.Windows.Forms.RadioButton rbSF;
         private System.Windows.Forms.RadioButton rbCF;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown txtTMAR;
+        private System.Windows.Forms.Label label2;
     }
 }

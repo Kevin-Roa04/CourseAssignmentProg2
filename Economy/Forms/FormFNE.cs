@@ -1,8 +1,12 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Microsoft.VisualBasic;
+using Org.BouncyCastle.Asn1.Cmp;
 using Proto1._0;
 using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Economy.Forms
@@ -10,6 +14,7 @@ namespace Economy.Forms
     public partial class FormFNE : Form
     {
         bool calculated = false;
+        double TMARMixtaTotal;
 
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
@@ -45,7 +50,7 @@ namespace Economy.Forms
                 }
                 dgvFNE.Columns.Add((i - 1).ToString(), (i - 1).ToString());
             }
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 18; i++)
             {
                 dgvFNE.Rows.Add();
             }
@@ -81,6 +86,8 @@ namespace Economy.Forms
             setAmortizacionDelPrestamo(true);
             setInersionesTotales();
             //calculateFNE();
+            VPN();
+            TIR();
         }
 
         private void FNEnotFinanced()
@@ -98,6 +105,8 @@ namespace Economy.Forms
             setAmortizacionDelPrestamo(false);
             setInersionesTotales();
             //calculateFNE();
+            VPN();
+            TIR();
         }
 
 
@@ -270,9 +279,102 @@ namespace Economy.Forms
 
                 }
             }
+            TIR();
+            VPN();
         }
 
         #endregion
+
+        private void VPN()
+        {
+            dgvFNE.Rows[15].Cells[0].Value = "VPN";
+            dgvFNE.Rows[15].Cells[1].Value = CalculateVPNFinanced();
+        }
+
+        private void VPNnotFinanced()
+        {
+            dgvFNE.Rows[15].Cells[0].Value = "VPN";
+            dgvFNE.Rows[15].Cells[1].Value = CalculateVPNnotFinanced();
+        }
+
+        private void TIR()
+        {
+            dgvFNE.Rows[16].Cells[0].Value = "TIR";
+            dgvFNE.Rows[16].Cells[1].Value = CalculateTir();
+        }
+
+        private void SaveTMAR()
+        {
+            FNEData.TasaInversionista = (float)txtTMAR.Value;
+        }
+
+        private void TMARMixta()
+        {
+            if(FNEData.Prestamo == 0 && FNEData.Inversion == 0) return;
+            double PorcentajeAportacionInstitucionFinanciera = (double)FNEData.Prestamo / (double)FNEData.Inversion;
+            double PorcentajeAportacionInversionista = 1 - PorcentajeAportacionInstitucionFinanciera;
+            double TasaInversionista = FNEData.TasaInversionista;
+            double TasaInstitucionFinanciera = FNEData.TasaInstitucionFinanciera;
+            double TMARMixtaInversionista = PorcentajeAportacionInversionista * TasaInversionista;
+            double TMARMixtaInstitucionFinanciera = PorcentajeAportacionInstitucionFinanciera * TasaInstitucionFinanciera;
+
+            TMARMixtaTotal = TMARMixtaInversionista + TMARMixtaInstitucionFinanciera;
+        }
+
+        private Double[] SelectFNEValues()
+        {
+            List<Double> vpn = new List<Double>();
+            for (int i = 1; i <= txtYears.Value + 1; i++)
+            {
+                if (dgvFNE.Rows[12].Cells[i].Value == null)
+                {
+                    vpn.Add(0);
+                    continue;
+                }
+                double fne = Double.Parse(dgvFNE.Rows[12].Cells[i].Value.ToString());
+                vpn.Add(fne);
+            }
+            return vpn.ToArray();
+        }
+
+        private double CalculateVPNFinanced()
+        {
+            TMARMixta();
+            Double[] vpn = SelectFNEValues();
+            try
+            {
+                return Financial.NPV(TMARMixtaTotal, ref vpn);
+            }catch(Exception ex)
+            {
+                return 0;
+            }
+        }
+
+
+        private double CalculateVPNnotFinanced()
+        {
+            Double[] vpn = SelectFNEValues();
+            try
+            {
+                return Financial.NPV(FNEData.TasaInversionista, ref vpn);
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+            private double CalculateTir()
+        {
+            Double[] tir = SelectFNEValues();
+            try
+            {
+                return Financial.IRR(ref tir);
+            }catch(Exception ex)
+            {
+                return 0;
+            }
+        }
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
@@ -320,7 +422,11 @@ namespace Economy.Forms
             if(rbCF.Checked == true)
             {
                 FNEFinanced();
-                if(calculated == true) calculateFNE();
+                if (calculated == true)
+                {
+                    calculateFNE();
+                    CalculateVPNFinanced();
+                }
             }
         }
 
@@ -329,9 +435,23 @@ namespace Economy.Forms
             if (rbSF.Checked == true)
             {
                 FNEnotFinanced();
-                if (calculated == true) calculateFNE();
+                if (calculated == true)
+                {
+                    calculateFNE();
+                    VPNnotFinanced();
+                }
             }
 
+        }
+
+        private void txtTMAR_ValueChanged(object sender, EventArgs e)
+        {
+            SaveTMAR();
+        }
+
+        private void txtTMAR_KeyUp(object sender, KeyEventArgs e)
+        {
+            SaveTMAR();
         }
     }
 }

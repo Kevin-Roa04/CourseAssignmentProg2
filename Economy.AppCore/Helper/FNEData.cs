@@ -16,6 +16,8 @@ namespace Economy.AppCore.Helper
         public static decimal Inversion { get; set; }
         public static List<decimal> Depreciacion { get; set; }
         public static decimal ValorDeRescate { get; set; }
+        public static float TasaInversionista { get; set; }
+        public static float TasaInstitucionFinanciera { get; set; }
 
         public static void resetValues()
         {
@@ -27,6 +29,8 @@ namespace Economy.AppCore.Helper
             Inversion = new decimal();
             Depreciacion = null;
             ValorDeRescate = new decimal();
+            TasaInstitucionFinanciera = new float();
+            TasaInversionista = new float();
         }
 
     }

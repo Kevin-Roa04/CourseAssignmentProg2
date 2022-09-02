@@ -79,6 +79,12 @@ namespace Economy.Forms
             setPrestamo();
             setAmortizacionDelPrestamo();
             setInersionesTotales();
+            SaveTasaInstitucionFinanciera();
+        }
+
+        private void SaveTasaInstitucionFinanciera()
+        {
+            FNEData.TasaInstitucionFinanciera = float.Parse(txtinters.Text);
         }
 
         private void setInterest()
