@@ -266,12 +266,12 @@ namespace Economy.Forms
                 {
                     dgvFNE.Rows[12].Cells[i + 1].Value = montoAcumulado;
                     if (j == 3) continue;
-                    if (j <= 9)
+                    if (j < 9)
                     {
                         if(dgvFNE.Rows[j + 1].Cells[i + 1].Value == null) montoAcumulado += 0;
                         if(dgvFNE.Rows[j + 1].Cells[i + 1].Value != null) montoAcumulado += (decimal)dgvFNE.Rows[j + 1].Cells[i + 1].Value;
                     }
-                    if (j > 9)
+                    if (j >= 9)
                     {
                         if (dgvFNE.Rows[j + 1].Cells[i + 1].Value == null) montoAcumulado -= 0;
                         if (dgvFNE.Rows[j + 1].Cells[i + 1].Value != null) montoAcumulado -= (decimal)dgvFNE.Rows[j + 1].Cells[i + 1].Value;
@@ -305,7 +305,7 @@ namespace Economy.Forms
 
         private void SaveTMAR()
         {
-            FNEData.TasaInversionista = (float)txtTMAR.Value;
+            FNEData.TasaInversionista = (float)txtTMAR.Value / 100;
         }
 
         private void TMARMixta()
@@ -313,8 +313,8 @@ namespace Economy.Forms
             if(FNEData.Prestamo == 0 && FNEData.Inversion == 0) return;
             double PorcentajeAportacionInstitucionFinanciera = (double)FNEData.Prestamo / (double)FNEData.Inversion;
             double PorcentajeAportacionInversionista = 1 - PorcentajeAportacionInstitucionFinanciera;
-            double TasaInversionista = FNEData.TasaInversionista;
-            double TasaInstitucionFinanciera = FNEData.TasaInstitucionFinanciera;
+            double TasaInversionista = (FNEData.TasaInversionista);
+            double TasaInstitucionFinanciera = (FNEData.TasaInstitucionFinanciera);
             double TMARMixtaInversionista = PorcentajeAportacionInversionista * TasaInversionista;
             double TMARMixtaInstitucionFinanciera = PorcentajeAportacionInstitucionFinanciera * TasaInstitucionFinanciera;
 
@@ -341,10 +341,15 @@ namespace Economy.Forms
         {
             TMARMixta();
             Double[] vpn = SelectFNEValues();
+
+            Double Inversion = vpn[0];
+            Double[] _vpn = new double[(int)txtYears.Value];
+            Array.Copy(vpn, 1, _vpn, 0, (int)txtYears.Value);
             try
             {
-                return Financial.NPV(TMARMixtaTotal, ref vpn);
-            }catch(Exception ex)
+                return (Financial.NPV(TMARMixtaTotal, ref _vpn) + Inversion);
+            }
+            catch(Exception ex)
             {
                 return 0;
             }
@@ -354,9 +359,13 @@ namespace Economy.Forms
         private double CalculateVPNnotFinanced()
         {
             Double[] vpn = SelectFNEValues();
+
+            Double Inversion = vpn[0];
+            Double[] _vpn = new double[(int)txtYears.Value];
+            Array.Copy(vpn, 1, _vpn, 0, (int)txtYears.Value);
             try
             {
-                return Financial.NPV(FNEData.TasaInversionista, ref vpn);
+                return (Financial.NPV(FNEData.TasaInversionista, ref _vpn) + Inversion);
             }
             catch (Exception ex)
             {

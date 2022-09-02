@@ -84,7 +84,7 @@ namespace Economy.Forms
 
         private void SaveTasaInstitucionFinanciera()
         {
-            FNEData.TasaInstitucionFinanciera = float.Parse(txtinters.Text);
+            FNEData.TasaInstitucionFinanciera = float.Parse(txtinters.Text) / 100;
         }
 
         private void setInterest()
