@@ -23,6 +23,7 @@ namespace Economy.Forms
         private FormAddCosts addCost;
         private FmrCalendarioDePago fmrCalendarioDePago;
         private Depreciacion depreciacion;
+        private FrmAssets frmAssets;
         public FormFNE( IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Economy.Forms
             this.depreciationService = depreciationService;
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
             depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
+            frmAssets = new FrmAssets();
         }
 
         private void FormFNE_Load(object sender, EventArgs e)
@@ -392,7 +394,8 @@ namespace Economy.Forms
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
-            depreciacion.ShowDialog();
+            //depreciacion.ShowDialog();
+            frmAssets.ShowDialog();
         }
 
         private void rjButton4_Click(object sender, EventArgs e)

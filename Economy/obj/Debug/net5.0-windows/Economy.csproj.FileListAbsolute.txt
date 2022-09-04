@@ -1033,3 +1033,5 @@ C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Eco
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.pdb
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssets.resources
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssetAmount.resources
