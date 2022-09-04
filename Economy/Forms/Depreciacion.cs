@@ -18,6 +18,7 @@ namespace Proto1._0
 {
     public partial class Depreciacion : Form
     {
+        public bool flag = false;
 
         IDepreciationService dep;
         int years;
@@ -36,8 +37,9 @@ namespace Proto1._0
             if(Validations())
             {
                 FillDgv();
-                ExtraerData();
                 if (years == 0) return;
+                ExtraerData();
+                //colocando valores en la tabla FNE
                 setDepreciation(3);
                 setDepreciation(7);
                 setInersionesTotales();
@@ -51,7 +53,7 @@ namespace Proto1._0
 
         private void ExtraerData()
         {
-            FNEData.Inversion = decimal.Parse(nudInitialValue.Text);
+            //FNEData.Inversion = decimal.Parse(nudInitialValue.Text);
             FNEData.ValorDeRescate = decimal.Parse(nudResidualValue.Text);
             List<decimal> depreciacion = new List<decimal>();
             for (int i = 0; i < (int)nudYears.Value; i++)
@@ -82,9 +84,26 @@ namespace Proto1._0
 
         private void Depreciacion_Load(object sender, EventArgs e)
         {
+            if (flag == true) this.Close();
+
             cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
             cmbMethod.SelectedIndex = -1;
 
+            if (FNEData.DepreciableAssetsValue == 0) return;
+            //colocando valores para hacer la depreciacion
+            nudInitialValue.Enabled = false;
+            nudInitialValue.Value = FNEData.DepreciableAssetsValue;
+            nudYears.Enabled = false;
+            nudYears.Value = years;
+            cmbMethod.SelectedIndex = 0;
+            FillDgv();
+            if (years == 0) return;
+            ExtraerData();
+            //colocando valores en la tabla FNE
+            setDepreciation(3);
+            setDepreciation(7);
+            setInersionesTotales();
+            setVR();
         }
 
 

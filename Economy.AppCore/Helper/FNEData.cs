@@ -18,6 +18,8 @@ namespace Economy.AppCore.Helper
         public static decimal ValorDeRescate { get; set; }
         public static float TasaInversionista { get; set; }
         public static float TasaInstitucionFinanciera { get; set; }
+        public static decimal notDepreciableAssetsValue { get; set; }
+        public static decimal DepreciableAssetsValue { get; set; }
 
         public static void resetValues()
         {
@@ -31,6 +33,8 @@ namespace Economy.AppCore.Helper
             ValorDeRescate = new decimal();
             TasaInstitucionFinanciera = new float();
             TasaInversionista = new float();
+            notDepreciableAssetsValue = new decimal();
+            DepreciableAssetsValue = new decimal();
         }
 
     }

@@ -33,7 +33,7 @@ namespace Economy.Forms
             this.depreciationService = depreciationService;
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
             depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
-            frmAssets = new FrmAssets();
+            frmAssets = new FrmAssets(depreciacion);
         }
 
         private void FormFNE_Load(object sender, EventArgs e)
@@ -425,6 +425,8 @@ namespace Economy.Forms
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
             depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
             addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
+            UserAssets.UAssets.Clear();
+            frmAssets = new FrmAssets(depreciacion);
             //reesetear valores de FNEData
             FNEData.resetValues();
         }
