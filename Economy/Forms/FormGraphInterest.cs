@@ -120,6 +120,16 @@ namespace Economy.Forms
         {
 
         }
+        private void CleanForms()
+        {
+            txtDownPayment.Texts = "";
+            txtFinalPayment.Texts = "";
+            txtInitial.Texts = "";
+            txtEnd.Texts = "";
+            txtQuantity.Texts = "";
+            cmbFlowType.SelectedIndex = 0;
+          
+        }
         private void lblValues(decimal present, decimal future)
         {
             lblPresent.Visible = true;
@@ -140,21 +150,22 @@ namespace Economy.Forms
                 decimal TotalPresent = (decimal)SeriePresent + InterestPresent + AnnuityPresent;
                 TotalPresent = Math.Abs(TotalPresent);
 
-                decimal SerieFuture = (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                decimal InterestFuture = (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                decimal AnnuityFuture = (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                decimal TotalFuture = (decimal)SerieFuture + InterestFuture + AnnuityFuture;
+                //decimal SerieFuture = (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
+                //decimal InterestFuture = (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
+                //decimal AnnuityFuture = (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
+                //decimal TotalFuture = (decimal)SerieFuture + InterestFuture + AnnuityFuture;
+                decimal TotalFuture = TotalPresent * (1 + Convert.ToDecimal(txtRate.Texts)/100);
                 TotalFuture = Math.Abs(TotalFuture);
 
-                lblPresent.Text = $"Present: C$ {Math.Round(TotalPresent, 2)}";
-                lblFuture.Text = $"Future: C$ {Math.Round(TotalFuture, 2)}";
+                lblPresent.Text = $"Presente: C$ {Math.Round(TotalPresent, 2)}";
+                lblFuture.Text = $"Futuro: C$ {Math.Round(TotalFuture, 2)}";
             }
 
         }
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
             this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
-            this.ReDraws.Interval = 1000;
+            this.ReDraws.Interval = 3000;
             this.ReDraws.AutoReset = true;
             this.ReDraws.Enabled = true;
 
@@ -176,84 +187,47 @@ namespace Economy.Forms
 
         private void ValidateNumberAndPoint(object sender, KeyPressEventArgs e)
         {
-
-            if (Char.IsPunctuation(e.KeyChar) || Char.IsLetter(e.KeyChar))
+            if (e.KeyChar > 57 || e.KeyChar < 48)
             {
                 e.Handled = true;
-                MessageBox.Show("Unable to letters or Punctuation marks");
             }
-            if (e.KeyChar == 44)
+            if (e.KeyChar == (char)8)
             {
-                e.Handled = true;
-                MessageBox.Show("Unable comma");
+                e.Handled = false;
             }
-
-            if (e.KeyChar.ToString() == "=")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable equal");
-            }
-
-            if (e.KeyChar.ToString() == "+")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable sum");
-            }
-
         }
         private void ValidateNumber(object sender, KeyPressEventArgs e)
         {
-            if (char.IsLetter(e.KeyChar))
+            if (e.KeyChar > 57 || e.KeyChar < 48)
             {
+                if (e.KeyChar == 46)
+                {
+                    e.Handled = false;
+                    return;
+                }
+                 if (e.KeyChar == (char)8)
+                {
+                    e.Handled = false;
+                    return;
+                }
                 e.Handled = true;
-                MessageBox.Show("Unable to letters");
             }
-            if (e.KeyChar == 44)
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable comma");
-            }
-            if (e.KeyChar.ToString() == "-")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable minus");
-            }
-            if (e.KeyChar.ToString() == "=")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable equal");
-            }
-
-            if (e.KeyChar.ToString() == "+")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable sum");
-            }
-
-
+          
         }
         private void lblQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsLetter(e.KeyChar))
+            if (e.KeyChar > 57 || e.KeyChar < 48)
             {
+                if (e.KeyChar == 46)
+                {
+                    e.Handled = false;
+                    return;
+                }
                 e.Handled = true;
-                MessageBox.Show("Unable to letters");
             }
-            if (e.KeyChar == 44)
+            else if (e.KeyChar == (char)8)
             {
-                e.Handled = true;
-                MessageBox.Show("Unable comma");
-            }
-            if (e.KeyChar.ToString() == "=")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable equal");
-            }
-
-            if (e.KeyChar.ToString() == "+")
-            {
-                e.Handled = true;
-                MessageBox.Show("Unable sum");
+                e.Handled = false;
             }
         }
 
@@ -261,7 +235,7 @@ namespace Economy.Forms
         {
             if (String.IsNullOrEmpty(txtDuration.Texts))
             {
-                MessageBox.Show("Write the total period");
+                MessageBox.Show("Escriba la duración del proyecto.");
                 return;
             }
             TotalPeriod = Convert.ToInt32(txtDuration.Texts);
@@ -398,7 +372,7 @@ namespace Economy.Forms
                 }
                 if (cmbTypeSerie.SelectedIndex == 1)
                 {
-                    lblWI.Text = "rate j%";
+                    lblWI.Text = "tasa j%";
                 }
             }
         }
@@ -500,7 +474,7 @@ namespace Economy.Forms
                 {
                     if (!ValidateFormAnnuity())
                     {
-                        MessageBox.Show("Fill out the entire form");
+                        MessageBox.Show("Rellene todo el formulario.");
                         return;
                     }
                     Annuity annuity = new Annuity
@@ -521,12 +495,12 @@ namespace Economy.Forms
                 {
                     if (!ValidateFormSerie())
                     {
-                        MessageBox.Show("Fill out the entire form");
+                        MessageBox.Show("Rellene todo el formulario.");
                         return;
                     }
                     if (!ValidateFormSeriePayment())
                     {
-                        MessageBox.Show("It is only allowed for a box to be empty, fill in the others (downpayment, finalPayment, Quantity)");
+                        MessageBox.Show("Solo se permite que una casilla esté vacía, rellene las demás (pago inicial, pago final, cantidad)");
                         return;
                     }
 
@@ -553,7 +527,7 @@ namespace Economy.Forms
                 {
                     if (!ValidateFormInterest())
                     {
-                        MessageBox.Show("Fill out the entire form");
+                        MessageBox.Show("Rellene todo el formulario.");
                         return;
                     }
                     Interest interest = new Interest
@@ -574,6 +548,7 @@ namespace Economy.Forms
                 lblTypeIdgv.Visible = true;
                 cmbTypeIdgv.Visible = true;
                 customPanel1.Visible = true;
+                CleanForms();
                 FillDGV();
 
             }
@@ -614,15 +589,12 @@ namespace Economy.Forms
             {
                 graphics = e.Graphics;
             }
-
             if (TotalPeriod > 0)
             {
                 DrawPlane(TotalPeriod, graphics);
-
             }
             if (Annuity != null)
             {
-
                 DrawAnnuity(Annuity, graphics);
                 return;
             }
@@ -740,10 +712,7 @@ namespace Economy.Forms
         }
         private void DrawInterest(Interest interest, Graphics graphics)
         {
-            if (graphics != null)
-            {
-                MessageBox.Show("Copiado");
-            }
+
             if (graphics == null)
             {
                 graphics = graph.CreateGraphics();
@@ -913,22 +882,22 @@ namespace Economy.Forms
                 Image = false;
             }
 
-                
+
 
         }
 
         private void btnPDF_Click(object sender, EventArgs e)
         {
-            ExportarPDF(Project.Name +"Information");
+            ExportarPDF(Project.Name + "Información");
         }
         private PdfPTable ListPDF<T>(List<T> list, T t)
         {
-            
+
             // Creando tipo de fuente, UTF-8, tipo de diseño. 
             BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
 
             // Añadiendo columnas que tendrá el PDF, margenes, tamaño, alineamiento, bordes.
-            PdfPTable pdftable = new PdfPTable(t.GetType().GetProperties().Length-1);
+            PdfPTable pdftable = new PdfPTable(t.GetType().GetProperties().Length - 1);
             pdftable.DefaultCell.Padding = 2;
             pdftable.WidthPercentage = 100;
             pdftable.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -949,7 +918,7 @@ namespace Economy.Forms
                     PdfPCell cel = new PdfPCell(new Phrase(PropertyName.Name, TimesRoman));
                     cel.BackgroundColor = new iTextSharp.text.BaseColor(109, 122, 224);
                     cel.HorizontalAlignment = Element.ALIGN_CENTER;
-                    
+
                     pdftable.AddCell(cel);
                 }
 
@@ -958,9 +927,9 @@ namespace Economy.Forms
             // Recorriendo filas y cada celdas de esas filas del DataGridView para ponerselas al PDF.
             foreach (T interest in list)
             {
-                foreach(PropertyInfo PropertyName in interest.GetType().GetProperties())
+                foreach (PropertyInfo PropertyName in interest.GetType().GetProperties())
                 {
-                    
+
                     object obj = PropertyName.GetValue(interest, null);
                     pdftable.AddCell(new Phrase(obj.ToString(), text));
                 }
@@ -988,18 +957,18 @@ namespace Economy.Forms
                 graph.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, graph.Width, graph.Height));
                 Image = false;
                 System.Drawing.Image image = bitmap;
-                image = resizeImage(image,580 , 200);
-               
-                
-                
+                image = resizeImage(image, 580, 200);
+
+
+
                 var ColorDeFuente = new BaseColor(Color.Black);
                 var TimesRoman = FontFactory.GetFont("Times-Roman", 8, ColorDeFuente);
                 doc.Open();
                 doc.Add(iTextSharp.text.Image.GetInstance(image, System.Drawing.Imaging.ImageFormat.Png));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(new Paragraph("Annuities",TimesRoman));
+                doc.Add(new Paragraph("Annuities", TimesRoman));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(ListPDF(AnnuityServices.GetIdProject(Project.Id),new Annuity()));
+                doc.Add(ListPDF(AnnuityServices.GetIdProject(Project.Id), new Annuity()));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
@@ -1063,9 +1032,7 @@ namespace Economy.Forms
                 {
                     Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == InterestId).FirstOrDefault();
                     lblValues((decimal)annuity.Present, (decimal)annuity.Future);
-                    Serie = null;
-                    Interest = null;
-                    Annuity = annuity;
+                    DoNull(null, annuity, null);
 
                 }
                 if (cmbTypeIdgv.SelectedIndex == 1)
@@ -1073,20 +1040,61 @@ namespace Economy.Forms
                     Serie serie = SerieServices.GetIdProject(Project.Id).Where(x => x.Id == InterestId).FirstOrDefault();
 
                     lblValues((decimal)serie.Present, (decimal)serie.Future);
-                    Interest = null;
-                    Annuity = null;
-                    Serie = serie;
+
+                    DoNull(serie, null, null);
                 }
                 if (cmbTypeIdgv.SelectedIndex == 2)
                 {
                     Interest interest = InterestServices.GetIdProject(Project.Id).Where(x => x.Id == InterestId).FirstOrDefault();
 
                     lblValues((decimal)interest.Present, (decimal)interest.Future);
-                    Serie = null;
-                    Annuity = null;
-                    Interest = interest;
+                    DoNull(null, null, interest);
                 }
             }
+        }
+
+        private void txtEnd__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt32(txtInitial.Texts) > Convert.ToInt32(txtEnd.Texts))
+                {
+                    lblNotify.Visible = true;
+                    return;
+                }
+                lblNotify.Visible = false;
+            }
+            catch {
+                lblNotify.Visible = false;
+            }
+            
+           
+        }
+
+        private void txtInitial__TextChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (Convert.ToInt32(txtInitial.Texts)> Convert.ToInt32(txtEnd.Texts))
+                {
+                    lblNotify.Visible = true;
+                    return;
+                }
+                lblNotify.Visible = false;
+            }
+            catch {
+                lblNotify.Visible = false;
+            }
+
+        }
+
+        private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
+        {
+            this.Serie = serie;
+            this.Annuity = annuity;
+            this.Interest = interest;
+
         }
     }
 }

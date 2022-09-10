@@ -54,7 +54,7 @@ namespace Economy.Forms
             // customPanel1
             // 
             this.customPanel1.BackColor = System.Drawing.Color.White;
-            this.customPanel1.BorderRadius = 30;
+            this.customPanel1.BorderRadius = 0;
             this.customPanel1.Controls.Add(this.PbClose);
             this.customPanel1.Controls.Add(this.label1);
             this.customPanel1.Controls.Add(this.lblDescriptionKepp);
@@ -64,9 +64,9 @@ namespace Economy.Forms
             this.customPanel1.GradientAngle = 90F;
             this.customPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.customPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.customPanel1.Location = new System.Drawing.Point(484, -11);
+            this.customPanel1.Location = new System.Drawing.Point(485, -4);
             this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(370, 553);
+            this.customPanel1.Size = new System.Drawing.Size(376, 514);
             this.customPanel1.TabIndex = 1;
             // 
             // PbClose
@@ -74,7 +74,7 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(347, 20);
+            this.PbClose.Location = new System.Drawing.Point(347, 11);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -88,11 +88,11 @@ namespace Economy.Forms
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(90, 246);
+            this.label1.Location = new System.Drawing.Point(82, 246);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(171, 18);
+            this.label1.Size = new System.Drawing.Size(218, 18);
             this.label1.TabIndex = 6;
-            this.label1.Text = "and start journey with us";
+            this.label1.Text = "y comienza el viaje con nosotros";
             // 
             // lblDescriptionKepp
             // 
@@ -102,9 +102,9 @@ namespace Economy.Forms
             this.lblDescriptionKepp.ForeColor = System.Drawing.Color.White;
             this.lblDescriptionKepp.Location = new System.Drawing.Point(86, 220);
             this.lblDescriptionKepp.Name = "lblDescriptionKepp";
-            this.lblDescriptionKepp.Size = new System.Drawing.Size(183, 18);
+            this.lblDescriptionKepp.Size = new System.Drawing.Size(207, 18);
             this.lblDescriptionKepp.TabIndex = 5;
-            this.lblDescriptionKepp.Text = "Enter your personal details";
+            this.lblDescriptionKepp.Text = "Introduce tus datos personales";
             // 
             // lblDescription
             // 
@@ -114,9 +114,9 @@ namespace Economy.Forms
             this.lblDescription.ForeColor = System.Drawing.Color.White;
             this.lblDescription.Location = new System.Drawing.Point(55, 160);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(261, 46);
+            this.lblDescription.Size = new System.Drawing.Size(254, 46);
             this.lblDescription.TabIndex = 4;
-            this.lblDescription.Text = "Hello, Friend!";
+            this.lblDescription.Text = "¡Hola, Amigo!";
             // 
             // btnSignUp
             // 
@@ -134,7 +134,7 @@ namespace Economy.Forms
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(159, 49);
             this.btnSignUp.TabIndex = 3;
-            this.btnSignUp.Text = "SIGN UP";
+            this.btnSignUp.Text = "Registrarse";
             this.btnSignUp.TextColor = System.Drawing.Color.White;
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
@@ -155,7 +155,7 @@ namespace Economy.Forms
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(159, 49);
             this.btnSignIn.TabIndex = 8;
-            this.btnSignIn.Text = "SIGN IN";
+            this.btnSignIn.Text = "Iniciar";
             this.btnSignIn.TextColor = System.Drawing.Color.White;
             this.btnSignIn.UseVisualStyleBackColor = false;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
@@ -196,7 +196,7 @@ namespace Economy.Forms
             this.txtPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtPassword.PasswordChar = true;
             this.txtPassword.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtPassword.PlaceholderText = "Password";
+            this.txtPassword.PlaceholderText = "Contraseña";
             this.txtPassword.Size = new System.Drawing.Size(272, 33);
             this.txtPassword.TabIndex = 15;
             this.txtPassword.Texts = "";
@@ -218,7 +218,7 @@ namespace Economy.Forms
             this.txtName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtName.PasswordChar = false;
             this.txtName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtName.PlaceholderText = "Name";
+            this.txtName.PlaceholderText = "Nombre";
             this.txtName.Size = new System.Drawing.Size(272, 33);
             this.txtName.TabIndex = 14;
             this.txtName.Texts = "";
@@ -230,11 +230,11 @@ namespace Economy.Forms
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.label2.Location = new System.Drawing.Point(107, 107);
+            this.label2.Location = new System.Drawing.Point(92, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(226, 29);
+            this.label2.Size = new System.Drawing.Size(310, 29);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Sign in to Economy";
+            this.label2.Text = "Iniciar sesión en Economía";
             // 
             // label3
             // 
@@ -244,9 +244,9 @@ namespace Economy.Forms
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(55, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 18);
+            this.label3.Size = new System.Drawing.Size(60, 18);
             this.label3.TabIndex = 19;
-            this.label3.Text = "Economy";
+            this.label3.Text = "Economía";
             // 
             // pictureBox5
             // 

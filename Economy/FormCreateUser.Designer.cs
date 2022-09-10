@@ -75,7 +75,7 @@ namespace Economy
             this.customPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.customPanel1.Location = new System.Drawing.Point(-18, -18);
             this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(370, 540);
+            this.customPanel1.Size = new System.Drawing.Size(376, 540);
             this.customPanel1.TabIndex = 0;
             this.customPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.customPanel1_MouseDown);
             // 
@@ -87,9 +87,9 @@ namespace Economy
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(79, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 18);
+            this.label3.Size = new System.Drawing.Size(60, 18);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Economy";
+            this.label3.Text = "Economía";
             // 
             // pictureBox5
             // 
@@ -108,11 +108,11 @@ namespace Economy
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(90, 260);
+            this.label1.Location = new System.Drawing.Point(58, 260);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 18);
+            this.label1.Size = new System.Drawing.Size(272, 18);
             this.label1.TabIndex = 6;
-            this.label1.Text = "login with your personal info";
+            this.label1.Text = "inicie sesión con su información personal";
             // 
             // lblDescriptionKepp
             // 
@@ -120,11 +120,11 @@ namespace Economy
             this.lblDescriptionKepp.BackColor = System.Drawing.Color.Transparent;
             this.lblDescriptionKepp.Font = new System.Drawing.Font("Trebuchet MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDescriptionKepp.ForeColor = System.Drawing.Color.White;
-            this.lblDescriptionKepp.Location = new System.Drawing.Point(75, 234);
+            this.lblDescriptionKepp.Location = new System.Drawing.Point(25, 234);
             this.lblDescriptionKepp.Name = "lblDescriptionKepp";
-            this.lblDescriptionKepp.Size = new System.Drawing.Size(227, 18);
+            this.lblDescriptionKepp.Size = new System.Drawing.Size(342, 18);
             this.lblDescriptionKepp.TabIndex = 5;
-            this.lblDescriptionKepp.Text = "To keep connected with us please";
+            this.lblDescriptionKepp.Text = "Para mantenerse conectado con nosotros, por favor";
             // 
             // lblDescription
             // 
@@ -134,9 +134,9 @@ namespace Economy
             this.lblDescription.ForeColor = System.Drawing.Color.White;
             this.lblDescription.Location = new System.Drawing.Point(55, 174);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(283, 46);
+            this.lblDescription.Size = new System.Drawing.Size(240, 46);
             this.lblDescription.TabIndex = 4;
-            this.lblDescription.Text = "Welcome Back!";
+            this.lblDescription.Text = "¡Bienvenido!";
             // 
             // btnSignIn
             // 
@@ -154,7 +154,7 @@ namespace Economy
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(159, 49);
             this.btnSignIn.TabIndex = 3;
-            this.btnSignIn.Text = "SIGN IN";
+            this.btnSignIn.Text = "Iniciar sesión";
             this.btnSignIn.TextColor = System.Drawing.Color.White;
             this.btnSignIn.UseVisualStyleBackColor = false;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
@@ -167,9 +167,9 @@ namespace Economy
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.label2.Location = new System.Drawing.Point(523, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 29);
+            this.label2.Size = new System.Drawing.Size(180, 29);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Create Account";
+            this.label2.Text = "Crea tu cuenta";
             // 
             // txtName
             // 
@@ -187,7 +187,7 @@ namespace Economy
             this.txtName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtName.PasswordChar = false;
             this.txtName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtName.PlaceholderText = "Name";
+            this.txtName.PlaceholderText = "Nombre";
             this.txtName.Size = new System.Drawing.Size(272, 33);
             this.txtName.TabIndex = 8;
             this.txtName.Texts = "";
@@ -209,7 +209,7 @@ namespace Economy
             this.txtPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtPassword.PasswordChar = true;
             this.txtPassword.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtPassword.PlaceholderText = "Password";
+            this.txtPassword.PlaceholderText = "Contraseña";
             this.txtPassword.Size = new System.Drawing.Size(272, 33);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.Texts = "";
@@ -231,7 +231,7 @@ namespace Economy
             this.txtEmail.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtEmail.PasswordChar = false;
             this.txtEmail.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtEmail.PlaceholderText = "Email";
+            this.txtEmail.PlaceholderText = "Correo";
             this.txtEmail.Size = new System.Drawing.Size(272, 33);
             this.txtEmail.TabIndex = 10;
             this.txtEmail.Texts = "";
@@ -253,7 +253,7 @@ namespace Economy
             this.txtPhone.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtPhone.PasswordChar = false;
             this.txtPhone.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtPhone.PlaceholderText = "Phone";
+            this.txtPhone.PlaceholderText = "Celular";
             this.txtPhone.Size = new System.Drawing.Size(272, 33);
             this.txtPhone.TabIndex = 11;
             this.txtPhone.Texts = "";
@@ -275,7 +275,7 @@ namespace Economy
             this.btnSignUp.Name = "btnSignUp";
             this.btnSignUp.Size = new System.Drawing.Size(159, 49);
             this.btnSignUp.TabIndex = 7;
-            this.btnSignUp.Text = "SIGN UP";
+            this.btnSignUp.Text = "Registrarse";
             this.btnSignUp.TextColor = System.Drawing.Color.White;
             this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
@@ -324,26 +324,26 @@ namespace Economy
             // 
             this.lblEmailNE.AutoSize = true;
             this.lblEmailNE.BackColor = System.Drawing.Color.White;
-            this.lblEmailNE.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblEmailNE.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblEmailNE.ForeColor = System.Drawing.Color.Gray;
-            this.lblEmailNE.Location = new System.Drawing.Point(757, 301);
+            this.lblEmailNE.Location = new System.Drawing.Point(755, 301);
             this.lblEmailNE.Name = "lblEmailNE";
-            this.lblEmailNE.Size = new System.Drawing.Size(87, 18);
+            this.lblEmailNE.Size = new System.Drawing.Size(99, 16);
             this.lblEmailNE.TabIndex = 16;
-            this.lblEmailNE.Text = "Email no exist!";
+            this.lblEmailNE.Text = "¡Correo no existe!";
             this.lblEmailNE.Visible = false;
             // 
             // lblPhoneNE
             // 
             this.lblPhoneNE.AutoSize = true;
             this.lblPhoneNE.BackColor = System.Drawing.Color.White;
-            this.lblPhoneNE.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPhoneNE.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPhoneNE.ForeColor = System.Drawing.Color.Gray;
             this.lblPhoneNE.Location = new System.Drawing.Point(754, 352);
             this.lblPhoneNE.Name = "lblPhoneNE";
-            this.lblPhoneNE.Size = new System.Drawing.Size(94, 18);
+            this.lblPhoneNE.Size = new System.Drawing.Size(98, 16);
             this.lblPhoneNE.TabIndex = 17;
-            this.lblPhoneNE.Text = "Phone no exist!";
+            this.lblPhoneNE.Text = "¡Celular no existe!";
             this.lblPhoneNE.Visible = false;
             // 
             // PbClose
