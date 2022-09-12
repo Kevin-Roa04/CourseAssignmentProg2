@@ -1,4 +1,5 @@
 ﻿using Economy.AppCore.IServices;
+using Economy.AppCore.Processes;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using iTextSharp.text;
@@ -150,11 +151,9 @@ namespace Economy.Forms
                 decimal TotalPresent = (decimal)SeriePresent + InterestPresent + AnnuityPresent;
                 TotalPresent = Math.Abs(TotalPresent);
 
-                //decimal SerieFuture = (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)SerieServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                //decimal InterestFuture = (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)InterestServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                //decimal AnnuityFuture = (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Entry.ToString()).Sum(x => x.Future) - (decimal)AnnuityServices.FindByOption(x => x.ProjectId == Project.Id && x.FlowType == FlowType.Exit.ToString()).Sum(x => x.Future);
-                //decimal TotalFuture = (decimal)SerieFuture + InterestFuture + AnnuityFuture;
-                decimal TotalFuture = TotalPresent * (1 + Convert.ToDecimal(txtRate.Texts)/100);
+                decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
+                decimal rateYear = ((decimal)Math.Pow((double)(1+rate), TotalPeriod));
+                decimal TotalFuture = TotalPresent * rateYear;
                 TotalFuture = Math.Abs(TotalFuture);
 
                 lblPresent.Text = $"Presente: C$ {Math.Round(TotalPresent, 2)}";
@@ -183,6 +182,31 @@ namespace Economy.Forms
             this.txtFinalPayment.KeyPress += new KeyPressEventHandler(ValidateNumber);
             this.txtQuantity.KeyPress += new KeyPressEventHandler(ValidateNumber);
             this.txtRate.KeyPress += new KeyPressEventHandler(ValidateNumber);
+        }
+        public int VerificateInterest(object t)
+        {
+
+            List<object> lists=new List<object>();
+            lists.AddRange(AnnuityServices.GetIdProject(Project.Id).Where(x=>x.FlowType== (string)t.GetType().GetProperty("FlowType").GetValue(t) 
+            && x.Id<(int) t.GetType().GetProperty("Id").GetValue(t)) );
+            lists.AddRange(InterestServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
+            && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)));
+            lists.AddRange(SerieServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
+             && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)));
+
+
+            
+            int i = lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t)
+             && (int) x.GetType().GetProperty("Id").GetValue(x)!=(int) t.GetType().GetProperty("Id").GetValue(t)
+             && (int)t.GetType().GetProperty("Initial").GetValue(t) >= (int)x.GetType().GetProperty("Initial").GetValue(x)
+             && (int)t.GetType().GetProperty("Initial").GetValue(t) <= (int)x.GetType().GetProperty("End").GetValue(x)
+             || (int)t.GetType().GetProperty("End").GetValue(t) >= (int)x.GetType().GetProperty("Initial").GetValue(x)
+             || (int)t.GetType().GetProperty("End").GetValue(t) <= (int)x.GetType().GetProperty("End").GetValue(x)
+             || (int)t.GetType().GetProperty("Initial").GetValue(t) < (int)x.GetType().GetProperty("Initial").GetValue(x)
+             && (int)x.GetType().GetProperty("End").GetValue(x) < (int)t.GetType().GetProperty("End").GetValue(t)
+            ).Count();
+            return i;
+
         }
 
         private void ValidateNumberAndPoint(object sender, KeyPressEventArgs e)
@@ -399,7 +423,10 @@ namespace Economy.Forms
                 dgvInterest.Columns.Remove(dgvInterest.Columns["Project"]);
             }
         }
+
         #region -> Interest rate validators
+
+       
         private bool ValidateFormAnnuity()
         {
             if (String.IsNullOrEmpty(txtInitial.Texts)
@@ -464,6 +491,7 @@ namespace Economy.Forms
             }
             return true;
         }
+
         #endregion
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -635,7 +663,7 @@ namespace Economy.Forms
             }
             Point[] points =
              {
-               new Point(Coord_x,coord_y),
+                new Point(Coord_x,coord_y),
                 new Point(Coord_x+graph.Width,coord_y),
                 new Point(Coord_x,coord_y)
             };
@@ -653,19 +681,48 @@ namespace Economy.Forms
             }
             //graph.BackgroundImage = bitmap;
         }
+
+        private void DrawArrow(string flowType, Graphics graphic, Point initial, int size, Color color)
+        {
+            Pen Pen = new Pen(color);
+            Point[] LeftPoints = new Point[2];
+            Point[] RightPoints = new Point[2];
+            if (flowType == FlowType.Exit.ToString())
+            {
+                LeftPoints[0] = new Point(initial.X - size, initial.Y-size);
+                LeftPoints[1] = new Point(initial.X, initial.Y );
+                RightPoints[0] = new Point(initial.X + size, initial.Y-size);
+                RightPoints[1] = new Point(initial.X, initial.Y );
+            }
+            else
+            {
+                LeftPoints[0] = new Point(initial.X -size, initial.Y +size);
+                LeftPoints[1]= new Point(initial.X, initial.Y);
+                RightPoints[0] = new Point(initial.X + size, initial.Y + size);
+                RightPoints[1]= new Point(initial.X, initial.Y);
+            }
+            graphic.DrawLine(Pen, LeftPoints[0], LeftPoints[1]);
+            graphic.DrawLine(Pen, RightPoints[0], RightPoints[1]);  
+
+        }
+
         private void DrawAnnuity(Annuity annuity, Graphics graphics)
         {
-
+            int i = VerificateInterest(annuity);
             if (graphics == null)
             {
                 graphics = graph.CreateGraphics();
             }
 
-
             //line configuration
             int space = 19;
-            int HeightLine = annuity.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) : Convert.ToInt32(graph.Height * .8);
-            int coord_y_entreLine = annuity.FlowType == FlowType.Entry.ToString() ? (coord_y - 15) : coord_y + 15;
+            int HeightLine = annuity.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 20) : Convert.ToInt32((graph.Height * .8) + (i * 20));
+            if (HeightLine > graph.Height)
+            {
+                graph.Height = HeightLine + 50;
+            }
+            //  int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (coord_y - (15+(i*3))) : coord_y + 15+(i*3));
+            int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15 );
             Color color = annuity.FlowType == FlowType.Entry.ToString() ? Color.Green : Color.Red;
 
 
@@ -679,6 +736,7 @@ namespace Economy.Forms
                 new Point((annuity.Initial*space)+3,HeightLine),
             };
             graphics.DrawLines(new Pen(color), InitialPoints);
+            DrawArrow(annuity.FlowType, graphics, InitialPoints[1], 5, color);
 
             // end line
 
@@ -690,6 +748,8 @@ namespace Economy.Forms
                 new Point((annuity.End*space)+3,HeightLine),
             };
             graphics.DrawLines(new Pen(color), EndPoints);
+            DrawArrow(annuity.FlowType, graphics, EndPoints[1], 5, color);
+
 
             // line Payment
 
@@ -710,8 +770,10 @@ namespace Economy.Forms
             graphics.DrawString(annuity.Payment.ToString(), drawFont, drawBrush, ((middle * space)), positionPayment);
 
         }
+        
         private void DrawInterest(Interest interest, Graphics graphics)
         {
+            int i = VerificateInterest(interest);
 
             if (graphics == null)
             {
@@ -720,9 +782,16 @@ namespace Economy.Forms
 
             int TotalPeriods = TotalPeriod + 1;
 
+
+            int HeightLine = interest.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 25) : Convert.ToInt32((graph.Height * .8) + (i * 25));
+            if (HeightLine > graph.Height)
+            {
+                graph.Height = HeightLine + 50;
+            }
+            //int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? (coord_y - (15 + (i * 3))) : coord_y + 15 + (i * 3));
+            int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15);
             int space = 19;
-            int HeightLine = interest.FlowType == $"{FlowType.Entry}" ? Convert.ToInt32((graph.Height) * .2) : Convert.ToInt32(graph.Height * .8);
-            int coord_y_entreLine = interest.FlowType == $"{FlowType.Entry}" ? (coord_y - 15) : coord_y + 15;
+           
             Color color = interest.FlowType == $"{FlowType.Entry}" ? Color.Green : Color.Red;
 
 
@@ -735,6 +804,7 @@ namespace Economy.Forms
                 new Point((interest.Initial*space)+5,coord_y_entreLine),
                 new Point((interest.Initial*space)+5,HeightLine),
             };
+            DrawArrow(interest.FlowType, graphics, InitialPoints[1], 5, color);
             graphics.DrawLines(new Pen(color), InitialPoints);
 
             float positionStringPayment = ((float)(interest.Initial - 1) + (float)(interest.Initial + 1)) / (float)2;
@@ -747,6 +817,7 @@ namespace Economy.Forms
 
         private void DrawSeries(Serie serie, Graphics graphics)
         {
+            int i = VerificateInterest(serie);
 
             if (graphics == null)
             {
@@ -755,7 +826,12 @@ namespace Economy.Forms
 
             // line configurations
             int space = 19;
-            int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .20) : Convert.ToInt32(graph.Height * .80);
+            int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 20) : Convert.ToInt32((graph.Height * .8) + (i * 20));
+            if (HeightLine > graph.Height)
+            {
+                graph.Height = HeightLine + 50;
+            }
+            //int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .20) : Convert.ToInt32(graph.Height * .80);
             int coord_y_entreLine = serie.FlowType == FlowType.Entry.ToString() ? (coord_y - 15) : coord_y + 15;
             Color color = serie.FlowType == FlowType.Entry.ToString() ? Color.Green : Color.Red;
             int HeightInitialLine = serie.FlowType == FlowType.Entry.ToString() ? HeightLine + 35 : HeightLine - 35;
@@ -768,6 +844,7 @@ namespace Economy.Forms
                 new Point((serie.Initial*space)+3,coord_y_entreLine),
                new Point((serie.Initial*space)+3,HeightInitialLine),
             };
+            DrawArrow(serie.FlowType, graphics, InitialPoints[1], 5, color);
             graphics.DrawLines(new Pen(color), InitialPoints);
 
             // end line
@@ -776,6 +853,7 @@ namespace Economy.Forms
                 new Point((serie.End*space)+3,coord_y_entreLine),
                 new Point((serie.End*space)+3,HeightLine),
             };
+            DrawArrow(serie.FlowType,graphics, EndPoints[1], 5, color);
             graphics.DrawLines(new Pen(color), EndPoints);
 
             // line or curve payment

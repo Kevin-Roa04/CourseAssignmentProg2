@@ -2,6 +2,7 @@
 
 namespace Economy.AppCore.IServices
 {
+
     public interface IServices<T>
     {
         int Create(T t);
@@ -10,3 +11,4 @@ namespace Economy.AppCore.IServices
         List<T> GetAll();
     }
 }
+ 

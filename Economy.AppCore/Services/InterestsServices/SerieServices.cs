@@ -57,10 +57,10 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 objects.AddRange(repository.GetIdProject(t.ProjectId));
             }
-            if (!ValidateInterest.Validar<Serie>(objects, t))
-            {
-                throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
-            }
+            //if (!ValidateInterest.Validar<Serie>(objects, t))
+            //{
+            //    throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
+            //}
 
             #endregion
             #region Assing value
@@ -103,7 +103,7 @@ namespace Economy.AppCore.Services.InterestsServices
             t.Future = Math.Round(interestServices.Future(t), 2);
             return repository.Create(t);
         }
-
+       
         public bool Delete(Serie t)
         {
             return repository.Delete(t);

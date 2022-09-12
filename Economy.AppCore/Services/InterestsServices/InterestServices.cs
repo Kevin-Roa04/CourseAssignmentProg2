@@ -46,10 +46,10 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 objects.AddRange(repository.GetIdProject(t.ProjectId));
             }
-            if (!ValidateInterest.Validar<Interest>(objects, t))
-            {
-                throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
-            }
+            //if (!ValidateInterest.Validar<Interest>(objects, t))
+            //{
+            //    throw new ArgumentException($"the Serie cannot be since it is between the intervals of another interest.");
+            //}
             #endregion
             t.Future = Math.Round(interestServices.Future(t), 2);
             t.Present = Math.Round(interestServices.Present(t), 2);

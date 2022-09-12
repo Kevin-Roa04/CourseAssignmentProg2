@@ -154,7 +154,7 @@ namespace Economy.Forms
             // 
             this.txtRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtRate.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtRate.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtRate.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtRate.BorderRadius = 6;
             this.txtRate.BorderSize = 2;
             this.txtRate.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -201,7 +201,7 @@ namespace Economy.Forms
             // 
             this.txtFinalPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtFinalPayment.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtFinalPayment.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtFinalPayment.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtFinalPayment.BorderRadius = 6;
             this.txtFinalPayment.BorderSize = 2;
             this.txtFinalPayment.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -224,7 +224,7 @@ namespace Economy.Forms
             // 
             this.txtDownPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtDownPayment.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtDownPayment.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtDownPayment.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtDownPayment.BorderRadius = 6;
             this.txtDownPayment.BorderSize = 2;
             this.txtDownPayment.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -269,7 +269,7 @@ namespace Economy.Forms
             // 
             this.txtQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtQuantity.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtQuantity.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtQuantity.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtQuantity.BorderRadius = 6;
             this.txtQuantity.BorderSize = 2;
             this.txtQuantity.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -374,7 +374,7 @@ namespace Economy.Forms
             // 
             this.txtEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtEnd.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtEnd.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtEnd.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtEnd.BorderRadius = 6;
             this.txtEnd.BorderSize = 2;
             this.txtEnd.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -398,7 +398,7 @@ namespace Economy.Forms
             // 
             this.txtInitial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtInitial.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtInitial.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtInitial.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtInitial.BorderRadius = 6;
             this.txtInitial.BorderSize = 2;
             this.txtInitial.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -508,7 +508,7 @@ namespace Economy.Forms
             // 
             this.txtDuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.txtDuration.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtDuration.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtDuration.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
             this.txtDuration.BorderRadius = 6;
             this.txtDuration.BorderSize = 2;
             this.txtDuration.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
