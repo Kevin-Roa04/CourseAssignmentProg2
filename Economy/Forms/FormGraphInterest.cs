@@ -89,7 +89,8 @@ namespace Economy.Forms
 
         Timer ReDraws = new System.Timers.Timer(1000);
         private int Coord_x = 0, coord_y;
-
+        private int graphHeight;
+        private int graphWidth;
 
         private int selection = -1;
         private int TotalPeriod = -1;
@@ -103,11 +104,12 @@ namespace Economy.Forms
         #endregion
         public FormGraphInterest(Project project)
         {
-
+            
             this.Project = project;
             InitializeComponent();
             coord_y = (int)(graph.Height * 0.5);
-
+            this.graphHeight = (graph.Height);
+            this.graphWidth = graph.Width;
 
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -705,7 +707,7 @@ namespace Economy.Forms
             graphic.DrawLine(Pen, RightPoints[0], RightPoints[1]);  
 
         }
-
+        
         private void DrawAnnuity(Annuity annuity, Graphics graphics)
         {
             int i = VerificateInterest(annuity);
@@ -716,8 +718,8 @@ namespace Economy.Forms
 
             //line configuration
             int space = 19;
-            int HeightLine = annuity.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 20) : Convert.ToInt32((graph.Height * .8) + (i * 20));
-            if (HeightLine > graph.Height)
+            int HeightLine = annuity.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 20) : Convert.ToInt32((graphHeight * .8) + (i * 20));
+            if (HeightLine >= graph.Height)
             {
                 graph.Height = HeightLine + 50;
             }
@@ -783,8 +785,8 @@ namespace Economy.Forms
             int TotalPeriods = TotalPeriod + 1;
 
 
-            int HeightLine = interest.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 25) : Convert.ToInt32((graph.Height * .8) + (i * 25));
-            if (HeightLine > graph.Height)
+            int HeightLine = interest.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 25) : Convert.ToInt32((graphHeight * .8) + (i * 25));
+            if (HeightLine >= graph.Height)
             {
                 graph.Height = HeightLine + 50;
             }
@@ -826,8 +828,8 @@ namespace Economy.Forms
 
             // line configurations
             int space = 19;
-            int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .2) - (i * 20) : Convert.ToInt32((graph.Height * .8) + (i * 20));
-            if (HeightLine > graph.Height)
+            int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 20) : Convert.ToInt32((graphHeight * .8) + (i * 20));
+            if (HeightLine >= graph.Height)
             {
                 graph.Height = HeightLine + 50;
             }
@@ -877,9 +879,10 @@ namespace Economy.Forms
                 };
                 graphics.DrawCurve(new Pen(color), curvePoint);
             }
-            // paymentss
+            int curveLines = serie.FlowType == FlowType.Entry.ToString() ? HeightInitialLine + 30 : HeightInitialLine - 30;
+            // payments
             float middle = Convert.ToSingle((serie.Initial + serie.End) / 2.0);
-            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? HeightLine - 18 : HeightLine + 12;
+            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curveLines-16: curveLines+5 ; // -18 and +12
             System.Drawing.Font drawFont = new System.Drawing.Font(lblInitial.Font.ToString(), 8);
             SolidBrush drawBrush = new SolidBrush(color);
             graphics.DrawString(serie.Type == TypeSeries.Arithmetic.ToString() ? "G= " + serie.Quantity.ToString() : "j= " + serie.Quantity.ToString() + "%", drawFont, drawBrush, ((middle * space)), positionPayment);
