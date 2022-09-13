@@ -149,7 +149,7 @@ namespace Economy.Forms
             }
             else if(Selection == 1)
             {
-                FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie);
+                FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, txtProjectName.Texts);
                 formExcel.ShowDialog();
 
                 

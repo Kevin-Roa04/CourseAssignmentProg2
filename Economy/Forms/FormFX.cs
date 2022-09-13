@@ -20,23 +20,37 @@ namespace Economy.Forms
         public ICalculateServices<Interest> CalculateServicesInterest;
         public ICalculateServices<Serie> CalculateServicesSerie;
         private FormExcel FormExcel;
+        private int index;
         public FormFX(FormExcel formExcel, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService,
-            ICalculateServices<Serie> calculateServicesSerie)
+            ICalculateServices<Serie> calculateServicesSerie, int index)
         {
             InitializeComponent();
             this.FormExcel = formExcel;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateService;
             this.CalculateServicesSerie = calculateServicesSerie;
+            this.index = index;
         }
 
         private void FormFX_Load(object sender, EventArgs e)
         {
-            String[] TypeFunction = Enum.GetNames(typeof(TypeFunctions));
-            foreach (string function in TypeFunction)
+            if(index == 0)
             {
-                this.lbFX.Items.Add(function);
+                String[] TypeFunction = Enum.GetNames(typeof(TypeFunctions));
+                foreach (string function in TypeFunction)
+                {
+                    this.lbFX.Items.Add(function);
+                }
             }
+            else if(index == 1)
+            {
+                String[] TypeFunction = Enum.GetNames(typeof(TypeBasicFunction));
+                foreach (string function in TypeFunction)
+                {
+                    this.lbFX.Items.Add(function);
+                }
+            }
+            
         }
 
         private void lbFX_DoubleClick(object sender, EventArgs e)

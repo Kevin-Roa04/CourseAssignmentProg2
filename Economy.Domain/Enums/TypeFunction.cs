@@ -8,15 +8,18 @@ namespace Economy.Domain.Enums
 {
     public enum TypeFunctions
     {
-        To_Effective_Rate,
-        To_Nominal_Rate,
-        Annuities,
-        Present_Annuities,
-        Future_Annuities,
-        Present_Series,
-        Future_Series,
+        A_Tasa_Efectiva,
+        A_Tasa_Nominal,
+        Anualidades,
+        Presente_Anualidades,
+        Futuro_Anualidades,
+        Presente_Series,
+        Futuro_Series,
         FNE,
         VPN,
-        TIR
+        TIR,
+        Depreciacion_Linea_Recta,
+        Depreciacion_Doble_Saldo_Decreciente,
+        Depreciacion_Suma_Digito_De_Años
     }
 }
