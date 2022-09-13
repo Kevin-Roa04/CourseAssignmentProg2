@@ -142,7 +142,6 @@ C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.json
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.dev.json
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.dll
-C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\ref\Economy.Infraestructure.dll
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.pdb
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Common.dll
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Domain.dll
@@ -178,3 +177,4 @@ C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\ne
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.pdb
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.genruntimeconfig.cache
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\ref\Economy.Infraestructure.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\refint\Economy.Infraestructure.dll

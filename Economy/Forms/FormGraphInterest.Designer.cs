@@ -335,6 +335,9 @@ namespace Economy.Forms
             this.cmbFlowType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbFlowType.ForeColor = System.Drawing.Color.DimGray;
             this.cmbFlowType.IconColor = System.Drawing.Color.Gray;
+            this.cmbFlowType.Items.AddRange(new object[] {
+            "Entrada",
+            "Salida"});
             this.cmbFlowType.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbFlowType.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbFlowType.Location = new System.Drawing.Point(120, 424);
@@ -439,6 +442,9 @@ namespace Economy.Forms
             this.cmbTypeSerie.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbTypeSerie.ForeColor = System.Drawing.Color.DimGray;
             this.cmbTypeSerie.IconColor = System.Drawing.Color.Gray;
+            this.cmbTypeSerie.Items.AddRange(new object[] {
+            "Aritmética",
+            "Geométrica"});
             this.cmbTypeSerie.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTypeSerie.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbTypeSerie.Location = new System.Drawing.Point(120, 156);
@@ -481,6 +487,10 @@ namespace Economy.Forms
             this.cmbTypeSA.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbTypeSA.ForeColor = System.Drawing.Color.DimGray;
             this.cmbTypeSA.IconColor = System.Drawing.Color.Gray;
+            this.cmbTypeSA.Items.AddRange(new object[] {
+            "Anualidad",
+            "Serie",
+            "Interés"});
             this.cmbTypeSA.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTypeSA.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbTypeSA.Location = new System.Drawing.Point(120, 97);
@@ -587,6 +597,10 @@ namespace Economy.Forms
             this.cmbTypeIdgv.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbTypeIdgv.ForeColor = System.Drawing.Color.DimGray;
             this.cmbTypeIdgv.IconColor = System.Drawing.Color.Gray;
+            this.cmbTypeIdgv.Items.AddRange(new object[] {
+            "Anualidad",
+            "Serie",
+            "Interés"});
             this.cmbTypeIdgv.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTypeIdgv.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbTypeIdgv.Location = new System.Drawing.Point(512, 341);

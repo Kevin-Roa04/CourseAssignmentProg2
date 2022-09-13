@@ -172,10 +172,10 @@ namespace Economy.Forms
 
             graph.Refresh();
             lblValues(0, 0);
-            this.cmbTypeIdgv.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
-            this.cmbTypeSA.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
-            this.cmbTypeSerie.Items.AddRange(Enum.GetValues(typeof(TypeSeries)).Cast<object>().ToArray());
-            this.cmbFlowType.Items.AddRange(Enum.GetValues(typeof(FlowType)).Cast<object>().ToArray());
+            //this.cmbTypeIdgv.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
+            //this.cmbTypeSA.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
+            //this.cmbTypeSerie.Items.AddRange(Enum.GetValues(typeof(TypeSeries)).Cast<object>().ToArray());
+            //this.cmbFlowType.Items.AddRange(Enum.GetValues(typeof(FlowType)).Cast<object>().ToArray());
 
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -190,11 +190,16 @@ namespace Economy.Forms
 
             List<object> lists=new List<object>();
             lists.AddRange(AnnuityServices.GetIdProject(Project.Id).Where(x=>x.FlowType== (string)t.GetType().GetProperty("FlowType").GetValue(t) 
-            && x.Id<(int) t.GetType().GetProperty("Id").GetValue(t)) );
+            && x.Id<(int) t.GetType().GetProperty("Id").GetValue(t)
+            ) );
             lists.AddRange(InterestServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
-            && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)));
+            && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)
+            
+            ));
             lists.AddRange(SerieServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
-             && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)));
+             && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)
+         
+             ));
 
 
             
@@ -650,7 +655,7 @@ namespace Economy.Forms
         }
         public void DrawPlane(int TotalPeriod, Graphics graphics)
         {
-
+            this.coord_y = (int)(graph.Height * .5);
             if (graphics == null)
             {
                 graphics = graph.CreateGraphics();
@@ -707,7 +712,22 @@ namespace Economy.Forms
             graphic.DrawLine(Pen, RightPoints[0], RightPoints[1]);  
 
         }
-        
+        private bool ModifyPlane(string FlowTypeS,int HeightLine)
+        {
+            if (FlowTypeS == FlowType.Exit.ToString() && HeightLine >= graph.Height * .9)
+            {
+                graph.Height = graph.Height + 100;
+                ClearPanel();
+                return false;
+            }
+            else if (FlowTypeS == FlowType.Entry.ToString() && HeightLine <= graph.Height * .1)
+            {
+                graph.Height = graph.Height + 100;
+                ClearPanel();
+                return false;
+            }
+            return true;
+        }
         private void DrawAnnuity(Annuity annuity, Graphics graphics)
         {
             int i = VerificateInterest(annuity);
@@ -718,10 +738,23 @@ namespace Economy.Forms
 
             //line configuration
             int space = 19;
-            int HeightLine = annuity.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 20) : Convert.ToInt32((graphHeight * .8) + (i * 20));
-            if (HeightLine >= graph.Height)
+            //int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height*.5)+Convert.ToInt32(-62.2 - (i * 20)) : Convert.ToInt32(248.8 + (i * 20)));
+            int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height*.5)+Convert.ToInt32(62.2 + (i * 20)));
+            //if (annuity.FlowType == FlowType.Exit.ToString() &&HeightLine>= graph.Height*.9)
+            //{
+            //    graph.Height=graph.Height+100;
+            //    ClearPanel();
+            //    return;
+            //}
+            //else if(annuity.FlowType==FlowType.Entry.ToString() && HeightLine <=graph.Height*.1)
+            //{
+            //    graph.Height = graph.Height+ 100;
+            //    ClearPanel();
+            //    return;
+            //}
+            if(!ModifyPlane(annuity.FlowType.ToString(), HeightLine))
             {
-                graph.Height = HeightLine + 50;
+                return;
             }
             //  int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (coord_y - (15+(i*3))) : coord_y + 15+(i*3));
             int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15 );
@@ -785,10 +818,11 @@ namespace Economy.Forms
             int TotalPeriods = TotalPeriod + 1;
 
 
-            int HeightLine = interest.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 25) : Convert.ToInt32((graphHeight * .8) + (i * 25));
-            if (HeightLine >= graph.Height)
+            int HeightLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height * .5) + Convert.ToInt32(62.2 + (i * 20)));
+
+            if (!ModifyPlane(interest.FlowType.ToString(), HeightLine))
             {
-                graph.Height = HeightLine + 50;
+                return;
             }
             //int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? (coord_y - (15 + (i * 3))) : coord_y + 15 + (i * 3));
             int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15);
@@ -828,15 +862,15 @@ namespace Economy.Forms
 
             // line configurations
             int space = 19;
-            int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graphHeight) * .2) - (i * 20) : Convert.ToInt32((graphHeight * .8) + (i * 20));
-            if (HeightLine >= graph.Height)
+            int HeightLine = (int)(serie.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height * .5) + Convert.ToInt32(62.2 + (i * 20)));
+            if (!ModifyPlane(serie.FlowType.ToString(), HeightLine))
             {
-                graph.Height = HeightLine + 50;
+                return;
             }
             //int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .20) : Convert.ToInt32(graph.Height * .80);
             int coord_y_entreLine = serie.FlowType == FlowType.Entry.ToString() ? (coord_y - 15) : coord_y + 15;
             Color color = serie.FlowType == FlowType.Entry.ToString() ? Color.Green : Color.Red;
-            int HeightInitialLine = serie.FlowType == FlowType.Entry.ToString() ? HeightLine + 35 : HeightLine - 35;
+            int HeightInitialLine = serie.FlowType == FlowType.Entry.ToString() ? HeightLine + 20: HeightLine - 20;
 
             // initial line
             graphics.DrawLine(new Pen(Color.White), new Point(Coord_x, coord_y_entreLine),
@@ -1138,11 +1172,19 @@ namespace Economy.Forms
         {
             try
             {
-                if (Convert.ToInt32(txtInitial.Texts) > Convert.ToInt32(txtEnd.Texts))
+                if (Convert.ToInt32(txtEnd.Texts) > TotalPeriod)
                 {
+                    lblNotify.Text = "El valor final debe ser menor que el período total.";
                     lblNotify.Visible = true;
                     return;
                 }
+                if (Convert.ToInt32(txtInitial.Texts) > Convert.ToInt32(txtEnd.Texts))
+                {
+                    lblNotify.Text = "El valor inicial no puede ser mayor que el valor final.";
+                    lblNotify.Visible = true;
+                    return;
+                }
+               
                 lblNotify.Visible = false;
             }
             catch {
@@ -1157,11 +1199,19 @@ namespace Economy.Forms
 
             try
             {
-                if (Convert.ToInt32(txtInitial.Texts)> Convert.ToInt32(txtEnd.Texts))
+                if (Convert.ToInt32(txtInitial.Texts) > TotalPeriod)
                 {
+                    lblNotify.Text = "El valor inicial debe ser menor que el período total.";
                     lblNotify.Visible = true;
                     return;
                 }
+                if (Convert.ToInt32(txtInitial.Texts)> Convert.ToInt32(txtEnd.Texts))
+                {
+                    lblNotify.Text = "El valor inicial no puede ser mayor que el valor final.";
+                    lblNotify.Visible = true;
+                    return;
+                }
+                
                 lblNotify.Visible = false;
             }
             catch {
