@@ -28,7 +28,11 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 throw new ArgumentException("The payment must not be negative");
             }
-
+            if (t.Rate <= 0)
+            {
+                throw new ArgumentException("La tasa no debe de ser negativa.");
+            }
+            
 
             #region Validate period number
             if (t.Initial<0 || t.End < 0)

@@ -30,9 +30,11 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNotifyTasaPrincipal = new System.Windows.Forms.Label();
+            this.lblNotifyDuration = new System.Windows.Forms.Label();
             this.lblNotify = new System.Windows.Forms.Label();
             this.cbDecremental = new System.Windows.Forms.CheckBox();
             this.lblRate = new System.Windows.Forms.Label();
@@ -70,6 +72,7 @@ namespace Economy.Forms
             this.lblPresent = new System.Windows.Forms.Label();
             this.pnScroll = new System.Windows.Forms.Panel();
             this.PbClose = new System.Windows.Forms.PictureBox();
+            this.lblNotifyQR = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).BeginInit();
             this.customPanel1.SuspendLayout();
@@ -84,6 +87,9 @@ namespace Economy.Forms
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblNotifyQR);
+            this.panel1.Controls.Add(this.lblNotifyTasaPrincipal);
+            this.panel1.Controls.Add(this.lblNotifyDuration);
             this.panel1.Controls.Add(this.lblNotify);
             this.panel1.Controls.Add(this.cbDecremental);
             this.panel1.Controls.Add(this.lblRate);
@@ -115,6 +121,30 @@ namespace Economy.Forms
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // lblNotifyTasaPrincipal
+            // 
+            this.lblNotifyTasaPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblNotifyTasaPrincipal.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNotifyTasaPrincipal.ForeColor = System.Drawing.Color.Red;
+            this.lblNotifyTasaPrincipal.Location = new System.Drawing.Point(78, 347);
+            this.lblNotifyTasaPrincipal.Name = "lblNotifyTasaPrincipal";
+            this.lblNotifyTasaPrincipal.Size = new System.Drawing.Size(132, 14);
+            this.lblNotifyTasaPrincipal.TabIndex = 44;
+            this.lblNotifyTasaPrincipal.Text = "La tasa no puede ser 0";
+            this.lblNotifyTasaPrincipal.Visible = false;
+            // 
+            // lblNotifyDuration
+            // 
+            this.lblNotifyDuration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblNotifyDuration.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNotifyDuration.ForeColor = System.Drawing.Color.Red;
+            this.lblNotifyDuration.Location = new System.Drawing.Point(58, 4);
+            this.lblNotifyDuration.Name = "lblNotifyDuration";
+            this.lblNotifyDuration.Size = new System.Drawing.Size(171, 20);
+            this.lblNotifyDuration.TabIndex = 43;
+            this.lblNotifyDuration.Text = "La duración no puede ser 0 ni 1";
+            this.lblNotifyDuration.Visible = false;
             // 
             // lblNotify
             // 
@@ -172,6 +202,7 @@ namespace Economy.Forms
             this.txtRate.Texts = "";
             this.txtRate.UnderlinedStyle = false;
             this.txtRate.Visible = false;
+            this.txtRate._TextChanged += new System.EventHandler(this.txtRate__TextChanged);
             // 
             // lblFinalPayment
             // 
@@ -274,7 +305,7 @@ namespace Economy.Forms
             this.txtQuantity.BorderSize = 2;
             this.txtQuantity.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtQuantity.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtQuantity.Location = new System.Drawing.Point(162, 474);
+            this.txtQuantity.Location = new System.Drawing.Point(162, 480);
             this.txtQuantity.Margin = new System.Windows.Forms.Padding(4);
             this.txtQuantity.Multiline = false;
             this.txtQuantity.Name = "txtQuantity";
@@ -295,7 +326,7 @@ namespace Economy.Forms
             this.lblWI.AutoSize = true;
             this.lblWI.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblWI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.lblWI.Location = new System.Drawing.Point(23, 483);
+            this.lblWI.Location = new System.Drawing.Point(23, 489);
             this.lblWI.Name = "lblWI";
             this.lblWI.Size = new System.Drawing.Size(131, 18);
             this.lblWI.TabIndex = 31;
@@ -535,6 +566,7 @@ namespace Economy.Forms
             this.txtDuration.TabIndex = 16;
             this.txtDuration.Texts = "";
             this.txtDuration.UnderlinedStyle = false;
+            this.txtDuration._TextChanged += new System.EventHandler(this.txtDuration__TextChanged);
             // 
             // customPanel1
             // 
@@ -559,23 +591,23 @@ namespace Economy.Forms
             this.dgvInterest.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInterest.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInterest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInterest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvInterest.EnableHeadersVisualStyles = false;
             this.dgvInterest.GridColor = System.Drawing.Color.Linen;
             this.dgvInterest.Location = new System.Drawing.Point(-3, 6);
@@ -717,6 +749,18 @@ namespace Economy.Forms
             this.PbClose.TabStop = false;
             this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
+            // lblNotifyQR
+            // 
+            this.lblNotifyQR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblNotifyQR.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNotifyQR.ForeColor = System.Drawing.Color.Red;
+            this.lblNotifyQR.Location = new System.Drawing.Point(94, 462);
+            this.lblNotifyQR.Name = "lblNotifyQR";
+            this.lblNotifyQR.Size = new System.Drawing.Size(169, 13);
+            this.lblNotifyQR.TabIndex = 45;
+            this.lblNotifyQR.Text = "La tasa o la cantidad no puede ser 0";
+            this.lblNotifyQR.Visible = false;
+            // 
             // FormGraphInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -796,5 +840,8 @@ namespace Economy.Forms
         private System.Windows.Forms.Panel pnScroll;
         private System.Windows.Forms.PictureBox PbClose;
         private System.Windows.Forms.Label lblNotify;
+        private System.Windows.Forms.Label lblNotifyDuration;
+        private System.Windows.Forms.Label lblNotifyTasaPrincipal;
+        private System.Windows.Forms.Label lblNotifyQR;
     }
 }

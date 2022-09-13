@@ -24,6 +24,15 @@ namespace Economy.AppCore.Services.InterestsServices
         }
         public int Create(Serie t)
         {
+
+            if (t.Quantity <= 0)
+            {
+                throw new ArgumentException("La tasa o la cantidad no puede ser 0.");
+            }
+            if (t.Rate <= 0)
+            {
+                throw new ArgumentException("La tasa no debe de ser 0.");
+            }
             
             #region Validate number period
             if (t.Initial < 0 || t.End < 0)

@@ -269,6 +269,13 @@ namespace Economy.Forms
                 MessageBox.Show("Escriba la duración del proyecto.");
                 return;
             }
+            if (Convert.ToInt64(txtDuration.Texts) < 2)
+            {
+                txtDuration.Texts = "";
+                MessageBox.Show("La duración no puede ser 0 ni 1");
+                return;
+            }
+
             TotalPeriod = Convert.ToInt32(txtDuration.Texts);
             ActivateForm();
 
@@ -505,6 +512,8 @@ namespace Economy.Forms
 
             try
             {
+                    
+               
                 if (cmbTypeSA.SelectedIndex == 0)
                 {
                     if (!ValidateFormAnnuity())
@@ -934,6 +943,20 @@ namespace Economy.Forms
 
         private void txtQuantity__TextChanged(object sender, EventArgs e)
         {
+
+            try
+            {
+                if (Convert.ToInt64(txtQuantity.Texts) <= 0)
+                {
+                    lblNotifyQR.Visible = true;
+                    return;
+                }
+                lblNotifyQR.Visible = false;
+            }
+            catch
+            {
+                lblNotifyQR.Visible = false;
+            }
         }
         private void Redraw(Graphics graphics)
         {
@@ -1218,6 +1241,40 @@ namespace Economy.Forms
                 lblNotify.Visible = false;
             }
 
+        }
+
+        private void txtDuration__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt64(txtDuration.Texts) < 2)
+                {
+                    lblNotifyDuration.Visible = true;
+                    return;
+                }
+                lblNotifyDuration.Visible = false;
+            }
+            catch
+            {
+                lblNotifyDuration.Visible = false;
+            }
+        }
+
+        private void txtRate__TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToInt64(txtRate.Texts) <=0)
+                {
+                    lblNotifyTasaPrincipal.Visible = true;
+                    return;
+                }
+                lblNotifyTasaPrincipal.Visible = false;
+            }
+            catch
+            {
+                lblNotifyTasaPrincipal.Visible = false;
+            }
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
