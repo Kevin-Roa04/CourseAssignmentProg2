@@ -1,6 +1,7 @@
 ﻿using Economy.AppCore.IServices;
 using Economy.AppCore.Processes;
 using Economy.Domain.Entities;
+using Economy.Domain.Entities.DTO.Interests;
 using Economy.Domain.Enums;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -172,11 +173,7 @@ namespace Economy.Forms
 
             graph.Refresh();
             lblValues(0, 0);
-            //this.cmbTypeIdgv.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
-            //this.cmbTypeSA.Items.AddRange(Enum.GetValues(typeof(TypeSA)).Cast<object>().ToArray());
-            //this.cmbTypeSerie.Items.AddRange(Enum.GetValues(typeof(TypeSeries)).Cast<object>().ToArray());
-            //this.cmbFlowType.Items.AddRange(Enum.GetValues(typeof(FlowType)).Cast<object>().ToArray());
-
+      
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtEnd.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -424,17 +421,67 @@ namespace Economy.Forms
 
                 if (cmbTypeIdgv.SelectedIndex == 0)
                 {
-                    dgvInterest.DataSource = AnnuityServices.GetIdProject(Project.Id);
+                    List<AnualidadDTO> anualidadDTOs = new List<AnualidadDTO>();
+                    foreach(Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
+                    {
+                        anualidadDTOs.Add(new AnualidadDTO()
+                        {
+                            Id=annuity.Id,
+                            Inicio=annuity.Initial,
+                            Final=annuity.End,
+                            Flujo=annuity.FlowType,
+                            Futuro=annuity.Future,
+                            Pago=annuity.Payment,
+                            Presente=annuity.Present,
+                            Tasa=annuity.Rate,
+                            Tipo=annuity.Type
+                        });
+                    }
+                    dgvInterest.DataSource = anualidadDTOs;
                 }
                 if (cmbTypeIdgv.SelectedIndex == 1)
                 {
-                    dgvInterest.DataSource = SerieServices.GetIdProject(Project.Id);
+                    List<SerieDTO> serieDTOs = new List<SerieDTO>();
+                    foreach(Serie serie in SerieServices.GetIdProject(Project.Id))
+                    {
+                        serieDTOs.Add(new SerieDTO()
+                        {
+                            Id=serie.Id,
+                            Inicio = serie.Initial,
+                            Final = serie.End,
+                            Flujo = serie.FlowType,
+                            Futuro = serie.Future,
+                            Presente = serie.Present,
+                            Tasa = serie.Rate,
+                            Tipo = serie.Type,
+                            Cantidad=serie.Quantity,
+                            Incremental=serie.Incremental,
+                            PagoFinal=serie.FinalPayment,
+                            PagoInicial=serie.DownPayment
+                        });
+                    }
+                    dgvInterest.DataSource = serieDTOs;
                 }
                 if (cmbTypeIdgv.SelectedIndex == 2)
                 {
-                    dgvInterest.DataSource = InterestServices.GetIdProject(Project.Id);
+                    List<InteresDTO> interesDTOs = new List<InteresDTO>();
+                    foreach(Interest interest in InterestServices.GetIdProject(Project.Id))
+                    {
+                        interesDTOs.Add(new InteresDTO()
+                        {
+                            Id=interest.Id,
+                            Inicio = interest.Initial,
+                            Final = interest.End,
+                            Flujo = interest.FlowType,
+                            Futuro = interest.Future,
+                            Pago = interest.Payment,
+                            Presente = interest.Present,
+                            Tasa = interest.Rate,
+                        });
+                    }
+                    dgvInterest.DataSource = interesDTOs;
                 }
-                dgvInterest.Columns.Remove(dgvInterest.Columns["Project"]);
+              
             }
         }
 
@@ -533,7 +580,7 @@ namespace Economy.Forms
                         TotalPeriod = TotalPeriod
                     };
                     this.AnnuityServices.Create(annuity);
-
+                    graph_Paint(null, null);
                 }
                 else if (cmbTypeSA.SelectedIndex == 1)
                 {
@@ -565,7 +612,7 @@ namespace Economy.Forms
                         Type = ((TypeSeries)cmbTypeSerie.SelectedIndex).ToString()
                     };
                     this.SerieServices.Create(serie);
-
+                    graph_Paint(null, null);
                 }
                 else if (cmbTypeSA.SelectedIndex == 2)
                 {
@@ -586,7 +633,7 @@ namespace Economy.Forms
                         TotalPeriod = TotalPeriod
                     };
                     this.InterestServices.Create(interest);
-
+                    graph_Paint(null, null);
 
                 }
                 lblTypeIdgv.Visible = true;
@@ -749,18 +796,7 @@ namespace Economy.Forms
             int space = 19;
             //int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height*.5)+Convert.ToInt32(-62.2 - (i * 20)) : Convert.ToInt32(248.8 + (i * 20)));
             int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height*.5)+Convert.ToInt32(62.2 + (i * 20)));
-            //if (annuity.FlowType == FlowType.Exit.ToString() &&HeightLine>= graph.Height*.9)
-            //{
-            //    graph.Height=graph.Height+100;
-            //    ClearPanel();
-            //    return;
-            //}
-            //else if(annuity.FlowType==FlowType.Entry.ToString() && HeightLine <=graph.Height*.1)
-            //{
-            //    graph.Height = graph.Height+ 100;
-            //    ClearPanel();
-            //    return;
-            //}
+            
             if(!ModifyPlane(annuity.FlowType.ToString(), HeightLine))
             {
                 return;
