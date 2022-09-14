@@ -75,6 +75,11 @@ namespace Economy.Forms
         public IUsersServices UsersServices { get; set; }
         public IProjectServices projectServices { get; set; }
 
+     
+        public bool blocked = false;
+        public int seconds = 0;
+        public int intents = 0;
+        public bool onPassword = false;
         #region -> Interests service
         private IInterestServices<Annuity> AnnuityServices { get; set; }
         private IInterestServices<Serie> SerieServices { get; set; }
@@ -116,6 +121,7 @@ namespace Economy.Forms
             this.amortizacionServices = amortizacionServices;
 
             InitializeComponent();
+           
         }
         public FormLogin()
         {
@@ -167,6 +173,18 @@ namespace Economy.Forms
             User user = UsersServices.Registration(txtName.Texts, txtPassword.Texts);
             if (user == null)
             {
+                intents++;
+
+                if (intents == 3)
+                {
+                    btnSignIn.Visible = false;
+                    lblNotifyDuration.Text = "Has hecho 3 intentos. espera un minuto.";
+                    lblNotifyDuration.Visible = true;
+                    txtName.Texts = "";
+                    txtPassword.Texts = "";
+                    tLock.Enabled = true;
+                    intents = 0;
+                }
                 MessageBox.Show("User is not registered");
                 return;
             }
@@ -194,9 +212,44 @@ namespace Economy.Forms
             }
         }
 
+
         private void PbClose_Click(object sender, EventArgs e)
         {
+            tLock.Enabled = false;
             Application.Exit();
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tLock_Tick(object sender, EventArgs e)
+        {
+            seconds++;
+            if (seconds == 60)
+            {
+                lblNotifyDuration.Visible = false;
+                btnSignIn.Visible = true;
+                lblSeconds.Visible = false;
+                tLock.Enabled = false;
+                return;
+            }
+            lblSeconds.Visible = true;
+            lblSeconds.Text = "00:"+seconds.ToString();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            onPassword = !onPassword;
+            if (onPassword)
+            {
+                txtPassword.PasswordChar = true;
+            }
+            else
+            {
+                txtPassword.PasswordChar = false;
+            }
         }
     }
 }

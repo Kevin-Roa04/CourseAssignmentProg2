@@ -29,6 +29,7 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.customPanel1 = new Economy.BeatifulComponents.CustomPanel();
             this.PbClose = new System.Windows.Forms.PictureBox();
@@ -44,6 +45,9 @@ namespace Economy.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lblNotifyDuration = new System.Windows.Forms.Label();
+            this.lblSeconds = new System.Windows.Forms.Label();
+            this.tLock = new System.Windows.Forms.Timer(this.components);
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -162,6 +166,7 @@ namespace Economy.Forms
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(67, 295);
             this.pictureBox2.Name = "pictureBox2";
@@ -169,6 +174,7 @@ namespace Economy.Forms
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -259,12 +265,43 @@ namespace Economy.Forms
             this.pictureBox5.TabIndex = 20;
             this.pictureBox5.TabStop = false;
             // 
+            // lblNotifyDuration
+            // 
+            this.lblNotifyDuration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblNotifyDuration.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNotifyDuration.ForeColor = System.Drawing.Color.Red;
+            this.lblNotifyDuration.Location = new System.Drawing.Point(140, 345);
+            this.lblNotifyDuration.Name = "lblNotifyDuration";
+            this.lblNotifyDuration.Size = new System.Drawing.Size(212, 20);
+            this.lblNotifyDuration.TabIndex = 44;
+            this.lblNotifyDuration.Text = "Espera";
+            this.lblNotifyDuration.Visible = false;
+            // 
+            // lblSeconds
+            // 
+            this.lblSeconds.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblSeconds.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSeconds.ForeColor = System.Drawing.Color.Red;
+            this.lblSeconds.Location = new System.Drawing.Point(187, 366);
+            this.lblSeconds.Name = "lblSeconds";
+            this.lblSeconds.Size = new System.Drawing.Size(50, 20);
+            this.lblSeconds.TabIndex = 45;
+            this.lblSeconds.Text = "Segundos";
+            this.lblSeconds.Visible = false;
+            // 
+            // tLock
+            // 
+            this.tLock.Interval = 1000;
+            this.tLock.Tick += new System.EventHandler(this.tLock_Tick);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(853, 508);
+            this.Controls.Add(this.lblSeconds);
+            this.Controls.Add(this.lblNotifyDuration);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -279,6 +316,7 @@ namespace Economy.Forms
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FornLogin";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormLogin_MouseDown);
             this.customPanel1.ResumeLayout(false);
             this.customPanel1.PerformLayout();
@@ -307,5 +345,8 @@ namespace Economy.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox PbClose;
+        private System.Windows.Forms.Label lblNotifyDuration;
+        private System.Windows.Forms.Label lblSeconds;
+        private System.Windows.Forms.Timer tLock;
     }
 }
