@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="BeatifulComponents\ComponentsInterest\GraphInterest.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="BeatifulComponents\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="BeatifulComponents\EllipseControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="BeatifulComponents\RJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="BeatifulComponents\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="BeatifulComponents\RJTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FormCreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CalculateIntSimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CalculateIntCompuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ConverterTasa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormFX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmAssetAmount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\CalculateInt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Depreciacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FmrCalendarioDePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FmrConvertidor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FmrInteres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormCreateProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormGraphInterest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MenuInteres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UsersControl\UserControlFunction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
