@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Economy",
+    "\\Economy.Domain",
+    "\\Economy.Domain\\Interfaces",
+    "\\Economy\\Forms"
+  ],
+  "SelectedNode": "\\Economy.Domain\\Interfaces\\IRepository.cs",
+  "PreviewInSolutionExplorer": false
+}
