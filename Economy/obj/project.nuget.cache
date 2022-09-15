@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VtrZ3ib9TrpFlK/0ZGxmLMcFTGwyjp8COkizwb80oPyvh+dVHmQuUHuPOL6F6rjC46oJhLOlEiNMKRNabIHwjA==",
+  "dgSpecHash": "ymF7LeDEO9XeNrxIah1FhURdZ8o8ILOVTd0nAaZnEswSdFD+KbMND4on7c4DqLsyt9TceQIkq0NO/0ePtl3+ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\jf\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quezada\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",

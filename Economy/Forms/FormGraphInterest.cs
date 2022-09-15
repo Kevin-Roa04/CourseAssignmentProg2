@@ -105,7 +105,7 @@ namespace Economy.Forms
         #endregion
         public FormGraphInterest(Project project)
         {
-            
+
             this.Project = project;
             InitializeComponent();
             coord_y = (int)(graph.Height * 0.5);
@@ -132,7 +132,7 @@ namespace Economy.Forms
             txtEnd.Texts = "";
             txtQuantity.Texts = "";
             cmbFlowType.SelectedIndex = 0;
-          
+
         }
         private void lblValues(decimal present, decimal future)
         {
@@ -155,7 +155,7 @@ namespace Economy.Forms
                 TotalPresent = Math.Abs(TotalPresent);
 
                 decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
-                decimal rateYear = ((decimal)Math.Pow((double)(1+rate), TotalPeriod));
+                decimal rateYear = ((decimal)Math.Pow((double)(1 + rate), TotalPeriod));
                 decimal TotalFuture = TotalPresent * rateYear;
                 TotalFuture = Math.Abs(TotalFuture);
 
@@ -173,7 +173,7 @@ namespace Economy.Forms
 
             graph.Refresh();
             lblValues(0, 0);
-      
+
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtEnd.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -185,23 +185,25 @@ namespace Economy.Forms
         public int VerificateInterest(object t)
         {
 
-            List<object> lists=new List<object>();
-            lists.AddRange(AnnuityServices.GetIdProject(Project.Id).Where(x=>x.FlowType== (string)t.GetType().GetProperty("FlowType").GetValue(t) 
-            && x.Id<(int) t.GetType().GetProperty("Id").GetValue(t)
-            ) );
+            List<object> lists = new List<object>();
+            lists.AddRange(AnnuityServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
+            &&
+               DateTime.Compare(x.Date, (DateTime)t.GetType().GetProperty("Date").GetValue(t)) < 0
+            ));
             lists.AddRange(InterestServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
-            && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)
-            
+            &&
+             DateTime.Compare(x.Date, (DateTime)t.GetType().GetProperty("Date").GetValue(t)) < 0
+
             ));
             lists.AddRange(SerieServices.GetIdProject(Project.Id).Where(x => x.FlowType == (string)t.GetType().GetProperty("FlowType").GetValue(t)
-             && x.Id < (int)t.GetType().GetProperty("Id").GetValue(t)
-         
+             &&
+                DateTime.Compare(x.Date, (DateTime)t.GetType().GetProperty("Date").GetValue(t)) < 0
              ));
 
 
-            
+
             int i = lists.Where(x => (string)x.GetType().GetProperty("FlowType").GetValue(x) == (string)t.GetType().GetProperty("FlowType").GetValue(t)
-             && (int) x.GetType().GetProperty("Id").GetValue(x)!=(int) t.GetType().GetProperty("Id").GetValue(t)
+             && (int)x.GetType().GetProperty("Id").GetValue(x) != (int)t.GetType().GetProperty("Id").GetValue(t)
              && (int)t.GetType().GetProperty("Initial").GetValue(t) >= (int)x.GetType().GetProperty("Initial").GetValue(x)
              && (int)t.GetType().GetProperty("Initial").GetValue(t) <= (int)x.GetType().GetProperty("End").GetValue(x)
              || (int)t.GetType().GetProperty("End").GetValue(t) >= (int)x.GetType().GetProperty("Initial").GetValue(x)
@@ -233,14 +235,14 @@ namespace Economy.Forms
                     e.Handled = false;
                     return;
                 }
-                 if (e.KeyChar == (char)8)
+                if (e.KeyChar == (char)8)
                 {
                     e.Handled = false;
                     return;
                 }
                 e.Handled = true;
             }
-          
+
         }
         private void lblQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -422,19 +424,19 @@ namespace Economy.Forms
                 if (cmbTypeIdgv.SelectedIndex == 0)
                 {
                     List<AnualidadDTO> anualidadDTOs = new List<AnualidadDTO>();
-                    foreach(Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
+                    foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
                     {
                         anualidadDTOs.Add(new AnualidadDTO()
                         {
-                            Id=annuity.Id,
-                            Inicio=annuity.Initial,
-                            Final=annuity.End,
-                            Flujo=annuity.FlowType,
-                            Futuro=annuity.Future,
-                            Pago=annuity.Payment,
-                            Presente=annuity.Present,
-                            Tasa=annuity.Rate,
-                            Tipo=annuity.Type
+                            Id = annuity.Id,
+                            Inicio = annuity.Initial,
+                            Final = annuity.End,
+                            Flujo = annuity.FlowType,
+                            Futuro = annuity.Future,
+                            Pago = annuity.Payment,
+                            Presente = annuity.Present,
+                            Tasa = annuity.Rate,
+                            Tipo = annuity.Type
                         });
                     }
                     dgvInterest.DataSource = anualidadDTOs;
@@ -442,11 +444,11 @@ namespace Economy.Forms
                 if (cmbTypeIdgv.SelectedIndex == 1)
                 {
                     List<SerieDTO> serieDTOs = new List<SerieDTO>();
-                    foreach(Serie serie in SerieServices.GetIdProject(Project.Id))
+                    foreach (Serie serie in SerieServices.GetIdProject(Project.Id))
                     {
                         serieDTOs.Add(new SerieDTO()
                         {
-                            Id=serie.Id,
+                            Id = serie.Id,
                             Inicio = serie.Initial,
                             Final = serie.End,
                             Flujo = serie.FlowType,
@@ -454,10 +456,10 @@ namespace Economy.Forms
                             Presente = serie.Present,
                             Tasa = serie.Rate,
                             Tipo = serie.Type,
-                            Cantidad=serie.Quantity,
-                            Incremental=serie.Incremental,
-                            PagoFinal=serie.FinalPayment,
-                            PagoInicial=serie.DownPayment
+                            Cantidad = serie.Quantity,
+                            Incremental = serie.Incremental,
+                            PagoFinal = serie.FinalPayment,
+                            PagoInicial = serie.DownPayment
                         });
                     }
                     dgvInterest.DataSource = serieDTOs;
@@ -465,11 +467,11 @@ namespace Economy.Forms
                 if (cmbTypeIdgv.SelectedIndex == 2)
                 {
                     List<InteresDTO> interesDTOs = new List<InteresDTO>();
-                    foreach(Interest interest in InterestServices.GetIdProject(Project.Id))
+                    foreach (Interest interest in InterestServices.GetIdProject(Project.Id))
                     {
                         interesDTOs.Add(new InteresDTO()
                         {
-                            Id=interest.Id,
+                            Id = interest.Id,
                             Inicio = interest.Initial,
                             Final = interest.End,
                             Flujo = interest.FlowType,
@@ -481,13 +483,13 @@ namespace Economy.Forms
                     }
                     dgvInterest.DataSource = interesDTOs;
                 }
-              
+
             }
         }
 
         #region -> Interest rate validators
 
-       
+
         private bool ValidateFormAnnuity()
         {
             if (String.IsNullOrEmpty(txtInitial.Texts)
@@ -559,8 +561,8 @@ namespace Economy.Forms
 
             try
             {
-                    
-               
+
+
                 if (cmbTypeSA.SelectedIndex == 0)
                 {
                     if (!ValidateFormAnnuity())
@@ -577,7 +579,9 @@ namespace Economy.Forms
                         Payment = Convert.ToDecimal(txtQuantity.Texts),
                         Rate = Convert.ToDecimal(txtRate.Texts),
                         Project = Project,
-                        TotalPeriod = TotalPeriod
+                        TotalPeriod = TotalPeriod,
+                        Date = DateTime.UtcNow
+
                     };
                     this.AnnuityServices.Create(annuity);
                     graph_Paint(null, null);
@@ -609,7 +613,8 @@ namespace Economy.Forms
                         Quantity = string.IsNullOrEmpty(txtQuantity.Texts) == true ? 0.0M : Convert.ToDecimal(txtQuantity.Texts),
                         Rate = Convert.ToDecimal(txtRate.Texts),
                         TotalPeriod = TotalPeriod,
-                        Type = ((TypeSeries)cmbTypeSerie.SelectedIndex).ToString()
+                        Type = ((TypeSeries)cmbTypeSerie.SelectedIndex).ToString(),
+                        Date = DateTime.UtcNow
                     };
                     this.SerieServices.Create(serie);
                     graph_Paint(null, null);
@@ -630,7 +635,8 @@ namespace Economy.Forms
                         ProjectId = Project.Id,
                         Rate = Convert.ToDecimal(txtRate.Texts),
                         Payment = Convert.ToDecimal(txtQuantity.Texts),
-                        TotalPeriod = TotalPeriod
+                        TotalPeriod = TotalPeriod,
+                        Date = DateTime.UtcNow
                     };
                     this.InterestServices.Create(interest);
                     graph_Paint(null, null);
@@ -752,23 +758,23 @@ namespace Economy.Forms
             Point[] RightPoints = new Point[2];
             if (flowType == FlowType.Exit.ToString())
             {
-                LeftPoints[0] = new Point(initial.X - size, initial.Y-size);
-                LeftPoints[1] = new Point(initial.X, initial.Y );
-                RightPoints[0] = new Point(initial.X + size, initial.Y-size);
-                RightPoints[1] = new Point(initial.X, initial.Y );
+                LeftPoints[0] = new Point(initial.X - size, initial.Y - size);
+                LeftPoints[1] = new Point(initial.X, initial.Y);
+                RightPoints[0] = new Point(initial.X + size, initial.Y - size);
+                RightPoints[1] = new Point(initial.X, initial.Y);
             }
             else
             {
-                LeftPoints[0] = new Point(initial.X -size, initial.Y +size);
-                LeftPoints[1]= new Point(initial.X, initial.Y);
+                LeftPoints[0] = new Point(initial.X - size, initial.Y + size);
+                LeftPoints[1] = new Point(initial.X, initial.Y);
                 RightPoints[0] = new Point(initial.X + size, initial.Y + size);
-                RightPoints[1]= new Point(initial.X, initial.Y);
+                RightPoints[1] = new Point(initial.X, initial.Y);
             }
             graphic.DrawLine(Pen, LeftPoints[0], LeftPoints[1]);
-            graphic.DrawLine(Pen, RightPoints[0], RightPoints[1]);  
+            graphic.DrawLine(Pen, RightPoints[0], RightPoints[1]);
 
         }
-        private bool ModifyPlane(string FlowTypeS,int HeightLine)
+        private bool ModifyPlane(string FlowTypeS, int HeightLine)
         {
             if (FlowTypeS == FlowType.Exit.ToString() && HeightLine >= graph.Height * .9)
             {
@@ -795,14 +801,14 @@ namespace Economy.Forms
             //line configuration
             int space = 19;
             //int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height*.5)+Convert.ToInt32(-62.2 - (i * 20)) : Convert.ToInt32(248.8 + (i * 20)));
-            int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height*.5)+Convert.ToInt32(62.2 + (i * 20)));
-            
-            if(!ModifyPlane(annuity.FlowType.ToString(), HeightLine))
+            int HeightLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (graph.Height * .5) + Convert.ToInt32(-62.2 - (i * 20)) : (graph.Height * .5) + Convert.ToInt32(62.2 + (i * 20)));
+
+            if (!ModifyPlane(annuity.FlowType.ToString(), HeightLine))
             {
                 return;
             }
             //  int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? (coord_y - (15+(i*3))) : coord_y + 15+(i*3));
-            int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15 );
+            int coord_y_entreLine = (int)(annuity.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15);
             Color color = annuity.FlowType == FlowType.Entry.ToString() ? Color.Green : Color.Red;
 
 
@@ -850,7 +856,7 @@ namespace Economy.Forms
             graphics.DrawString(annuity.Payment.ToString(), drawFont, drawBrush, ((middle * space)), positionPayment);
 
         }
-        
+
         private void DrawInterest(Interest interest, Graphics graphics)
         {
             int i = VerificateInterest(interest);
@@ -872,7 +878,7 @@ namespace Economy.Forms
             //int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? (coord_y - (15 + (i * 3))) : coord_y + 15 + (i * 3));
             int coord_y_entreLine = (int)(interest.FlowType == FlowType.Entry.ToString() ? coord_y - 15 : coord_y + 15);
             int space = 19;
-           
+
             Color color = interest.FlowType == $"{FlowType.Entry}" ? Color.Green : Color.Red;
 
 
@@ -915,7 +921,7 @@ namespace Economy.Forms
             //int HeightLine = serie.FlowType == FlowType.Entry.ToString() ? Convert.ToInt32((graph.Height) * .20) : Convert.ToInt32(graph.Height * .80);
             int coord_y_entreLine = serie.FlowType == FlowType.Entry.ToString() ? (coord_y - 15) : coord_y + 15;
             Color color = serie.FlowType == FlowType.Entry.ToString() ? Color.Green : Color.Red;
-            int HeightInitialLine = serie.FlowType == FlowType.Entry.ToString() ? HeightLine + 20: HeightLine - 20;
+            int HeightInitialLine = serie.FlowType == FlowType.Entry.ToString() ? HeightLine + 20 : HeightLine - 20;
 
             // initial line
             graphics.DrawLine(new Pen(Color.White), new Point(Coord_x, coord_y_entreLine),
@@ -934,7 +940,7 @@ namespace Economy.Forms
                 new Point((serie.End*space)+3,coord_y_entreLine),
                 new Point((serie.End*space)+3,HeightLine),
             };
-            DrawArrow(serie.FlowType,graphics, EndPoints[1], 5, color);
+            DrawArrow(serie.FlowType, graphics, EndPoints[1], 5, color);
             graphics.DrawLines(new Pen(color), EndPoints);
 
             // line or curve payment
@@ -961,7 +967,7 @@ namespace Economy.Forms
             int curveLines = serie.FlowType == FlowType.Entry.ToString() ? HeightInitialLine + 30 : HeightInitialLine - 30;
             // payments
             float middle = Convert.ToSingle((serie.Initial + serie.End) / 2.0);
-            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curveLines-16: curveLines+5 ; // -18 and +12
+            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curveLines - 16 : curveLines + 5; // -18 and +12
             System.Drawing.Font drawFont = new System.Drawing.Font(lblInitial.Font.ToString(), 8);
             SolidBrush drawBrush = new SolidBrush(color);
             graphics.DrawString(serie.Type == TypeSeries.Arithmetic.ToString() ? "G= " + serie.Quantity.ToString() : "j= " + serie.Quantity.ToString() + "%", drawFont, drawBrush, ((middle * space)), positionPayment);
@@ -1237,6 +1243,12 @@ namespace Economy.Forms
                     lblNotify.Visible = true;
                     return;
                 }
+                if (Convert.ToInt64(txtEnd.Texts) <= 0)
+                {
+                    lblNotify.Text = "El valor final no puede ser 0";
+                    lblNotify.Visible = true;
+                    return;
+                }
                 if (Convert.ToInt32(txtInitial.Texts) > Convert.ToInt32(txtEnd.Texts))
                 {
                     lblNotify.Text = "El valor inicial no puede ser mayor que el valor final.";
@@ -1246,11 +1258,12 @@ namespace Economy.Forms
                
                 lblNotify.Visible = false;
             }
-            catch {
+            catch
+            {
                 lblNotify.Visible = false;
             }
-            
-           
+
+
         }
 
         private void txtInitial__TextChanged(object sender, EventArgs e)
@@ -1264,16 +1277,17 @@ namespace Economy.Forms
                     lblNotify.Visible = true;
                     return;
                 }
-                if (Convert.ToInt32(txtInitial.Texts)> Convert.ToInt32(txtEnd.Texts))
+                if (Convert.ToInt32(txtInitial.Texts) > Convert.ToInt32(txtEnd.Texts))
                 {
                     lblNotify.Text = "El valor inicial no puede ser mayor que el valor final.";
                     lblNotify.Visible = true;
                     return;
                 }
-                
+
                 lblNotify.Visible = false;
             }
-            catch {
+            catch
+            {
                 lblNotify.Visible = false;
             }
 
@@ -1300,7 +1314,7 @@ namespace Economy.Forms
         {
             try
             {
-                if (Convert.ToInt64(txtRate.Texts) <=0)
+                if (Convert.ToInt64(txtRate.Texts) <= 0)
                 {
                     lblNotifyTasaPrincipal.Visible = true;
                     return;

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "chIZ746B92O/VaqBD2CW4d0jBxNd5vKdbNej5FQqgSQq9wenn0JnjrqrSJEh9eLcKR0+7wUqlSdOBq2CBnjDFA==",
+  "dgSpecHash": "D1kvdlmk+syKPVj7RjGRCc2uEF+Mq67Bh+RfZxXHFz2jRgrj5ByV1nlsX34GsGwGidweaJH6Y9XB0l4U8/F7Yw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\jf\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",

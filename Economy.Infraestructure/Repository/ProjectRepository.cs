@@ -61,7 +61,6 @@ namespace Economy.Infraestructure.Repository
 
         public Project FindbyId(int id)
         {
-
             try
             {
                 if (id <= 0)

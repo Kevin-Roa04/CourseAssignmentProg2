@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KW32cIazaPkYvTLcRGVeS3aogXJ3MbX5l1GMff0WDbDDCZRT4js+LwzZu57Iecq2px0Zbqb6Wynze52MB4gXzg==",
+  "dgSpecHash": "qn2hGJNkknYaj30yMwVFa8UBokOzISW0vdlDrVcvJX9tyzep/zYNAuzowmuDK0geCY8oUt6ZMHZ/YxRafbww4A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\jf\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quezada\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

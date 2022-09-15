@@ -1287,3 +1287,5 @@ C:\Users\Quezada\Desktop\jf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windo
 C:\Users\Quezada\Desktop\jf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.pdb
 C:\Users\Quezada\Desktop\jf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
 C:\Users\Quezada\Desktop\jf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.ResolveComReference.cache
