@@ -262,5 +262,14 @@ namespace Economy.Forms
             }
             this.Opacity -= 0.2;
         }
+
+        private void FadeIn_Tick(object sender, EventArgs e)
+        {
+            if (Opacity == 1)
+            {
+                FadeIn.Stop();
+            }
+            this.Opacity += .2;
+        }
     }
 }

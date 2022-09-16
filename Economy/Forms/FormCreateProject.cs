@@ -4,6 +4,7 @@ using Economy.AppCore.IServices;
 using Economy.BeatifulComponents;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
+using Guna.Charts.WinForms;
 using InteresPratica;
 using Proto1._0;
 using System;
@@ -97,8 +98,8 @@ namespace Economy.Forms
         {
             ProjectColor.Add("InterestWithGraph", Color.FromArgb(224, 239, 255));
             ProjectColor.Add("Excel", Color.FromArgb(177, 215, 185));
-            ProjectColor.Add("RateConversion", Color.FromArgb(244, 232, 248));
-            ProjectColor.Add("InterestConversion", Color.FromArgb(248, 245, 234));
+            ProjectColor.Add("RateConversion", Color.FromArgb(250, 112, 112));
+            ProjectColor.Add("InterestConversion", Color.FromArgb(100, 92, 170));
             ProjectColor.Add("Amortization", Color.FromArgb(255, 192, 144));
             ProjectColor.Add("Depreciation", Color.FromArgb(235, 199, 232));
             ProjectColor.Add("FNE", Color.FromArgb(125, 157, 156));
@@ -203,7 +204,8 @@ namespace Economy.Forms
             this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
-
+            CreatePieChart();
+            CreateLineChart();
             projects();
 
             
@@ -295,7 +297,7 @@ namespace Economy.Forms
                 project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
 
             }
-
+          
             FormGraphInterest formGraphInterest = new FormGraphInterest(project);
             formGraphInterest.txtRate.Texts = Rate(project).ToString();
             formGraphInterest.TotalPeriod=TotalPeriod(project);
@@ -309,7 +311,68 @@ namespace Economy.Forms
             formGraphInterest.SerieServices = this.SerieServices;
             formGraphInterest.AnnuityServices = this.AnnuityServices;
             formGraphInterest.FormCreateProject = this;
+            this.Opacity = 0;
+            this.Hide();
             formGraphInterest.ShowDialog();
+            Selection = -1;
+            txtProjectName.Visible = false;
+            lblLetters.Visible = false;
+            lblProjectName.Visible = false;
+            btnCreate.Visible = false;
+            lblTypeProject.Text = "";
+            lblTypeProject.Visible = false;
+            this.FadeIn.Start();
+            projects();
+            this.Show();
+
+        }
+        private void CreatePieChart()
+        {
+
+           
+            gunaChart1.Datasets.Clear();
+            var dataset = new Guna.Charts.WinForms.GunaPieDataset();
+            gunaChart1.Legend.Position = Guna.Charts.WinForms.LegendPosition.Right;
+            gunaChart1.XAxes.Display = false;
+            gunaChart1.YAxes.Display = false;
+            
+            dataset.DataPoints.Add("IG",projectServices.GetProjectByUser(GlobalUser.Id).Where(x=>x.Type==TypeProject.InterestWithGraph.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["InterestWithGraph"]);
+            dataset.DataPoints.Add("FE", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Excel.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["Excel"]);
+            dataset.DataPoints.Add("IN", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.RateConversion.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["RateConversion"]); 
+            dataset.DataPoints.Add("CI", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.InterestConversion.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["InterestConversion"]);
+            dataset.DataPoints.Add("A", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Amortization.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["Amortization"]);
+            dataset.DataPoints.Add("D", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Depreciation.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["Depreciation"]);
+            dataset.DataPoints.Add("FNE", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.FNE.ToString()).Count());
+            dataset.FillColors.Add(ProjectColor["FNE"]);
+            gunaChart1.Datasets.Add(dataset);
+            gunaChart1.Update();
+            lblNumberProject.Text ="Número de projectos: "+projectServices.GetProjectByUser(GlobalUser.Id).ToList().Count().ToString();
+        }
+        private void CreateLineChart()
+        {
+            gunaChart2.Datasets.Clear();
+           //gunaChart2.XAxes.GridLines.Display = false;
+           
+            gunaChart2.YAxes.GridLines.Display = false;
+            var dataset = new Guna.Charts.WinForms.GunaLineDataset();
+            dataset.PointRadius = 3;
+            dataset.PointStyle = PointStyle.Circle;
+            var results=from date in projectServices.GetProjectByUser(GlobalUser.Id)
+                       group date by date.Creation.Date.ToShortDateString();
+
+            foreach(var r in results)
+            {
+                dataset.DataPoints.Add(r.Key.ToString(), r.Count());
+            }
+            gunaChart2.Datasets.Add(dataset);
+            gunaChart2.Update();
+
         }
         private decimal Rate(Project project)
         {
@@ -435,6 +498,7 @@ namespace Economy.Forms
                     FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
                     FNE.ShowDialog();
                 }
+                
                 Selection = -1;
                 txtProjectName.Visible = false;
                 lblLetters.Visible = false;
@@ -443,6 +507,10 @@ namespace Economy.Forms
                 lblTypeProject.Text = "";
                 lblTypeProject.Visible = false;
                 projects();
+                this.Opacity = 0;
+                this.FadeIn.Start();
+                CreatePieChart();
+                CreateLineChart();
                 this.Show();
             }
             catch(Exception ex)
@@ -451,7 +519,5 @@ namespace Economy.Forms
             }
         }
 
-
-        
     }
 }

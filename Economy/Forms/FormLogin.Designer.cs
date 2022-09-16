@@ -50,6 +50,7 @@ namespace Economy.Forms
             this.tLock = new System.Windows.Forms.Timer(this.components);
             this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
             this.FadeOut = new System.Windows.Forms.Timer(this.components);
+            this.FadeIn = new System.Windows.Forms.Timer(this.components);
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -306,6 +307,12 @@ namespace Economy.Forms
             this.FadeOut.Interval = 30;
             this.FadeOut.Tick += new System.EventHandler(this.FadeOut_Tick);
             // 
+            // FadeIn
+            // 
+            this.FadeIn.Enabled = true;
+            this.FadeIn.Interval = 30;
+            this.FadeIn.Tick += new System.EventHandler(this.FadeIn_Tick);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -326,6 +333,7 @@ namespace Economy.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FornLogin";
             this.Load += new System.EventHandler(this.FormLogin_Load);
@@ -362,5 +370,6 @@ namespace Economy.Forms
         private System.Windows.Forms.Timer tLock;
         private BeatifulComponents.EllipseControl ellipseControl1;
         private System.Windows.Forms.Timer FadeOut;
+        private System.Windows.Forms.Timer FadeIn;
     }
 }

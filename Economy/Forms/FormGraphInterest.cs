@@ -1200,6 +1200,7 @@ namespace Economy.Forms
                 projectServices.Delete(Project);
             }
             this.Close();
+  
         }
         private decimal Rate(Project project)
         {
@@ -1357,6 +1358,8 @@ namespace Economy.Forms
             }
             this.Opacity += 0.2;
         }
+
+       
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
         {

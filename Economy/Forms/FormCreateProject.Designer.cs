@@ -31,6 +31,36 @@ namespace Economy.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateProject));
+            Guna.Charts.WinForms.ChartFont chartFont1 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont2 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont3 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont4 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid1 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick1 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont5 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid2 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick2 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont6 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid3 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.PointLabel pointLabel1 = new Guna.Charts.WinForms.PointLabel();
+            Guna.Charts.WinForms.ChartFont chartFont7 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont9 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont10 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont11 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.ChartFont chartFont12 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid4 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick4 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont13 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid5 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.Tick tick5 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont14 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Grid grid6 = new Guna.Charts.WinForms.Grid();
+            Guna.Charts.WinForms.PointLabel pointLabel2 = new Guna.Charts.WinForms.PointLabel();
+            Guna.Charts.WinForms.ChartFont chartFont15 = new Guna.Charts.WinForms.ChartFont();
+            Guna.Charts.WinForms.Tick tick6 = new Guna.Charts.WinForms.Tick();
+            Guna.Charts.WinForms.ChartFont chartFont16 = new Guna.Charts.WinForms.ChartFont();
             this.PC0 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC1 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC2 = new Economy.BeatifulComponents.ProjectComponent();
@@ -49,6 +79,10 @@ namespace Economy.Forms
             this.lblLetters = new System.Windows.Forms.Label();
             this.btnCreate = new Economy.BeatifulComponents.RJButton();
             this.lblTypeProject = new System.Windows.Forms.Label();
+            this.gunaPieDataset1 = new Guna.Charts.WinForms.GunaPieDataset();
+            this.gunaChart1 = new Guna.Charts.WinForms.GunaChart();
+            this.lblNumberProject = new System.Windows.Forms.Label();
+            this.gunaChart2 = new Guna.Charts.WinForms.GunaChart();
             this.flpCProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +117,7 @@ namespace Economy.Forms
             // 
             // PC2
             // 
-            this.PC2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(248)))));
+            this.PC2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.PC2.BorderRadius = 16;
             this.PC2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PC2.Description = "Intereses nominales";
@@ -113,7 +147,7 @@ namespace Economy.Forms
             // 
             // PC3
             // 
-            this.PC3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.PC3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(92)))), ((int)(((byte)(170)))));
             this.PC3.BorderRadius = 16;
             this.PC3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PC3.Description = "Calcular interés";
@@ -172,7 +206,7 @@ namespace Economy.Forms
             this.flpProjects.AutoScroll = true;
             this.flpProjects.Location = new System.Drawing.Point(12, 252);
             this.flpProjects.Name = "flpProjects";
-            this.flpProjects.Size = new System.Drawing.Size(651, 369);
+            this.flpProjects.Size = new System.Drawing.Size(651, 383);
             this.flpProjects.TabIndex = 4;
             // 
             // PbClose
@@ -180,7 +214,7 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(869, 8);
+            this.PbClose.Location = new System.Drawing.Point(904, 9);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -237,7 +271,7 @@ namespace Economy.Forms
             this.txtProjectName.BorderSize = 2;
             this.txtProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProjectName.Location = new System.Drawing.Point(672, 107);
+            this.txtProjectName.Location = new System.Drawing.Point(692, 107);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProjectName.Multiline = false;
             this.txtProjectName.Name = "txtProjectName";
@@ -258,7 +292,7 @@ namespace Economy.Forms
             this.lblProjectName.BackColor = System.Drawing.Color.Transparent;
             this.lblProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblProjectName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProjectName.Location = new System.Drawing.Point(676, 87);
+            this.lblProjectName.Location = new System.Drawing.Point(696, 87);
             this.lblProjectName.Name = "lblProjectName";
             this.lblProjectName.Size = new System.Drawing.Size(127, 18);
             this.lblProjectName.TabIndex = 56;
@@ -270,7 +304,7 @@ namespace Economy.Forms
             this.lblLetters.AutoSize = true;
             this.lblLetters.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLetters.ForeColor = System.Drawing.Color.Silver;
-            this.lblLetters.Location = new System.Drawing.Point(828, 146);
+            this.lblLetters.Location = new System.Drawing.Point(848, 146);
             this.lblLetters.Name = "lblLetters";
             this.lblLetters.Size = new System.Drawing.Size(0, 18);
             this.lblLetters.TabIndex = 57;
@@ -288,7 +322,7 @@ namespace Economy.Forms
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(707, 167);
+            this.btnCreate.Location = new System.Drawing.Point(727, 167);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(135, 43);
             this.btnCreate.TabIndex = 58;
@@ -301,18 +335,111 @@ namespace Economy.Forms
             // lblTypeProject
             // 
             this.lblTypeProject.AutoSize = true;
-            this.lblTypeProject.Location = new System.Drawing.Point(683, 68);
+            this.lblTypeProject.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTypeProject.Location = new System.Drawing.Point(703, 65);
             this.lblTypeProject.Name = "lblTypeProject";
             this.lblTypeProject.Size = new System.Drawing.Size(0, 15);
             this.lblTypeProject.TabIndex = 59;
             this.lblTypeProject.Visible = false;
+            // 
+            // gunaPieDataset1
+            // 
+            this.gunaPieDataset1.Label = "Pie1";
+            // 
+            // gunaChart1
+            // 
+            this.gunaChart1.BackColor = System.Drawing.Color.White;
+            this.gunaChart1.Legend.Display = false;
+            chartFont1.FontName = "Arial";
+            this.gunaChart1.Legend.LabelFont = chartFont1;
+            this.gunaChart1.Location = new System.Drawing.Point(677, 280);
+            this.gunaChart1.Name = "gunaChart1";
+            this.gunaChart1.Size = new System.Drawing.Size(237, 154);
+            this.gunaChart1.TabIndex = 60;
+            chartFont2.FontName = "Arial";
+            chartFont2.Size = 12;
+            chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Title.Font = chartFont2;
+            chartFont3.FontName = "Arial";
+            this.gunaChart1.Tooltips.BodyFont = chartFont3;
+            chartFont4.FontName = "Arial";
+            chartFont4.Size = 9;
+            chartFont4.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart1.Tooltips.TitleFont = chartFont4;
+            this.gunaChart1.XAxes.GridLines = grid1;
+            chartFont5.FontName = "Arial";
+            tick1.Font = chartFont5;
+            this.gunaChart1.XAxes.Ticks = tick1;
+            this.gunaChart1.YAxes.GridLines = grid2;
+            chartFont6.FontName = "Arial";
+            tick2.Font = chartFont6;
+            this.gunaChart1.YAxes.Ticks = tick2;
+            this.gunaChart1.ZAxes.GridLines = grid3;
+            chartFont7.FontName = "Arial";
+            pointLabel1.Font = chartFont7;
+            this.gunaChart1.ZAxes.PointLabels = pointLabel1;
+            chartFont8.FontName = "Arial";
+            tick3.Font = chartFont8;
+            this.gunaChart1.ZAxes.Ticks = tick3;
+            // 
+            // lblNumberProject
+            // 
+            this.lblNumberProject.AutoSize = true;
+            this.lblNumberProject.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNumberProject.ForeColor = System.Drawing.Color.Silver;
+            this.lblNumberProject.Location = new System.Drawing.Point(715, 255);
+            this.lblNumberProject.Name = "lblNumberProject";
+            this.lblNumberProject.Size = new System.Drawing.Size(0, 18);
+            this.lblNumberProject.TabIndex = 61;
+            // 
+            // gunaChart2
+            // 
+            this.gunaChart2.BackColor = System.Drawing.Color.White;
+            this.gunaChart2.Legend.Display = false;
+            chartFont9.FontName = "Arial";
+            this.gunaChart2.Legend.LabelFont = chartFont9;
+            this.gunaChart2.Location = new System.Drawing.Point(679, 440);
+            this.gunaChart2.Name = "gunaChart2";
+            this.gunaChart2.Size = new System.Drawing.Size(243, 195);
+            this.gunaChart2.TabIndex = 62;
+            chartFont10.FontName = "Arial";
+            chartFont10.Size = 12;
+            chartFont10.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart2.Title.Font = chartFont10;
+            chartFont11.FontName = "Arial";
+            this.gunaChart2.Tooltips.BodyFont = chartFont11;
+            chartFont12.FontName = "Arial";
+            chartFont12.Size = 9;
+            chartFont12.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
+            this.gunaChart2.Tooltips.TitleFont = chartFont12;
+            this.gunaChart2.XAxes.Display = false;
+            grid4.TickMarkLength = 3;
+            this.gunaChart2.XAxes.GridLines = grid4;
+            chartFont13.FontName = "Arial";
+            tick4.Font = chartFont13;
+            this.gunaChart2.XAxes.Ticks = tick4;
+            grid5.TickMarkLength = 2;
+            this.gunaChart2.YAxes.GridLines = grid5;
+            chartFont14.FontName = "Trebuchet MS";
+            tick5.Font = chartFont14;
+            this.gunaChart2.YAxes.Ticks = tick5;
+            this.gunaChart2.ZAxes.GridLines = grid6;
+            chartFont15.FontName = "Arial";
+            pointLabel2.Font = chartFont15;
+            this.gunaChart2.ZAxes.PointLabels = pointLabel2;
+            chartFont16.FontName = "Arial";
+            tick6.Font = chartFont16;
+            this.gunaChart2.ZAxes.Ticks = tick6;
             // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(890, 633);
+            this.ClientSize = new System.Drawing.Size(926, 647);
+            this.Controls.Add(this.gunaChart2);
+            this.Controls.Add(this.lblNumberProject);
+            this.Controls.Add(this.gunaChart1);
             this.Controls.Add(this.lblTypeProject);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblLetters);
@@ -359,5 +486,9 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblLetters;
         private BeatifulComponents.RJButton btnCreate;
         private System.Windows.Forms.Label lblTypeProject;
+        private Guna.Charts.WinForms.GunaPieDataset gunaPieDataset1;
+        private Guna.Charts.WinForms.GunaChart gunaChart1;
+        private System.Windows.Forms.Label lblNumberProject;
+        private Guna.Charts.WinForms.GunaChart gunaChart2;
     }
 }
