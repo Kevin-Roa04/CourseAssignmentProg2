@@ -83,7 +83,7 @@ namespace Economy.Forms
 
         #endregion
 
-
+        public IProjectServices projectServices { get; set; }
         private Interest Interest = null;
         private Serie Serie = null;
         private Annuity Annuity = null;
@@ -94,7 +94,7 @@ namespace Economy.Forms
         private int graphWidth;
 
         private int selection = -1;
-        private int TotalPeriod = -1;
+        public int TotalPeriod = -1;
         private Project Project;
         public FormCreateProject FormCreateProject;
 
@@ -279,7 +279,7 @@ namespace Economy.Forms
             ActivateForm();
 
         }
-        private void ActivateForm()
+        public void ActivateForm()
         {
             lblDuration.Visible = false;
             txtDuration.Visible = false;
@@ -1195,7 +1195,29 @@ namespace Economy.Forms
 
         private void PbClose_Click(object sender, EventArgs e)
         {
+            if (TotalPeriod == 0 || Rate(Project)==0)
+            {
+                projectServices.Delete(Project);
+            }
             this.Close();
+        }
+        private decimal Rate(Project project)
+        {
+            decimal Value = 0;
+
+            if (AnnuityServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = AnnuityServices.GetIdProject(project.Id)[0].Rate;
+            }
+            else if (InterestServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = InterestServices.GetIdProject(project.Id)[0].Rate;
+            }
+            else if (SerieServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = SerieServices.GetIdProject(project.Id)[0].Rate;
+            }
+            return Value;
         }
 
         private void dgvInterest_DoubleClick(object sender, EventArgs e)
@@ -1325,6 +1347,15 @@ namespace Economy.Forms
             {
                 lblNotifyTasaPrincipal.Visible = false;
             }
+        }
+
+        private void FadeIn_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity == 1)
+            {
+                FadeIn.Stop();
+            }
+            this.Opacity += 0.2;
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)

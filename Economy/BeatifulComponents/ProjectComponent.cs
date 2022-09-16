@@ -25,13 +25,13 @@ namespace Economy.BeatifulComponents
         public Label LabelNameProject;
         public ProjectComponent()
         {
-
+            this.Cursor = Cursors.Hand;
             this.BackColor = Color.White;
             this.ForeColor = Color.Black;
             this.Size = new Size(150, 150);
             this.LabelDescription = new Label();
             this.LabelDescription.Size = new Size(12, 12);
-            
+            this.LabelDescription.Cursor= Cursors.Hand;
             this.LabelDescription.Location = new Point((int)(this.Width*.5), (int)(this.Height*.7));
             this.LabelDescription.Font = new Font(this.Font.FontFamily, 10, FontStyle.Regular, GraphicsUnit.Pixel);
             this.LabelDescription.ForeColor = Color.Black;
@@ -44,7 +44,7 @@ namespace Economy.BeatifulComponents
             this.LabelLetter.Font = new Font(this.Font.FontFamily, 30, FontStyle.Bold, GraphicsUnit.Pixel);
             this.LabelLetter.ForeColor = Color.Black;
             this.LabelLetter.AutoSize = true;
-
+            this.LabelLetter.Cursor= Cursors.Hand;
 
             this.LabelNameProject = new Label();
             this.LabelNameProject.Size = new Size(12, 12);
@@ -52,6 +52,7 @@ namespace Economy.BeatifulComponents
             this.LabelNameProject.Font = new Font(this.Font.FontFamily, 10, FontStyle.Regular, GraphicsUnit.Pixel);
             this.LabelNameProject.ForeColor = Color.Black;
             this.LabelNameProject.AutoSize = true;
+            this.LabelNameProject.Cursor= Cursors.Hand;
 
             this.Controls.Add(LabelNameProject);
             this.Controls.Add(LabelLetter);

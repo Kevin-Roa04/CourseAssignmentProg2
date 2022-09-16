@@ -48,6 +48,7 @@ namespace Economy.Forms
             this.lblProjectName = new System.Windows.Forms.Label();
             this.lblLetters = new System.Windows.Forms.Label();
             this.btnCreate = new Economy.BeatifulComponents.RJButton();
+            this.lblTypeProject = new System.Windows.Forms.Label();
             this.flpCProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
@@ -297,12 +298,22 @@ namespace Economy.Forms
             this.btnCreate.Visible = false;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
+            // lblTypeProject
+            // 
+            this.lblTypeProject.AutoSize = true;
+            this.lblTypeProject.Location = new System.Drawing.Point(683, 68);
+            this.lblTypeProject.Name = "lblTypeProject";
+            this.lblTypeProject.Size = new System.Drawing.Size(0, 15);
+            this.lblTypeProject.TabIndex = 59;
+            this.lblTypeProject.Visible = false;
+            // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(890, 633);
+            this.Controls.Add(this.lblTypeProject);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.lblLetters);
             this.Controls.Add(this.lblProjectName);
@@ -313,6 +324,7 @@ namespace Economy.Forms
             this.Controls.Add(this.flpProjects);
             this.Controls.Add(this.flpCProject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCreateProject";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -346,5 +358,6 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblProjectName;
         private System.Windows.Forms.Label lblLetters;
         private BeatifulComponents.RJButton btnCreate;
+        private System.Windows.Forms.Label lblTypeProject;
     }
 }

@@ -29,10 +29,12 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblNotifyQR = new System.Windows.Forms.Label();
             this.lblNotifyTasaPrincipal = new System.Windows.Forms.Label();
             this.lblNotifyDuration = new System.Windows.Forms.Label();
             this.lblNotify = new System.Windows.Forms.Label();
@@ -72,7 +74,7 @@ namespace Economy.Forms
             this.lblPresent = new System.Windows.Forms.Label();
             this.pnScroll = new System.Windows.Forms.Panel();
             this.PbClose = new System.Windows.Forms.PictureBox();
-            this.lblNotifyQR = new System.Windows.Forms.Label();
+            this.FadeIn = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).BeginInit();
             this.customPanel1.SuspendLayout();
@@ -121,6 +123,18 @@ namespace Economy.Forms
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // lblNotifyQR
+            // 
+            this.lblNotifyQR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.lblNotifyQR.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNotifyQR.ForeColor = System.Drawing.Color.Red;
+            this.lblNotifyQR.Location = new System.Drawing.Point(94, 462);
+            this.lblNotifyQR.Name = "lblNotifyQR";
+            this.lblNotifyQR.Size = new System.Drawing.Size(169, 13);
+            this.lblNotifyQR.TabIndex = 45;
+            this.lblNotifyQR.Text = "La tasa o la cantidad no puede ser 0";
+            this.lblNotifyQR.Visible = false;
             // 
             // lblNotifyTasaPrincipal
             // 
@@ -591,23 +605,23 @@ namespace Economy.Forms
             this.dgvInterest.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInterest.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInterest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.InactiveBorder;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInterest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInterest.EnableHeadersVisualStyles = false;
             this.dgvInterest.GridColor = System.Drawing.Color.Linen;
             this.dgvInterest.Location = new System.Drawing.Point(-3, 6);
@@ -749,17 +763,11 @@ namespace Economy.Forms
             this.PbClose.TabStop = false;
             this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
-            // lblNotifyQR
+            // FadeIn
             // 
-            this.lblNotifyQR.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lblNotifyQR.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNotifyQR.ForeColor = System.Drawing.Color.Red;
-            this.lblNotifyQR.Location = new System.Drawing.Point(94, 462);
-            this.lblNotifyQR.Name = "lblNotifyQR";
-            this.lblNotifyQR.Size = new System.Drawing.Size(169, 13);
-            this.lblNotifyQR.TabIndex = 45;
-            this.lblNotifyQR.Text = "La tasa o la cantidad no puede ser 0";
-            this.lblNotifyQR.Visible = false;
+            this.FadeIn.Enabled = true;
+            this.FadeIn.Interval = 30;
+            this.FadeIn.Tick += new System.EventHandler(this.FadeIn_Tick);
             // 
             // FormGraphInterest
             // 
@@ -779,6 +787,7 @@ namespace Economy.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormGraphInterest";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormGraphInterest";
             this.Load += new System.EventHandler(this.FormGraphInterest_Load);
@@ -803,8 +812,6 @@ namespace Economy.Forms
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbNext;
-        private RJTextBox txtDuration;
         private BeatifulComponents.RJComboBox cmbTypeSA;
         private RJTextBox txtQuantity;
         private System.Windows.Forms.Label lblWI;
@@ -817,7 +824,6 @@ namespace Economy.Forms
         private RJTextBox txtInitial;
         private System.Windows.Forms.Label lblTypeSerie;
         private BeatifulComponents.RJComboBox cmbTypeSerie;
-        private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label lblTI;
         private BeatifulComponents.RJButton btnCreate;
         private System.Windows.Forms.Label lblFinalPayment;
@@ -825,12 +831,8 @@ namespace Economy.Forms
         private RJTextBox txtFinalPayment;
         private RJTextBox txtDownPayment;
         private System.Windows.Forms.Label lblRate;
-        private RJTextBox txtRate;
         private System.Windows.Forms.CheckBox cbDecremental;
-        private BeatifulComponents.CustomPanel customPanel1;
         private System.Windows.Forms.DataGridView dgvInterest;
-        private BeatifulComponents.RJComboBox cmbTypeIdgv;
-        private System.Windows.Forms.Label lblTypeIdgv;
         private System.Windows.Forms.PictureBox btnImage;
         private System.Windows.Forms.PictureBox btnPDF;
         private System.Windows.Forms.PictureBox btnUpdate;
@@ -843,5 +845,13 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblNotifyDuration;
         private System.Windows.Forms.Label lblNotifyTasaPrincipal;
         private System.Windows.Forms.Label lblNotifyQR;
+        public RJTextBox txtRate;
+        public System.Windows.Forms.PictureBox pbNext;
+        public RJTextBox txtDuration;
+        public System.Windows.Forms.Label lblDuration;
+        public BeatifulComponents.RJComboBox cmbTypeIdgv;
+        public System.Windows.Forms.Label lblTypeIdgv;
+        public BeatifulComponents.CustomPanel customPanel1;
+        private System.Windows.Forms.Timer FadeIn;
     }
 }

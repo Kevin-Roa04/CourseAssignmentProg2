@@ -49,6 +49,7 @@ namespace Economy.Forms
         private Dictionary<string, Color> ProjectColor = new Dictionary<string, Color>();
         private Dictionary<string, string> ProjectDescription = new Dictionary<string, string>();
         private Dictionary<string, string> ProjectLetter = new Dictionary<string, string>();
+        private Dictionary<string, MouseEventHandler> ProjectClick = new Dictionary<string, MouseEventHandler>();
         #endregion
 
 
@@ -59,8 +60,18 @@ namespace Economy.Forms
             DictionaryProjectColor();
             DictionaryProjectDescription();
             DictionaryProjectLetter();
+            DictionaryProjectClick();
         }
-
+        private void DictionaryProjectClick()
+        {
+            ProjectClick.Add("InterestWithGraph", PCInterest);
+            ProjectClick.Add("Excel", null);
+            ProjectClick.Add("RateConversion", null);
+            ProjectClick.Add("InterestConversion",null);
+            ProjectClick.Add("Amortization", null);
+            ProjectClick.Add("Depreciation", null);
+            ProjectClick.Add("FNE", null);
+        }
         private void DictionaryProjectLetter()
         {
 
@@ -168,8 +179,16 @@ namespace Economy.Forms
                     Description = ProjectDescription[project.Type],
                     Letter = ProjectLetter[project.Type],
                     BackColor = ProjectColor[project.Type],
-                    BorderRadius = 16
+                    BorderRadius = 16,
+                    Tag=project.Id,
                 };
+                projectComponent.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelDescription.Tag = project.Id;
+                projectComponent.LabelLetter.Tag = project.Id;
+                projectComponent.LabelNameProject.Tag = project.Id;
+                projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type] ;
                 flpProjects.Controls.Add(projectComponent);
             }
         }
@@ -184,6 +203,7 @@ namespace Economy.Forms
             this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
+
             projects();
 
             
@@ -191,6 +211,7 @@ namespace Economy.Forms
 
         private void PbClose_Click(object sender, EventArgs e)
         {
+          
             Application.Exit();
         }
 
@@ -232,52 +253,98 @@ namespace Economy.Forms
                     Description = ProjectDescription[project.Type],
                     Letter = ProjectLetter[project.Type],
                     BackColor = ProjectColor[project.Type],
-                    BorderRadius = 16
+                    BorderRadius = 16,
+                    Tag = project.Id
                 };
+              
+                projectComponent.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelDescription.Tag = project.Id;
+                projectComponent.LabelLetter.Tag = project.Id;
+                projectComponent.LabelNameProject.Tag = project.Id;
+                projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
                 flpProjects.Controls.Add(projectComponent);
             }
         }
 
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-        //    Selection = 0;
-        //    pnCreateProject.Visible = true;
-
-        //}
-        private void GraphInterest(Project project)
-        {
-            this.Hide();
-            FormGraphInterest formGraphInterest = new FormGraphInterest(project);
-            formGraphInterest.InterestServices = this.InterestServices;
-            formGraphInterest.SerieServices = this.SerieServices;
-            formGraphInterest.AnnuityServices = this.AnnuityServices;
-            formGraphInterest.FormCreateProject = this;
-            formGraphInterest.ShowDialog();
-        }
-        private void ExcelForm(string projectName)
-        {
-            this.Hide();
-                 FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, projectName); //txtProjectName
-                 formExcel.ShowDialog();
-        }
-        private void InteresNominal()
-        {
-            this.Hide();
-            FmrInteres fmrInteres = new FmrInteres(nominal);
-            fmrInteres.FormCreateProject = this;
-             fmrInteres.ShowDialog();
-        }
+       
 
         private void PCMouseClick(object sender, MouseEventArgs e)
         {
-          
+            
             Selection= (int)Convert.ToUInt64( ( sender as ProjectComponent).Name.Substring(2));
             if (Selection != -1)
             {
                 txtProjectName.Visible = true;
                 btnCreate.Visible = true;
                 lblProjectName.Visible = true;
+                lblTypeProject.Text = ProjectDescription[((TypeProject)Selection).ToString()];
+                lblTypeProject.ForeColor = ProjectColor[((TypeProject)Selection).ToString()];
+                lblTypeProject.Visible = true;
             }
+        }
+        private void PCInterest(object sender,MouseEventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+
+            }
+
+            FormGraphInterest formGraphInterest = new FormGraphInterest(project);
+            formGraphInterest.txtRate.Texts = Rate(project).ToString();
+            formGraphInterest.TotalPeriod=TotalPeriod(project);
+            formGraphInterest.txtDuration.Texts= TotalPeriod(project).ToString();
+            formGraphInterest.ActivateForm();
+            formGraphInterest.customPanel1.Visible = true;
+            formGraphInterest.lblTypeIdgv.Visible = true;
+            formGraphInterest.cmbTypeIdgv.Visible = true;
+            formGraphInterest.projectServices = this.projectServices;
+            formGraphInterest.InterestServices = this.InterestServices;
+            formGraphInterest.SerieServices = this.SerieServices;
+            formGraphInterest.AnnuityServices = this.AnnuityServices;
+            formGraphInterest.FormCreateProject = this;
+            formGraphInterest.ShowDialog();
+        }
+        private decimal Rate(Project project)
+        {
+            decimal Value=0;
+
+            if (AnnuityServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = AnnuityServices.GetIdProject(project.Id)[0].Rate;
+            }
+            else if (InterestServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = InterestServices.GetIdProject(project.Id)[0].Rate;
+            }
+            else if (SerieServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = SerieServices.GetIdProject(project.Id)[0].Rate;
+            }
+            return Value;
+        }
+        private int TotalPeriod(Project project)
+        {
+            int Value = 0;
+            if (AnnuityServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = AnnuityServices.GetIdProject(project.Id)[0].TotalPeriod;
+            }
+            else if (InterestServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = InterestServices.GetIdProject(project.Id)[0].TotalPeriod;
+            }
+            else if (SerieServices.GetIdProject(project.Id).Count > 0)
+            {
+                Value = SerieServices.GetIdProject(project.Id)[0].TotalPeriod;
+            }
+            return Value;
         }
 
         private void txtNameProject__TextChanged(object sender, EventArgs e)
@@ -312,8 +379,6 @@ namespace Economy.Forms
             }
             try
             {
-
-
                 Project project = new Project()
                 {
                     Name = txtProjectName.Texts,
@@ -328,6 +393,7 @@ namespace Economy.Forms
                 {
                     FormGraphInterest formGraphInterest = new FormGraphInterest(project);
                     formGraphInterest.InterestServices = this.InterestServices;
+                    formGraphInterest.projectServices = this.projectServices;
                     formGraphInterest.SerieServices = this.SerieServices;
                     formGraphInterest.AnnuityServices = this.AnnuityServices;
                     formGraphInterest.FormCreateProject = this;
@@ -374,6 +440,8 @@ namespace Economy.Forms
                 lblLetters.Visible = false;
                 lblProjectName.Visible = false;
                 btnCreate.Visible = false;
+                lblTypeProject.Text = "";
+                lblTypeProject.Visible = false;
                 projects();
                 this.Show();
             }
