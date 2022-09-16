@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ymF7LeDEO9XeNrxIah1FhURdZ8o8ILOVTd0nAaZnEswSdFD+KbMND4on7c4DqLsyt9TceQIkq0NO/0ePtl3+ng==",
+  "dgSpecHash": "Z+k6+uFkdaL1T01derDWQzUUGOdYJ4i5/Hwgscfo6z4ZAC66WHBfxIEkIwcGu5RBSFw6N6C26o/jyb/gIL2OkQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Quezada\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quezada\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
+    "C:\\Users\\Quezada\\.nuget\\packages\\guna.charts.winforms\\1.0.4\\guna.charts.winforms.1.0.4.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -131,6 +132,16 @@
       "warningLevel": 1,
       "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Guna.Charts.WinForms 1.0.4\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Guna.Charts.WinForms",
       "targetGraphs": [
         "net5.0-windows7.0"
       ]

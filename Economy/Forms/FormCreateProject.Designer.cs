@@ -29,471 +29,203 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateProject));
-            this.customPanel1 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.customPanel2 = new Economy.BeatifulComponents.CustomPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.customPanel13 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.customPanel14 = new Economy.BeatifulComponents.CustomPanel();
-            this.customPanel11 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.customPanel12 = new Economy.BeatifulComponents.CustomPanel();
-            this.customPanel9 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.customPanel10 = new Economy.BeatifulComponents.CustomPanel();
-            this.customPanel7 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.customPanel8 = new Economy.BeatifulComponents.CustomPanel();
-            this.customPanel3 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.customPanel6 = new Economy.BeatifulComponents.CustomPanel();
-            this.customPanel4 = new Economy.BeatifulComponents.CustomPanel();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.customPanel5 = new Economy.BeatifulComponents.CustomPanel();
-            this.pnCreateProject = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnCreateProject = new Economy.BeatifulComponents.RJButton();
-            this.txtProjectName = new Economy.RJTextBox();
+            this.PC0 = new Economy.BeatifulComponents.ProjectComponent();
+            this.PC1 = new Economy.BeatifulComponents.ProjectComponent();
+            this.PC2 = new Economy.BeatifulComponents.ProjectComponent();
+            this.flpCProject = new System.Windows.Forms.FlowLayoutPanel();
+            this.PC3 = new Economy.BeatifulComponents.ProjectComponent();
+            this.PC4 = new Economy.BeatifulComponents.ProjectComponent();
+            this.PC5 = new Economy.BeatifulComponents.ProjectComponent();
+            this.PC6 = new Economy.BeatifulComponents.ProjectComponent();
+            this.flpProjects = new System.Windows.Forms.FlowLayoutPanel();
             this.PbClose = new System.Windows.Forms.PictureBox();
-            this.customPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.customPanel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            this.customPanel11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            this.customPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            this.customPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.customPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.customPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.pnCreateProject.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.FadeIn = new System.Windows.Forms.Timer(this.components);
+            this.txtSearch = new Economy.RJTextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.txtProjectName = new Economy.RJTextBox();
+            this.lblProjectName = new System.Windows.Forms.Label();
+            this.lblLetters = new System.Windows.Forms.Label();
+            this.btnCreate = new Economy.BeatifulComponents.RJButton();
+            this.flpCProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
             // 
-            // customPanel1
+            // PC0
             // 
-            this.customPanel1.BackColor = System.Drawing.Color.White;
-            this.customPanel1.BorderRadius = 10;
-            this.customPanel1.Controls.Add(this.pictureBox1);
-            this.customPanel1.Controls.Add(this.label1);
-            this.customPanel1.Controls.Add(this.customPanel2);
-            this.customPanel1.ForeColor = System.Drawing.Color.Black;
-            this.customPanel1.GradientAngle = 90F;
-            this.customPanel1.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel1.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel1.Location = new System.Drawing.Point(25, 9);
-            this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(209, 133);
-            this.customPanel1.TabIndex = 0;
-            this.customPanel1.Click += new System.EventHandler(this.label1_Click);
+            this.PC0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.PC0.BorderRadius = 16;
+            this.PC0.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC0.Description = "Interés y gráfica";
+            this.PC0.ForeColor = System.Drawing.Color.Black;
+            this.PC0.Letter = "IG";
+            this.PC0.Location = new System.Drawing.Point(3, 3);
+            this.PC0.Name = "PC0";
+            this.PC0.NameProject = "";
+            this.PC0.Size = new System.Drawing.Size(150, 150);
+            this.PC0.TabIndex = 0;
             // 
-            // pictureBox1
+            // PC1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.label1_Click);
+            this.PC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(215)))), ((int)(((byte)(185)))));
+            this.PC1.BorderRadius = 16;
+            this.PC1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC1.Description = "Funciones en excel";
+            this.PC1.ForeColor = System.Drawing.Color.Black;
+            this.PC1.Letter = "FE";
+            this.PC1.Location = new System.Drawing.Point(159, 3);
+            this.PC1.Name = "PC1";
+            this.PC1.NameProject = "";
+            this.PC1.Size = new System.Drawing.Size(150, 150);
+            this.PC1.TabIndex = 1;
             // 
-            // label1
+            // PC2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(16, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Create interest and graphics";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.PC2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(232)))), ((int)(((byte)(248)))));
+            this.PC2.BorderRadius = 16;
+            this.PC2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC2.Description = "Intereses nominales";
+            this.PC2.ForeColor = System.Drawing.Color.Black;
+            this.PC2.Letter = "IN";
+            this.PC2.Location = new System.Drawing.Point(315, 3);
+            this.PC2.Name = "PC2";
+            this.PC2.NameProject = "";
+            this.PC2.Size = new System.Drawing.Size(150, 150);
+            this.PC2.TabIndex = 2;
             // 
-            // customPanel2
+            // flpCProject
             // 
-            this.customPanel2.BackColor = System.Drawing.Color.White;
-            this.customPanel2.BorderRadius = 10;
-            this.customPanel2.ForeColor = System.Drawing.Color.Black;
-            this.customPanel2.GradientAngle = 360F;
-            this.customPanel2.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel2.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel2.Location = new System.Drawing.Point(202, -12);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.Size = new System.Drawing.Size(10, 200);
-            this.customPanel2.TabIndex = 0;
+            this.flpCProject.AutoScroll = true;
+            this.flpCProject.Controls.Add(this.PC0);
+            this.flpCProject.Controls.Add(this.PC1);
+            this.flpCProject.Controls.Add(this.PC2);
+            this.flpCProject.Controls.Add(this.PC3);
+            this.flpCProject.Controls.Add(this.PC4);
+            this.flpCProject.Controls.Add(this.PC5);
+            this.flpCProject.Controls.Add(this.PC6);
+            this.flpCProject.Location = new System.Drawing.Point(13, 69);
+            this.flpCProject.Name = "flpCProject";
+            this.flpCProject.Size = new System.Drawing.Size(626, 177);
+            this.flpCProject.TabIndex = 3;
+            this.flpCProject.WrapContents = false;
             // 
-            // panel1
+            // PC3
             // 
-            this.panel1.Controls.Add(this.customPanel13);
-            this.panel1.Controls.Add(this.customPanel11);
-            this.panel1.Controls.Add(this.customPanel9);
-            this.panel1.Controls.Add(this.customPanel7);
-            this.panel1.Controls.Add(this.customPanel3);
-            this.panel1.Controls.Add(this.customPanel4);
-            this.panel1.Controls.Add(this.customPanel1);
-            this.panel1.Location = new System.Drawing.Point(1, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(479, 619);
-            this.panel1.TabIndex = 1;
+            this.PC3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(245)))), ((int)(((byte)(234)))));
+            this.PC3.BorderRadius = 16;
+            this.PC3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC3.Description = "Calcular interés";
+            this.PC3.ForeColor = System.Drawing.Color.Black;
+            this.PC3.Letter = "CI";
+            this.PC3.Location = new System.Drawing.Point(471, 3);
+            this.PC3.Name = "PC3";
+            this.PC3.NameProject = "";
+            this.PC3.Size = new System.Drawing.Size(150, 150);
+            this.PC3.TabIndex = 3;
             // 
-            // customPanel13
+            // PC4
             // 
-            this.customPanel13.BackColor = System.Drawing.Color.White;
-            this.customPanel13.BorderRadius = 10;
-            this.customPanel13.Controls.Add(this.pictureBox8);
-            this.customPanel13.Controls.Add(this.label7);
-            this.customPanel13.Controls.Add(this.customPanel14);
-            this.customPanel13.ForeColor = System.Drawing.Color.Black;
-            this.customPanel13.GradientAngle = 90F;
-            this.customPanel13.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel13.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel13.Location = new System.Drawing.Point(139, 452);
-            this.customPanel13.Name = "customPanel13";
-            this.customPanel13.Size = new System.Drawing.Size(209, 133);
-            this.customPanel13.TabIndex = 6;
+            this.PC4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(144)))));
+            this.PC4.BorderRadius = 16;
+            this.PC4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC4.Description = "Amortización";
+            this.PC4.ForeColor = System.Drawing.Color.Black;
+            this.PC4.Letter = "A";
+            this.PC4.Location = new System.Drawing.Point(627, 3);
+            this.PC4.Name = "PC4";
+            this.PC4.NameProject = "";
+            this.PC4.Size = new System.Drawing.Size(150, 150);
+            this.PC4.TabIndex = 5;
             // 
-            // pictureBox8
+            // PC5
             // 
-            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 2;
-            this.pictureBox8.TabStop = false;
+            this.PC5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(232)))));
+            this.PC5.BorderRadius = 16;
+            this.PC5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC5.Description = "Depreciación";
+            this.PC5.ForeColor = System.Drawing.Color.Black;
+            this.PC5.Letter = "D";
+            this.PC5.Location = new System.Drawing.Point(783, 3);
+            this.PC5.Name = "PC5";
+            this.PC5.NameProject = "";
+            this.PC5.Size = new System.Drawing.Size(150, 150);
+            this.PC5.TabIndex = 5;
             // 
-            // label7
+            // PC6
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(88, 15);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 18);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "FNE";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
+            this.PC6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(157)))), ((int)(((byte)(156)))));
+            this.PC6.BorderRadius = 16;
+            this.PC6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PC6.Description = "Flujo neto de efectivo";
+            this.PC6.ForeColor = System.Drawing.Color.Black;
+            this.PC6.Letter = "FNE";
+            this.PC6.Location = new System.Drawing.Point(939, 3);
+            this.PC6.Name = "PC6";
+            this.PC6.NameProject = "";
+            this.PC6.Size = new System.Drawing.Size(150, 150);
+            this.PC6.TabIndex = 4;
             // 
-            // customPanel14
+            // flpProjects
             // 
-            this.customPanel14.BackColor = System.Drawing.Color.White;
-            this.customPanel14.BorderRadius = 10;
-            this.customPanel14.ForeColor = System.Drawing.Color.Black;
-            this.customPanel14.GradientAngle = 360F;
-            this.customPanel14.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel14.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel14.Location = new System.Drawing.Point(202, -12);
-            this.customPanel14.Name = "customPanel14";
-            this.customPanel14.Size = new System.Drawing.Size(10, 200);
-            this.customPanel14.TabIndex = 0;
+            this.flpProjects.AutoScroll = true;
+            this.flpProjects.Location = new System.Drawing.Point(12, 252);
+            this.flpProjects.Name = "flpProjects";
+            this.flpProjects.Size = new System.Drawing.Size(651, 369);
+            this.flpProjects.TabIndex = 4;
             // 
-            // customPanel11
+            // PbClose
             // 
-            this.customPanel11.BackColor = System.Drawing.Color.White;
-            this.customPanel11.BorderRadius = 10;
-            this.customPanel11.Controls.Add(this.pictureBox7);
-            this.customPanel11.Controls.Add(this.label6);
-            this.customPanel11.Controls.Add(this.customPanel12);
-            this.customPanel11.ForeColor = System.Drawing.Color.Black;
-            this.customPanel11.GradientAngle = 90F;
-            this.customPanel11.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel11.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel11.Location = new System.Drawing.Point(252, 313);
-            this.customPanel11.Name = "customPanel11";
-            this.customPanel11.Size = new System.Drawing.Size(209, 133);
-            this.customPanel11.TabIndex = 6;
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(869, 8);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 52;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
-            // pictureBox7
+            // FadeIn
             // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 2;
-            this.pictureBox7.TabStop = false;
+            this.FadeIn.Enabled = true;
+            this.FadeIn.Interval = 30;
+            this.FadeIn.Tick += new System.EventHandler(this.FadeIn_Tick);
             // 
-            // label6
+            // txtSearch
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(61, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 18);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Depreciation";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtSearch.BorderFocusColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtSearch.BorderRadius = 6;
+            this.txtSearch.BorderSize = 2;
+            this.txtSearch.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtSearch.Location = new System.Drawing.Point(16, 29);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Multiline = false;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtSearch.PasswordChar = false;
+            this.txtSearch.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.txtSearch.PlaceholderText = "";
+            this.txtSearch.Size = new System.Drawing.Size(619, 33);
+            this.txtSearch.TabIndex = 53;
+            this.txtSearch.Texts = "";
+            this.txtSearch.UnderlinedStyle = false;
+            this.txtSearch._TextChanged += new System.EventHandler(this.txtSearch__TextChanged);
             // 
-            // customPanel12
+            // lblName
             // 
-            this.customPanel12.BackColor = System.Drawing.Color.White;
-            this.customPanel12.BorderRadius = 10;
-            this.customPanel12.ForeColor = System.Drawing.Color.Black;
-            this.customPanel12.GradientAngle = 360F;
-            this.customPanel12.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel12.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel12.Location = new System.Drawing.Point(202, -12);
-            this.customPanel12.Name = "customPanel12";
-            this.customPanel12.Size = new System.Drawing.Size(10, 200);
-            this.customPanel12.TabIndex = 0;
-            // 
-            // customPanel9
-            // 
-            this.customPanel9.BackColor = System.Drawing.Color.White;
-            this.customPanel9.BorderRadius = 10;
-            this.customPanel9.Controls.Add(this.pictureBox6);
-            this.customPanel9.Controls.Add(this.label5);
-            this.customPanel9.Controls.Add(this.customPanel10);
-            this.customPanel9.ForeColor = System.Drawing.Color.Black;
-            this.customPanel9.GradientAngle = 90F;
-            this.customPanel9.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel9.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel9.Location = new System.Drawing.Point(25, 313);
-            this.customPanel9.Name = "customPanel9";
-            this.customPanel9.Size = new System.Drawing.Size(209, 133);
-            this.customPanel9.TabIndex = 5;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 2;
-            this.pictureBox6.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(61, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Amortization";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // customPanel10
-            // 
-            this.customPanel10.BackColor = System.Drawing.Color.White;
-            this.customPanel10.BorderRadius = 10;
-            this.customPanel10.ForeColor = System.Drawing.Color.Black;
-            this.customPanel10.GradientAngle = 360F;
-            this.customPanel10.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel10.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel10.Location = new System.Drawing.Point(202, -12);
-            this.customPanel10.Name = "customPanel10";
-            this.customPanel10.Size = new System.Drawing.Size(10, 200);
-            this.customPanel10.TabIndex = 0;
-            // 
-            // customPanel7
-            // 
-            this.customPanel7.BackColor = System.Drawing.Color.White;
-            this.customPanel7.BorderRadius = 10;
-            this.customPanel7.Controls.Add(this.pictureBox5);
-            this.customPanel7.Controls.Add(this.label4);
-            this.customPanel7.Controls.Add(this.customPanel8);
-            this.customPanel7.ForeColor = System.Drawing.Color.Black;
-            this.customPanel7.GradientAngle = 90F;
-            this.customPanel7.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel7.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel7.Location = new System.Drawing.Point(252, 162);
-            this.customPanel7.Name = "customPanel7";
-            this.customPanel7.Size = new System.Drawing.Size(209, 133);
-            this.customPanel7.TabIndex = 4;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 2;
-            this.pictureBox5.TabStop = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(58, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 18);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Calculate interes";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // customPanel8
-            // 
-            this.customPanel8.BackColor = System.Drawing.Color.White;
-            this.customPanel8.BorderRadius = 10;
-            this.customPanel8.ForeColor = System.Drawing.Color.Black;
-            this.customPanel8.GradientAngle = 360F;
-            this.customPanel8.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel8.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel8.Location = new System.Drawing.Point(202, -12);
-            this.customPanel8.Name = "customPanel8";
-            this.customPanel8.Size = new System.Drawing.Size(10, 200);
-            this.customPanel8.TabIndex = 0;
-            // 
-            // customPanel3
-            // 
-            this.customPanel3.BackColor = System.Drawing.Color.White;
-            this.customPanel3.BorderRadius = 10;
-            this.customPanel3.Controls.Add(this.pictureBox4);
-            this.customPanel3.Controls.Add(this.label3);
-            this.customPanel3.Controls.Add(this.customPanel6);
-            this.customPanel3.ForeColor = System.Drawing.Color.Black;
-            this.customPanel3.GradientAngle = 90F;
-            this.customPanel3.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel3.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel3.Location = new System.Drawing.Point(28, 162);
-            this.customPanel3.Name = "customPanel3";
-            this.customPanel3.Size = new System.Drawing.Size(209, 133);
-            this.customPanel3.TabIndex = 3;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 2;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(16, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 18);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Create interest Nominal\r\n";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // customPanel6
-            // 
-            this.customPanel6.BackColor = System.Drawing.Color.White;
-            this.customPanel6.BorderRadius = 10;
-            this.customPanel6.ForeColor = System.Drawing.Color.Black;
-            this.customPanel6.GradientAngle = 360F;
-            this.customPanel6.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel6.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel6.Location = new System.Drawing.Point(202, -12);
-            this.customPanel6.Name = "customPanel6";
-            this.customPanel6.Size = new System.Drawing.Size(10, 200);
-            this.customPanel6.TabIndex = 0;
-            // 
-            // customPanel4
-            // 
-            this.customPanel4.BackColor = System.Drawing.Color.White;
-            this.customPanel4.BorderRadius = 10;
-            this.customPanel4.Controls.Add(this.pictureBox3);
-            this.customPanel4.Controls.Add(this.label2);
-            this.customPanel4.Controls.Add(this.customPanel5);
-            this.customPanel4.ForeColor = System.Drawing.Color.Black;
-            this.customPanel4.GradientAngle = 90F;
-            this.customPanel4.GradientBottomColor = System.Drawing.Color.White;
-            this.customPanel4.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel4.Location = new System.Drawing.Point(252, 9);
-            this.customPanel4.Name = "customPanel4";
-            this.customPanel4.Size = new System.Drawing.Size(209, 133);
-            this.customPanel4.TabIndex = 2;
-            this.customPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.customPanel4_Paint);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(17, 36);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(167, 89);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(51, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Function in Excel";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // customPanel5
-            // 
-            this.customPanel5.BackColor = System.Drawing.Color.White;
-            this.customPanel5.BorderRadius = 10;
-            this.customPanel5.ForeColor = System.Drawing.Color.Black;
-            this.customPanel5.GradientAngle = 360F;
-            this.customPanel5.GradientBottomColor = System.Drawing.Color.WhiteSmoke;
-            this.customPanel5.GradientTopColor = System.Drawing.Color.White;
-            this.customPanel5.Location = new System.Drawing.Point(202, -12);
-            this.customPanel5.Name = "customPanel5";
-            this.customPanel5.Size = new System.Drawing.Size(10, 200);
-            this.customPanel5.TabIndex = 0;
-            // 
-            // pnCreateProject
-            // 
-            this.pnCreateProject.Controls.Add(this.PbClose);
-            this.pnCreateProject.Controls.Add(this.pictureBox2);
-            this.pnCreateProject.Controls.Add(this.btnCreateProject);
-            this.pnCreateProject.Controls.Add(this.txtProjectName);
-            this.pnCreateProject.Location = new System.Drawing.Point(482, 3);
-            this.pnCreateProject.Name = "pnCreateProject";
-            this.pnCreateProject.Size = new System.Drawing.Size(322, 446);
-            this.pnCreateProject.TabIndex = 2;
-            this.pnCreateProject.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(13, 76);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 21);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnCreateProject
-            // 
-            this.btnCreateProject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnCreateProject.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnCreateProject.BorderColor = System.Drawing.Color.White;
-            this.btnCreateProject.BorderRadius = 25;
-            this.btnCreateProject.BorderSize = 1;
-            this.btnCreateProject.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCreateProject.FlatAppearance.BorderSize = 0;
-            this.btnCreateProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreateProject.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCreateProject.ForeColor = System.Drawing.Color.White;
-            this.btnCreateProject.Location = new System.Drawing.Point(77, 125);
-            this.btnCreateProject.Name = "btnCreateProject";
-            this.btnCreateProject.Size = new System.Drawing.Size(182, 49);
-            this.btnCreateProject.TabIndex = 16;
-            this.btnCreateProject.Text = "CREATE PROJECT";
-            this.btnCreateProject.TextColor = System.Drawing.Color.White;
-            this.btnCreateProject.UseVisualStyleBackColor = false;
-            this.btnCreateProject.Click += new System.EventHandler(this.btnCreateProject_Click);
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblName.ForeColor = System.Drawing.Color.Silver;
+            this.lblName.Location = new System.Drawing.Point(41, 7);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(114, 18);
+            this.lblName.TabIndex = 54;
+            this.lblName.Text = "Buscar por nombre";
             // 
             // txtProjectName
             // 
@@ -504,110 +236,115 @@ namespace Economy.Forms
             this.txtProjectName.BorderSize = 2;
             this.txtProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProjectName.Location = new System.Drawing.Point(42, 69);
+            this.txtProjectName.Location = new System.Drawing.Point(672, 107);
             this.txtProjectName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProjectName.Multiline = false;
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtProjectName.PasswordChar = false;
             this.txtProjectName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtProjectName.PlaceholderText = "Project name";
-            this.txtProjectName.Size = new System.Drawing.Size(253, 33);
-            this.txtProjectName.TabIndex = 15;
+            this.txtProjectName.PlaceholderText = "";
+            this.txtProjectName.Size = new System.Drawing.Size(205, 33);
+            this.txtProjectName.TabIndex = 55;
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
+            this.txtProjectName.Visible = false;
+            this.txtProjectName._TextChanged += new System.EventHandler(this.txtNameProject__TextChanged);
             // 
-            // PbClose
+            // lblProjectName
             // 
-            this.PbClose.BackColor = System.Drawing.Color.Transparent;
-            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(298, 6);
-            this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
-            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbClose.TabIndex = 52;
-            this.PbClose.TabStop = false;
-            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            this.lblProjectName.AutoSize = true;
+            this.lblProjectName.BackColor = System.Drawing.Color.Transparent;
+            this.lblProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblProjectName.ForeColor = System.Drawing.Color.Silver;
+            this.lblProjectName.Location = new System.Drawing.Point(676, 87);
+            this.lblProjectName.Name = "lblProjectName";
+            this.lblProjectName.Size = new System.Drawing.Size(127, 18);
+            this.lblProjectName.TabIndex = 56;
+            this.lblProjectName.Text = "Nombre del proyecto";
+            this.lblProjectName.Visible = false;
+            // 
+            // lblLetters
+            // 
+            this.lblLetters.AutoSize = true;
+            this.lblLetters.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLetters.ForeColor = System.Drawing.Color.Silver;
+            this.lblLetters.Location = new System.Drawing.Point(828, 146);
+            this.lblLetters.Name = "lblLetters";
+            this.lblLetters.Size = new System.Drawing.Size(0, 18);
+            this.lblLetters.TabIndex = 57;
+            this.lblLetters.Visible = false;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCreate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCreate.BorderColor = System.Drawing.Color.White;
+            this.btnCreate.BorderRadius = 20;
+            this.btnCreate.BorderSize = 1;
+            this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCreate.FlatAppearance.BorderSize = 0;
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreate.ForeColor = System.Drawing.Color.White;
+            this.btnCreate.Location = new System.Drawing.Point(707, 167);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(135, 43);
+            this.btnCreate.TabIndex = 58;
+            this.btnCreate.Text = "Crear";
+            this.btnCreate.TextColor = System.Drawing.Color.White;
+            this.btnCreate.UseVisualStyleBackColor = false;
+            this.btnCreate.Visible = false;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 634);
-            this.Controls.Add(this.pnCreateProject);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(890, 633);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.lblLetters);
+            this.Controls.Add(this.lblProjectName);
+            this.Controls.Add(this.txtProjectName);
+            this.Controls.Add(this.lblName);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.PbClose);
+            this.Controls.Add(this.flpProjects);
+            this.Controls.Add(this.flpCProject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCreateProject";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateProject";
-            this.Click += new System.EventHandler(this.label1_Click);
+            this.Load += new System.EventHandler(this.FormCreateProject_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormCreateProject_MouseDown);
-            this.customPanel1.ResumeLayout(false);
-            this.customPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.customPanel13.ResumeLayout(false);
-            this.customPanel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            this.customPanel11.ResumeLayout(false);
-            this.customPanel11.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            this.customPanel9.ResumeLayout(false);
-            this.customPanel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            this.customPanel7.ResumeLayout(false);
-            this.customPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.customPanel3.ResumeLayout(false);
-            this.customPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.customPanel4.ResumeLayout(false);
-            this.customPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.pnCreateProject.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.flpCProject.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private BeatifulComponents.CustomPanel customPanel1;
-        private BeatifulComponents.CustomPanel customPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel pnCreateProject;
-        private RJTextBox txtProjectName;
-        private BeatifulComponents.RJButton btnCreateProject;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private BeatifulComponents.CustomPanel customPanel4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label2;
-        private BeatifulComponents.CustomPanel customPanel5;
-        private BeatifulComponents.CustomPanel customPanel3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Label label3;
-        private BeatifulComponents.CustomPanel customPanel6;
-        private BeatifulComponents.CustomPanel customPanel7;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label4;
-        private BeatifulComponents.CustomPanel customPanel8;
-        private BeatifulComponents.CustomPanel customPanel9;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label label5;
-        private BeatifulComponents.CustomPanel customPanel10;
-        private BeatifulComponents.CustomPanel customPanel11;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Label label6;
-        private BeatifulComponents.CustomPanel customPanel12;
-        private BeatifulComponents.CustomPanel customPanel13;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Label label7;
-        private BeatifulComponents.CustomPanel customPanel14;
+        private BeatifulComponents.ProjectComponent projectComponent1;
+        private BeatifulComponents.ProjectComponent PC0;
+        private BeatifulComponents.ProjectComponent PC1;
+        private BeatifulComponents.ProjectComponent PC2;
+        private System.Windows.Forms.FlowLayoutPanel flpCProject;
+        private BeatifulComponents.ProjectComponent PC3;
+        private BeatifulComponents.ProjectComponent PC4;
+        private BeatifulComponents.ProjectComponent PC5;
+        private BeatifulComponents.ProjectComponent PC6;
+        private System.Windows.Forms.FlowLayoutPanel flpProjects;
         private System.Windows.Forms.PictureBox PbClose;
+        private System.Windows.Forms.Timer FadeIn;
+        private RJTextBox txtSearch;
+        private System.Windows.Forms.Label lblName;
+        private RJTextBox txtProjectName;
+        private System.Windows.Forms.Label lblProjectName;
+        private System.Windows.Forms.Label lblLetters;
+        private BeatifulComponents.RJButton btnCreate;
     }
 }

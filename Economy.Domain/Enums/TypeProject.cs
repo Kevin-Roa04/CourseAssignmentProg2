@@ -13,7 +13,8 @@ namespace Economy.Domain.Enums
         RateConversion,
         InterestConversion,
         Amortization,  
-        Depreciation
+        Depreciation,
+        FNE
     }
 
 }

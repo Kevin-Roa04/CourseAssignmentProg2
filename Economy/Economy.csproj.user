@@ -10,6 +10,9 @@
     <Compile Update="BeatifulComponents\EllipseControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="BeatifulComponents\ProjectComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="BeatifulComponents\RJButton.cs">
       <SubType>Component</SubType>
     </Compile>

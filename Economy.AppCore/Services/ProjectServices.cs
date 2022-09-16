@@ -26,9 +26,9 @@ namespace Economy.AppCore.Services
            return this.ProjectRepository.Delete(t);
         }
 
-        public Project FindbyId(int id)
+        public Project FindbyId(int id, int IdUser)
         {
-            return this.ProjectRepository.FindbyId(id);
+            return this.ProjectRepository.FindbyId(id,IdUser);
         }
 
         public List<Project> GetAll()
@@ -39,6 +39,11 @@ namespace Economy.AppCore.Services
         public List<Project> GetProjectByUser(int IdUser)
         {
             return this.ProjectRepository.GetProjectByUser(IdUser);
+        }
+
+        public List<Project> GetProjectsByName(string name, int IdUser)
+        {
+            return this.ProjectRepository.GetProjectsByName(name, IdUser);
         }
 
         public int Update(Project t)

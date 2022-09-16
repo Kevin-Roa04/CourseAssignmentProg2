@@ -34,42 +34,42 @@ namespace Economy.Forms
         }
         #endregion
         #region -> FormBorder
-        private int borderRadius = 10;
+        //private int borderRadius = 10;
 
-        private GraphicsPath GetCustomPanelPath(RectangleF rectangle, float radius)
-        {
-            float curveSize = radius * 2F;
-            GraphicsPath graphicsPath = new GraphicsPath();
-            graphicsPath.StartFigure();
-            graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Height - curveSize, curveSize, curveSize, 0, 90);
-            graphicsPath.AddArc(rectangle.X, (rectangle.Height - curveSize), curveSize, curveSize, 90, 90);
-            graphicsPath.AddArc(rectangle.X, rectangle.Y, curveSize, curveSize, 180, 90);
-            graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Y, curveSize, curveSize, 270, 90);
-            graphicsPath.CloseFigure();
-            return graphicsPath;
-        }
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
+        //private GraphicsPath GetCustomPanelPath(RectangleF rectangle, float radius)
+        //{
+        //    float curveSize = radius * 2F;
+        //    GraphicsPath graphicsPath = new GraphicsPath();
+        //    graphicsPath.StartFigure();
+        //    graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Height - curveSize, curveSize, curveSize, 0, 90);
+        //    graphicsPath.AddArc(rectangle.X, (rectangle.Height - curveSize), curveSize, curveSize, 90, 90);
+        //    graphicsPath.AddArc(rectangle.X, rectangle.Y, curveSize, curveSize, 180, 90);
+        //    graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Y, curveSize, curveSize, 270, 90);
+        //    graphicsPath.CloseFigure();
+        //    return graphicsPath;
+        //}
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        //    base.OnPaint(e);
 
-            RectangleF rectangleF = new RectangleF(0, 0, this.Width, this.Height);
+        //    RectangleF rectangleF = new RectangleF(0, 0, this.Width, this.Height);
 
-            if (borderRadius > 2)
-            {
-                using (GraphicsPath graphicsPath = GetCustomPanelPath(rectangleF, borderRadius))
-                using (Pen pen = new Pen(this.BackColor, 2))
-                {
+        //    if (borderRadius > 2)
+        //    {
+        //        using (GraphicsPath graphicsPath = GetCustomPanelPath(rectangleF, borderRadius))
+        //        using (Pen pen = new Pen(this.BackColor, 2))
+        //        {
 
-                    e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                    this.Region = new Region(graphicsPath);
+        //            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+        //            this.Region = new Region(graphicsPath);
 
-                    e.Graphics.DrawPath(pen, graphicsPath);
-                }
+        //            e.Graphics.DrawPath(pen, graphicsPath);
+        //        }
 
-            }
-            else this.Region = new Region(rectangleF);
+        //    }
+        //    else this.Region = new Region(rectangleF);
 
-        }
+        //}
 
         #endregion
         public IUsersServices UsersServices { get; set; }
@@ -155,7 +155,7 @@ namespace Economy.Forms
         private void btnSignUp_Click(object sender, EventArgs e)
         {
 
-            this.Hide();
+            FadeOut.Start();
             FormCreateUser formCreateUser = new FormCreateUser();
             formCreateUser.UsersServices = this.UsersServices;
             formCreateUser.ShowDialog();
@@ -166,7 +166,7 @@ namespace Economy.Forms
         {
             if (!ValidateForm())
             {
-                MessageBox.Show("Fill in the entire form, please");
+                MessageBox.Show("Rellene todos el formulario, por favor.");
                 return;
             }
 
@@ -192,7 +192,8 @@ namespace Economy.Forms
             {
 
                 User = user;
-                this.Hide();
+                FadeOut.Start();
+               // this.Hide();
                 FormCreateProject formCreateProject = new FormCreateProject(User);
                 formCreateProject.projectServices = this.projectServices;
                 formCreateProject.SerieServices = this.SerieServices;
@@ -250,6 +251,16 @@ namespace Economy.Forms
             {
                 txtPassword.PasswordChar = false;
             }
+        }
+
+        private void FadeOut_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity <= 0)
+            {
+                this.Hide();
+                FadeOut.Stop();
+            }
+            this.Opacity -= 0.2;
         }
     }
 }

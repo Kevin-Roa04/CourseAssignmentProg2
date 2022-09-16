@@ -50,6 +50,7 @@ namespace Economy
             this.lblEmailNE = new System.Windows.Forms.Label();
             this.lblPhoneNE = new System.Windows.Forms.Label();
             this.PbClose = new System.Windows.Forms.PictureBox();
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -132,7 +133,7 @@ namespace Economy
             this.lblDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblDescription.Font = new System.Drawing.Font("Trebuchet MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(55, 174);
+            this.lblDescription.Location = new System.Drawing.Point(69, 174);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(240, 46);
             this.lblDescription.TabIndex = 4;
@@ -359,6 +360,11 @@ namespace Economy
             this.PbClose.TabStop = false;
             this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
+            // ellipseControl1
+            // 
+            this.ellipseControl1.CornerRadius = 10;
+            this.ellipseControl1.TargetControl = this;
+            // 
             // FormCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -421,6 +427,7 @@ namespace Economy
         private System.Windows.Forms.Label lblEmailNE;
         private System.Windows.Forms.Label lblPhoneNE;
         private System.Windows.Forms.PictureBox PbClose;
+        private BeatifulComponents.EllipseControl ellipseControl1;
     }
 }
 

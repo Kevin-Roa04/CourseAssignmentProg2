@@ -10,6 +10,7 @@ namespace Economy.Domain.Interfaces
     public interface IProjectRepository: IRepository<Project>
     {
         List<Project> GetProjectByUser(int IdUser);
-        Project FindbyId(int id);
+        Project FindbyId(int id,int IdUser);
+        List<Project> GetProjectsByName(string name, int IdUser);
     }
 }

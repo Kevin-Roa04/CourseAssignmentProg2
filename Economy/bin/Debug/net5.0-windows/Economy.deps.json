@@ -12,6 +12,7 @@
           "Economy.AppCore": "1.0.0",
           "Economy.Domain": "1.0.0",
           "Economy.Infraestructure": "1.0.0",
+          "Guna.Charts.WinForms": "1.0.4",
           "Microsoft.EntityFrameworkCore.Design": "5.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "Microsoft.Extensions.Configuration": "5.0.0",
@@ -38,6 +39,14 @@
           "lib/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.8.9.0",
             "fileVersion": "1.8.20343.1"
+          }
+        }
+      },
+      "Guna.Charts.WinForms/1.0.4": {
+        "runtime": {
+          "lib/net40/Guna.Charts.WinForms.dll": {
+            "assemblyVersion": "1.0.4.0",
+            "fileVersion": "1.0.4.0"
           }
         }
       },
@@ -1439,6 +1448,13 @@
       "sha512": "sha512-axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
       "path": "bouncycastle/1.8.9",
       "hashPath": "bouncycastle.1.8.9.nupkg.sha512"
+    },
+    "Guna.Charts.WinForms/1.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-78Lny2uFqhMROmRJ+4N53f3662ydRRVlRrED0EpucbQROEGMzNJkC34WWXcJPm8dz6+zONr4NkUUPJWO58o04A==",
+      "path": "guna.charts.winforms/1.0.4",
+      "hashPath": "guna.charts.winforms.1.0.4.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

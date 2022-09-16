@@ -48,6 +48,8 @@ namespace Economy.Forms
             this.lblNotifyDuration = new System.Windows.Forms.Label();
             this.lblSeconds = new System.Windows.Forms.Label();
             this.tLock = new System.Windows.Forms.Timer(this.components);
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
+            this.FadeOut = new System.Windows.Forms.Timer(this.components);
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -294,6 +296,16 @@ namespace Economy.Forms
             this.tLock.Interval = 1000;
             this.tLock.Tick += new System.EventHandler(this.tLock_Tick);
             // 
+            // ellipseControl1
+            // 
+            this.ellipseControl1.CornerRadius = 10;
+            this.ellipseControl1.TargetControl = this;
+            // 
+            // FadeOut
+            // 
+            this.FadeOut.Interval = 30;
+            this.FadeOut.Tick += new System.EventHandler(this.FadeOut_Tick);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -348,5 +360,7 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblNotifyDuration;
         private System.Windows.Forms.Label lblSeconds;
         private System.Windows.Forms.Timer tLock;
+        private BeatifulComponents.EllipseControl ellipseControl1;
+        private System.Windows.Forms.Timer FadeOut;
     }
 }

@@ -26,7 +26,10 @@ namespace Economy.Infraestructure.Repository
                 {
                     throw new ArgumentException($"The object User doesn't be null ");
                 }
-             
+                if (economyDbContext.Projects.Where(p => p.Name == t.Name).ToList().Count>0)
+                {
+                    throw new ArgumentException($"Ya tienes otro proyecto con este mismo nombre.");
+                }
                 economyDbContext.Projects.Add(t);
                 return economyDbContext.SaveChanges();
             }
@@ -35,7 +38,7 @@ namespace Economy.Infraestructure.Repository
                 throw;
             }
         }
-
+        
         public bool Delete(Project t)
         {
             try
@@ -44,7 +47,7 @@ namespace Economy.Infraestructure.Repository
                 {
                     throw new ArgumentException("The object User isn't be a null");
                 }
-                Project project = FindbyId(t.Id);
+                Project project = FindbyId(t.Id,t.UserId);
                 if (project== null)
                 {
                     throw new Exception($"The object with Id: {t.Id} don't exist");
@@ -59,7 +62,7 @@ namespace Economy.Infraestructure.Repository
 
         }
 
-        public Project FindbyId(int id)
+        public Project FindbyId(int id,int UserId)
         {
             try
             {
@@ -67,7 +70,7 @@ namespace Economy.Infraestructure.Repository
                 {
                     throw new Exception($"The Id: {id} doesn't less or equals than cero");
                 }
-                List<Project> projects = GetProjectByUser(id);
+                List<Project> projects = GetProjectByUser(UserId);
                 return projects.Find(x => x.Id == id);
             }
             catch
@@ -86,6 +89,11 @@ namespace Economy.Infraestructure.Repository
             return economyDbContext.Projects.Where(x=>x.UserId==IdUser).ToList();
         }
 
+        public List<Project> GetProjectsByName(string name, int IdUser)
+        {
+            return GetProjectByUser(IdUser).Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
         public int Update(Project t)
         {
             try
@@ -94,7 +102,7 @@ namespace Economy.Infraestructure.Repository
                 {
                     throw new ArgumentException($"The object User doesn't be null");
                 }
-                Project project = FindbyId(t.Id);
+                Project project = FindbyId(t.Id,t.UserId);
                 if (project is null)
                 {
                     throw new ArgumentException($"The object with Id: {project.Id} doesn't exist");

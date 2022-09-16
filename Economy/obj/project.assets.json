@@ -23,6 +23,15 @@
           "lib/BouncyCastle.Crypto.dll": {}
         }
       },
+      "Guna.Charts.WinForms/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Guna.Charts.WinForms.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Guna.Charts.WinForms.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -1959,6 +1968,20 @@
         "bouncycastle.1.8.9.nupkg.sha512",
         "bouncycastle.nuspec",
         "lib/BouncyCastle.Crypto.dll"
+      ]
+    },
+    "Guna.Charts.WinForms/1.0.4": {
+      "sha512": "78Lny2uFqhMROmRJ+4N53f3662ydRRVlRrED0EpucbQROEGMzNJkC34WWXcJPm8dz6+zONr4NkUUPJWO58o04A==",
+      "type": "package",
+      "path": "guna.charts.winforms/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "guna.charts.winforms.1.0.4.nupkg.sha512",
+        "guna.charts.winforms.nuspec",
+        "icon.png",
+        "lib/net40/Guna.Charts.WinForms.dll"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -6644,6 +6667,7 @@
       "Economy.AppCore >= 1.0.0",
       "Economy.Domain >= 1.0.0",
       "Economy.Infraestructure >= 1.0.0",
+      "Guna.Charts.WinForms >= 1.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.16",
       "Microsoft.Extensions.Configuration >= 5.0.0",
@@ -6712,6 +6736,10 @@
             "target": "Package",
             "version": "[6.4.0, )"
           },
+          "Guna.Charts.WinForms": {
+            "target": "Package",
+            "version": "[1.0.4, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -6764,6 +6792,16 @@
       "warningLevel": 1,
       "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "BouncyCastle",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "El paquete \"Guna.Charts.WinForms 1.0.4\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+      "libraryId": "Guna.Charts.WinForms",
       "targetGraphs": [
         "net5.0-windows7.0"
       ]
