@@ -1291,3 +1291,7 @@ C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.ResolveComReference.cache
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ProjectComponent.resources
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Guna.Charts.WinForms.dll
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Guna.Charts.WinForms.dll
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.ResolveComReference.cache
+C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ProjectComponent.resources

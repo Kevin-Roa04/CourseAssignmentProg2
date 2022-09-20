@@ -43,10 +43,18 @@ namespace Economy.Forms
             this.dgvFNE = new System.Windows.Forms.DataGridView();
             this.rbSF = new System.Windows.Forms.RadioButton();
             this.rbCF = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtYears)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTMAR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // txtYears
@@ -79,6 +87,10 @@ namespace Economy.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox4);
+            this.groupBox1.Controls.Add(this.pictureBox3);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtTMAR);
             this.groupBox1.Controls.Add(this.label2);
@@ -247,10 +259,12 @@ namespace Economy.Forms
             // rbSF
             // 
             this.rbSF.AutoSize = true;
+            this.rbSF.Checked = true;
             this.rbSF.Location = new System.Drawing.Point(699, 12);
             this.rbSF.Name = "rbSF";
             this.rbSF.Size = new System.Drawing.Size(126, 19);
             this.rbSF.TabIndex = 4;
+            this.rbSF.TabStop = true;
             this.rbSF.Text = "Sin Financiamiento";
             this.rbSF.UseVisualStyleBackColor = true;
             this.rbSF.CheckedChanged += new System.EventHandler(this.rbSF_CheckedChanged);
@@ -258,15 +272,50 @@ namespace Economy.Forms
             // rbCF
             // 
             this.rbCF.AutoSize = true;
-            this.rbCF.Checked = true;
+            this.rbCF.Enabled = false;
             this.rbCF.Location = new System.Drawing.Point(445, 12);
             this.rbCF.Name = "rbCF";
             this.rbCF.Size = new System.Drawing.Size(132, 19);
             this.rbCF.TabIndex = 5;
-            this.rbCF.TabStop = true;
             this.rbCF.Text = "Con Financiamiento";
             this.rbCF.UseVisualStyleBackColor = true;
             this.rbCF.CheckedChanged += new System.EventHandler(this.rbCF_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox1.Location = new System.Drawing.Point(214, 116);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox2.Location = new System.Drawing.Point(214, 156);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox3.Location = new System.Drawing.Point(214, 194);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Gray;
+            this.pictureBox4.Location = new System.Drawing.Point(214, 232);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(10, 10);
+            this.pictureBox4.TabIndex = 12;
+            this.pictureBox4.TabStop = false;
             // 
             // FormFNE
             // 
@@ -283,6 +332,10 @@ namespace Economy.Forms
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtTMAR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFNE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,5 +357,9 @@ namespace Economy.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown txtTMAR;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

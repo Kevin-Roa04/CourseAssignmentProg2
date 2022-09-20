@@ -105,6 +105,7 @@ namespace Economy.Forms
 
         private void btnDepreciacion_Click(object sender, EventArgs e)
         {
+            if(FNEData.DepreciableAssetsValue == 0) return;
             depreciacion.ShowDialog();
         }
     }

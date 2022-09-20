@@ -6,6 +6,7 @@ using Org.BouncyCastle.Asn1.Cmp;
 using Proto1._0;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
@@ -121,12 +122,23 @@ namespace Economy.Forms
         private void rjButton1_Click(object sender, EventArgs e)
         {
             addProfit.ShowDialog();
+            if (FNEData.Profit != null) pictureBox1.BackColor = Color.LimeGreen;
         }
 
         private void txtYears_ValueChanged(object sender, EventArgs e)
         {
             ResetFNEDataValues();
             LoadFNETable();
+            deactivateFinancedProject();
+            resetImageColor();
+        }
+
+        private void resetImageColor()
+        {
+            pictureBox1.BackColor = Color.Gray;
+            pictureBox2.BackColor = Color.Gray;
+            pictureBox3.BackColor = Color.Gray;
+            pictureBox4.BackColor = Color.Gray;
         }
 
         #region Funcionamiento del FNE
@@ -390,23 +402,44 @@ namespace Economy.Forms
         private void rjButton2_Click(object sender, EventArgs e)
         {
             addCost.ShowDialog();
+            if(FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
         }
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
             //depreciacion.ShowDialog();
             frmAssets.ShowDialog();
+            if(FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
         }
 
         private void rjButton4_Click(object sender, EventArgs e)
         {
             fmrCalendarioDePago.ShowDialog();
+            ActivateFinancedProject();
+            if(FNEData.TasaInstitucionFinanciera > 0 ) pictureBox4.BackColor = Color.LimeGreen;
+        }
+
+        private void ActivateFinancedProject()
+        {
+            if (FNEData.TasaInstitucionFinanciera > 0)
+            {
+                rbCF.Enabled = true;
+                rbCF.Checked = true;
+            }
+        }
+
+        private void deactivateFinancedProject()
+        {
+            rbCF.Enabled = false;
+            rbSF.Checked = true;
         }
 
         private void txtYears_KeyUp(object sender, KeyEventArgs e)
         {
             ResetFNEDataValues();
             LoadFNETable();
+            deactivateFinancedProject();
+            resetImageColor();
         }
 
         private void LoadFNETable()
