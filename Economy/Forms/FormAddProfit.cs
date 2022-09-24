@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,7 +49,7 @@ namespace Economy.Forms
 
         private void radioButton2_Click(object sender, EventArgs e)
         {
-            label4.Text = "Amount to grow";
+            label4.Text = "Monto Constante";
             numericUpDown1.Enabled = true;
             type = 1;
             numericUpDown1.DecimalPlaces = 2;
@@ -57,7 +58,7 @@ namespace Economy.Forms
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            label4.Text = "Growth Rate %";
+            label4.Text = "Tasa de Crecimiento %";
             numericUpDown1.Enabled = true;
             type = 2;
             numericUpDown1.DecimalPlaces = 0;
@@ -136,6 +137,25 @@ namespace Economy.Forms
                 array[i] = (decimal)dgvProfit.Rows[profitNumber].Cells[i + 2].Value;
             }
             FNEData.Profit = array.ToList();
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region -> form movement
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        #endregion
+
+        private void FormAddProfit_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
     }
 }

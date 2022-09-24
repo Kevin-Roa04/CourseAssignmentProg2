@@ -29,6 +29,7 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAddProfit));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rjButton1 = new Economy.BeatifulComponents.RJButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -41,10 +42,12 @@ namespace Economy.Forms
             this.txtProfitName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProfit = new System.Windows.Forms.DataGridView();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -59,12 +62,12 @@ namespace Economy.Forms
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtProfitName);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(274, 413);
+            this.groupBox1.Size = new System.Drawing.Size(274, 423);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Profit Settings";
+            this.groupBox1.Text = "Configuracion de las Ganancias";
             // 
             // rjButton1
             // 
@@ -80,7 +83,7 @@ namespace Economy.Forms
             this.rjButton1.Name = "rjButton1";
             this.rjButton1.Size = new System.Drawing.Size(268, 37);
             this.rjButton1.TabIndex = 14;
-            this.rjButton1.Text = "Accept";
+            this.rjButton1.Text = "Aceptar";
             this.rjButton1.TextColor = System.Drawing.Color.White;
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -113,9 +116,9 @@ namespace Economy.Forms
             this.radioButton3.AutoSize = true;
             this.radioButton3.Location = new System.Drawing.Point(102, 171);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(129, 19);
+            this.radioButton3.Size = new System.Drawing.Size(135, 19);
             this.radioButton3.TabIndex = 11;
-            this.radioButton3.Text = "Arithmetic Gradient";
+            this.radioButton3.Text = "Gradiente Aritmetico";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
@@ -124,9 +127,9 @@ namespace Economy.Forms
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(102, 146);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(121, 19);
+            this.radioButton2.Size = new System.Drawing.Size(133, 19);
             this.radioButton2.TabIndex = 10;
-            this.radioButton2.Text = "Constant Gradient";
+            this.radioButton2.Text = "Gradiente Constante";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_Click);
             // 
@@ -136,24 +139,24 @@ namespace Economy.Forms
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(102, 120);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(73, 19);
+            this.radioButton1.Size = new System.Drawing.Size(79, 19);
             this.radioButton1.TabIndex = 9;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Constant";
+            this.radioButton1.Text = "Constante";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // txtAmount
             // 
             this.txtAmount.DecimalPlaces = 2;
-            this.txtAmount.Location = new System.Drawing.Point(102, 76);
+            this.txtAmount.Location = new System.Drawing.Point(142, 76);
             this.txtAmount.Maximum = new decimal(new int[] {
             100000000,
             0,
             0,
             0});
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(160, 23);
+            this.txtAmount.Size = new System.Drawing.Size(120, 23);
             this.txtAmount.TabIndex = 3;
             // 
             // label2
@@ -161,26 +164,26 @@ namespace Economy.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 15);
+            this.label2.Size = new System.Drawing.Size(123, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Profit Amount";
+            this.label2.Text = "Monto de la Ganancia";
             // 
             // txtProfitName
             // 
-            this.txtProfitName.Location = new System.Drawing.Point(102, 37);
+            this.txtProfitName.Location = new System.Drawing.Point(142, 37);
             this.txtProfitName.Name = "txtProfitName";
-            this.txtProfitName.PlaceholderText = "Profit Name";
-            this.txtProfitName.Size = new System.Drawing.Size(160, 23);
+            this.txtProfitName.PlaceholderText = "Nombre Ganancia";
+            this.txtProfitName.Size = new System.Drawing.Size(120, 23);
             this.txtProfitName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 40);
+            this.label1.Location = new System.Drawing.Point(20, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 15);
+            this.label1.Size = new System.Drawing.Size(116, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Profit Header";
+            this.label1.Text = "Titulo de la ganancia";
             // 
             // dgvProfit
             // 
@@ -188,24 +191,43 @@ namespace Economy.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProfit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProfit.Location = new System.Drawing.Point(292, 21);
+            this.dgvProfit.Location = new System.Drawing.Point(292, 48);
             this.dgvProfit.Name = "dgvProfit";
             this.dgvProfit.RowTemplate.Height = 25;
-            this.dgvProfit.Size = new System.Drawing.Size(666, 404);
+            this.dgvProfit.Size = new System.Drawing.Size(666, 412);
             this.dgvProfit.TabIndex = 1;
+            // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(945, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 19;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // FormAddProfit
             // 
-            this.ClientSize = new System.Drawing.Size(970, 437);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(970, 472);
+            this.Controls.Add(this.PbClose);
             this.Controls.Add(this.dgvProfit);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAddProfit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Profits";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAddProfit_MouseDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,5 +246,6 @@ namespace Economy.Forms
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label4;
         private BeatifulComponents.RJButton rjButton1;
+        private System.Windows.Forms.PictureBox PbClose;
     }
 }
