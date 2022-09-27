@@ -183,6 +183,7 @@ namespace Economy.Forms
                     BorderRadius = 16,
                     Tag=project.Id,
                 };
+                projectComponent.Size = new Size(150,150);
                 projectComponent.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelDescription.Tag = project.Id;
                 projectComponent.LabelLetter.Tag = project.Id;
@@ -258,7 +259,7 @@ namespace Economy.Forms
                     BorderRadius = 16,
                     Tag = project.Id
                 };
-              
+                projectComponent.Size=new Size(150, 150);
                 projectComponent.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelDescription.Tag = project.Id;
                 projectComponent.LabelLetter.Tag = project.Id;

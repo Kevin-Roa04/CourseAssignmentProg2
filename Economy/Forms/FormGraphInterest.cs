@@ -1359,7 +1359,29 @@ namespace Economy.Forms
             this.Opacity += 0.2;
         }
 
-       
+        private void txtDownPayment__TextChanged(object sender, EventArgs e)
+        {
+            if (txtDownPayment.Texts.Length > 0)
+            {
+                txtFinalPayment.Enabled = false;
+            }
+            else
+            {
+                txtFinalPayment.Enabled = true;
+            }
+        }
+
+        private void txtFinalPayment__TextChanged(object sender, EventArgs e)
+        {
+            if (txtFinalPayment.Texts.Length > 0)
+            {
+                txtDownPayment.Enabled = false;
+            }
+            else
+            {
+                txtDownPayment.Enabled = true;
+            }
+        }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
         {

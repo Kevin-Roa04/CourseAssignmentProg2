@@ -271,5 +271,10 @@ namespace Economy.Forms
             }
             this.Opacity += .2;
         }
+
+        private void txtPassword_TabIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
