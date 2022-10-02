@@ -22,14 +22,14 @@ namespace Economy.Forms
         public int Index;
         private UserControlFunction UserControlFunction;
         public FormFunction(FormExcel formExcel, int Index, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService,
-            ICalculateServices<Serie> calculateServicesSerie)
+            ICalculateServices<Serie> calculateServicesSerie, int typeIndex)
         {
             InitializeComponent();
             this.Index = Index;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateService;
             this.CalculateServicesSerie = calculateServicesSerie;
-            this.UserControlFunction = new UserControlFunction(Index, formExcel, this.calculateServicesAnnuity, this.CalculateServicesInterest, this, calculateServicesSerie);
+            this.UserControlFunction = new UserControlFunction(Index, formExcel, this.calculateServicesAnnuity, this.CalculateServicesInterest, this, calculateServicesSerie, typeIndex);
         }
 
         private void FormFunction_Load(object sender, EventArgs e)

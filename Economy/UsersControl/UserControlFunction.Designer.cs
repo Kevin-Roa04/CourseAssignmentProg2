@@ -125,6 +125,8 @@ namespace Economy.UsersControl
             this.txbString4.Size = new System.Drawing.Size(100, 29);
             this.txbString4.TabIndex = 20;
             this.txbString4.Click += new System.EventHandler(this.txbString4_Click);
+            this.txbString4.DoubleClick += new System.EventHandler(this.txbString4_DoubleClick);
+            this.txbString4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString4_KeyPress);
             // 
             // lbString4
             // 
@@ -145,6 +147,8 @@ namespace Economy.UsersControl
             this.txbString3.Size = new System.Drawing.Size(100, 29);
             this.txbString3.TabIndex = 18;
             this.txbString3.Click += new System.EventHandler(this.txbString3_Click);
+            this.txbString3.DoubleClick += new System.EventHandler(this.txbString3_DoubleClick);
+            this.txbString3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString3_KeyPress);
             // 
             // lbString3
             // 
@@ -165,6 +169,7 @@ namespace Economy.UsersControl
             this.txbString2.Size = new System.Drawing.Size(100, 29);
             this.txbString2.TabIndex = 16;
             this.txbString2.Click += new System.EventHandler(this.txbString2_Click);
+            this.txbString2.DoubleClick += new System.EventHandler(this.txbString2_DoubleClick);
             this.txbString2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString2_KeyPress);
             // 
             // lbString2
@@ -187,6 +192,8 @@ namespace Economy.UsersControl
             this.txbString1.Size = new System.Drawing.Size(100, 29);
             this.txbString1.TabIndex = 14;
             this.txbString1.Click += new System.EventHandler(this.txbString1_Click);
+            this.txbString1.DoubleClick += new System.EventHandler(this.txbString1_DoubleClick);
+            this.txbString1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString1_KeyPress);
             // 
             // lbString1
             // 
@@ -238,7 +245,6 @@ namespace Economy.UsersControl
             this.Controls.Add(this.panel1);
             this.Name = "UserControlFunction";
             this.Size = new System.Drawing.Size(551, 397);
-            this.Load += new System.EventHandler(this.UserControlFunction_Load);
             this.gbData.ResumeLayout(false);
             this.gbData.PerformLayout();
             this.panel1.ResumeLayout(false);

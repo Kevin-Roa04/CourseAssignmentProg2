@@ -33,6 +33,7 @@ namespace Economy.Forms
         private int ColumsnFunction;
         private Singleton singleton;
         private string fileName;
+        public Project project;
         
         public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1,
             ICalculateServices<Serie> calculateServiceSerie, string fileName)
@@ -70,6 +71,10 @@ namespace Economy.Forms
             {
                 dgvExcel.Rows.Add();
                 rows++;
+            }
+            if(project != null)
+            {
+                ImportarExcel(Application.StartupPath + @"Excel" + $@"\{project.Name}");
             }
         }
 
@@ -201,6 +206,7 @@ namespace Economy.Forms
             {
                 MessageBox.Show("Select an empty cell", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFE.Visible = false;
+                btnFB.Visible = false;
                 return;
             }
             singleton.MinRow = Rows;
@@ -276,7 +282,7 @@ namespace Economy.Forms
                             {
                                 for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                                 {
-                                    singleton.Entry.Add(double.Parse(dgvExcel.Rows[i].Cells[j].Value.ToString()));
+                                    singleton.Entry.Add(double.Parse(Convert.ToString(dgvExcel.Rows[i].Cells[j].Value)));
                                 }
                             }
                             existe.Activate();
@@ -289,7 +295,7 @@ namespace Economy.Forms
                             {
                                 for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                                 {
-                                    singleton.Exit.Add(double.Parse((string)dgvExcel.Rows[i].Cells[j].Value));
+                                    singleton.Exit.Add(double.Parse(Convert.ToString(dgvExcel.Rows[i].Cells[j].Value)));
                                 }
                             }
                             existe.Activate();
@@ -338,6 +344,41 @@ namespace Economy.Forms
                     libros_trabajo.Close(true);
                     application.Quit();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ImportarExcel(string file)
+        {
+            try
+            {
+                Microsoft.Office.Interop.Excel.Application xlapp = new Microsoft.Office.Interop.Excel.Application();
+                Microsoft.Office.Interop.Excel.Workbook xlwoorkbook = xlapp.Workbooks.Open(file);
+                Microsoft.Office.Interop.Excel.Worksheet xlworksheet = xlwoorkbook.Sheets[1];
+                Microsoft.Office.Interop.Excel.Range xlrange = xlworksheet.UsedRange;
+
+                int row = dgvExcel.Rows.Count;
+
+                for (int xlrow = 1; xlrow <= xlrange.Rows.Count; xlrow++)
+                {
+                    if (row - 1 == xlrow)
+                    {
+                        dgvExcel.Rows.Add();
+                    }
+                    for (int xlcolumn = 1; xlcolumn <= xlrange.Columns.Count; xlcolumn++)
+                    {
+                        if ((NumberOfColumns - 1) == xlcolumn)
+                        {
+                            AddColummns();
+                        }
+                        dgvExcel.Rows[xlrow - 1].Cells[xlcolumn - 1].Value = Convert.ToString(xlrange.Cells[xlrow, xlcolumn].Value2);
+                    }
+                }
+                xlwoorkbook.Close();
+                xlapp.Quit();
             }
             catch (Exception ex)
             {
@@ -480,7 +521,14 @@ namespace Economy.Forms
 
         private void excelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Excel (*xlsx) | *.xlsx; *.xls;";
+                ofd.Title = "Choose";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                    fileName = ofd.FileName;
+            }
+            ImportarExcel(fileName);
         }
 
         private void btnFB_Click(object sender, EventArgs e)
@@ -490,6 +538,7 @@ namespace Economy.Forms
             {
                 MessageBox.Show("Select an empty cell", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFE.Visible = false;
+                btnFB.Visible = false;
                 return;
             }
             singleton.MinRow = Rows;

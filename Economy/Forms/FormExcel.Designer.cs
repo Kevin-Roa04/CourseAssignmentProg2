@@ -257,7 +257,7 @@ namespace Economy.Forms
             this.excelToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.excelToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
-            this.excelToolStripMenuItem.Size = new System.Drawing.Size(117, 26);
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.excelToolStripMenuItem.Text = "Excel";
             this.excelToolStripMenuItem.Click += new System.EventHandler(this.excelToolStripMenuItem_Click);
             // 

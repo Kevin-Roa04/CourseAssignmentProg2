@@ -34,7 +34,7 @@ namespace Economy.Forms
 
         private void FormFX_Load(object sender, EventArgs e)
         {
-            if(index == 0)
+            if (index == 0)
             {
                 String[] TypeFunction = Enum.GetNames(typeof(TypeFunctions));
                 foreach (string function in TypeFunction)
@@ -42,7 +42,7 @@ namespace Economy.Forms
                     this.lbFX.Items.Add(function);
                 }
             }
-            else if(index == 1)
+            else if (index == 1)
             {
                 String[] TypeFunction = Enum.GetNames(typeof(TypeBasicFunction));
                 foreach (string function in TypeFunction)
@@ -50,18 +50,19 @@ namespace Economy.Forms
                     this.lbFX.Items.Add(function);
                 }
             }
-            
+
         }
 
         private void lbFX_DoubleClick(object sender, EventArgs e)
         {
-            if ((int)lbFX.SelectedIndex >= 7)
+            if (((int)lbFX.SelectedIndex >= 7 && index == 0) || ((int)lbFX.SelectedIndex == 0 && index == 1)
+                || ((int)lbFX.SelectedIndex == 2 && index == 1))
             {
                 Singleton singleton = Singleton.instance1;
                 singleton.Selection = true;
             }
             FormFunction formFunction = new FormFunction(this.FormExcel, (int)lbFX.SelectedIndex, calculateServicesAnnuity,
-                CalculateServicesInterest, CalculateServicesSerie);
+                CalculateServicesInterest, CalculateServicesSerie, index);
             formFunction.Show();
             formFunction.BringToFront();
             this.Close();

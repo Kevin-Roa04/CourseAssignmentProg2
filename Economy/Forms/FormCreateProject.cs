@@ -66,7 +66,7 @@ namespace Economy.Forms
         private void DictionaryProjectClick()
         {
             ProjectClick.Add("InterestWithGraph", PCInterest);
-            ProjectClick.Add("Excel", null);
+            ProjectClick.Add("Excel", PCExcel);
             ProjectClick.Add("RateConversion", null);
             ProjectClick.Add("InterestConversion",null);
             ProjectClick.Add("Amortization", null);
@@ -293,9 +293,9 @@ namespace Economy.Forms
             {
                 project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
             }
-            catch {
+            catch
+            {
                 project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
-
             }
           
             FormGraphInterest formGraphInterest = new FormGraphInterest(project);
@@ -325,6 +325,24 @@ namespace Economy.Forms
             projects();
             this.Show();
 
+        }
+        private void PCExcel(object sender, MouseEventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, project.Name);
+            formExcel.project = project;
+            formExcel.ShowDialog();
+            this.FadeIn.Start();
+            projects();
+            this.Show(); 
         }
         private void CreatePieChart()
         {
