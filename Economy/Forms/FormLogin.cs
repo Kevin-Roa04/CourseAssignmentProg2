@@ -228,12 +228,14 @@ namespace Economy.Forms
         private void tLock_Tick(object sender, EventArgs e)
         {
             seconds++;
-            if (seconds == 60)
+            if (seconds >= 60)
             {
                 lblNotifyDuration.Visible = false;
                 btnSignIn.Visible = true;
                 lblSeconds.Visible = false;
                 tLock.Enabled = false;
+                seconds = 0;
+                intents = 0;
                 return;
             }
             lblSeconds.Visible = true;

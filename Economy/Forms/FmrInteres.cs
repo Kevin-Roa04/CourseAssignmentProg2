@@ -139,7 +139,7 @@ namespace InteresPratica
                             || double.Parse(txtinteres.Text) <= 0
                             || double.Parse(txtpresente.Text) <= 0)
                         {
-                            MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                            MessageBox.Show("Los Datos No puede ser negativos  y tampoco Pueden ser cero");
                             return;
                         }
 

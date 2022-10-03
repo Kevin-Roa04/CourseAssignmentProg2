@@ -111,6 +111,9 @@ namespace Economy.Forms
             coord_y = (int)(graph.Height * 0.5);
             this.graphHeight = (graph.Height);
             this.graphWidth = graph.Width;
+            this.pbDelete.Image= Properties.Resources.dump;
+            this.pbDelete.AllowDrop = true;
+
 
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -162,8 +165,17 @@ namespace Economy.Forms
                 lblPresent.Text = $"Presente: C$ {Math.Round(TotalPresent, 2)}";
                 lblFuture.Text = $"Futuro: C$ {Math.Round(TotalFuture, 2)}";
             }
-
+            else
+            {
+                lblPresent.Text = $"Present: C$ {Math.Round(0.0, 2)}";
+                lblFuture.Text = $"Future: C$ {Math.Round(0.0, 2)}";
+                return;
+            }
         }
+       
+        Dictionary<string, string> typeAnnuities = new Dictionary<string, string>();
+        Dictionary<string, string> typeSerie = new Dictionary<string, string>();
+     
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
             this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
@@ -174,6 +186,8 @@ namespace Economy.Forms
             graph.Refresh();
             lblValues(0, 0);
 
+
+          
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtEnd.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -181,6 +195,12 @@ namespace Economy.Forms
             this.txtFinalPayment.KeyPress += new KeyPressEventHandler(ValidateNumber);
             this.txtQuantity.KeyPress += new KeyPressEventHandler(ValidateNumber);
             this.txtRate.KeyPress += new KeyPressEventHandler(ValidateNumber);
+            typeAnnuities.Add("Ordinary", "Ordinaria");
+            typeAnnuities.Add("Anticipated", "Anticipada");
+            typeAnnuities.Add("Deferred", "Diferida");
+          
+            typeSerie.Add("Arithmetic", "Aritmética");
+            typeSerie.Add("Geometric", "Geométrica");
         }
         public int VerificateInterest(object t)
         {
@@ -431,12 +451,12 @@ namespace Economy.Forms
                             Id = annuity.Id,
                             Inicio = annuity.Initial,
                             Final = annuity.End,
-                            Flujo = annuity.FlowType,
+                            Flujo = annuity.FlowType == "Entry" ? "Entrada" : "Salida",
                             Futuro = annuity.Future,
                             Pago = annuity.Payment,
                             Presente = annuity.Present,
                             Tasa = annuity.Rate,
-                            Tipo = annuity.Type
+                            Tipo = typeAnnuities[annuity.Type]
                         });
                     }
                     dgvInterest.DataSource = anualidadDTOs;
@@ -451,11 +471,11 @@ namespace Economy.Forms
                             Id = serie.Id,
                             Inicio = serie.Initial,
                             Final = serie.End,
-                            Flujo = serie.FlowType,
+                            Flujo = serie.FlowType == "Entry" ? "Entrada" : "Salida",
                             Futuro = serie.Future,
                             Presente = serie.Present,
                             Tasa = serie.Rate,
-                            Tipo = serie.Type,
+                            Tipo = typeSerie[serie.Type],
                             Cantidad = serie.Quantity,
                             Incremental = serie.Incremental,
                             PagoFinal = serie.FinalPayment,
@@ -474,7 +494,7 @@ namespace Economy.Forms
                             Id = interest.Id,
                             Inicio = interest.Initial,
                             Final = interest.End,
-                            Flujo = interest.FlowType,
+                            Flujo = interest.FlowType =="Entry"? "Entrada":"Salida",
                             Futuro = interest.Future,
                             Pago = interest.Payment,
                             Presente = interest.Present,
@@ -1381,6 +1401,93 @@ namespace Economy.Forms
             {
                 txtDownPayment.Enabled = true;
             }
+        }
+
+        private void pbDelete_DragOver(object sender, DragEventArgs e)
+        {
+            pbDelete.Image = Properties.Resources.DumpDrop;
+        }
+
+        private void pbDelete_DragLeave(object sender, EventArgs e)
+        {
+            pbDelete.Image = Properties.Resources.dump;
+        }
+
+        private void pbDelete_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+                e.Effect = DragDropEffects.Copy;
+        }
+
+        private void dgvInterest_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            /*
+             * 
+             * Anualidad
+                Serie
+                Interés
+             * 
+             */
+            var objects = new List<object>();
+            foreach (DataGridViewRow row in dgvInterest.SelectedRows)
+            {
+                if (cmbTypeIdgv.SelectedIndex == 0)
+                {
+                    objects.Add(AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == (int)row.Cells[0].Value).FirstOrDefault());
+                }
+                else if (cmbTypeIdgv.SelectedIndex == 1)
+                {
+                    objects.Add(SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)row.Cells[0].Value).FirstOrDefault());
+                }
+                else if (cmbTypeIdgv.SelectedIndex == 2)
+                {
+                    objects.Add(InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)row.Cells[0].Value).FirstOrDefault());
+                }
+                
+            }
+            dgvInterest.DoDragDrop(objects, DragDropEffects.Copy);
+        }
+
+        private void pbDelete_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+
+                pbDelete.Image = Properties.Resources.dump;
+                var objects = (List<object>)e.Data.GetData(typeof(List<object>));
+                foreach (object ob in objects)
+                {
+                    if (cmbTypeIdgv.SelectedIndex==0)
+                    {
+                        Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x=>x.Id==(int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        AnnuityServices.Delete(annuity);
+                    }
+                    else if (cmbTypeIdgv.SelectedIndex == 1)
+                    {
+                        Serie serie= SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        SerieServices.Delete(serie);
+                    }
+                    else if (cmbTypeIdgv.SelectedIndex == 2)
+                    {
+                        Interest interest= InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        InterestServices.Delete(interest);
+                    }
+
+                }
+                FillDGV();
+                ClearPanel();
+                lblValues(0, 0);
+                graph_Paint(null, null);
+            }
+            catch
+            {
+
+            }
+
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)

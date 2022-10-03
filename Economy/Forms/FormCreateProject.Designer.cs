@@ -96,11 +96,10 @@ namespace Economy.Forms
             this.PC0.Description = "Interés y gráfica";
             this.PC0.ForeColor = System.Drawing.Color.Black;
             this.PC0.Letter = "IG";
-            this.PC0.Location = new System.Drawing.Point(3, 4);
-            this.PC0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC0.Location = new System.Drawing.Point(3, 3);
             this.PC0.Name = "PC0";
             this.PC0.NameProject = "";
-            this.PC0.Size = new System.Drawing.Size(150, 150);
+            this.PC0.Size = new System.Drawing.Size(130, 130);
             this.PC0.TabIndex = 0;
             // 
             // PC1
@@ -111,11 +110,10 @@ namespace Economy.Forms
             this.PC1.Description = "Funciones en excel";
             this.PC1.ForeColor = System.Drawing.Color.Black;
             this.PC1.Letter = "FE";
-            this.PC1.Location = new System.Drawing.Point(159, 4);
-            this.PC1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC1.Location = new System.Drawing.Point(139, 3);
             this.PC1.Name = "PC1";
             this.PC1.NameProject = "";
-            this.PC1.Size = new System.Drawing.Size(150, 150);
+            this.PC1.Size = new System.Drawing.Size(130, 130);
             this.PC1.TabIndex = 1;
             // 
             // PC2
@@ -126,11 +124,10 @@ namespace Economy.Forms
             this.PC2.Description = "Intereses nominales";
             this.PC2.ForeColor = System.Drawing.Color.Black;
             this.PC2.Letter = "IN";
-            this.PC2.Location = new System.Drawing.Point(315, 4);
-            this.PC2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC2.Location = new System.Drawing.Point(275, 3);
             this.PC2.Name = "PC2";
             this.PC2.NameProject = "";
-            this.PC2.Size = new System.Drawing.Size(150, 150);
+            this.PC2.Size = new System.Drawing.Size(130, 130);
             this.PC2.TabIndex = 2;
             // 
             // flpCProject
@@ -143,10 +140,9 @@ namespace Economy.Forms
             this.flpCProject.Controls.Add(this.PC4);
             this.flpCProject.Controls.Add(this.PC5);
             this.flpCProject.Controls.Add(this.PC6);
-            this.flpCProject.Location = new System.Drawing.Point(15, 92);
-            this.flpCProject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flpCProject.Location = new System.Drawing.Point(13, 69);
             this.flpCProject.Name = "flpCProject";
-            this.flpCProject.Size = new System.Drawing.Size(629, 188);
+            this.flpCProject.Size = new System.Drawing.Size(550, 158);
             this.flpCProject.TabIndex = 3;
             this.flpCProject.WrapContents = false;
             // 
@@ -158,11 +154,10 @@ namespace Economy.Forms
             this.PC3.Description = "Calcular interés";
             this.PC3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.PC3.Letter = "CI";
-            this.PC3.Location = new System.Drawing.Point(471, 4);
-            this.PC3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC3.Location = new System.Drawing.Point(411, 3);
             this.PC3.Name = "PC3";
             this.PC3.NameProject = "";
-            this.PC3.Size = new System.Drawing.Size(150, 150);
+            this.PC3.Size = new System.Drawing.Size(130, 130);
             this.PC3.TabIndex = 3;
             // 
             // PC4
@@ -173,11 +168,10 @@ namespace Economy.Forms
             this.PC4.Description = "Amortización";
             this.PC4.ForeColor = System.Drawing.Color.Black;
             this.PC4.Letter = "A";
-            this.PC4.Location = new System.Drawing.Point(627, 4);
-            this.PC4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC4.Location = new System.Drawing.Point(547, 3);
             this.PC4.Name = "PC4";
             this.PC4.NameProject = "";
-            this.PC4.Size = new System.Drawing.Size(150, 150);
+            this.PC4.Size = new System.Drawing.Size(130, 130);
             this.PC4.TabIndex = 5;
             // 
             // PC5
@@ -188,11 +182,10 @@ namespace Economy.Forms
             this.PC5.Description = "Depreciación";
             this.PC5.ForeColor = System.Drawing.Color.Black;
             this.PC5.Letter = "D";
-            this.PC5.Location = new System.Drawing.Point(783, 4);
-            this.PC5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC5.Location = new System.Drawing.Point(683, 3);
             this.PC5.Name = "PC5";
             this.PC5.NameProject = "";
-            this.PC5.Size = new System.Drawing.Size(150, 150);
+            this.PC5.Size = new System.Drawing.Size(130, 130);
             this.PC5.TabIndex = 5;
             // 
             // PC6
@@ -203,20 +196,18 @@ namespace Economy.Forms
             this.PC6.Description = "Flujo neto de efectivo";
             this.PC6.ForeColor = System.Drawing.Color.Black;
             this.PC6.Letter = "FNE";
-            this.PC6.Location = new System.Drawing.Point(939, 4);
-            this.PC6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PC6.Location = new System.Drawing.Point(819, 3);
             this.PC6.Name = "PC6";
             this.PC6.NameProject = "";
-            this.PC6.Size = new System.Drawing.Size(150, 150);
+            this.PC6.Size = new System.Drawing.Size(130, 130);
             this.PC6.TabIndex = 4;
             // 
             // flpProjects
             // 
             this.flpProjects.AutoScroll = true;
-            this.flpProjects.Location = new System.Drawing.Point(14, 336);
-            this.flpProjects.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.flpProjects.Location = new System.Drawing.Point(12, 269);
             this.flpProjects.Name = "flpProjects";
-            this.flpProjects.Size = new System.Drawing.Size(653, 511);
+            this.flpProjects.Size = new System.Drawing.Size(571, 383);
             this.flpProjects.TabIndex = 4;
             // 
             // PbClose
@@ -224,10 +215,9 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(1010, 13);
-            this.PbClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PbClose.Location = new System.Drawing.Point(884, 10);
             this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(15, 17);
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbClose.TabIndex = 52;
             this.PbClose.TabStop = false;
@@ -248,15 +238,15 @@ namespace Economy.Forms
             this.txtSearch.BorderSize = 2;
             this.txtSearch.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSearch.Location = new System.Drawing.Point(18, 39);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSearch.Location = new System.Drawing.Point(16, 29);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtSearch.PasswordChar = false;
             this.txtSearch.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
             this.txtSearch.PlaceholderText = "";
-            this.txtSearch.Size = new System.Drawing.Size(626, 42);
+            this.txtSearch.Size = new System.Drawing.Size(548, 33);
             this.txtSearch.TabIndex = 53;
             this.txtSearch.Texts = "";
             this.txtSearch.UnderlinedStyle = false;
@@ -267,9 +257,9 @@ namespace Economy.Forms
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.Silver;
-            this.lblName.Location = new System.Drawing.Point(47, 9);
+            this.lblName.Location = new System.Drawing.Point(41, 7);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(135, 20);
+            this.lblName.Size = new System.Drawing.Size(114, 18);
             this.lblName.TabIndex = 54;
             this.lblName.Text = "Buscar por nombre";
             // 
@@ -282,15 +272,15 @@ namespace Economy.Forms
             this.txtProjectName.BorderSize = 2;
             this.txtProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtProjectName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtProjectName.Location = new System.Drawing.Point(714, 141);
-            this.txtProjectName.Margin = new System.Windows.Forms.Padding(5);
+            this.txtProjectName.Location = new System.Drawing.Point(638, 106);
+            this.txtProjectName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProjectName.Multiline = false;
             this.txtProjectName.Name = "txtProjectName";
-            this.txtProjectName.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
+            this.txtProjectName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
             this.txtProjectName.PasswordChar = false;
             this.txtProjectName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
             this.txtProjectName.PlaceholderText = "";
-            this.txtProjectName.Size = new System.Drawing.Size(234, 42);
+            this.txtProjectName.Size = new System.Drawing.Size(205, 33);
             this.txtProjectName.TabIndex = 55;
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
@@ -303,9 +293,9 @@ namespace Economy.Forms
             this.lblProjectName.BackColor = System.Drawing.Color.Transparent;
             this.lblProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblProjectName.ForeColor = System.Drawing.Color.Silver;
-            this.lblProjectName.Location = new System.Drawing.Point(725, 72);
+            this.lblProjectName.Location = new System.Drawing.Point(647, 54);
             this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(153, 20);
+            this.lblProjectName.Size = new System.Drawing.Size(128, 18);
             this.lblProjectName.TabIndex = 56;
             this.lblProjectName.Text = "Nombre de la función";
             this.lblProjectName.Visible = false;
@@ -315,9 +305,9 @@ namespace Economy.Forms
             this.lblLetters.AutoSize = true;
             this.lblLetters.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLetters.ForeColor = System.Drawing.Color.Silver;
-            this.lblLetters.Location = new System.Drawing.Point(969, 195);
+            this.lblLetters.Location = new System.Drawing.Point(848, 146);
             this.lblLetters.Name = "lblLetters";
-            this.lblLetters.Size = new System.Drawing.Size(0, 20);
+            this.lblLetters.Size = new System.Drawing.Size(0, 18);
             this.lblLetters.TabIndex = 57;
             this.lblLetters.Visible = false;
             // 
@@ -333,10 +323,9 @@ namespace Economy.Forms
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(754, 192);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCreate.Location = new System.Drawing.Point(673, 144);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(154, 57);
+            this.btnCreate.Size = new System.Drawing.Size(135, 43);
             this.btnCreate.TabIndex = 58;
             this.btnCreate.Text = "Crear";
             this.btnCreate.TextColor = System.Drawing.Color.White;
@@ -348,9 +337,9 @@ namespace Economy.Forms
             // 
             this.lblTypeProject.AutoSize = true;
             this.lblTypeProject.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTypeProject.Location = new System.Drawing.Point(725, 106);
+            this.lblTypeProject.Location = new System.Drawing.Point(647, 80);
             this.lblTypeProject.Name = "lblTypeProject";
-            this.lblTypeProject.Size = new System.Drawing.Size(0, 20);
+            this.lblTypeProject.Size = new System.Drawing.Size(0, 15);
             this.lblTypeProject.TabIndex = 59;
             this.lblTypeProject.Visible = false;
             // 
@@ -364,10 +353,9 @@ namespace Economy.Forms
             this.gunaChart1.Legend.Display = false;
             chartFont1.FontName = "Arial";
             this.gunaChart1.Legend.LabelFont = chartFont1;
-            this.gunaChart1.Location = new System.Drawing.Point(725, 363);
-            this.gunaChart1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gunaChart1.Location = new System.Drawing.Point(634, 272);
             this.gunaChart1.Name = "gunaChart1";
-            this.gunaChart1.Size = new System.Drawing.Size(300, 205);
+            this.gunaChart1.Size = new System.Drawing.Size(262, 154);
             this.gunaChart1.TabIndex = 60;
             chartFont2.FontName = "Arial";
             chartFont2.Size = 12;
@@ -400,9 +388,9 @@ namespace Economy.Forms
             this.lblNumberProject.AutoSize = true;
             this.lblNumberProject.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNumberProject.ForeColor = System.Drawing.Color.Silver;
-            this.lblNumberProject.Location = new System.Drawing.Point(803, 322);
+            this.lblNumberProject.Location = new System.Drawing.Point(703, 242);
             this.lblNumberProject.Name = "lblNumberProject";
-            this.lblNumberProject.Size = new System.Drawing.Size(0, 20);
+            this.lblNumberProject.Size = new System.Drawing.Size(0, 18);
             this.lblNumberProject.TabIndex = 61;
             // 
             // gunaChart2
@@ -412,10 +400,9 @@ namespace Economy.Forms
             this.gunaChart2.Legend.Display = false;
             chartFont9.FontName = "Arial";
             this.gunaChart2.Legend.LabelFont = chartFont9;
-            this.gunaChart2.Location = new System.Drawing.Point(708, 576);
-            this.gunaChart2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gunaChart2.Location = new System.Drawing.Point(618, 438);
             this.gunaChart2.Name = "gunaChart2";
-            this.gunaChart2.Size = new System.Drawing.Size(310, 260);
+            this.gunaChart2.Size = new System.Drawing.Size(271, 195);
             this.gunaChart2.TabIndex = 62;
             chartFont10.FontName = "Arial";
             chartFont10.Size = 12;
@@ -452,18 +439,18 @@ namespace Economy.Forms
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(47, 303);
+            this.label1.Location = new System.Drawing.Point(41, 248);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 20);
+            this.label1.Size = new System.Drawing.Size(111, 18);
             this.label1.TabIndex = 63;
             this.label1.Text = "Funciones hechas:";
             // 
             // FormCreateProject
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1037, 863);
+            this.ClientSize = new System.Drawing.Size(907, 687);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gunaChart2);
             this.Controls.Add(this.lblNumberProject);
@@ -480,7 +467,6 @@ namespace Economy.Forms
             this.Controls.Add(this.flpCProject);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormCreateProject";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

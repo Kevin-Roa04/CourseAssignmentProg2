@@ -1422,3 +1422,5 @@ C:\Users\Quezada\Desktop\PRUEBA\CourseAssignmentProg2\Economy\obj\Debug\net5.0-w
 C:\Users\Quezada\Desktop\PRUEBA\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.pdb
 C:\Users\Quezada\Desktop\PRUEBA\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
 C:\Users\Quezada\Desktop\PRUEBA\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\Quezada\Desktop\Prueba\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.AnnutiesComponents.OrdinaryAnnuity.resources
+C:\Users\Quezada\Desktop\Prueba\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.Prueba.resources
