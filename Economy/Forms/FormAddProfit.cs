@@ -88,10 +88,13 @@ namespace Economy.Forms
                 MessageBox.Show("Digite un valor valido en el campo \"monto\"");
                 return false;
             }
-            if(radioButton2.Enabled || radioButton3.Enabled)
+            if(radioButton2.Checked || radioButton3.Checked)
             {
-                MessageBox.Show("Ingrese un valor valido para los gradientes");
-                return false;
+                if (numericUpDown1.Value == 0)
+                {
+                    MessageBox.Show("Ingrese un valor valido para los gradientes");
+                    return false;
+                }
             }
             return true;
         }

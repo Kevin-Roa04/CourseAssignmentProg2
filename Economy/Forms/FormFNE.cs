@@ -350,19 +350,19 @@ namespace Economy.Forms
         private void VPN()
         {
             dgvFNE.Rows[15].Cells[0].Value = "VPN";
-            dgvFNE.Rows[15].Cells[1].Value = CalculateVPNFinanced();
+            dgvFNE.Rows[15].Cells[1].Value = Math.Round(CalculateVPNFinanced(), 2);
         }
 
         private void VPNnotFinanced()
         {
             dgvFNE.Rows[15].Cells[0].Value = "VPN";
-            dgvFNE.Rows[15].Cells[1].Value = CalculateVPNnotFinanced();
+            dgvFNE.Rows[15].Cells[1].Value = Math.Round(CalculateVPNnotFinanced(), 2);
         }
 
         private void TIR()
         {
             dgvFNE.Rows[16].Cells[0].Value = "TIR";
-            dgvFNE.Rows[16].Cells[1].Value = CalculateTir();
+            dgvFNE.Rows[16].Cells[1].Value = $"{Math.Round(CalculateTir()*100, 2)} %";
         }
 
         private void SaveTMAR()
@@ -435,7 +435,7 @@ namespace Economy.Forms
             }
         }
 
-            private double CalculateTir()
+        private double CalculateTir()
         {
             Double[] tir = SelectFNEValues();
             try
@@ -561,7 +561,8 @@ namespace Economy.Forms
         private void txtTMAR_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateNegativeNumber(e, 1, txtTMAR);
-            SaveTMAR();
+            if(e.KeyCode == Keys.Enter) SaveTMAR();
+                
         }
 
         private void PbClose_Click(object sender, EventArgs e)
