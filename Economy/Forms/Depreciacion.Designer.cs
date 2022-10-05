@@ -108,6 +108,7 @@
             this.nudResidualValue.Name = "nudResidualValue";
             this.nudResidualValue.Size = new System.Drawing.Size(191, 21);
             this.nudResidualValue.TabIndex = 9;
+            this.nudResidualValue.ValueChanged += new System.EventHandler(this.nudResidualValue_ValueChanged);
             // 
             // button2
             // 

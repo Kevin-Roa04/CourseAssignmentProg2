@@ -65,6 +65,7 @@ namespace Economy.Forms
                 frmAssetAmount.ShowDialog();
             }
             else {
+                MessageBox.Show("Ingrese un activo financiero valido");
                 return;
             }
             dgvAssets.DataSource = null;
@@ -74,6 +75,7 @@ namespace Economy.Forms
             depreciacion.flag = true;
             depreciacion.ShowDialog();
             depreciacion.flag = false;
+            txtAssets.Text = "";
         }
 
         private void calculateTotalAssets()

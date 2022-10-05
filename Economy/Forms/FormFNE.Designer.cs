@@ -65,7 +65,7 @@ namespace Economy.Forms
             // txtYears
             // 
             this.txtYears.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtYears.Location = new System.Drawing.Point(132, 45);
+            this.txtYears.Location = new System.Drawing.Point(139, 45);
             this.txtYears.Minimum = new decimal(new int[] {
             1,
             0,
@@ -81,12 +81,14 @@ namespace Economy.Forms
             0});
             this.txtYears.ValueChanged += new System.EventHandler(this.txtYears_ValueChanged);
             this.txtYears.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtYears_KeyUp);
+            this.txtYears.Validating += new System.ComponentModel.CancelEventHandler(this.txtYears_Validating);
+            this.txtYears.Validated += new System.EventHandler(this.txtYears_Validated);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(59, 47);
+            this.label1.Location = new System.Drawing.Point(66, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 18);
             this.label1.TabIndex = 1;
@@ -127,9 +129,9 @@ namespace Economy.Forms
             this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton5.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rjButton5.ForeColor = System.Drawing.Color.White;
-            this.rjButton5.Location = new System.Drawing.Point(6, 338);
+            this.rjButton5.Location = new System.Drawing.Point(21, 337);
             this.rjButton5.Name = "rjButton5";
-            this.rjButton5.Size = new System.Drawing.Size(270, 49);
+            this.rjButton5.Size = new System.Drawing.Size(247, 45);
             this.rjButton5.TabIndex = 17;
             this.rjButton5.Text = "Calcular FNE";
             this.rjButton5.TextColor = System.Drawing.Color.White;
@@ -146,11 +148,11 @@ namespace Economy.Forms
             this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton4.FlatAppearance.BorderSize = 0;
             this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rjButton4.Font = new System.Drawing.Font("Trebuchet MS", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rjButton4.ForeColor = System.Drawing.Color.White;
-            this.rjButton4.Location = new System.Drawing.Point(51, 283);
+            this.rjButton4.Location = new System.Drawing.Point(66, 282);
             this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(186, 49);
+            this.rjButton4.Size = new System.Drawing.Size(163, 45);
             this.rjButton4.TabIndex = 16;
             this.rjButton4.Text = "Agregar Prestamo";
             this.rjButton4.TextColor = System.Drawing.Color.White;
@@ -167,11 +169,11 @@ namespace Economy.Forms
             this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton3.FlatAppearance.BorderSize = 0;
             this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rjButton3.Font = new System.Drawing.Font("Trebuchet MS", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Location = new System.Drawing.Point(51, 228);
+            this.rjButton3.Location = new System.Drawing.Point(66, 227);
             this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(186, 49);
+            this.rjButton3.Size = new System.Drawing.Size(163, 45);
             this.rjButton3.TabIndex = 15;
             this.rjButton3.Text = "Agregar Inversiones";
             this.rjButton3.TextColor = System.Drawing.Color.White;
@@ -188,11 +190,11 @@ namespace Economy.Forms
             this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton2.FlatAppearance.BorderSize = 0;
             this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rjButton2.Font = new System.Drawing.Font("Trebuchet MS", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.Location = new System.Drawing.Point(51, 173);
+            this.rjButton2.Location = new System.Drawing.Point(66, 172);
             this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(186, 49);
+            this.rjButton2.Size = new System.Drawing.Size(163, 45);
             this.rjButton2.TabIndex = 14;
             this.rjButton2.Text = "Agregar Costos";
             this.rjButton2.TextColor = System.Drawing.Color.White;
@@ -209,11 +211,11 @@ namespace Economy.Forms
             this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjButton1.FlatAppearance.BorderSize = 0;
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rjButton1.Font = new System.Drawing.Font("Trebuchet MS", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(51, 118);
+            this.rjButton1.Location = new System.Drawing.Point(66, 117);
             this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(186, 49);
+            this.rjButton1.Size = new System.Drawing.Size(163, 45);
             this.rjButton1.TabIndex = 13;
             this.rjButton1.Text = "Agregar Ganancias";
             this.rjButton1.TextColor = System.Drawing.Color.White;
@@ -223,7 +225,7 @@ namespace Economy.Forms
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox4.Location = new System.Drawing.Point(243, 306);
+            this.pictureBox4.Location = new System.Drawing.Point(235, 303);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(10, 10);
             this.pictureBox4.TabIndex = 12;
@@ -232,7 +234,7 @@ namespace Economy.Forms
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox3.Location = new System.Drawing.Point(243, 248);
+            this.pictureBox3.Location = new System.Drawing.Point(235, 245);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(10, 10);
             this.pictureBox3.TabIndex = 11;
@@ -241,7 +243,7 @@ namespace Economy.Forms
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox2.Location = new System.Drawing.Point(243, 193);
+            this.pictureBox2.Location = new System.Drawing.Point(235, 190);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(10, 10);
             this.pictureBox2.TabIndex = 10;
@@ -250,7 +252,7 @@ namespace Economy.Forms
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Gray;
-            this.pictureBox1.Location = new System.Drawing.Point(243, 139);
+            this.pictureBox1.Location = new System.Drawing.Point(235, 136);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(10, 10);
             this.pictureBox1.TabIndex = 9;
@@ -260,7 +262,7 @@ namespace Economy.Forms
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(220, 82);
+            this.label3.Location = new System.Drawing.Point(227, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 8;
@@ -271,7 +273,7 @@ namespace Economy.Forms
             this.txtTMAR.DecimalPlaces = 2;
             this.txtTMAR.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTMAR.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtTMAR.Location = new System.Drawing.Point(132, 80);
+            this.txtTMAR.Location = new System.Drawing.Point(139, 80);
             this.txtTMAR.Minimum = new decimal(new int[] {
             1,
             0,
@@ -292,7 +294,7 @@ namespace Economy.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(75, 82);
+            this.label2.Location = new System.Drawing.Point(82, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 18);
             this.label2.TabIndex = 6;

@@ -83,9 +83,35 @@ namespace Economy.Forms
             numericUpDown1.DecimalPlaces = 2;
             numericUpDown1.Maximum = 100000000;
         }
+        private bool IsValidated()
+        {
+            // Validando que el nombre no vaya vacio
+            if (txtProfitName.Text.Trim() == "")
+            {
+                MessageBox.Show("Escriba un nombre valido para la ganancia");
+                return false;
+            }
+            if (txtAmount.Value == 0)
+            {
+                MessageBox.Show("Digite un valor valido en el campo \"monto\"");
+                return false;
+            }
+            if (radioButton2.Enabled || radioButton3.Enabled)
+            {
+                MessageBox.Show("Ingrese un valor valido para los gradientes");
+                return false;
+            }
+            return true;
+        }
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
+            // Validando que los datos no esten vacios
+            if (!IsValidated())
+            {
+                return;
+            }
+
             decimal montoAcumulado = txtAmount.Value;
             dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
             for (int i = 0; i < years; i++)
@@ -109,6 +135,7 @@ namespace Economy.Forms
             profitNumber += 1;
             TotalProfits();
             SetCostos();
+            ResetValues();
         }
 
         private void SetCostos()
@@ -160,6 +187,40 @@ namespace Economy.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void ValidateNegativeNumber(KeyEventArgs e, decimal DefaultNum, NumericUpDown num)
+        {
+            if (e.KeyCode == Keys.Subtract)
+            {
+                MessageBox.Show("Ingrese un valor valido");
+                num.ResetText();
+                num.Value = DefaultNum;
+                num.UpButton();
+                num.DownButton();
+                return;
+            }
+        }
+
+        private void ResetValues()
+        {
+            txtProfitName.Text = "";
+            txtAmount.Value = 0;
+            txtAmount.UpButton();
+            txtAmount.DownButton();
+            numericUpDown1.Value = 0;
+            numericUpDown1.UpButton();
+            numericUpDown1.DownButton();
+        }
+
+        private void txtAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValidateNegativeNumber(e, 0, txtAmount);
+        }
+
+        private void numericUpDown1_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValidateNegativeNumber(e, 0, numericUpDown1);
         }
     }
 }

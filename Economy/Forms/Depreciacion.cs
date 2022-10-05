@@ -1,17 +1,11 @@
 ﻿using Appcore.Interface;
-using Dominio.Entities;
-using Dominio.Enum;
 using Economy.AppCore.Helper;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proto1._0
@@ -28,7 +22,10 @@ namespace Proto1._0
             this.dep = dep;
             this.years = years;
             InitializeComponent();
-            if(years > 0)nudYears.Value = years;
+            if (years > 0) // solo cuoando se ocupa en el FNE
+            {
+                nudYears.Value = years;
+            }
             this.dgvFNE = dataGridView;
         }
 
@@ -109,14 +106,15 @@ namespace Proto1._0
 
         private bool Validations()
         {
-            if(years > 0)
+            if(years > 0) // cuando se usa dentro del FNE
             {
                 if(nudYears.Value < years)
                 {
-                    MessageBox.Show("Years can't be less than the project years", "Error in the data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Los años no pueden ser mayores a los años del proyecto del Flujo Neto de Efectivo (FNE)", "Error in the data", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
+
             if(nudInitialValue.Value < nudResidualValue.Value)
             {
                 MessageBox.Show("The Initial Value don't be less than the Residual Value", "Error in the data", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -212,6 +210,29 @@ namespace Proto1._0
             }
             lblCoeficiente.Visible = false;
             nudCoeficiente.Visible = false;
+        }
+
+        private void nudResidualValue_ValueChanged(object sender, EventArgs e)
+        {
+            if (nudResidualValue.Value == 0)
+            {
+                return;
+            }
+            if (years > 0) // solo cuando se ocupa en el FNE
+            {
+                if (Validations())
+                {
+                    FillDgv();
+                    if (years == 0) return;
+                    ExtraerData();
+                    //colocando valores en la tabla FNE
+                    setDepreciation(3);
+                    setDepreciation(7);
+                    setInersionesTotales();
+                    setVR();
+                }
+            }
+
         }
     }
 }

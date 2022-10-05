@@ -39,9 +39,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(64, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 15);
+            this.label1.Size = new System.Drawing.Size(111, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Set the Asset Amount";
+            this.label1.Text = "Establecer el Monto";
             // 
             // button1
             // 
@@ -49,7 +49,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Accept";
+            this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -64,8 +64,9 @@
             this.txtAssetAmount.Name = "txtAssetAmount";
             this.txtAssetAmount.Size = new System.Drawing.Size(179, 23);
             this.txtAssetAmount.TabIndex = 3;
+            this.txtAssetAmount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAssetAmount_KeyUp);
             // 
-            // AssetAmount
+            // FrmAssetAmount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,7 +74,7 @@
             this.Controls.Add(this.txtAssetAmount);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Name = "AssetAmount";
+            this.Name = "FrmAssetAmount";
             this.Text = "AssetAmount";
             ((System.ComponentModel.ISupportInitialize)(this.txtAssetAmount)).EndInit();
             this.ResumeLayout(false);

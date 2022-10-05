@@ -104,7 +104,7 @@ namespace Economy.Forms
             // 
             this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(102, 210);
+            this.numericUpDown1.Location = new System.Drawing.Point(142, 210);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -113,6 +113,7 @@ namespace Economy.Forms
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
             this.numericUpDown1.TabIndex = 13;
+            this.numericUpDown1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyUp);
             // 
             // label4
             // 
@@ -170,6 +171,7 @@ namespace Economy.Forms
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(147, 23);
             this.txtAmount.TabIndex = 3;
+            this.txtAmount.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAmount_KeyUp);
             // 
             // label2
             // 

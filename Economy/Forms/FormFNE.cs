@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Economy.Forms
@@ -483,10 +484,24 @@ namespace Economy.Forms
 
         private void txtYears_KeyUp(object sender, KeyEventArgs e)
         {
+            ValidateNegativeNumber(e, 10, txtYears);
             ResetFNEDataValues();
             LoadFNETable();
             deactivateFinancedProject();
             resetImageColor();
+        }
+
+        private void ValidateNegativeNumber(KeyEventArgs e, decimal DefaultNum, NumericUpDown num)
+        {
+            if (e.KeyCode == Keys.Subtract)
+            {
+                MessageBox.Show("Ingrese un valor valido");
+                num.ResetText();
+                num.Value = DefaultNum;
+                num.UpButton();
+                num.DownButton();
+                return;
+            }
         }
 
         private void LoadFNETable()
@@ -545,6 +560,7 @@ namespace Economy.Forms
 
         private void txtTMAR_KeyUp(object sender, KeyEventArgs e)
         {
+            ValidateNegativeNumber(e, 1, txtTMAR);
             SaveTMAR();
         }
 
@@ -557,6 +573,14 @@ namespace Economy.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void txtYears_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+        }
+
+        private void txtYears_Validated(object sender, EventArgs e)
+        {
         }
     }
 }
