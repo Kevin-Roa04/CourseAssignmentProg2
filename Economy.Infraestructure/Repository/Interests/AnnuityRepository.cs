@@ -70,6 +70,27 @@ namespace Economy.Infraestructure.Repository.Interests
             return economyDbContext.Annuities.Where(x => x.ProjectId == Id).ToList();
         }
 
+        public int GlobalUpdate(int Duration, decimal rate, int projectID, int userID)
+        {
+            try
+            {
+                List<Annuity> annuities = new List<Annuity>();
+                annuities = GetIdProject(projectID);
+
+                foreach (Annuity annuity in annuities)
+                {
+                    annuity.TotalPeriod = Duration;
+                    annuity.Rate = rate;
+                    Update(annuity);
+                }
+                return 1;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public int Update(Annuity t)
         {
 

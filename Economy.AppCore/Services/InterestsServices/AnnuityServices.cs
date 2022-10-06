@@ -113,8 +113,15 @@ namespace Economy.AppCore.Services.InterestsServices
             return this.repository.GetIdProject(Id);
         }
 
+        public int GlobalUpdate(int Duration, decimal rate, int projectID, int userID)
+        {
+            return this.repository.GlobalUpdate(Duration, rate, projectID, userID); 
+        }
+
         public int Update(Annuity t)
         {
+            t.Future = Math.Round(AnnuityServicesC.Future(t), 2);
+            t.Present = Math.Round(AnnuityServicesC.Present(t), 2);
             return repository.Update(t);
         }
     }

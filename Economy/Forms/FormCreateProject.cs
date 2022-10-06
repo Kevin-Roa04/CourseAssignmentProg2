@@ -182,6 +182,7 @@ namespace Economy.Forms
                     BackColor = ProjectColor[project.Type],
                     BorderRadius = 16,
                     Tag=project.Id,
+                    
                 };
                 projectComponent.Size = new Size(130,130);
                 projectComponent.MouseClick += ProjectClick[project.Type];
@@ -301,9 +302,11 @@ namespace Economy.Forms
           
             FormGraphInterest formGraphInterest = new FormGraphInterest(project);
             formGraphInterest.txtRate.Texts = Rate(project).ToString();
+            formGraphInterest.rate= Convert.ToDecimal(Rate(project).ToString());
             formGraphInterest.TotalPeriod=TotalPeriod(project);
             formGraphInterest.txtDuration.Texts= TotalPeriod(project).ToString();
             formGraphInterest.ActivateForm();
+            formGraphInterest.pbChanged.Visible = true;
             formGraphInterest.customPanel1.Visible = true;
             formGraphInterest.lblTypeIdgv.Visible = true;
             formGraphInterest.cmbTypeIdgv.Visible = true;
@@ -363,6 +366,7 @@ namespace Economy.Forms
             gunaChart2.YAxes.GridLines.Display = false;
             var dataset = new Guna.Charts.WinForms.GunaLineDataset();
             dataset.PointRadius = 3;
+            
             dataset.PointStyle = PointStyle.Circle;
             var results=from date in projectServices.GetProjectByUser(GlobalUser.Id)
                        group date by date.Creation.Date.ToShortDateString();

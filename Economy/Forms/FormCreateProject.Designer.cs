@@ -142,7 +142,7 @@ namespace Economy.Forms
             this.flpCProject.Controls.Add(this.PC6);
             this.flpCProject.Location = new System.Drawing.Point(13, 69);
             this.flpCProject.Name = "flpCProject";
-            this.flpCProject.Size = new System.Drawing.Size(550, 158);
+            this.flpCProject.Size = new System.Drawing.Size(551, 158);
             this.flpCProject.TabIndex = 3;
             this.flpCProject.WrapContents = false;
             // 
@@ -316,16 +316,16 @@ namespace Economy.Forms
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.btnCreate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.btnCreate.BorderColor = System.Drawing.Color.White;
-            this.btnCreate.BorderRadius = 20;
-            this.btnCreate.BorderSize = 1;
+            this.btnCreate.BorderRadius = 18;
+            this.btnCreate.BorderSize = 0;
             this.btnCreate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCreate.FlatAppearance.BorderSize = 0;
-            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(673, 144);
+            this.btnCreate.Location = new System.Drawing.Point(673, 146);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(135, 43);
+            this.btnCreate.Size = new System.Drawing.Size(130, 40);
             this.btnCreate.TabIndex = 58;
             this.btnCreate.Text = "Crear";
             this.btnCreate.TextColor = System.Drawing.Color.White;
@@ -439,7 +439,7 @@ namespace Economy.Forms
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(41, 248);
+            this.label1.Location = new System.Drawing.Point(41, 241);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 18);
             this.label1.TabIndex = 63;

@@ -95,6 +95,7 @@ namespace Economy.Forms
 
         private int selection = -1;
         public int TotalPeriod = -1;
+        public decimal rate = -1;
         private Project Project;
         public FormCreateProject FormCreateProject;
 
@@ -134,7 +135,7 @@ namespace Economy.Forms
             txtInitial.Texts = "";
             txtEnd.Texts = "";
             txtQuantity.Texts = "";
-            cmbFlowType.SelectedIndex = 0;
+            cmbFlowType.SelectedIndex = -1;
 
         }
         private void lblValues(decimal present, decimal future)
@@ -182,7 +183,8 @@ namespace Economy.Forms
             this.ReDraws.Interval = 3000;
             this.ReDraws.AutoReset = true;
             this.ReDraws.Enabled = true;
-
+            ToolTip toolTipChanged = new ToolTip();
+            toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
             graph.Refresh();
             lblValues(0, 0);
 
@@ -283,9 +285,14 @@ namespace Economy.Forms
 
         private void pbNext_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtDuration.Texts))
+            if (String.IsNullOrEmpty(txtDuration.Texts) || String.IsNullOrEmpty(txtRate.Texts))
             {
-                MessageBox.Show("Escriba la duración del proyecto.");
+                MessageBox.Show("Escriba la duración del proyecto o la tasa del proyecto.");
+                return;
+            }
+            if(Convert.ToDecimal(txtRate.Texts) <= 0)
+            {
+                MessageBox.Show("La tasa del proyecto no puede ser 0");
                 return;
             }
             if (Convert.ToInt64(txtDuration.Texts) < 2)
@@ -294,13 +301,86 @@ namespace Economy.Forms
                 MessageBox.Show("La duración no puede ser 0 ni 1");
                 return;
             }
+            if(TotalPeriod!=-1 && rate !=-1)
+            {
+                if (!ValidateDuration())
+                {
+                    MessageBox.Show("Existe un flujo de caja que tiene más años que la duración.");
+                    return;
+                }
+                TotalPeriod = Convert.ToInt32(txtDuration.Texts);
+                rate = Convert.ToDecimal(txtRate.Texts);
+              
+                UpdateInterests();
+                ClearPanel();
+                graph_Paint(null, null);
 
-            TotalPeriod = Convert.ToInt32(txtDuration.Texts);
-            ActivateForm();
+                lblValues(0, 0);
+                FillDGV();
+            
+                ActivateForm();
+            }
+            else
+            {
+                TotalPeriod = Convert.ToInt32(txtDuration.Texts);
+                rate = Convert.ToDecimal(txtRate.Texts);
+                ActivateForm();
+                pbChanged.Visible = true;
+            }
+        }
+        public void UpdateInterests()
+        {
 
+            foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
+            {
+                
+                annuity.Rate = rate;
+                annuity.TotalPeriod = TotalPeriod;
+                AnnuityServices.Update(annuity);
+            }
+
+            foreach (Serie serie in SerieServices.GetIdProject(Project.Id))
+            {
+                serie.Rate = rate;
+                serie.TotalPeriod = TotalPeriod;
+                SerieServices.Update(serie);
+            }
+            foreach (Interest interest in InterestServices.GetIdProject(Project.Id))
+            {
+                interest.Rate = rate;
+                interest.TotalPeriod = TotalPeriod;
+                InterestServices.Update(interest);
+            }
+        }
+        public bool ValidateDuration()
+        {
+            int duration = (int)Convert.ToInt64(txtDuration.Texts);
+            foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
+            { 
+                if(annuity.Initial>duration || annuity.End > duration)
+                {
+                    return false;
+                }
+            }
+            foreach(Serie serie in SerieServices.GetIdProject(Project.Id))
+            {
+                if(serie.Initial>duration || serie.End > duration)
+                {
+                    return false;
+                }
+            }
+            foreach(Interest interest in InterestServices.GetIdProject(Project.Id))
+            {
+                if(interest.Initial>duration || interest.End > duration)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         public void ActivateForm()
         {
+            txtRate.Enabled = false;
             lblDuration.Visible = false;
             txtDuration.Visible = false;
             pbNext.Visible = false;
@@ -308,7 +388,33 @@ namespace Economy.Forms
             cmbTypeSA.Visible = true;
 
         }
-
+        public void DesactiveForm()
+        {
+            txtRate.Enabled = true;
+            lblDuration.Visible = true;
+            txtDuration.Visible = true;
+            pbNext.Visible = true;
+            txtDownPayment.Visible = false;
+            txtFinalPayment.Visible = false;
+            txtEnd.Visible = false;
+            txtInitial.Visible = false;
+            cmbFlowType.Visible = false;
+            btnCreate.Visible = false;
+            txtQuantity.Visible = false;
+            cmbTypeSA.Visible = false;
+            cmbTypeSA.Visible = false;
+            cbDecremental.Visible = false;
+            cmbTypeSerie.Visible = false;
+            lblDecremental.Visible = false;
+            lblInitial.Visible = false;
+            lblTI.Visible = false;
+            lblWI.Visible = false;
+            lblEnd.Visible = false;
+            lblFinalPayment.Visible = false;
+            lblFlowType.Visible = false;
+            lblTypeSerie.Visible = false;
+            lblDownPayment.Visible = false; 
+        }
         #region -> form function
         private void AnnuityFunction()
         {
@@ -597,7 +703,7 @@ namespace Economy.Forms
                         Initial = Convert.ToInt32(txtInitial.Texts),
                         End = Convert.ToInt32(txtEnd.Texts),
                         Payment = Convert.ToDecimal(txtQuantity.Texts),
-                        Rate = Convert.ToDecimal(txtRate.Texts),
+                        Rate = rate,
                         Project = Project,
                         TotalPeriod = TotalPeriod,
                         Date = DateTime.UtcNow
@@ -631,7 +737,7 @@ namespace Economy.Forms
                         ProjectId = Project.Id,
                         Incremental = cbDecremental.Checked == true ? false : true,
                         Quantity = string.IsNullOrEmpty(txtQuantity.Texts) == true ? 0.0M : Convert.ToDecimal(txtQuantity.Texts),
-                        Rate = Convert.ToDecimal(txtRate.Texts),
+                        Rate = rate,
                         TotalPeriod = TotalPeriod,
                         Type = ((TypeSeries)cmbTypeSerie.SelectedIndex).ToString(),
                         Date = DateTime.UtcNow
@@ -653,7 +759,7 @@ namespace Economy.Forms
                         FlowType = ((FlowType)cmbFlowType.SelectedIndex).ToString(),
                         Project = Project,
                         ProjectId = Project.Id,
-                        Rate = Convert.ToDecimal(txtRate.Texts),
+                        Rate = rate,
                         Payment = Convert.ToDecimal(txtQuantity.Texts),
                         TotalPeriod = TotalPeriod,
                         Date = DateTime.UtcNow
@@ -764,6 +870,7 @@ namespace Economy.Forms
             SolidBrush drawBrush = new SolidBrush(Color.DimGray);
             for (int i = 0; i < TotalPeriods; i++)
             {
+                
                 PointF point = new PointF((SpaceBetweenNumbers * i), coord_y - 15);
                 graphics.DrawString($"{i}", drawFont, drawBrush, point);
 
@@ -1097,7 +1204,7 @@ namespace Economy.Forms
             BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
 
             // Añadiendo columnas que tendrá el PDF, margenes, tamaño, alineamiento, bordes.
-            PdfPTable pdftable = new PdfPTable(t.GetType().GetProperties().Length - 1);
+            PdfPTable pdftable = new PdfPTable(t.GetType().GetProperties().Length);
             pdftable.DefaultCell.Padding = 2;
             pdftable.WidthPercentage = 100;
             pdftable.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -1149,38 +1256,98 @@ namespace Economy.Forms
 
                 // Almacenando y creando el PDF con las especificaciones del tamaño de la hoja.
                 FileStream stream = new FileStream(save.FileName, FileMode.Create);
-                Document doc = new Document(PageSize.A4, 10f, 10f, 10f, 0);
+                Document doc = new Document(PageSize.A4.Rotate(), 10f, 10f, 10f, 0);
                 // Creando la instacia de dicho PDF con los parámetros del documento y guardando en la carpeta seleccionada por el usuario.
                 PdfWriter.GetInstance(doc, stream);
                 Image = true;
                 Bitmap bitmap = new Bitmap(graph.Width, graph.Height);
+
                 graph.DrawToBitmap(bitmap, new System.Drawing.Rectangle(0, 0, graph.Width, graph.Height));
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Size = new Size(800, 200);
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.Image = bitmap;
+                pictureBox.BackColor = Color.White;
+                Bitmap bitmapFinal= new Bitmap(pictureBox.Width,pictureBox.Height);
+                pictureBox.DrawToBitmap(bitmapFinal, new System.Drawing.Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
                 Image = false;
-                System.Drawing.Image image = bitmap;
-                image = resizeImage(image, 580, 200);
+                System.Drawing.Image image = bitmapFinal;
+                //image = resizeImage(image, 580, 200);
 
 
 
                 var ColorDeFuente = new BaseColor(Color.Black);
                 var TimesRoman = FontFactory.GetFont("Times-Roman", 8, ColorDeFuente);
                 doc.Open();
+                List<AnualidadDTO> anualidadDTOs = new List<AnualidadDTO>();
+                foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
+                {
+                    anualidadDTOs.Add(new AnualidadDTO()
+                    {
+                        Id = annuity.Id,
+                        Inicio = annuity.Initial,
+                        Final = annuity.End,
+                        Flujo = annuity.FlowType == "Entry" ? "Entrada" : "Salida",
+                        Futuro = annuity.Future,
+                        Pago = annuity.Payment,
+                        Presente = annuity.Present,
+                        Tasa = annuity.Rate,
+                        Tipo = typeAnnuities[annuity.Type]
+                    });
+                }
                 doc.Add(iTextSharp.text.Image.GetInstance(image, System.Drawing.Imaging.ImageFormat.Png));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(new Paragraph("Annuities", TimesRoman));
+                doc.Add(new Paragraph("Anualidad", TimesRoman));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(ListPDF(AnnuityServices.GetIdProject(Project.Id), new Annuity()));
+                doc.Add(ListPDF(anualidadDTOs, new AnualidadDTO()));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("Series", TimesRoman));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(ListPDF(SerieServices.GetIdProject(Project.Id), new Serie()));
+                List<SerieDTO> serieDTOs = new List<SerieDTO>();
+                foreach (Serie serie in SerieServices.GetIdProject(Project.Id))
+                {
+                    serieDTOs.Add(new SerieDTO()
+                    {
+                        Id = serie.Id,
+                        Inicio = serie.Initial,
+                        Final = serie.End,
+                        Flujo = serie.FlowType == "Entry" ? "Entrada" : "Salida",
+                        Futuro = serie.Future,
+                        Presente = serie.Present,
+                        Tasa = serie.Rate,
+                        Tipo = typeSerie[serie.Type],
+                        Cantidad = serie.Quantity,
+                        Incremental = serie.Incremental,
+                        PagoFinal = serie.FinalPayment,
+                        PagoInicial = serie.DownPayment
+                    });
+                }
+                doc.Add(ListPDF(serieDTOs, new SerieDTO()));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(new Paragraph("Interest", TimesRoman));
+                doc.Add(new Paragraph("Interés", TimesRoman));
                 doc.Add(new Paragraph("\n"));
-                doc.Add(ListPDF(InterestServices.GetIdProject(Project.Id), new Interest()));
+
+                List<InteresDTO> interesDTOs = new List<InteresDTO>();
+                foreach (Interest interest in InterestServices.GetIdProject(Project.Id))
+                {
+                    interesDTOs.Add(new InteresDTO()
+                    {
+                        Id = interest.Id,
+                        Inicio = interest.Initial,
+                        Final = interest.End,
+                        Flujo = interest.FlowType == "Entry" ? "Entrada" : "Salida",
+                        Futuro = interest.Future,
+                        Pago = interest.Payment,
+                        Presente = interest.Present,
+                        Tasa = interest.Rate,
+                    });
+                }
+                
+                doc.Add(ListPDF(interesDTOs, new InteresDTO()));
                 doc.Close();
                 stream.Close();
 
@@ -1488,6 +1655,11 @@ namespace Economy.Forms
 
             }
 
+        }
+
+        private void pbChanged_Click(object sender, EventArgs e)
+        {
+            DesactiveForm();
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
