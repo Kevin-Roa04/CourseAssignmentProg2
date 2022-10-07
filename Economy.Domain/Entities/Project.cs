@@ -19,6 +19,7 @@ namespace Economy.Domain.Entities
         public string Name { get; set; }
         public DateTime Creation { get; set; }
         public string Type { get; set; }
+        public string Period { get; set; }
 
         public virtual User User { get; set; }
         public virtual ICollection<Annuity> Annuities { get; set; }

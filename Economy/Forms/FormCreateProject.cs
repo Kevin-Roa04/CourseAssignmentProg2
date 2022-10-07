@@ -306,6 +306,7 @@ namespace Economy.Forms
             formGraphInterest.TotalPeriod=TotalPeriod(project);
             formGraphInterest.txtDuration.Texts= TotalPeriod(project).ToString();
             formGraphInterest.ActivateForm();
+            formGraphInterest.cmbTime.SelectedIndex = project.Period == null ? 0 : (int)Enum.Parse(typeof(Period), project.Period);
             formGraphInterest.pbChanged.Visible = true;
             formGraphInterest.customPanel1.Visible = true;
             formGraphInterest.lblTypeIdgv.Visible = true;
@@ -364,6 +365,7 @@ namespace Economy.Forms
            //gunaChart2.XAxes.GridLines.Display = false;
            
             gunaChart2.YAxes.GridLines.Display = false;
+            
             var dataset = new Guna.Charts.WinForms.GunaLineDataset();
             dataset.PointRadius = 3;
             

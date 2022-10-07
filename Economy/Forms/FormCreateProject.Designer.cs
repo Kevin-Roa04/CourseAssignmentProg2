@@ -84,6 +84,7 @@ namespace Economy.Forms
             this.lblNumberProject = new System.Windows.Forms.Label();
             this.gunaChart2 = new Guna.Charts.WinForms.GunaChart();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblNumberDate = new System.Windows.Forms.Label();
             this.flpCProject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
@@ -396,13 +397,14 @@ namespace Economy.Forms
             // gunaChart2
             // 
             this.gunaChart2.Animation.Duration = 600;
+            this.gunaChart2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gunaChart2.BackColor = System.Drawing.Color.White;
             this.gunaChart2.Legend.Display = false;
             chartFont9.FontName = "Arial";
             this.gunaChart2.Legend.LabelFont = chartFont9;
-            this.gunaChart2.Location = new System.Drawing.Point(618, 438);
+            this.gunaChart2.Location = new System.Drawing.Point(634, 467);
             this.gunaChart2.Name = "gunaChart2";
-            this.gunaChart2.Size = new System.Drawing.Size(271, 195);
+            this.gunaChart2.Size = new System.Drawing.Size(262, 194);
             this.gunaChart2.TabIndex = 62;
             chartFont10.FontName = "Arial";
             chartFont10.Size = 12;
@@ -415,6 +417,7 @@ namespace Economy.Forms
             chartFont12.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
             this.gunaChart2.Tooltips.TitleFont = chartFont12;
             this.gunaChart2.XAxes.Display = false;
+            grid4.Display = false;
             grid4.TickMarkLength = 3;
             this.gunaChart2.XAxes.GridLines = grid4;
             chartFont13.FontName = "Arial";
@@ -445,12 +448,25 @@ namespace Economy.Forms
             this.label1.TabIndex = 63;
             this.label1.Text = "Funciones hechas:";
             // 
+            // lblNumberDate
+            // 
+            this.lblNumberDate.AutoSize = true;
+            this.lblNumberDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblNumberDate.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNumberDate.ForeColor = System.Drawing.Color.Silver;
+            this.lblNumberDate.Location = new System.Drawing.Point(709, 444);
+            this.lblNumberDate.Name = "lblNumberDate";
+            this.lblNumberDate.Size = new System.Drawing.Size(116, 18);
+            this.lblNumberDate.TabIndex = 64;
+            this.lblNumberDate.Text = "Funciones por días:";
+            // 
             // FormCreateProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(907, 687);
+            this.Controls.Add(this.lblNumberDate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gunaChart2);
             this.Controls.Add(this.lblNumberProject);
@@ -506,5 +522,6 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblNumberProject;
         private Guna.Charts.WinForms.GunaChart gunaChart2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblNumberDate;
     }
 }

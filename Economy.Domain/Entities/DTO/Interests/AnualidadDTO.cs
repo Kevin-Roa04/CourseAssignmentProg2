@@ -17,6 +17,8 @@ namespace Economy.Domain.Entities.DTO.Interests
         public string Tipo { get; set; }
         public string Flujo { get; set; }
         public decimal Tasa { get; set; }
+
+        
  
     }
 }

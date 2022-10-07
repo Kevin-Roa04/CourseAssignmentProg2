@@ -28,6 +28,7 @@ namespace Economy.Forms
     public partial class FormGraphInterest : Form
     {
         private bool Image = false;
+        List<object> interests = new List<object>();
         #region -> FormShadow
 
         private const int CS_DropShadow = 0x00020000;
@@ -44,9 +45,10 @@ namespace Economy.Forms
         #endregion
         #region -> FormBorder
         private int borderRadius = 10;
-
+        
         private GraphicsPath GetCustomPanelPath(RectangleF rectangle, float radius)
         {
+            
             float curveSize = radius * 2F;
             GraphicsPath graphicsPath = new GraphicsPath();
             graphicsPath.StartFigure();
@@ -56,6 +58,7 @@ namespace Economy.Forms
             graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Y, curveSize, curveSize, 270, 90);
             graphicsPath.CloseFigure();
             return graphicsPath;
+            
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -114,6 +117,7 @@ namespace Economy.Forms
             this.graphWidth = graph.Width;
             this.pbDelete.Image= Properties.Resources.dump;
             this.pbDelete.AllowDrop = true;
+            cmbTime.Items.AddRange(Enum.GetValues(typeof(Period)).Cast<object>().ToArray());
 
 
         }
@@ -142,6 +146,10 @@ namespace Economy.Forms
         {
             lblPresent.Visible = true;
             lblFuture.Visible = true;
+            lblPeriodo.Visible = true;
+            lblRateProject.Visible = true;
+            lblPeriodo.Text = "Períodos: "+Project.Period;
+            lblRateProject.Text = "Tasa del proyecto: " + rate + "%";
             if (present != 0 && future != 0)
             {
                 lblPresent.Text = $"Present: C$ {Math.Round(present, 2)}";
@@ -158,8 +166,8 @@ namespace Economy.Forms
                 decimal TotalPresent = (decimal)SeriePresent + InterestPresent + AnnuityPresent;
                 TotalPresent = Math.Abs(TotalPresent);
 
-                decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
-                decimal rateYear = ((decimal)Math.Pow((double)(1 + rate), TotalPeriod));
+                decimal ratepercent = (Convert.ToDecimal(rate) / 100);
+                decimal rateYear = ((decimal)Math.Pow((double)(1 + ratepercent), TotalPeriod));
                 decimal TotalFuture = TotalPresent * rateYear;
                 TotalFuture = Math.Abs(TotalFuture);
 
@@ -179,6 +187,7 @@ namespace Economy.Forms
      
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
+            interests = new List<object>();
             this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
             this.ReDraws.Interval = 3000;
             this.ReDraws.AutoReset = true;
@@ -187,9 +196,8 @@ namespace Economy.Forms
             toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
             graph.Refresh();
             lblValues(0, 0);
-
-
-          
+            
+            
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtEnd.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -310,7 +318,7 @@ namespace Economy.Forms
                 }
                 TotalPeriod = Convert.ToInt32(txtDuration.Texts);
                 rate = Convert.ToDecimal(txtRate.Texts);
-              
+                
                 UpdateInterests();
                 ClearPanel();
                 graph_Paint(null, null);
@@ -324,6 +332,8 @@ namespace Economy.Forms
             {
                 TotalPeriod = Convert.ToInt32(txtDuration.Texts);
                 rate = Convert.ToDecimal(txtRate.Texts);
+                Project.Period = ((Period)cmbTime.SelectedIndex).ToString();
+                projectServices.Update(Project);
                 ActivateForm();
                 pbChanged.Visible = true;
             }
@@ -380,6 +390,7 @@ namespace Economy.Forms
         }
         public void ActivateForm()
         {
+            cmbTime.Visible = false;
             txtRate.Enabled = false;
             lblDuration.Visible = false;
             txtDuration.Visible = false;
@@ -390,6 +401,7 @@ namespace Economy.Forms
         }
         public void DesactiveForm()
         {
+            cmbTime.Visible = true;
             txtRate.Enabled = true;
             lblDuration.Visible = true;
             txtDuration.Visible = true;
@@ -808,6 +820,7 @@ namespace Economy.Forms
         private void graph_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = null;
+            
             if (Image != false)
             {
                 graphics = e.Graphics;
@@ -816,25 +829,53 @@ namespace Economy.Forms
             {
                 DrawPlane(TotalPeriod, graphics);
             }
-            if (Annuity != null)
+            if (interests.Count > 0)
             {
-                DrawAnnuity(Annuity, graphics);
+                foreach (object ob in interests)
+                {
+                    if (ob.GetType().Name.Contains("Anualidad"))
+                    {
+                        Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        DrawAnnuity(annuity, graphics);
+                    }
+                    else if (ob.GetType().Name.Contains("Serie"))
+                    {
+                        Serie serie = SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        DrawSeries(serie,graphics);
+                    }
+                    else if (ob.GetType().Name.Contains("Interest"))
+                    {
+                        Interest interest = InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        DrawInterest(interest,graphics);
+                    }
+                }
+                decimal Present = interests.Where(x => (string)x.GetType().GetProperty("Flujo").GetValue(x) == "Entrada").Sum(x=> (decimal)x.GetType().GetProperty("Presente").GetValue(x))- interests.Where(x => (string)x.GetType().GetProperty("Flujo").GetValue(x) == "Salida").Sum(x => (decimal)x.GetType().GetProperty("Presente").GetValue(x));
+                decimal ratepercent = (Convert.ToDecimal(rate) / 100);
+                decimal rateYear = ((decimal)Math.Pow((double)(1 + ratepercent), TotalPeriod));
+                decimal TotalFuture = Present * rateYear;
+                TotalFuture = Math.Abs(TotalFuture);
+                lblValues(Present, TotalFuture);
                 return;
             }
-            if (Serie != null)
-            {
-                DrawSeries(Serie, graphics);
-                return;
+            //if (Annuity != null)
+            //{
+            //    DrawAnnuity(Annuity, graphics);
+            //    return;
+            //}
+            //if (Serie != null)
+            //{
+            //    DrawSeries(Serie, graphics);
+            //    return;
 
-            }
-            if (Interest != null)
-            {
-                DrawInterest(Interest, graphics);
-                return;
-            }
+            //}
+            //if (Interest != null)
+            //{
+            //    DrawInterest(Interest, graphics);
+            //    return;
+            //}
             Redraw(graphics);
         }
-
+        
         #region -> Draw interest and plane
         private void ClearPanel()
         {
@@ -909,7 +950,7 @@ namespace Economy.Forms
                 ClearPanel();
                 return false;
             }
-            else if (FlowTypeS == FlowType.Entry.ToString() && HeightLine <= graph.Height * .1)
+            else if (FlowTypeS == FlowType.Entry.ToString() && HeightLine <= graph.Height * .15)
             {
                 graph.Height = graph.Height + 100;
                 ClearPanel();
@@ -1094,10 +1135,12 @@ namespace Economy.Forms
             int curveLines = serie.FlowType == FlowType.Entry.ToString() ? HeightInitialLine + 30 : HeightInitialLine - 30;
             // payments
             float middle = Convert.ToSingle((serie.Initial + serie.End) / 2.0);
-            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curveLines - 16 : curveLines + 5; // -18 and +12
+            int curvePositionEntry = serie.Type == "Arithmetic" ? InitialPoints[1].Y-30 :curveLines - 16 ;
+            int curvePositionExit = serie.Type == "Arithmetic" ? InitialPoints[1].Y+30 : curveLines + 5;
+            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curvePositionEntry :curvePositionExit; // -18 and +12
             System.Drawing.Font drawFont = new System.Drawing.Font(lblInitial.Font.ToString(), 8);
             SolidBrush drawBrush = new SolidBrush(color);
-            graphics.DrawString(serie.Type == TypeSeries.Arithmetic.ToString() ? "G= " + serie.Quantity.ToString() : "j= " + serie.Quantity.ToString() + "%", drawFont, drawBrush, ((middle * space)), positionPayment);
+            graphics.DrawString(serie.Type == TypeSeries.Arithmetic.ToString() ? "G=" + serie.Quantity.ToString() : "j= " + serie.Quantity.ToString() + "%", drawFont, drawBrush, ((middle * space)), positionPayment);
 
         }
         #endregion
@@ -1170,6 +1213,8 @@ namespace Economy.Forms
             Serie = null;
             Annuity = null;
             Interest = null;
+
+            interests.Clear();
             lblValues(0, 0);
 
         }
@@ -1386,8 +1431,8 @@ namespace Economy.Forms
             {
                 projectServices.Delete(Project);
             }
+            ReDraws.Stop();
             this.Close();
-  
         }
         private decimal Rate(Project project)
         {
@@ -1623,7 +1668,6 @@ namespace Economy.Forms
         {
             try
             {
-
                 pbDelete.Image = Properties.Resources.dump;
                 var objects = (List<object>)e.Data.GetData(typeof(List<object>));
                 foreach (object ob in objects)
@@ -1655,11 +1699,29 @@ namespace Economy.Forms
 
             }
 
+
         }
 
         private void pbChanged_Click(object sender, EventArgs e)
         {
             DesactiveForm();
+        }
+
+        private void graph_DragEnter(object sender, DragEventArgs e)
+        {
+
+            if (e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+                e.Effect = DragDropEffects.Copy;
+        }
+
+        private void graph_DragDrop(object sender, DragEventArgs e)
+        {
+            interests.Add((List<object>)e.Data.GetData(typeof(List<object>)));
+
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)

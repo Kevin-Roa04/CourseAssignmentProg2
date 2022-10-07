@@ -15,6 +15,5 @@ namespace Dominio.Enum
         Cuatrimestral,
         Semestral,
         Anual,
-
     }
 }
