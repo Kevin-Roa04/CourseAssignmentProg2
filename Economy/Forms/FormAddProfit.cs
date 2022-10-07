@@ -98,7 +98,7 @@ namespace Economy.Forms
             }
             return true;
         }
-
+        int NumClick = 0;
         private void rjButton1_Click(object sender, EventArgs e)
         {
             // Validando que los datos no esten vacios
@@ -106,6 +106,7 @@ namespace Economy.Forms
                 return;
             }
 
+            NumClick++;
             decimal montoAcumulado = txtAmount.Value;
             dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
             for(int i=0; i< years; i++)
@@ -221,6 +222,17 @@ namespace Economy.Forms
         private void numericUpDown1_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateNegativeNumber(e, 0, numericUpDown1);
+        }
+
+        private void dgvProfit_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            if(e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            if (NumClick == 0) return;
+            if (e.RowIndex >= NumClick) return;
+
+            dgvProfit.CurrentCell = dgvProfit.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            contextMenuStrip1.Show(Cursor.Position);
         }
     }
 }
