@@ -98,7 +98,7 @@ namespace Economy.Forms
             }
             return true;
         }
-        int NumClick = 0;
+
         private void rjButton1_Click(object sender, EventArgs e)
         {
             // Validando que los datos no esten vacios
@@ -106,7 +106,6 @@ namespace Economy.Forms
                 return;
             }
 
-            NumClick++;
             decimal montoAcumulado = txtAmount.Value;
             dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
             for(int i=0; i< years; i++)
@@ -127,9 +126,9 @@ namespace Economy.Forms
             }
 
             profitNumber += 1;
-            TotalProfits();
+            TotalProfits(); // calculando el total de las ganancias
             SetIngresos();
-            ResetValues();
+            ResetValues(); // reseteando el valor de los campos
         }
 
         private void ResetValues()
@@ -228,11 +227,23 @@ namespace Economy.Forms
         {
             if (e.Button == MouseButtons.Left) return;
             if(e.RowIndex < 0 || e.ColumnIndex < 0) return;
-            if (NumClick == 0) return;
-            if (e.RowIndex >= NumClick) return;
+            if (profitNumber == 0) return;
+            if (e.RowIndex >= profitNumber) return;
 
             dgvProfit.CurrentCell = dgvProfit.Rows[e.RowIndex].Cells[e.ColumnIndex];
             contextMenuStrip1.Show(Cursor.Position);
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dgvProfit.Rows.RemoveAt(dgvProfit.CurrentRow.Index);
+            profitNumber--;
+            if (profitNumber == 0) 
+            { 
+                dgvProfit.Rows.RemoveAt(0);
+                return;
+            }
+            TotalProfits(); //calculando el total de las ganancias
         }
     }
 }
