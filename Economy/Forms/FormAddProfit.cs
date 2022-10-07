@@ -21,6 +21,7 @@ namespace Economy.Forms
         int years;
         int type;
         int profitNumber = 0;
+        bool edit = false;
         DataGridView dgvFNE;
         public FormAddProfit(int years, DataGridView dgvFNE)
         {
@@ -106,29 +107,45 @@ namespace Economy.Forms
                 return;
             }
 
-            decimal montoAcumulado = txtAmount.Value;
-            dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
-            for(int i=0; i< years; i++)
+            if (edit) 
             {
-                if(type == 0)
-                {
-                    dgvProfit.Rows[profitNumber].Cells[i+2].Value = txtAmount.Value;
-                }else if(type == 1)
-                {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
-                    montoAcumulado = montoAcumulado + numericUpDown1.Value;
-                }
-                else if(type == 2)
-                {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
-                    montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value)/100);
-                }
+                NewProfit(dgvProfit.CurrentRow.Index); // editando una ganancia
+
+                TotalProfits(); // calculando el total de las ganancias
+                SetIngresos();
+                ResetValues(); // reseteando el valor de los campos
+                return;
             }
+
+            NewProfit(profitNumber); // nueva ganancia
 
             profitNumber += 1;
             TotalProfits(); // calculando el total de las ganancias
             SetIngresos();
             ResetValues(); // reseteando el valor de los campos
+        }
+
+        private void NewProfit(int row)
+        {
+            decimal montoAcumulado = txtAmount.Value;
+            dgvProfit.Rows[row].Cells[0].Value = txtProfitName.Text;
+            for (int i = 0; i < years; i++)
+            {
+                if (type == 0)
+                {
+                    dgvProfit.Rows[row].Cells[i + 2].Value = txtAmount.Value;
+                }
+                else if (type == 1)
+                {
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
+                    montoAcumulado = montoAcumulado + numericUpDown1.Value;
+                }
+                else if (type == 2)
+                {
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
+                    montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value) / 100);
+                }
+            }
         }
 
         private void ResetValues()
@@ -235,7 +252,7 @@ namespace Economy.Forms
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {// Eliminar
             dgvProfit.Rows.RemoveAt(dgvProfit.CurrentRow.Index);
             profitNumber--;
             if (profitNumber == 0) 
@@ -244,6 +261,16 @@ namespace Economy.Forms
                 return;
             }
             TotalProfits(); //calculando el total de las ganancias
+        }
+
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {// Editar
+            txtProfitName.Text = dgvProfit.CurrentRow.Cells[0].Value.ToString();
+            txtAmount.Value = decimal.Parse(dgvProfit.CurrentRow.Cells[2].Value.ToString());
+            txtAmount.UpButton();
+            txtAmount.DownButton();
+            radioButton1.Checked = true;
+            edit = true;
         }
     }
 }
