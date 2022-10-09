@@ -114,6 +114,7 @@ namespace Economy.Forms
                 TotalProfits(); // calculando el total de las ganancias
                 SetIngresos();
                 ResetValues(); // reseteando el valor de los campos
+                edit = false;
                 return;
             }
 
@@ -163,7 +164,7 @@ namespace Economy.Forms
         {
             for (int i = 0; i < years; i++)
             {
-                if (FNEData.Profit == null)
+                if (FNEData.Profit == null || FNEData.Profit.Count == 0)
                 {
                     dgvFNE.Rows[0].Cells[i + 2].Value = (decimal)0;
                     continue;
@@ -258,9 +259,13 @@ namespace Economy.Forms
             if (profitNumber == 0) 
             { 
                 dgvProfit.Rows.RemoveAt(0);
+                FNEData.Profit.Clear();
+                SetIngresos();
                 return;
             }
             TotalProfits(); //calculando el total de las ganancias
+            SetIngresos();
+
         }
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)

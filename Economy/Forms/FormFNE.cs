@@ -170,7 +170,8 @@ namespace Economy.Forms
         private void rjButton1_Click(object sender, EventArgs e)
         {
             addProfit.ShowDialog();
-            if (FNEData.Profit != null) pictureBox1.BackColor = Color.LimeGreen;
+            if (FNEData.Profit.Count == 0) pictureBox1.BackColor = Color.Gray;
+            else if (FNEData.Profit != null) pictureBox1.BackColor = Color.LimeGreen;
         }
 
         private void txtYears_ValueChanged(object sender, EventArgs e)
@@ -450,7 +451,8 @@ namespace Economy.Forms
         private void rjButton2_Click(object sender, EventArgs e)
         {
             addCost.ShowDialog();
-            if(FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
+            if(FNEData.Cost.Count == 0) pictureBox2.BackColor = Color.Gray;
+            else if (FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
         }
 
         private void rjButton3_Click(object sender, EventArgs e)

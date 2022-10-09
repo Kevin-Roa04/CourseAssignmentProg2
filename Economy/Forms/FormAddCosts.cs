@@ -21,6 +21,7 @@ namespace Economy.Forms
         int years;
         int type;
         int profitNumber = 0;
+        bool edit = false;
         DataGridView dgvFNE;
         public FormAddCosts(int years, DataGridView dgvFNE)
         {
@@ -115,37 +116,53 @@ namespace Economy.Forms
                 return;
             }
 
+            if (edit)
+            {
+                NewCost(dgvProfit.CurrentRow.Index); // editando un Costo
+
+                TotalProfits(); // calculando el total de los Costos
+                SetCostos();
+                ResetValues(); // reseteando el valor de los campos
+                edit = false;
+                return;
+            }
+
+            NewCost(profitNumber);
+
+            profitNumber += 1;
+            TotalProfits();// calculando el total de los Costos
+            SetCostos();
+            ResetValues();// reseteando el valor de los campos
+        }
+
+        private void NewCost(int row)
+        {
             decimal montoAcumulado = txtAmount.Value;
-            dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
+            dgvProfit.Rows[row].Cells[0].Value = txtProfitName.Text;
             for (int i = 0; i < years; i++)
             {
                 if (type == 0)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = txtAmount.Value;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = txtAmount.Value;
                 }
                 else if (type == 1)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
                     montoAcumulado = montoAcumulado + numericUpDown1.Value;
                 }
                 else if (type == 2)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
                     montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value) / 100);
                 }
             }
-
-            profitNumber += 1;
-            TotalProfits();
-            SetCostos();
-            ResetValues();
         }
 
         private void SetCostos()
         {
             for (int i = 0; i < years; i++)
             {
-                if (FNEData.Cost == null)
+                if (FNEData.Cost == null || FNEData.Cost.Count == 0)
                 {
                     dgvFNE.Rows[1].Cells[i + 2].Value = (decimal)0;
                     continue;
@@ -224,6 +241,42 @@ namespace Economy.Forms
         private void numericUpDown1_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateNegativeNumber(e, 0, numericUpDown1);
+        }
+
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {// Editar
+            txtProfitName.Text = dgvProfit.CurrentRow.Cells[0].Value.ToString();
+            txtAmount.Value = decimal.Parse(dgvProfit.CurrentRow.Cells[2].Value.ToString());
+            txtAmount.UpButton();
+            txtAmount.DownButton();
+            radioButton1.Checked = true;
+            edit = true;
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {// Eliminar
+            dgvProfit.Rows.RemoveAt(dgvProfit.CurrentRow.Index);
+            profitNumber--;
+            if (profitNumber == 0)
+            {
+                dgvProfit.Rows.RemoveAt(0);
+                FNEData.Cost.Clear();
+                SetCostos();
+                return;
+            }
+            TotalProfits(); //calculando el total de las ganancias
+            SetCostos();
+        }
+
+        private void dgvProfit_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            if (profitNumber == 0) return;
+            if (e.RowIndex >= profitNumber) return;
+
+            dgvProfit.CurrentCell = dgvProfit.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            contextMenuStrip1.Show(Cursor.Position);
         }
     }
 }

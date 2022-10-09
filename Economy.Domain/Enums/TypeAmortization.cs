@@ -8,7 +8,7 @@ namespace Economy.Domain.Enums
 {
     public enum TypeAmortization
     {
-        Levelized_quota,
-        Proportional_quota
+        Cuota_Nivelada,
+        Cuota_Proporcional
     }
 }
