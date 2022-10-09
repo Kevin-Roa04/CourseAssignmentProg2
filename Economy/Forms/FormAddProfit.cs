@@ -37,7 +37,7 @@ namespace Economy.Forms
             {
                 if (i == 0)
                 {
-                    dgvProfit.Columns.Add("", "");
+                    dgvProfit.Columns.Add("", "NombreGanancia");
                     continue;
                 }
                 dgvProfit.Columns.Add((i - 1).ToString(), (i - 1).ToString());
