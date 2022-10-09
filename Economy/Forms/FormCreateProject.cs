@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -171,6 +172,12 @@ namespace Economy.Forms
         #endregion
         private void projects()
         {
+            DirectoryInfo directory = new DirectoryInfo(Application.StartupPath + @"Excel");
+            FileInfo[] files = null;
+            if (directory.Exists)
+            {
+                files = directory.GetFiles();
+            }
             flpProjects.Controls.Clear();
             foreach (Project project in projectServices.GetProjectByUser(GlobalUser.Id))
             {
@@ -181,7 +188,7 @@ namespace Economy.Forms
                     Letter = ProjectLetter[project.Type],
                     BackColor = ProjectColor[project.Type],
                     BorderRadius = 16,
-                    Tag=project.Id,
+                    Tag = project.Id,
                 };
                 projectComponent.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelDescription.Tag = project.Id;
@@ -189,7 +196,29 @@ namespace Economy.Forms
                 projectComponent.LabelNameProject.Tag = project.Id;
                 projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
-                projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type] ;
+                projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
+
+                if (project.Type.Equals("Excel") && directory.Exists)
+                {
+                    if (files.Length == 0)
+                    {
+                        projectServices.Delete(project);
+                        continue;
+                    }
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        if (files[i].Name == project.Name + ".xls")
+                        {
+                            flpProjects.Controls.Add(projectComponent);
+                            break;
+                        }
+                        else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                        {
+                            projectServices.Delete(project);
+                        }
+                    }
+                    continue;
+                }
                 flpProjects.Controls.Add(projectComponent);
             }
         }
@@ -337,12 +366,31 @@ namespace Economy.Forms
             {
                 project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
             }
-            FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, project.Name);
-            formExcel.project = project;
-            formExcel.ShowDialog();
-            this.FadeIn.Start();
-            projects();
-            this.Show(); 
+            DirectoryInfo directory = new DirectoryInfo(Application.StartupPath + @"Excel");
+            FileInfo[] files = directory.GetFiles();
+            if (files.Length == 0)
+            {
+                projects();
+                MessageBox.Show("Ha ocurrido un problema para cargar el archivo, se ha borrado el archivo donde se encontraba la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            for (int i = 0; i < files.Length; i++)
+            {
+                if (files[i].Name == project.Name + ".xls")
+                {
+                    FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, project.Name);
+                    formExcel.project = project;
+                    formExcel.ShowDialog();
+                    this.FadeIn.Start();
+                    projects();
+                    this.Show();
+                    break;
+                }
+                else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                {
+                    projects();
+                    MessageBox.Show("Ha ocurrido un problema para cargar el archivo, ha borrado el archivo donde se encontraba la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         private void CreatePieChart()
         {

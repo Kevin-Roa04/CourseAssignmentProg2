@@ -41,6 +41,7 @@ namespace Economy.Forms
                 {
                     this.lbFX.Items.Add(function);
                 }
+                this.Text = "Funciones especiales";
             }
             else if (index == 1)
             {
@@ -49,8 +50,8 @@ namespace Economy.Forms
                 {
                     this.lbFX.Items.Add(function);
                 }
+                this.Text = "Funciones básicas";
             }
-
         }
 
         private void lbFX_DoubleClick(object sender, EventArgs e)

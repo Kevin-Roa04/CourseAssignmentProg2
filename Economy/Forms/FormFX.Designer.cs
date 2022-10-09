@@ -123,7 +123,6 @@ namespace Economy.Forms
             this.ClientSize = new System.Drawing.Size(379, 356);
             this.Controls.Add(this.panel1);
             this.Name = "FormFX";
-            this.Text = "FormFX";
             this.Load += new System.EventHandler(this.FormFX_Load);
             this.cpFX.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

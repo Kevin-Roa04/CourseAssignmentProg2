@@ -104,6 +104,7 @@ namespace Economy.UsersControl
             this.txbString5.TabIndex = 22;
             this.txbString5.Click += new System.EventHandler(this.txbString5_Click);
             this.txbString5.TextChanged += new System.EventHandler(this.txbString5_TextChanged);
+            this.txbString5.DoubleClick += new System.EventHandler(this.txbString5_DoubleClick);
             this.txbString5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString5_KeyPress);
             // 
             // lbString5
@@ -192,6 +193,7 @@ namespace Economy.UsersControl
             this.txbString1.Size = new System.Drawing.Size(100, 29);
             this.txbString1.TabIndex = 14;
             this.txbString1.Click += new System.EventHandler(this.txbString1_Click);
+            this.txbString1.TextChanged += new System.EventHandler(this.txbString1_TextChanged);
             this.txbString1.DoubleClick += new System.EventHandler(this.txbString1_DoubleClick);
             this.txbString1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString1_KeyPress);
             // 
@@ -208,17 +210,17 @@ namespace Economy.UsersControl
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(223, 354);
+            this.btnCalculate.Location = new System.Drawing.Point(241, 354);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(75, 23);
             this.btnCalculate.TabIndex = 11;
-            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.Text = "Calcular";
             this.btnCalculate.UseVisualStyleBackColor = true;
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // txbInfo
             // 
-            this.txbInfo.Location = new System.Drawing.Point(128, 278);
+            this.txbInfo.Location = new System.Drawing.Point(146, 278);
             this.txbInfo.Multiline = true;
             this.txbInfo.Name = "txbInfo";
             this.txbInfo.ReadOnly = true;

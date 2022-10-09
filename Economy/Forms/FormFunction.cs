@@ -30,6 +30,72 @@ namespace Economy.Forms
             this.CalculateServicesInterest = calculateService;
             this.CalculateServicesSerie = calculateServicesSerie;
             this.UserControlFunction = new UserControlFunction(Index, formExcel, this.calculateServicesAnnuity, this.CalculateServicesInterest, this, calculateServicesSerie, typeIndex);
+            if (typeIndex == 0)
+            {
+                switch (Index)
+                {
+                    case 0:
+                        this.Text = "Conversion a tasa efectiva";
+                        break;
+                    case 1:
+                        this.Text = "Conversion a tasa nominal";
+                        break;
+                    case 2:
+                        this.Text = "Calculo de anualidades";
+                        break;
+                    case 3:
+                        this.Text = "Calculo del presente de las anualidades";
+                        break;
+                    case 4:
+                        this.Text = "Calculo del futuro de las anualidades";
+                        break;
+                    case 5:
+                        this.Text = "Calculo del presente de las series";
+                        break;
+                    case 6:
+                        this.Text = "Calculo del futuro de las series";
+                        break;
+                    case 7:
+                        this.Text = "Calculo del FNE";
+                        break;
+                    case 8:
+                        this.Text = "Calculo del VPN";
+                        break;
+                    case 9:
+                        this.Text = "Calculo de la TIR";
+                        break;
+                    case 10:
+                        this.Text = "Calculo de la depreciación en linea recta";
+                        break;
+                    case 11:
+                        this.Text = "Calculo de la depreciación de doble saldo decreciente";
+                        break;
+                    case 12:
+                        this.Text = "Calculo de la depreciación de suma dígito de los años";
+                        break;
+                    case 13:
+                        this.Text = "Calculo de la TMAR Mixta";
+                        break;
+                }
+            }
+            else if (Index == 1)
+            {
+                switch(Index)
+                {
+                    case 0:
+                        this.Text = "Suma de dígitos";
+                        break;
+                    case 1:
+                        this.Text = "Resta de dígitos";
+                        break;
+                    case 2:
+                        this.Text = "Multiplicación de digitos";
+                        break;
+                    case 3:
+                        this.Text = "División de digitos";
+                        break;
+                }
+            }
         }
 
         private void FormFunction_Load(object sender, EventArgs e)

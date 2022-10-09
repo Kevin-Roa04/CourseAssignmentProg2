@@ -38,6 +38,7 @@ namespace Economy.UsersControl
             this.FormFunction = formFunction;
             this.calculateServicesSerie = calculateServicesSerire;
             singleton = Singleton.instance1;
+            singleton.Index = Index;
             CleanTextboxs();
             ValidateIndex();
             bandera = false;
@@ -61,8 +62,6 @@ namespace Economy.UsersControl
                         txbString2.ReadOnly = false;
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vacio será 0";
                         break;
                     case 1: //To-Nominal_Rate
                         lbString1.Text = "Tasa efectica";
@@ -75,14 +74,12 @@ namespace Economy.UsersControl
                         txbString2.ReadOnly = false;
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vacio será 0";
                         break;
                     case 2: // Annuities
                         lbString1.Text = "Presente";
                         lbString2.Text = "Futuro";
                         lbString3.Text = "Tasa";
-                        lbString4.Text = "Periodo";
+                        lbString4.Text = "Periodo de la serie";
                         lbString5.Text = "Tipo de anualidad";
                         txbString1.ReadOnly = false;
                         txbString2.ReadOnly = false;
@@ -93,39 +90,42 @@ namespace Economy.UsersControl
                             "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vacio será 0";
                         break;
                     case 4: //Future Annuities
-                        lbString1.Text = "Pago";
+                        lbString1.Text = "Anualidad";
                         lbString2.Text = "Tasa";
-                        lbString3.Text = "Final";
+                        lbString3.Text = "Periodo de la serie";
+                        lbString4.Text = "Periodo de gracia";
                         lbString4.Visible = false;
                         txbString4.Visible = false;
                         lbString5.Text = "Tipo";
                         txbString1.ReadOnly = false;
                         txbString2.ReadOnly = false;
                         txbString3.ReadOnly = false;
+                        txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
                         txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
                             "anualidad ordinaria \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0";
                         break;
                     case 3: //Present Annuities
-                        lbString1.Text = "DownPayment";
+                        lbString1.Text = "Anualidad"; 
                         lbString2.Text = "Tasa";
-                        lbString3.Text = "End";
+                        lbString3.Text = "Periodo de la serie";
+                        lbString4.Text = "Periodo de gracia";
                         lbString4.Visible = false;
                         txbString4.Visible = false;
                         lbString5.Text = "Tipo";
                         txbString1.ReadOnly = false;
                         txbString2.ReadOnly = false;
                         txbString3.ReadOnly = false;
+                        txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con la serie aritmetica ingrese \"0\" " +
-                            "o serie geometrica \"1\". The valor si deja vacio será 0";
+                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
+                            "anualidad ordinaria \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0";
                         break;
                     case 5: //Present Series
-                        lbString1.Text = "DownPayment";
-                        lbString2.Text = "Tasa";
-                        lbString3.Text = "End";
-                        lbString4.Visible = false;
-                        txbString4.Visible = false;
+                        lbString1.Text = "Pago inicial";
+                        lbString2.Text = "Gradiente";
+                        lbString3.Text = "Tasa";
+                        lbString4.Text = "Periodo de la serie";
                         lbString5.Text = "Tipo";
                         txbString1.ReadOnly = false;
                         txbString2.ReadOnly = false;
@@ -135,9 +135,9 @@ namespace Economy.UsersControl
                             "o serie geometrica \"1\". El valor si deja vacio será 0";
                         break;
                     case 6: //Future Series
-                        lbString1.Text = "Payment";
+                        lbString1.Text = "Pago inical";
                         lbString2.Text = "Tasa";
-                        lbString3.Text = "End";
+                        lbString3.Text = "Periodo de la serie";
                         lbString4.Visible = false;
                         txbString4.Visible = false;
                         lbString5.Text = "Tipo";
@@ -191,6 +191,11 @@ namespace Economy.UsersControl
                         lbString3.Text = "Vida útil";
                         lbString4.Visible = false;
                         lbString5.Visible = false;
+                        txbString4.Visible = false;
+                        txbString5.Visible = false;
+                        txbString1.ReadOnly = false;
+                        txbString2.ReadOnly = false;
+                        txbString3.ReadOnly = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
                         break;
@@ -198,21 +203,49 @@ namespace Economy.UsersControl
                         lbString1.Text = "Valor del activo";
                         lbString2.Text = "Valor residual";
                         lbString3.Text = "Vida útil";
-                        lbString4.Text = "";
-                        lbString5.Visible = false;
+                        lbString4.Text = "Periodo";
+                        lbString5.Text = "Factor";
+                        txbString1.ReadOnly = false;
+                        txbString2.ReadOnly = false;
+                        txbString3.ReadOnly = false;
+                        txbString4.ReadOnly = false;
+                        txbString5.ReadOnly = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
+                        txbInfo.Visible = false;
+                        txbInfo.Text = "Tipo de disminución del saldo. Si se omite el valor será de 2";
                         break;
                     case 12: //Depreciacion Suma Digito de los años
                         lbString1.Text = "Valor del activo";
                         lbString2.Text = "Valor residual";
                         lbString3.Text = "Vida útil";
-                        lbString4.Text = "";
-                        lbString5.Text = "Coeficiente";
+                        lbString4.Text = "Periodo";
+                        lbString5.Visible = false;
+                        txbString5.Visible = false;
+                        txbString1.ReadOnly = false;
+                        txbString2.ReadOnly = false;
+                        txbString3.ReadOnly = false;
+                        txbString4.ReadOnly = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
-                        txbInfo.Text = "";
                         break;
+                    case 13: //TMAR_Mixta
+                        lbString1.Text = "Tasa del inversionista";
+                        lbString2.Text = "Porcentaje de aportacion";
+                        lbString3.Text = "Tasa de la institución financiera";
+                        lbString4.Text = "Porcentaje de la institución financiera";
+                        lbString5.Visible = false;
+                        txbString1.ReadOnly = false;
+                        txbString2.ReadOnly = false;
+                        txbString3.ReadOnly = false;
+                        txbString4.ReadOnly = false;
+                        txbString5.Visible = false;
+                        txbTypeEntry.Visible = false;
+                        txbTypeExit.Visible = false;
+                        txbInfo.Text = "Si no se posee una tasa de una institución financiera deje " +
+                            "vacio los campo de tasa y porcentaje de la institución financiera";
+                        break;
+
                 }
             }
             else if (TypeIndex == 1)
@@ -423,20 +456,39 @@ namespace Economy.UsersControl
                             MessageBox.Show("Esta no es una tasa válida", "ErroR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) || string.IsNullOrEmpty(txbString3.Text) || string.IsNullOrEmpty(txbString4.Text))
-                        {
-                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
-                        }
                         if (!string.IsNullOrWhiteSpace(txbString1.Text) && !string.IsNullOrWhiteSpace(txbString2.Text))
                         {
                             MessageBox.Show("El presente y el futuro no pueden estar llenos al mismo tiempo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (double.Parse(txbString1.Text) <= 0 || double.Parse(txbString2.Text) <= 0 || double.Parse(txbString4.Text) <= 0)
+                        if ((string.IsNullOrEmpty(txbString1.Text) && string.IsNullOrEmpty(txbString2.Text)) || string.IsNullOrEmpty(txbString3.Text) || (string.IsNullOrEmpty(txbString4.Text) && double.Parse(txbString5.Text) == 2))
                         {
-                            MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
+                        }
+                        try
+                        {
+                            if ((double.Parse(txbString1.Text) <= 0 || double.Parse(txbString2.Text) <= 0) || double.Parse(txbString4.Text) <= 0)
+                            {
+                                MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                        catch
+                        {
+                            if(type == 2 && string.IsNullOrEmpty(txbString4.Text))
+                            {
+                                MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                break;
+                            }
+                        }
+                        if (double.Parse(txbString3.Text) > 1)
+                        {
+                            tasa = double.Parse(txbString3.Text) / 100;
+                        }
+                        else
+                        {
+                            tasa = double.Parse(txbString3.Text);
                         }
                         Annuity _annuity;
                         if (string.IsNullOrWhiteSpace(txbString1.Text)) // if the present is empty
@@ -484,28 +536,37 @@ namespace Economy.UsersControl
                             MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (type < 0 || type > 1)
+                        if (type > 2 && type < 0)
                         {
                             MessageBox.Show("Debes de escoger un tipo de serie valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (type == 1 && (double.Parse(txbString4.Text) < 0 ||
-                            double.Parse(txbString4.Text) > double.Parse(txbString3.Text)))
+                        if (type == 2 && double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
                         {
-                            MessageBox.Show("El periodo de la serie es incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("El periodo de gracia no puede ser mayor al periodo de la serie", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
+                        }
+                        if (double.Parse(txbString2.Text) > 1)
+                        {
+                            tasa = double.Parse(txbString2.Text) / 100;
+                        }
+                        else
+                        {
+                            tasa = double.Parse(txbString2.Text);
                         }
                         Annuity annuity = new Annuity
                         {
                             Payment = decimal.Parse(txbString1.Text),
-                            Rate = decimal.Parse(txbString2.Text),
-                            End = Int32.Parse(txbString2.Text),
+                            Rate = (decimal)tasa,
+                            End = Int32.Parse(txbString3.Text)
 
                         };
                         if (type == 0)
                             annuity.Type = "Ordinary";
                         else if (type == 1)
+                        {
                             annuity.Type = "Anticipated";
+                        }
                         else
                         {
                             annuity.Type = "Deferred";
@@ -527,22 +588,24 @@ namespace Economy.UsersControl
                             MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (type < 0 || type > 1)
+                        if (type > 2 && type < 0)
                         {
                             MessageBox.Show("Debes de escoger un tipo de serie válida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (type == 1 && (double.Parse(txbString4.Text) < 0 ||
-                            double.Parse(txbString4.Text) > double.Parse(txbString3.Text)))
+                        if (double.Parse(txbString2.Text) > 1)
                         {
-                            MessageBox.Show("El periodo de la serie es incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            break;
+                            tasa = double.Parse(txbString2.Text) / 100;
+                        }
+                        else
+                        {
+                            tasa = double.Parse(txbString2.Text);
                         }
                         Annuity annuitys = new Annuity
                         {
                             Payment = decimal.Parse(txbString1.Text),
-                            Rate = decimal.Parse(txbString2.Text),
-                            End = Int32.Parse(txbString2.Text),
+                            Rate = (decimal)tasa,
+                            End = Int32.Parse(txbString3.Text),
 
                         };
                         if (type == 0)
@@ -581,22 +644,26 @@ namespace Economy.UsersControl
                             MessageBox.Show("El periodo de la anualidad es incorrecta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
+                        if (double.Parse(txbString3.Text) > 1)
+                        {
+                            tasa = double.Parse(txbString3.Text) / 100;
+                        }
+                        else
+                        {
+                            tasa = double.Parse(txbString3.Text);
+                        }
                         Serie series = new Serie
                         {
                             DownPayment = decimal.Parse(txbString1.Text),
-                            Rate = decimal.Parse(txbString2.Text),
-                            End = Int32.Parse(txbString2.Text),
+
+                            Rate = (decimal)tasa,
+                            End = Int32.Parse(txbString3.Text),
 
                         };
                         if (type == 0)
-                            series.Type = "Ordinary";
+                            series.Type = "Arithmetic";
                         else if (type == 1)
-                            series.Type = "Anticipated";
-                        else
-                        {
-                            series.Type = "Deferred";
-                            series.Initial = Int32.Parse(txbString4.Text);
-                        }
+                            series.Type = "Geometric";
                         singleton.ValueFunction = Math.Round(calculateServicesSerie.Present(series), 2);
                         bandera = true;
                         FormExcel.Activate();
@@ -697,7 +764,7 @@ namespace Economy.UsersControl
                         {
                             value[i + 1] = singleton.Entry[i];
                         }
-                        singleton.ValueFunction = Math.Round((decimal)Financial.NPV((double.Parse(txbString3.Text) / 100), ref value), 2);
+                        singleton.ValueFunction = Math.Round(Convert.ToDecimal(Financial.NPV((double.Parse(txbString3.Text) / 100), ref value)), 2);
                         bandera = true;
                         FormExcel.Activate();
                         break;
@@ -736,15 +803,149 @@ namespace Economy.UsersControl
                         bandera = true;
                         FormExcel.Activate();
                         break;
-                    case 10:
+                    case 10: // Depreciacion Linea Recta
+                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) || string.IsNullOrEmpty(txbString3.Text))
+                        {
+                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (double.Parse(txbString1.Text) <= 0 || double.Parse(txbString2.Text) < 0 ||
+                           double.Parse(txbString3.Text) <= 0)
+                        {
+                            MessageBox.Show("Ingrese informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
+                        {
+                            MessageBox.Show("El valor residual no puede ser mayor al valor del activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        singleton.ValueFunction = Math.Round((decimal)Financial.SLN(double.Parse(txbString1.Text), double.Parse(txbString2.Text), double.Parse(txbString3.Text)), 2);
+                        singleton.MaxColumn = Int32.Parse(txbString3.Text);
                         bandera = true;
                         FormExcel.Activate();
                         break;
-                    case 11:
+                    case 11: // Depreciacion Doble Saldo Decreciente
+                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) || 
+                            string.IsNullOrEmpty(txbString3.Text) || string.IsNullOrEmpty(txbString4.Text))
+                        {
+                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (double.Parse(txbString1.Text) <= 0 || double.Parse(txbString2.Text) < 0 ||
+                           double.Parse(txbString3.Text) <= 0)
+                        {
+                            MessageBox.Show("Ingrese informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if(!string.IsNullOrEmpty(txbString5.Text) && double.Parse(txbString5.Text) <= 0)
+                        {
+                            MessageBox.Show("El factor debe de ser mayor a 0");
+                            break;
+                        }
+                        if(double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
+                        {
+                            MessageBox.Show("El periodo no puede ser mayor a la vida útil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if(double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
+                        {
+                            MessageBox.Show("El valor residual no puede ser mayor al valor del activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if(double.Parse(txbString4.Text) == 0)
+                        {
+                            MessageBox.Show("El periodo debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        if (type == 0)
+                            type = 2;
+
+                        double piv = 0;
+                        for (int i = Int32.Parse(txbString4.Text); i <= double.Parse(txbString3.Text); i++)
+                        {
+                            if(double.Parse(txbString2.Text) == 0 && i == double.Parse(txbString3.Text))
+                            {
+                                piv = Math.Round(double.Parse(txbString1.Text) - singleton.ValueFunctionList.Sum(), 2);
+                                singleton.ValueFunctionList.Add(piv);
+                                break;
+                            }
+                            piv = Math.Round(Financial.DDB(double.Parse(txbString1.Text),
+                                double.Parse(txbString2.Text), double.Parse(txbString3.Text), i,
+                                type), 2);
+                            singleton.ValueFunctionList.Add(piv);
+                        }
                         bandera = true;
                         FormExcel.Activate();
                         break;
-                    case 12:
+                    case 12: // Depreciacion Suma Digito de los Años
+                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) ||
+                           string.IsNullOrEmpty(txbString3.Text) || string.IsNullOrEmpty(txbString4.Text))
+                        {
+                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (double.Parse(txbString1.Text) <= 0 || double.Parse(txbString2.Text) < 0 ||
+                           double.Parse(txbString3.Text) <= 0 || double.Parse(txbString4.Text) <= 0)
+                        {
+                            MessageBox.Show("Ingrese informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if(double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
+                        {
+                            MessageBox.Show("El valor residual no puede ser mayor al valor del activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if(double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
+                        {
+                            MessageBox.Show("El periodo no pude ser mayor a la vida útil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+
+                        double aux;
+                        for (int i = Int32.Parse(txbString4.Text); i <= double.Parse(txbString3.Text); i++)
+                        {
+                            if (double.Parse(txbString2.Text) == 0 && i == double.Parse(txbString3.Text))
+                            {
+                                aux = Math.Round(double.Parse(txbString1.Text) - singleton.ValueFunctionList.Sum(), 2);
+                                singleton.ValueFunctionList.Add(aux);
+                                break;
+                            }
+                            aux = Math.Round(Financial.SYD(double.Parse(txbString1.Text), double.Parse(txbString2.Text),
+                                double.Parse(txbString3.Text), i), 2);
+                            singleton.ValueFunctionList.Add(aux);
+                        }
+                        bandera = true;
+                        FormExcel.Activate();
+                        break;
+                    case 13: //TMAR_Mixta
+                        if (string.IsNullOrEmpty(txbString1.Text) && string.IsNullOrEmpty(txbString3.Text) &&
+                            (string.IsNullOrEmpty(txbString2.Text) || string.IsNullOrEmpty(txbString4.Text)))
+                        {
+                            MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (!string.IsNullOrEmpty(txbString2.Text) && !string.IsNullOrEmpty(txbString4.Text) && 
+                            (double.Parse(txbString2.Text) + double.Parse(txbString4.Text) != 100))
+                        {
+                            MessageBox.Show("La suma de los dos porcentajes debe de ser igual a 100, debe de cambiar " +
+                                "los valores o dejar vacio uno de los porcentajes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        }
+                        if (string.IsNullOrEmpty(txbString2.Text))
+                        {
+                            singleton.ValueFunction = (decimal)((double.Parse(txbString1.Text) * ((100 - double.Parse(txbString4.Text)) / 100)) + 
+                                (double.Parse(txbString3.Text) * double.Parse(txbString4.Text)));
+                        }
+                        else if (string.IsNullOrEmpty(txbString4.Text))
+                        {
+                            singleton.ValueFunction = (decimal)((double.Parse(txbString1.Text) * (double.Parse(txbString2.Text))) +
+                                (double.Parse(txbString3.Text) * ((100 - double.Parse(txbString2.Text)) / 100)));
+                        }
+                        else
+                        {
+                            singleton.ValueFunction = (decimal)((double.Parse(txbString1.Text) * (double.Parse(txbString2.Text) / 100)) +
+                                (double.Parse(txbString3.Text) * (double.Parse(txbString4.Text) / 100)));
+                        }
                         bandera = true;
                         FormExcel.Activate();
                         break;
@@ -813,10 +1014,10 @@ namespace Economy.UsersControl
             }
             if(bandera)
             {
-                singleton.Index = -1;
                 singleton.Entry.Clear();
                 singleton.Exit.Clear();
                 singleton.Type = false;
+                bandera = false;
                 FormFunction.Close();
             }
         }
@@ -843,7 +1044,7 @@ namespace Economy.UsersControl
                         txbString2.Text = $"{singleton.Exit.First()} - {singleton.Exit.Last()}";
                         break;
                     }
-                    else if (singleton.ValueTask > 0)
+                    else if (singleton.ValueTask != 0)
                     {
                         txbString2.Text = singleton.ValueTask.ToString();
                         break;
@@ -871,10 +1072,14 @@ namespace Economy.UsersControl
 
         private void txbString1_Click(object sender, EventArgs e)
         {
-            if ((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            if ((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
+                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
             {
-                singleton.Index = 1;
                 txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
                 return;
             }
             if (singleton.Selection)
@@ -892,15 +1097,14 @@ namespace Economy.UsersControl
 
         private void txbString2_Click(object sender, EventArgs e)
         {
-            if((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            if((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
+                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
             {
-                singleton.Index = 2;
                 txbInfo.Visible = false;
                 return;
             }
-            else if (TypeIndex == 0 && Index == 9)
+            else if (TypeIndex == 0 && (Index == 9 || Index == 13))
             {
-                singleton.Index = 2;
                 return;
             }
             if (singleton.Selection && Index == 7)
@@ -922,10 +1126,13 @@ namespace Economy.UsersControl
 
         private void txbString3_Click(object sender, EventArgs e)
         {
-            if (TypeIndex == 0 && Index <= 6)
+            if (TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
             {
-                singleton.Index = 3;
                 txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
                 return;
             }
             singleton.Index = 3;
@@ -935,10 +1142,13 @@ namespace Economy.UsersControl
 
         private void txbString4_Click(object sender, EventArgs e)
         {
-            if (TypeIndex == 0 && Index <= 2)
+            if (TypeIndex == 0 && (Index <= 2 || Index == 4 || Index == 3 || Index == 10 || Index == 11 || Index == 12))
             {
-                singleton.Index = 4;
                 txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
                 return;
             }
             singleton.Index = 4;
@@ -948,35 +1158,37 @@ namespace Economy.UsersControl
 
         private void txbString5_Click(object sender, EventArgs e)
         {
-            if (txbString5.ReadOnly == false)
+            if (TypeIndex == 0 && Index == 11)
             {
                 txbInfo.Visible = true;
                 return;
             }
-
+            else if (txbString5.ReadOnly == false)
+            {
+                txbInfo.Visible = true;
+                return;
+            }
             txbInfo.Visible = false;
         }
 
         private void txbString5_TextChanged(object sender, EventArgs e)
         {
-            if (txbString5.Text == "2" && (Index == 1 || Index == 2))
+            if (txbString5.Text == "2" && TypeIndex == 0)
             {
-                lbString4.Text = "Inicio";
                 lbString4.Visible = true;
                 txbString4.Visible = true;
                 return;
             }
-            if (txbString5.Text == "1" && (Index == 3 || Index == 4))
+            if (txbString5.Text == "2" && TypeIndex == 0 && (Index == 3 || Index == 4))
             {
-                lbString4.Text = "Inicio";
+                lbString4.Text = "Periodo de gracia";
                 lbString4.Visible = true;
                 txbString4.Visible = true;
                 return;
             }
-            else if(string.IsNullOrEmpty(txbString5.Text))
+            if (TypeIndex == 0 && (Index == 11 || Index == 3))
             {
-                lbString4.Visible = true;
-                lbString4.Visible = true;
+                return;
             }
             txbString4.Visible = false;
             lbString4.Visible = false;
@@ -990,6 +1202,10 @@ namespace Economy.UsersControl
                 {
                     e.Handled = true;
                 }
+                if ( e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
             }
         }
 
@@ -1000,6 +1216,10 @@ namespace Economy.UsersControl
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
                 {
                     e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
                 }
             }
         }
@@ -1065,6 +1285,10 @@ namespace Economy.UsersControl
                 {
                     e.Handled = true;
                 }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
             }
         }
 
@@ -1075,6 +1299,10 @@ namespace Economy.UsersControl
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
                 {
                     e.Handled = true;
+                }
+                if (e.KeyChar == '.' && Index != 4)
+                {
+                    e.Handled = false;
                 }
             }
         }
@@ -1087,7 +1315,45 @@ namespace Economy.UsersControl
                 {
                     e.Handled = true;
                 }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
             }
+        }
+
+        private void txbString5_DoubleClick(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && Index == 11)
+            {
+                singleton.Index = 5;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+        }
+
+        private void txbString1_TextChanged(object sender, EventArgs e)
+        {
+            if(TypeIndex == 0 && Index == 2 && !string.IsNullOrEmpty(txbString1.Text))
+            {
+                lbString2.Visible = false;
+                txbString2.Visible = false;
+            }
+            else if (string.IsNullOrEmpty(txbString1.Text))
+            {
+                lbString2.Visible = true;
+                txbString2.Visible = true;
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

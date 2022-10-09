@@ -103,7 +103,7 @@ namespace Economy.Forms
             this.ClientSize = new System.Drawing.Size(558, 435);
             this.Controls.Add(this.panel1);
             this.Name = "FormFunction";
-            this.Text = "FormFunction";
+            this.Text = "Funciones ";
             this.Activated += new System.EventHandler(this.FormFunction_Activated);
             this.Load += new System.EventHandler(this.FormFunction_Load);
             this.panel1.ResumeLayout(false);

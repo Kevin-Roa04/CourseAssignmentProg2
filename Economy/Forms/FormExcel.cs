@@ -38,6 +38,7 @@ namespace Economy.Forms
         public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1,
             ICalculateServices<Serie> calculateServiceSerie, string fileName)
         {
+            //Principal
             InitializeComponent();
             Columns = new List<string>();
             indexColumns = 8;
@@ -161,7 +162,7 @@ namespace Economy.Forms
             }
             catch
             {
-                MessageBox.Show("Please select a cell that contains a number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Porfavor seleccione una celda que contenga un número", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 existe.BringToFront();
             }
         }
@@ -171,7 +172,7 @@ namespace Economy.Forms
             {
                 if (NumberOfColumns == 655)
                 {
-                    throw new ArgumentException("The number of allowed columns has been exceeded.");
+                    throw new ArgumentException("Ha llegado al límite de las columnas que se pueden crear");
                 }
                 string convertidor = null;
                 if (indexColumns == 26)
@@ -204,7 +205,7 @@ namespace Economy.Forms
             GetRowAndColumn();
             if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value != null)
             {
-                MessageBox.Show("Select an empty cell", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione una celda vacía", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFE.Visible = false;
                 btnFB.Visible = false;
                 return;
@@ -234,16 +235,15 @@ namespace Economy.Forms
         {
             if (singleton.Selection)
             {
-                if (singleton.ValueFunctionList.Count > 0)
+                if (singleton.ValueFunctionList.Count > 0 && (singleton.Index != 10 && singleton.Index != 11 && singleton.Index != 12))
                 {
-                    if (dgvExcel.Columns.Count < (ColumsnFunction + singleton.MaxColumn))
-                    {
-                        MessageBox.Show("First you must create more columns before doing this operation", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
                     int sumatoria = 0;
                     for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                     {
+                        if(singleton.MaxColumn - 1 == j)
+                        {
+                            AddColummns();
+                        }
                         dgvExcel.Rows[RowsFunction].Cells[(ColumsnFunction + sumatoria)].Value = singleton.ValueFunctionList[sumatoria];
                         sumatoria++;
                     }
@@ -253,6 +253,53 @@ namespace Economy.Forms
                     singleton.MinRow = 0;
                     singleton.MinColumn = 0;
                     singleton.Selection = false;
+                    singleton.Index = 0;
+                    singleton.ValueFunction = 0;
+                    singleton.ValueTask = 0;
+                    return;
+                }
+                if (singleton.Index == 10)
+                {
+                    for (int j = singleton.MinColumn; j < (singleton.MaxColumn + singleton.MinColumn); j++)
+                    {
+                        if (singleton.MaxColumn - 1 == j)
+                        {
+                            AddColummns();
+                        }
+                        dgvExcel.Rows[singleton.MinRow].Cells[j].Value = singleton.ValueFunction;
+                    }
+                    singleton.ValueFunctionList.Clear();
+                    singleton.MaxColumn = 0;
+                    singleton.MaxRow = 0;
+                    singleton.MinRow = 0;
+                    singleton.MinColumn = 0;
+                    singleton.Selection = false;
+                    singleton.Index = 0;
+                    singleton.ValueFunction = 0;
+                    singleton.ValueTask = 0;
+                    return;
+                }
+                if (singleton.Index == 11 || singleton.Index == 12)
+                {
+                    int sumatoria = 0;
+                    for (int j = singleton.MinColumn; j < (singleton.MinColumn + singleton.ValueFunctionList.Count); j++)
+                    {
+                        if ((singleton.MinColumn + singleton.ValueFunctionList.Count) - 1 == j)
+                        {
+                            AddColummns();
+                        }
+                        dgvExcel.Rows[singleton.MinRow].Cells[j].Value = singleton.ValueFunctionList[sumatoria];
+                        sumatoria++;
+                    }
+                    singleton.ValueFunctionList.Clear();
+                    singleton.MaxColumn = 0;
+                    singleton.MaxRow = 0;
+                    singleton.MinRow = 0;
+                    singleton.MinColumn = 0;
+                    singleton.Selection = false;
+                    singleton.Index = 0;
+                    singleton.ValueFunction = 0;
+                    singleton.ValueTask = 0;
                     return;
                 }
             }
@@ -316,6 +363,7 @@ namespace Economy.Forms
             {
                 SaveFileDialog fichero = new SaveFileDialog();
                 fichero.Filter = "Excel (*.xls)|*.xls";
+                fichero.Title = "Seleccione la ruta en donde guardará el archivo";
                 if (fichero.ShowDialog() == DialogResult.OK)
                 {
                     Microsoft.Office.Interop.Excel.Application application;
@@ -343,6 +391,7 @@ namespace Economy.Forms
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                     libros_trabajo.Close(true);
                     application.Quit();
+                    MessageBox.Show("Información exportada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -379,6 +428,7 @@ namespace Economy.Forms
                 }
                 xlwoorkbook.Close();
                 xlapp.Quit();
+                MessageBox.Show("Información importada correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -416,6 +466,7 @@ namespace Economy.Forms
              Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                 libros_trabajo.Close(true);
                 application.Quit();
+                MessageBox.Show("Se ha guardado el archivo correctamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -427,6 +478,7 @@ namespace Economy.Forms
         {
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF (*.pdf)|*.pdf";
+            sfd.Title = "Seleccione la ruta en donde guardará el archivo";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -467,7 +519,7 @@ namespace Economy.Forms
                         stream.Close();
                     }
 
-                    MessageBox.Show("Data Exported Successfully!!!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Información exportada satisfactoriamente!", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -524,7 +576,7 @@ namespace Economy.Forms
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "Excel (*xlsx) | *.xlsx; *.xls;";
-                ofd.Title = "Choose";
+                ofd.Title = "Escoge el archivo excel";
                 if (ofd.ShowDialog() == DialogResult.OK)
                     fileName = ofd.FileName;
             }
@@ -536,7 +588,7 @@ namespace Economy.Forms
             GetRowAndColumn();
             if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value != null)
             {
-                MessageBox.Show("Select an empty cell", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccionar una celda vacía", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFE.Visible = false;
                 btnFB.Visible = false;
                 return;
