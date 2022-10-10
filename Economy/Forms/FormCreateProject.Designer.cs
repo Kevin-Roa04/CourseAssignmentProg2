@@ -263,6 +263,7 @@ namespace Economy.Forms
             this.lblName.Size = new System.Drawing.Size(114, 18);
             this.lblName.TabIndex = 54;
             this.lblName.Text = "Buscar por nombre";
+            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // txtProjectName
             // 
@@ -487,7 +488,7 @@ namespace Economy.Forms
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateProject";
-            this.Load += new System.EventHandler(this.FormCreateProject_Load);
+            this.Load += new System.EventHandler(this.FormCreateProject_Load_1);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormCreateProject_MouseDown);
             this.flpCProject.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();

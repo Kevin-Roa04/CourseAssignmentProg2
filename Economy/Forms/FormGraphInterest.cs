@@ -45,10 +45,10 @@ namespace Economy.Forms
         #endregion
         #region -> FormBorder
         private int borderRadius = 10;
-        
+
         private GraphicsPath GetCustomPanelPath(RectangleF rectangle, float radius)
         {
-            
+
             float curveSize = radius * 2F;
             GraphicsPath graphicsPath = new GraphicsPath();
             graphicsPath.StartFigure();
@@ -58,7 +58,7 @@ namespace Economy.Forms
             graphicsPath.AddArc((rectangle.Width - curveSize), rectangle.Y, curveSize, curveSize, 270, 90);
             graphicsPath.CloseFigure();
             return graphicsPath;
-            
+
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -115,10 +115,9 @@ namespace Economy.Forms
             coord_y = (int)(graph.Height * 0.5);
             this.graphHeight = (graph.Height);
             this.graphWidth = graph.Width;
-            this.pbDelete.Image= Properties.Resources.dump;
+            this.pbDelete.Image = Properties.Resources.dump;
             this.pbDelete.AllowDrop = true;
-            cmbTime.Items.AddRange(Enum.GetValues(typeof(Period)).Cast<object>().ToArray());
-
+           
 
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -148,12 +147,12 @@ namespace Economy.Forms
             lblFuture.Visible = true;
             lblPeriodo.Visible = true;
             lblRateProject.Visible = true;
-            lblPeriodo.Text = "Períodos: "+Project.Period;
+            lblPeriodo.Text = "Períodos: " + Project.Period;
             lblRateProject.Text = "Tasa del proyecto: " + rate + "%";
             if (present != 0 && future != 0)
             {
-                lblPresent.Text = $"Present: C$ {Math.Round(present, 2)}";
-                lblFuture.Text = $"Future: C$ {Math.Round(future, 2)}";
+                lblPresent.Text = $"Presente: C$ {Math.Round(present, 2)}";
+                lblFuture.Text = $"Futuro: C$ {Math.Round(future, 2)}";
                 return;
             }
             if (SerieServices.GetIdProject(Project.Id).Count > 0 || InterestServices.GetIdProject(Project.Id).Count > 0
@@ -176,28 +175,30 @@ namespace Economy.Forms
             }
             else
             {
-                lblPresent.Text = $"Present: C$ {Math.Round(0.0, 2)}";
-                lblFuture.Text = $"Future: C$ {Math.Round(0.0, 2)}";
+                lblPresent.Text = $"Presente: C$ {Math.Round(0.0, 2)}";
+                lblFuture.Text = $"Futuro: C$ {Math.Round(0.0, 2)}";
                 return;
             }
         }
-       
+
         Dictionary<string, string> typeAnnuities = new Dictionary<string, string>();
         Dictionary<string, string> typeSerie = new Dictionary<string, string>();
-     
+
         private void FormGraphInterest_Load(object sender, EventArgs e)
         {
-            interests = new List<object>();
+
             this.ReDraws.Elapsed += new System.Timers.ElapsedEventHandler(OnTimedEvent);
-            this.ReDraws.Interval = 3000;
+            this.ReDraws.Interval = 1000;
             this.ReDraws.AutoReset = true;
             this.ReDraws.Enabled = true;
             ToolTip toolTipChanged = new ToolTip();
             toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
+            ToolTip toolTipUpdateGraph = new ToolTip();
+            toolTipUpdateGraph.SetToolTip(this.btnUpdate, "Regresar a la gráfica principal");
             graph.Refresh();
             lblValues(0, 0);
-            
-            
+
+
             this.txtDuration.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtInitial.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
             this.txtEnd.KeyPress += new KeyPressEventHandler(ValidateNumberAndPoint);
@@ -208,7 +209,7 @@ namespace Economy.Forms
             typeAnnuities.Add("Ordinary", "Ordinaria");
             typeAnnuities.Add("Anticipated", "Anticipada");
             typeAnnuities.Add("Deferred", "Diferida");
-          
+
             typeSerie.Add("Arithmetic", "Aritmética");
             typeSerie.Add("Geometric", "Geométrica");
         }
@@ -298,7 +299,7 @@ namespace Economy.Forms
                 MessageBox.Show("Escriba la duración del proyecto o la tasa del proyecto.");
                 return;
             }
-            if(Convert.ToDecimal(txtRate.Texts) <= 0)
+            if (Convert.ToDecimal(txtRate.Texts) <= 0)
             {
                 MessageBox.Show("La tasa del proyecto no puede ser 0");
                 return;
@@ -309,7 +310,7 @@ namespace Economy.Forms
                 MessageBox.Show("La duración no puede ser 0 ni 1");
                 return;
             }
-            if(TotalPeriod!=-1 && rate !=-1)
+            if (TotalPeriod != -1 && rate != -1)
             {
                 if (!ValidateDuration())
                 {
@@ -318,14 +319,14 @@ namespace Economy.Forms
                 }
                 TotalPeriod = Convert.ToInt32(txtDuration.Texts);
                 rate = Convert.ToDecimal(txtRate.Texts);
-                
+
                 UpdateInterests();
                 ClearPanel();
                 graph_Paint(null, null);
 
                 lblValues(0, 0);
                 FillDGV();
-            
+
                 ActivateForm();
             }
             else
@@ -335,6 +336,7 @@ namespace Economy.Forms
                 Project.Period = ((Period)cmbTime.SelectedIndex).ToString();
                 projectServices.Update(Project);
                 ActivateForm();
+                lblValues(0, 0);
                 pbChanged.Visible = true;
             }
         }
@@ -343,7 +345,7 @@ namespace Economy.Forms
 
             foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
             {
-                
+
                 annuity.Rate = rate;
                 annuity.TotalPeriod = TotalPeriod;
                 AnnuityServices.Update(annuity);
@@ -366,22 +368,22 @@ namespace Economy.Forms
         {
             int duration = (int)Convert.ToInt64(txtDuration.Texts);
             foreach (Annuity annuity in AnnuityServices.GetIdProject(Project.Id))
-            { 
-                if(annuity.Initial>duration || annuity.End > duration)
+            {
+                if (annuity.Initial > duration || annuity.End > duration)
                 {
                     return false;
                 }
             }
-            foreach(Serie serie in SerieServices.GetIdProject(Project.Id))
+            foreach (Serie serie in SerieServices.GetIdProject(Project.Id))
             {
-                if(serie.Initial>duration || serie.End > duration)
+                if (serie.Initial > duration || serie.End > duration)
                 {
                     return false;
                 }
             }
-            foreach(Interest interest in InterestServices.GetIdProject(Project.Id))
+            foreach (Interest interest in InterestServices.GetIdProject(Project.Id))
             {
-                if(interest.Initial>duration || interest.End > duration)
+                if (interest.Initial > duration || interest.End > duration)
                 {
                     return false;
                 }
@@ -425,7 +427,7 @@ namespace Economy.Forms
             lblFinalPayment.Visible = false;
             lblFlowType.Visible = false;
             lblTypeSerie.Visible = false;
-            lblDownPayment.Visible = false; 
+            lblDownPayment.Visible = false;
         }
         #region -> form function
         private void AnnuityFunction()
@@ -543,11 +545,11 @@ namespace Economy.Forms
                 txtQuantity.Visible = true;
                 if (cmbTypeSerie.SelectedIndex == 0)
                 {
-                    lblWI.Text = "G";
+                    lblWI.Text = "Aumento o decremento en C$: ";
                 }
                 if (cmbTypeSerie.SelectedIndex == 1)
                 {
-                    lblWI.Text = "tasa j%";
+                    lblWI.Text = "Aumento o decremento en %: ";
                 }
             }
         }
@@ -612,7 +614,7 @@ namespace Economy.Forms
                             Id = interest.Id,
                             Inicio = interest.Initial,
                             Final = interest.End,
-                            Flujo = interest.FlowType =="Entry"? "Entrada":"Salida",
+                            Flujo = interest.FlowType == "Entry" ? "Entrada" : "Salida",
                             Futuro = interest.Future,
                             Pago = interest.Payment,
                             Presente = interest.Present,
@@ -820,7 +822,7 @@ namespace Economy.Forms
         private void graph_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = null;
-            
+
             if (Image != false)
             {
                 graphics = e.Graphics;
@@ -831,30 +833,58 @@ namespace Economy.Forms
             }
             if (interests.Count > 0)
             {
+
+         //       DrawPlane(TotalPeriod, graphics);
+                decimal? PresentEntry = 0;
+                decimal? PresentExit = 0;
+
                 foreach (object ob in interests)
                 {
-                    if (ob.GetType().Name.Contains("Anualidad"))
+                    string name = ob.GetType().Name;
+                    try
                     {
-                        Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
-                        DrawAnnuity(annuity, graphics);
+                        if (ob.GetType().Name.Contains("Annuity"))
+                        {
+
+                            Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                            if (annuity.FlowType == "Exit")
+                                PresentExit += annuity.Present;
+                            else
+                                PresentEntry += annuity.Present;
+                            DrawAnnuity(annuity, graphics);
+                        }
+                        else if (ob.GetType().Name.Contains("Serie"))
+                        {
+                            Serie serie = SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                            if (serie.FlowType == "Exit")
+                                PresentExit += serie.Present;
+                            else
+                                PresentEntry += serie.Present;
+                            DrawSeries(serie, graphics);
+                        }
+                        else if (ob.GetType().Name.Contains("Interest"))
+                        {
+                            Interest interest = InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                            if (interest.FlowType == "Exit")
+                                PresentExit += interest.Present;
+                            else
+                                PresentEntry += interest.Present;
+                            DrawInterest(interest, graphics);
+                        }
                     }
-                    else if (ob.GetType().Name.Contains("Serie"))
+
+                    catch
                     {
-                        Serie serie = SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
-                        DrawSeries(serie,graphics);
+
                     }
-                    else if (ob.GetType().Name.Contains("Interest"))
-                    {
-                        Interest interest = InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
-                        DrawInterest(interest,graphics);
-                    }
+
                 }
-                decimal Present = interests.Where(x => (string)x.GetType().GetProperty("Flujo").GetValue(x) == "Entrada").Sum(x=> (decimal)x.GetType().GetProperty("Presente").GetValue(x))- interests.Where(x => (string)x.GetType().GetProperty("Flujo").GetValue(x) == "Salida").Sum(x => (decimal)x.GetType().GetProperty("Presente").GetValue(x));
+                decimal? Present = Math.Abs((decimal)(PresentEntry - PresentExit));
                 decimal ratepercent = (Convert.ToDecimal(rate) / 100);
                 decimal rateYear = ((decimal)Math.Pow((double)(1 + ratepercent), TotalPeriod));
-                decimal TotalFuture = Present * rateYear;
+                decimal TotalFuture = (decimal)(Present * rateYear);
                 TotalFuture = Math.Abs(TotalFuture);
-                lblValues(Present, TotalFuture);
+                lblValues((decimal)Present, TotalFuture);
                 return;
             }
             //if (Annuity != null)
@@ -875,7 +905,7 @@ namespace Economy.Forms
             //}
             Redraw(graphics);
         }
-        
+
         #region -> Draw interest and plane
         private void ClearPanel()
         {
@@ -911,7 +941,7 @@ namespace Economy.Forms
             SolidBrush drawBrush = new SolidBrush(Color.DimGray);
             for (int i = 0; i < TotalPeriods; i++)
             {
-                
+
                 PointF point = new PointF((SpaceBetweenNumbers * i), coord_y - 15);
                 graphics.DrawString($"{i}", drawFont, drawBrush, point);
 
@@ -1135,9 +1165,9 @@ namespace Economy.Forms
             int curveLines = serie.FlowType == FlowType.Entry.ToString() ? HeightInitialLine + 30 : HeightInitialLine - 30;
             // payments
             float middle = Convert.ToSingle((serie.Initial + serie.End) / 2.0);
-            int curvePositionEntry = serie.Type == "Arithmetic" ? InitialPoints[1].Y-30 :curveLines - 16 ;
-            int curvePositionExit = serie.Type == "Arithmetic" ? InitialPoints[1].Y+30 : curveLines + 5;
-            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curvePositionEntry :curvePositionExit; // -18 and +12
+            int curvePositionEntry = serie.Type == "Arithmetic" ? InitialPoints[1].Y - 30 : curveLines - 16;
+            int curvePositionExit = serie.Type == "Arithmetic" ? InitialPoints[1].Y + 30 : curveLines + 5;
+            int positionPayment = serie.FlowType == FlowType.Entry.ToString() ? curvePositionEntry : curvePositionExit; // -18 and +12
             System.Drawing.Font drawFont = new System.Drawing.Font(lblInitial.Font.ToString(), 8);
             SolidBrush drawBrush = new SolidBrush(color);
             graphics.DrawString(serie.Type == TypeSeries.Arithmetic.ToString() ? "G=" + serie.Quantity.ToString() : "j= " + serie.Quantity.ToString() + "%", drawFont, drawBrush, ((middle * space)), positionPayment);
@@ -1313,7 +1343,7 @@ namespace Economy.Forms
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox.Image = bitmap;
                 pictureBox.BackColor = Color.White;
-                Bitmap bitmapFinal= new Bitmap(pictureBox.Width,pictureBox.Height);
+                Bitmap bitmapFinal = new Bitmap(pictureBox.Width, pictureBox.Height);
                 pictureBox.DrawToBitmap(bitmapFinal, new System.Drawing.Rectangle(0, 0, pictureBox.Width, pictureBox.Height));
                 Image = false;
                 System.Drawing.Image image = bitmapFinal;
@@ -1391,7 +1421,7 @@ namespace Economy.Forms
                         Tasa = interest.Rate,
                     });
                 }
-                
+
                 doc.Add(ListPDF(interesDTOs, new InteresDTO()));
                 doc.Close();
                 stream.Close();
@@ -1427,7 +1457,7 @@ namespace Economy.Forms
 
         private void PbClose_Click(object sender, EventArgs e)
         {
-            if (TotalPeriod == 0 || Rate(Project)==0)
+            if (TotalPeriod == 0 || Rate(Project) == 0)
             {
                 projectServices.Delete(Project);
             }
@@ -1510,7 +1540,7 @@ namespace Economy.Forms
                     lblNotify.Visible = true;
                     return;
                 }
-               
+
                 lblNotify.Visible = false;
             }
             catch
@@ -1659,7 +1689,7 @@ namespace Economy.Forms
                 {
                     objects.Add(InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)row.Cells[0].Value).FirstOrDefault());
                 }
-                
+
             }
             dgvInterest.DoDragDrop(objects, DragDropEffects.Copy);
         }
@@ -1672,22 +1702,21 @@ namespace Economy.Forms
                 var objects = (List<object>)e.Data.GetData(typeof(List<object>));
                 foreach (object ob in objects)
                 {
-                    if (cmbTypeIdgv.SelectedIndex==0)
+                    if (cmbTypeIdgv.SelectedIndex == 0)
                     {
-                        Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x=>x.Id==(int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        Annuity annuity = AnnuityServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
                         AnnuityServices.Delete(annuity);
                     }
                     else if (cmbTypeIdgv.SelectedIndex == 1)
                     {
-                        Serie serie= SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        Serie serie = SerieServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
                         SerieServices.Delete(serie);
                     }
                     else if (cmbTypeIdgv.SelectedIndex == 2)
                     {
-                        Interest interest= InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
+                        Interest interest = InterestServices.GetIdProject(Project.Id).Where(x => x.Id == (int)ob.GetType().GetProperty("Id").GetValue(ob)).FirstOrDefault();
                         InterestServices.Delete(interest);
                     }
-
                 }
                 FillDGV();
                 ClearPanel();
@@ -1720,8 +1749,35 @@ namespace Economy.Forms
 
         private void graph_DragDrop(object sender, DragEventArgs e)
         {
-            interests.Add((List<object>)e.Data.GetData(typeof(List<object>)));
+            foreach (var item in (List<object>)e.Data.GetData(typeof(List<object>)))
+            {
+                if (!interests.Any(x => (int)x.GetType().GetProperty("Id").GetValue(x) == (int)item.GetType().GetProperty("Id").GetValue(item)))
+                {
+                    interests.Add(item);
+                }
+             
+            }
 
+            ClearPanel();
+        }
+        
+
+        private void pbCompare_Click(object sender, EventArgs e)
+        {
+            FormAnalyst formAnalyst = new FormAnalyst(Project.UserId);
+            formAnalyst.InterestServices = InterestServices;
+            formAnalyst.SerieServices = SerieServices;
+            formAnalyst.AnnuityServices = AnnuityServices;
+            formAnalyst.projectServices = projectServices;
+            formAnalyst.ProjectIds.Add(Project.Id);
+            ReDraws.Stop();
+            formAnalyst.ShowDialog();
+            ReDraws.Start();
+        }
+
+        private void FormGraphInterest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ReDraws.Stop();
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)

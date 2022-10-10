@@ -196,22 +196,6 @@ namespace Economy.Forms
             }
         }
 
-        private void FormCreateProject_Load(object sender, EventArgs e)
-        {
-
-            this.PC0.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC1.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC2.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC3.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
-            CreatePieChart();
-            CreateLineChart();
-            projects();
-
-            
-        }
 
         private void PbClose_Click(object sender, EventArgs e)
         {
@@ -526,5 +510,25 @@ namespace Economy.Forms
             }
         }
 
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCreateProject_Load_1(object sender, EventArgs e)
+        {
+
+            this.PC0.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC1.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC2.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC3.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
+            CreatePieChart();
+            CreateLineChart();
+            projects();
+
+        }
     }
 }

@@ -178,7 +178,7 @@ namespace Economy.Forms
                 if (intents == 3)
                 {
                     btnSignIn.Visible = false;
-                    lblNotifyDuration.Text = "Has hecho 3 intentos. espera un minuto.";
+                    lblNotifyDuration.Text = "Has hecho 3 intentos. Espera un minuto.";
                     lblNotifyDuration.Visible = true;
                     txtName.Texts = "";
                     txtPassword.Texts = "";
