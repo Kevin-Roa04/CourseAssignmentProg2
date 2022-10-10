@@ -188,8 +188,14 @@ namespace Economy.Forms
                     Letter = ProjectLetter[project.Type],
                     BackColor = ProjectColor[project.Type],
                     BorderRadius = 16,
+<<<<<<< HEAD
                     Tag = project.Id,
+=======
+                    Tag=project.Id,
+                    
+>>>>>>> main
                 };
+                projectComponent.Size = new Size(130,130);
                 projectComponent.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelDescription.Tag = project.Id;
                 projectComponent.LabelLetter.Tag = project.Id;
@@ -223,22 +229,6 @@ namespace Economy.Forms
             }
         }
 
-        private void FormCreateProject_Load(object sender, EventArgs e)
-        {
-
-            this.PC0.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC1.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC2.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC3.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
-            CreatePieChart();
-            CreateLineChart();
-            projects();
-
-            
-        }
 
         private void PbClose_Click(object sender, EventArgs e)
         {
@@ -287,7 +277,7 @@ namespace Economy.Forms
                     BorderRadius = 16,
                     Tag = project.Id
                 };
-              
+                projectComponent.Size=new Size(130, 130);
                 projectComponent.MouseClick += ProjectClick[project.Type];
                 projectComponent.LabelDescription.Tag = project.Id;
                 projectComponent.LabelLetter.Tag = project.Id;
@@ -329,9 +319,12 @@ namespace Economy.Forms
           
             FormGraphInterest formGraphInterest = new FormGraphInterest(project);
             formGraphInterest.txtRate.Texts = Rate(project).ToString();
+            formGraphInterest.rate= Convert.ToDecimal(Rate(project).ToString());
             formGraphInterest.TotalPeriod=TotalPeriod(project);
             formGraphInterest.txtDuration.Texts= TotalPeriod(project).ToString();
             formGraphInterest.ActivateForm();
+            formGraphInterest.cmbTime.SelectedIndex = project.Period == null ? 0 : (int)Enum.Parse(typeof(Period), project.Period);
+            formGraphInterest.pbChanged.Visible = true;
             formGraphInterest.customPanel1.Visible = true;
             formGraphInterest.lblTypeIdgv.Visible = true;
             formGraphInterest.cmbTypeIdgv.Visible = true;
@@ -426,8 +419,10 @@ namespace Economy.Forms
            //gunaChart2.XAxes.GridLines.Display = false;
            
             gunaChart2.YAxes.GridLines.Display = false;
+            
             var dataset = new Guna.Charts.WinForms.GunaLineDataset();
             dataset.PointRadius = 3;
+            
             dataset.PointStyle = PointStyle.Circle;
             var results=from date in projectServices.GetProjectByUser(GlobalUser.Id)
                        group date by date.Creation.Date.ToShortDateString();
@@ -585,5 +580,25 @@ namespace Economy.Forms
             }
         }
 
+        private void lblName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormCreateProject_Load_1(object sender, EventArgs e)
+        {
+
+            this.PC0.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC1.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC2.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC3.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC5.MouseClick += new MouseEventHandler(PCMouseClick);
+            this.PC6.MouseClick += new MouseEventHandler(PCMouseClick);
+            CreatePieChart();
+            CreateLineChart();
+            projects();
+
+        }
     }
 }

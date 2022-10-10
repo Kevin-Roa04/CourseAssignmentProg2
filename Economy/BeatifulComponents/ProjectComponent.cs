@@ -25,6 +25,7 @@ namespace Economy.BeatifulComponents
         public Label LabelNameProject;
         public ProjectComponent()
         {
+         
             this.Cursor = Cursors.Hand;
             this.BackColor = Color.White;
             this.ForeColor = Color.Black;
@@ -57,7 +58,6 @@ namespace Economy.BeatifulComponents
             this.Controls.Add(LabelNameProject);
             this.Controls.Add(LabelLetter);
             this.Controls.Add(LabelDescription);
-         
         }
 
         // Properties

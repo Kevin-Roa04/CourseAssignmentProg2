@@ -133,8 +133,15 @@ namespace Economy.AppCore.Services.InterestsServices
             return repository.GetIdProject(Id);
         }
 
+        public int GlobalUpdate(int Duration, decimal rate, int projectID, int userID)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Update(Serie t)
         {
+            t.Future = Math.Round(interestServices.Future(t), 2);
+            t.Present = Math.Round(interestServices.Present(t), 2);
             return repository.Update(t);
         }
     }

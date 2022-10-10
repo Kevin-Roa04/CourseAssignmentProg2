@@ -178,7 +178,7 @@ namespace Economy.Forms
                 if (intents == 3)
                 {
                     btnSignIn.Visible = false;
-                    lblNotifyDuration.Text = "Has hecho 3 intentos. espera un minuto.";
+                    lblNotifyDuration.Text = "Has hecho 3 intentos. Espera un minuto.";
                     lblNotifyDuration.Visible = true;
                     txtName.Texts = "";
                     txtPassword.Texts = "";
@@ -228,12 +228,14 @@ namespace Economy.Forms
         private void tLock_Tick(object sender, EventArgs e)
         {
             seconds++;
-            if (seconds == 60)
+            if (seconds >= 60)
             {
                 lblNotifyDuration.Visible = false;
                 btnSignIn.Visible = true;
                 lblSeconds.Visible = false;
                 tLock.Enabled = false;
+                seconds = 0;
+                intents = 0;
                 return;
             }
             lblSeconds.Visible = true;
@@ -270,6 +272,11 @@ namespace Economy.Forms
                 FadeIn.Stop();
             }
             this.Opacity += .2;
+        }
+
+        private void txtPassword_TabIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

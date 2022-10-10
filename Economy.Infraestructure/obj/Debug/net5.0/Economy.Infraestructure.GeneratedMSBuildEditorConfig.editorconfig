@@ -7,4 +7,8 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Economy.Infraestructure
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\
+=======
+build_property.ProjectDir = C:\Users\Quezada\Desktop\Prueba\CourseAssignmentProg2\Economy.Infraestructure\
+>>>>>>> main

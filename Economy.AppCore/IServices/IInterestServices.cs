@@ -10,5 +10,6 @@ namespace Economy.AppCore.IServices
     {
         List<T> GetIdProject(int Id);
         List<T> FindByOption(Func<T, bool> where);
+        int GlobalUpdate(int Duration, decimal rate, int projectID, int userID);
     }
 }

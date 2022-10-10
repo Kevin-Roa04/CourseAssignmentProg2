@@ -71,9 +71,10 @@ namespace Economy.Forms
             this.customPanel1.GradientAngle = 90F;
             this.customPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.customPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.customPanel1.Location = new System.Drawing.Point(485, -4);
+            this.customPanel1.Location = new System.Drawing.Point(554, -5);
+            this.customPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.customPanel1.Name = "customPanel1";
-            this.customPanel1.Size = new System.Drawing.Size(376, 514);
+            this.customPanel1.Size = new System.Drawing.Size(430, 685);
             this.customPanel1.TabIndex = 1;
             // 
             // PbClose
@@ -81,9 +82,10 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(347, 11);
+            this.PbClose.Location = new System.Drawing.Point(397, 15);
+            this.PbClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.Size = new System.Drawing.Size(15, 17);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbClose.TabIndex = 7;
             this.PbClose.TabStop = false;
@@ -95,9 +97,9 @@ namespace Economy.Forms
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(82, 246);
+            this.label1.Location = new System.Drawing.Point(94, 328);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 18);
+            this.label1.Size = new System.Drawing.Size(285, 23);
             this.label1.TabIndex = 6;
             this.label1.Text = "y comienza el viaje con nosotros";
             // 
@@ -107,9 +109,9 @@ namespace Economy.Forms
             this.lblDescriptionKepp.BackColor = System.Drawing.Color.Transparent;
             this.lblDescriptionKepp.Font = new System.Drawing.Font("Trebuchet MS", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDescriptionKepp.ForeColor = System.Drawing.Color.White;
-            this.lblDescriptionKepp.Location = new System.Drawing.Point(86, 220);
+            this.lblDescriptionKepp.Location = new System.Drawing.Point(98, 293);
             this.lblDescriptionKepp.Name = "lblDescriptionKepp";
-            this.lblDescriptionKepp.Size = new System.Drawing.Size(207, 18);
+            this.lblDescriptionKepp.Size = new System.Drawing.Size(267, 23);
             this.lblDescriptionKepp.TabIndex = 5;
             this.lblDescriptionKepp.Text = "Introduce tus datos personales";
             // 
@@ -119,9 +121,9 @@ namespace Economy.Forms
             this.lblDescription.BackColor = System.Drawing.Color.Transparent;
             this.lblDescription.Font = new System.Drawing.Font("Trebuchet MS", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(55, 160);
+            this.lblDescription.Location = new System.Drawing.Point(63, 213);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(254, 46);
+            this.lblDescription.Size = new System.Drawing.Size(320, 59);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "¡Hola, Amigo!";
             // 
@@ -137,9 +139,10 @@ namespace Economy.Forms
             this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignUp.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSignUp.ForeColor = System.Drawing.Color.White;
-            this.btnSignUp.Location = new System.Drawing.Point(101, 311);
+            this.btnSignUp.Location = new System.Drawing.Point(115, 415);
+            this.btnSignUp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(159, 49);
+            this.btnSignUp.Size = new System.Drawing.Size(182, 65);
             this.btnSignUp.TabIndex = 3;
             this.btnSignUp.Text = "Registrarse";
             this.btnSignUp.TextColor = System.Drawing.Color.White;
@@ -158,9 +161,10 @@ namespace Economy.Forms
             this.btnSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignIn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSignIn.ForeColor = System.Drawing.Color.White;
-            this.btnSignIn.Location = new System.Drawing.Point(130, 393);
+            this.btnSignIn.Location = new System.Drawing.Point(149, 524);
+            this.btnSignIn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(159, 49);
+            this.btnSignIn.Size = new System.Drawing.Size(182, 65);
             this.btnSignIn.TabIndex = 8;
             this.btnSignIn.Text = "Iniciar";
             this.btnSignIn.TextColor = System.Drawing.Color.White;
@@ -171,9 +175,10 @@ namespace Economy.Forms
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(67, 295);
+            this.pictureBox2.Location = new System.Drawing.Point(77, 393);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox2.Size = new System.Drawing.Size(26, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
@@ -182,9 +187,10 @@ namespace Economy.Forms
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(67, 239);
+            this.pictureBox1.Location = new System.Drawing.Point(77, 319);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(23, 21);
+            this.pictureBox1.Size = new System.Drawing.Size(26, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -198,18 +204,19 @@ namespace Economy.Forms
             this.txtPassword.BorderSize = 2;
             this.txtPassword.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPassword.Location = new System.Drawing.Point(100, 289);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Location = new System.Drawing.Point(114, 385);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtPassword.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtPassword.PasswordChar = true;
             this.txtPassword.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
             this.txtPassword.PlaceholderText = "Contraseña";
-            this.txtPassword.Size = new System.Drawing.Size(272, 33);
-            this.txtPassword.TabIndex = 15;
+            this.txtPassword.Size = new System.Drawing.Size(311, 42);
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.Texts = "";
             this.txtPassword.UnderlinedStyle = false;
+            this.txtPassword.TabIndexChanged += new System.EventHandler(this.txtPassword_TabIndexChanged);
             // 
             // txtName
             // 
@@ -220,16 +227,16 @@ namespace Economy.Forms
             this.txtName.BorderSize = 2;
             this.txtName.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtName.Location = new System.Drawing.Point(100, 234);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Location = new System.Drawing.Point(114, 312);
+            this.txtName.Margin = new System.Windows.Forms.Padding(5);
             this.txtName.Multiline = false;
             this.txtName.Name = "txtName";
-            this.txtName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtName.Padding = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.txtName.PasswordChar = false;
             this.txtName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
             this.txtName.PlaceholderText = "Nombre";
-            this.txtName.Size = new System.Drawing.Size(272, 33);
-            this.txtName.TabIndex = 14;
+            this.txtName.Size = new System.Drawing.Size(311, 42);
+            this.txtName.TabIndex = 0;
             this.txtName.Texts = "";
             this.txtName.UnderlinedStyle = false;
             // 
@@ -239,9 +246,9 @@ namespace Economy.Forms
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.label2.Location = new System.Drawing.Point(92, 107);
+            this.label2.Location = new System.Drawing.Point(105, 143);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(310, 29);
+            this.label2.Size = new System.Drawing.Size(389, 38);
             this.label2.TabIndex = 18;
             this.label2.Text = "Iniciar sesión en Economía";
             // 
@@ -251,9 +258,9 @@ namespace Economy.Forms
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(55, 15);
+            this.label3.Location = new System.Drawing.Point(63, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 18);
+            this.label3.Size = new System.Drawing.Size(73, 20);
             this.label3.TabIndex = 19;
             this.label3.Text = "Economía";
             // 
@@ -261,9 +268,10 @@ namespace Economy.Forms
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(6, 7);
+            this.pictureBox5.Location = new System.Drawing.Point(7, 9);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(50, 32);
+            this.pictureBox5.Size = new System.Drawing.Size(57, 43);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 20;
             this.pictureBox5.TabStop = false;
@@ -273,9 +281,9 @@ namespace Economy.Forms
             this.lblNotifyDuration.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblNotifyDuration.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNotifyDuration.ForeColor = System.Drawing.Color.Red;
-            this.lblNotifyDuration.Location = new System.Drawing.Point(140, 345);
+            this.lblNotifyDuration.Location = new System.Drawing.Point(160, 460);
             this.lblNotifyDuration.Name = "lblNotifyDuration";
-            this.lblNotifyDuration.Size = new System.Drawing.Size(212, 20);
+            this.lblNotifyDuration.Size = new System.Drawing.Size(242, 27);
             this.lblNotifyDuration.TabIndex = 44;
             this.lblNotifyDuration.Text = "Espera";
             this.lblNotifyDuration.Visible = false;
@@ -285,9 +293,9 @@ namespace Economy.Forms
             this.lblSeconds.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.lblSeconds.Font = new System.Drawing.Font("Trebuchet MS", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblSeconds.ForeColor = System.Drawing.Color.Red;
-            this.lblSeconds.Location = new System.Drawing.Point(187, 366);
+            this.lblSeconds.Location = new System.Drawing.Point(214, 488);
             this.lblSeconds.Name = "lblSeconds";
-            this.lblSeconds.Size = new System.Drawing.Size(50, 20);
+            this.lblSeconds.Size = new System.Drawing.Size(57, 27);
             this.lblSeconds.TabIndex = 45;
             this.lblSeconds.Text = "Segundos";
             this.lblSeconds.Visible = false;
@@ -315,10 +323,10 @@ namespace Economy.Forms
             // 
             // FormLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(853, 508);
+            this.ClientSize = new System.Drawing.Size(975, 677);
             this.Controls.Add(this.lblSeconds);
             this.Controls.Add(this.lblNotifyDuration);
             this.Controls.Add(this.pictureBox5);
@@ -332,6 +340,7 @@ namespace Economy.Forms
             this.Controls.Add(this.customPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormLogin";
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -74,6 +74,10 @@ namespace Economy.Infraestructure.Repository.Interests
             return economyDbContext.Interests.Where(x => x.ProjectId == Id).ToList();
         }
 
+        public int GlobalUpdate(int Duration, decimal rate, int projectID, int userID)
+        {
+            throw new NotImplementedException();
+        }
 
         public int Update(Interest t)
         {

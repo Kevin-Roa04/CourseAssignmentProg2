@@ -34,6 +34,7 @@ namespace Economy
         [STAThread]
         static void Main()
         {
+            //Application.Run(new Prueba());
             Configuration = new ConfigurationBuilder().AddJsonFile("AppSettings.json").
                AddEnvironmentVariables().Build();
 
@@ -41,9 +42,9 @@ namespace Economy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var services = new ServiceCollection();
-            
 
-  
+
+
 
             services.AddDbContext<EconomyContext>(options =>
             {
@@ -54,7 +55,7 @@ namespace Economy
             services.AddScoped<IUsersServices, UsersServices>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<IProjectServices, ProjectServices>();
-            services.AddScoped<IInterestRepository<Annuity>,AnnuityRepository>();
+            services.AddScoped<IInterestRepository<Annuity>, AnnuityRepository>();
             services.AddScoped<IInterestRepository<Serie>, SerieRepository>();
             services.AddScoped<IInterestRepository<Interest>, InterestRepository>();
             services.AddScoped<ICalculateServices<Interest>, CalculateInterest>();

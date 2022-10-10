@@ -6676,11 +6676,18 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Kevin Roa\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\Quezada\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+>>>>>>> main
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
       "projectName": "Economy",
       "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy\\Economy.csproj",
@@ -6690,6 +6697,23 @@
       "configFilePaths": [
         "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+=======
+      "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "projectName": "Economy",
+      "projectPath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+>>>>>>> main
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -6702,6 +6726,7 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
+<<<<<<< HEAD
             "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
               "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
             },
@@ -6710,6 +6735,16 @@
             },
             "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
               "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
+=======
+            "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
+              "projectPath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
+            },
+            "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            },
+            "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
+>>>>>>> main
             }
           }
         }
@@ -6773,7 +6808,11 @@
             "privateAssets": "none"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+>>>>>>> main
       }
     }
   },
@@ -6782,7 +6821,11 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+=======
+      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+>>>>>>> main
       "libraryId": "BouncyCastle",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -6792,7 +6835,11 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Package 'Guna.Charts.WinForms 1.0.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+=======
+      "message": "El paquete \"Guna.Charts.WinForms 1.0.4\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+>>>>>>> main
       "libraryId": "Guna.Charts.WinForms",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -6802,7 +6849,11 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Package 'iTextSharp 5.5.13.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+=======
+      "message": "El paquete \"iTextSharp 5.5.13.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
+>>>>>>> main
       "libraryId": "iTextSharp",
       "targetGraphs": [
         "net5.0-windows7.0"
