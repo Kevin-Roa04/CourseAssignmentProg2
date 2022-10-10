@@ -202,7 +202,7 @@ namespace Economy.Forms
                     continue;
                 };
                 decimal[] array = FNEData.Profit.ToArray();
-                if (array == null) return;
+                if (array == null || array.Length == 0) return;
                 dgvFNE.Rows[0].Cells[i + 2].Value = array[i];
             }
         }
@@ -216,7 +216,7 @@ namespace Economy.Forms
                     continue;
                 };
                 decimal[] array = FNEData.Cost.ToArray();
-                if (array == null) return;
+                if (array == null || array.Length == 0) return;
                 dgvFNE.Rows[1].Cells[i + 2].Value = array[i];
             }
         }
