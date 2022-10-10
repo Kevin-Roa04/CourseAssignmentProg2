@@ -1,23 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "RpWmuWbri/j0qa6/yEGgLAp9lo6YLqNsbF9KtwL85GnVU0IVR91ZWma9UGstjLia7jsT+mRCSQIXwZj/npZ4LQ==",
+  "dgSpecHash": "pWdci97PVoqV/a9z7f3q9TIDdN96nO23LT0SohKEZOj3Ny0B/Vzld1ANifR4kModg8FOLx5MC/bHFLG4aUolQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Kevin Roa\\Desktop\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.drawing.common\\6.0.0\\system.drawing.common.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
-    "C:\\Users\\Kevin Roa\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
-=======
-  "dgSpecHash": "8dPtDO8mFNxi+SNe/80E7T7ihARNusZtKH7CRfSjMWcA+BKjr6qMiPUnE9rnABPhWde7dV8FnyLOp0McY/ADug==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\Prueba\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+  "projectFilePath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\system.configuration.configurationmanager\\6.0.0\\system.configuration.configurationmanager.6.0.0.nupkg.sha512",
@@ -28,7 +13,13 @@
     "C:\\Users\\Quezada\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
->>>>>>> main
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Common\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

@@ -3,12 +3,8 @@ build_property.TargetFramework = net5.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
 build_property.ProjectTypeGuids = 
-build_property.PublishSingleFile = 
-build_property.IncludeAllContentForSelfExtract = 
-build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Economy.Infraestructure
-<<<<<<< HEAD
-build_property.ProjectDir = C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\
-=======
-build_property.ProjectDir = C:\Users\Quezada\Desktop\Prueba\CourseAssignmentProg2\Economy.Infraestructure\
->>>>>>> main
+build_property.ProjectDir = C:\Users\Quezada\Desktop\pru\CourseAssignmentProg2\Economy.Infraestructure\

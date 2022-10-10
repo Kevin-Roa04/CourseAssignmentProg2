@@ -68,15 +68,15 @@
             this.txtSearch = new Economy.RJTextBox();
             this.pbCompare = new System.Windows.Forms.PictureBox();
             this.gcScatter = new Guna.Charts.WinForms.GunaChart();
-            this.gc = new Guna.Charts.WinForms.GunaChart();
-            this.gunaScatterDataset1 = new Guna.Charts.WinForms.GunaScatterDataset();
+            this.gcPolarArea = new Guna.Charts.WinForms.GunaChart();
             this.lblFuture = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.FadeIn = new System.Windows.Forms.Timer(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.FADE = new System.Windows.Forms.Timer(this.components);
             this.flpUsedProject = new System.Windows.Forms.FlowLayoutPanel();
             this.lblUsedProject = new System.Windows.Forms.Label();
+            this.gunaBarDataset1 = new Guna.Charts.WinForms.GunaBarDataset();
+            this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
             this.SuspendLayout();
@@ -86,12 +86,13 @@
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(778, 7);
+            this.PbClose.Location = new System.Drawing.Point(903, 12);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbClose.TabIndex = 52;
             this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // ellipseControl1
             // 
@@ -158,7 +159,7 @@
             // 
             this.pbCompare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCompare.Image = ((System.Drawing.Image)(resources.GetObject("pbCompare.Image")));
-            this.pbCompare.Location = new System.Drawing.Point(320, 60);
+            this.pbCompare.Location = new System.Drawing.Point(325, 99);
             this.pbCompare.Name = "pbCompare";
             this.pbCompare.Size = new System.Drawing.Size(36, 37);
             this.pbCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -207,72 +208,56 @@
             tick6.Font = chartFont16;
             this.gcScatter.ZAxes.Ticks = tick6;
             // 
-            // gc
+            // gcPolarArea
             // 
-            this.gc.BackColor = System.Drawing.Color.White;
+            this.gcPolarArea.Animation.Easing = Guna.Charts.WinForms.Easing.EaseInOutBounce;
+            this.gcPolarArea.AutoScroll = true;
+            this.gcPolarArea.BackColor = System.Drawing.Color.White;
             chartFont1.FontName = "Arial";
-            this.gc.Legend.LabelFont = chartFont1;
-            this.gc.Location = new System.Drawing.Point(575, 390);
-            this.gc.Name = "gc";
-            this.gc.Size = new System.Drawing.Size(341, 205);
-            this.gc.TabIndex = 59;
+            this.gcPolarArea.Legend.LabelFont = chartFont1;
+            this.gcPolarArea.Location = new System.Drawing.Point(559, 369);
+            this.gcPolarArea.Name = "gcPolarArea";
+            this.gcPolarArea.Size = new System.Drawing.Size(357, 264);
+            this.gcPolarArea.TabIndex = 59;
             chartFont2.FontName = "Arial";
-            chartFont2.Size = 12;
+            chartFont2.Size = 9;
             chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
-            this.gc.Title.Font = chartFont2;
+            this.gcPolarArea.Title.Font = chartFont2;
+            this.gcPolarArea.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(157)))), ((int)(((byte)(166)))));
+            this.gcPolarArea.Title.Text = "Número de intereses de cada función";
             chartFont3.FontName = "Arial";
-            this.gc.Tooltips.BodyFont = chartFont3;
+            this.gcPolarArea.Tooltips.BodyFont = chartFont3;
             chartFont4.FontName = "Arial";
             chartFont4.Size = 9;
             chartFont4.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
-            this.gc.Tooltips.TitleFont = chartFont4;
-            this.gc.XAxes.GridLines = grid1;
+            this.gcPolarArea.Tooltips.TitleFont = chartFont4;
+            this.gcPolarArea.XAxes.GridLines = grid1;
             chartFont5.FontName = "Arial";
             tick1.Font = chartFont5;
-            this.gc.XAxes.Ticks = tick1;
-            this.gc.YAxes.GridLines = grid2;
+            this.gcPolarArea.XAxes.Ticks = tick1;
+            this.gcPolarArea.YAxes.GridLines = grid2;
             chartFont6.FontName = "Arial";
             tick2.Font = chartFont6;
-            this.gc.YAxes.Ticks = tick2;
-            this.gc.ZAxes.GridLines = grid3;
+            this.gcPolarArea.YAxes.Ticks = tick2;
+            this.gcPolarArea.ZAxes.GridLines = grid3;
             chartFont7.FontName = "Arial";
             pointLabel1.Font = chartFont7;
-            this.gc.ZAxes.PointLabels = pointLabel1;
+            this.gcPolarArea.ZAxes.PointLabels = pointLabel1;
             chartFont8.FontName = "Arial";
             tick3.Font = chartFont8;
-            this.gc.ZAxes.Ticks = tick3;
-            // 
-            // gunaScatterDataset1
-            // 
-            this.gunaScatterDataset1.BorderColor = System.Drawing.Color.Empty;
-            this.gunaScatterDataset1.FillColor = System.Drawing.Color.Empty;
-            this.gunaScatterDataset1.Label = "Scatter1";
-            this.gunaScatterDataset1.PointStyle = Guna.Charts.WinForms.PointStyle.Rect;
+            this.gcPolarArea.ZAxes.Ticks = tick3;
             // 
             // lblFuture
             // 
-            this.lblFuture.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFuture.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFuture.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblFuture.Location = new System.Drawing.Point(543, 157);
+            this.lblFuture.Location = new System.Drawing.Point(543, 152);
             this.lblFuture.Name = "lblFuture";
             this.lblFuture.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblFuture.Size = new System.Drawing.Size(13, 117);
+            this.lblFuture.Size = new System.Drawing.Size(13, 149);
             this.lblFuture.TabIndex = 60;
-            this.lblFuture.Text = "FUTURO";
+            this.lblFuture.Text = "PRESENTE";
             this.lblFuture.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(615, 334);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(239, 17);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "PRESENTE";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // FadeIn
             // 
@@ -287,13 +272,14 @@
             // FADE
             // 
             this.FADE.Enabled = true;
-            this.FADE.Interval = 30;
+            this.FADE.Interval = 40;
             this.FADE.Tick += new System.EventHandler(this.FADE_Tick);
             // 
             // flpUsedProject
             // 
             this.flpUsedProject.AllowDrop = true;
             this.flpUsedProject.AutoScroll = true;
+            this.flpUsedProject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.flpUsedProject.Location = new System.Drawing.Point(324, 161);
             this.flpUsedProject.Name = "flpUsedProject";
             this.flpUsedProject.Size = new System.Drawing.Size(141, 390);
@@ -310,17 +296,24 @@
             this.lblUsedProject.TabIndex = 63;
             this.lblUsedProject.Text = "Proyectos comparados:";
             // 
+            // gunaBarDataset1
+            // 
+            this.gunaBarDataset1.Label = "Bar1";
+            // 
+            // gunaPolarAreaDataset1
+            // 
+            this.gunaPolarAreaDataset1.Label = "PolarArea1";
+            // 
             // FormAnalyst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(928, 607);
+            this.ClientSize = new System.Drawing.Size(928, 647);
             this.Controls.Add(this.lblUsedProject);
             this.Controls.Add(this.flpUsedProject);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblFuture);
-            this.Controls.Add(this.gc);
+            this.Controls.Add(this.gcPolarArea);
             this.Controls.Add(this.gcScatter);
             this.Controls.Add(this.pbCompare);
             this.Controls.Add(this.lblName);
@@ -334,6 +327,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormAnalyst";
             this.Load += new System.EventHandler(this.FormAnalyst_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAnalyst_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).EndInit();
             this.ResumeLayout(false);
@@ -350,15 +344,15 @@
         private System.Windows.Forms.Label lblName;
         private RJTextBox txtSearch;
         private System.Windows.Forms.PictureBox pbCompare;
-        private Guna.Charts.WinForms.GunaChart gc;
+        private Guna.Charts.WinForms.GunaChart gcPolarArea;
         private Guna.Charts.WinForms.GunaChart gcScatter;
-        private Guna.Charts.WinForms.GunaScatterDataset gunaScatterDataset1;
         private System.Windows.Forms.Label lblFuture;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer FadeIn;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer FADE;
         private System.Windows.Forms.FlowLayoutPanel flpUsedProject;
         private System.Windows.Forms.Label lblUsedProject;
+        private Guna.Charts.WinForms.GunaBarDataset gunaBarDataset1;
+        private Guna.Charts.WinForms.GunaPolarAreaDataset gunaPolarAreaDataset1;
     }
 }

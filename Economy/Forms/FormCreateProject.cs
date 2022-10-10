@@ -181,6 +181,7 @@ namespace Economy.Forms
             flpProjects.Controls.Clear();
             foreach (Project project in projectServices.GetProjectByUser(GlobalUser.Id))
             {
+             
                 ProjectComponent projectComponent = new ProjectComponent()
                 {
                     NameProject = project.Name,
@@ -188,12 +189,9 @@ namespace Economy.Forms
                     Letter = ProjectLetter[project.Type],
                     BackColor = ProjectColor[project.Type],
                     BorderRadius = 16,
-<<<<<<< HEAD
+
                     Tag = project.Id,
-=======
-                    Tag=project.Id,
                     
->>>>>>> main
                 };
                 projectComponent.Size = new Size(130,130);
                 projectComponent.MouseClick += ProjectClick[project.Type];
