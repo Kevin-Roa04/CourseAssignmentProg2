@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelDepreciation = new System.Windows.Forms.Label();
             this.lblInitialValue = new System.Windows.Forms.Label();
             this.nudInitialValue = new System.Windows.Forms.NumericUpDown();
@@ -59,7 +62,7 @@
             this.labelDepreciation.AutoSize = true;
             this.labelDepreciation.Font = new System.Drawing.Font("Times New Roman", 19.8F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.labelDepreciation.Location = new System.Drawing.Point(550, 43);
+            this.labelDepreciation.Location = new System.Drawing.Point(512, 27);
             this.labelDepreciation.Name = "labelDepreciation";
             this.labelDepreciation.Size = new System.Drawing.Size(294, 31);
             this.labelDepreciation.TabIndex = 3;
@@ -70,14 +73,14 @@
             this.lblInitialValue.AutoSize = true;
             this.lblInitialValue.Location = new System.Drawing.Point(6, 31);
             this.lblInitialValue.Name = "lblInitialValue";
-            this.lblInitialValue.Size = new System.Drawing.Size(64, 15);
+            this.lblInitialValue.Size = new System.Drawing.Size(66, 15);
             this.lblInitialValue.TabIndex = 6;
-            this.lblInitialValue.Text = "Initial Value";
+            this.lblInitialValue.Text = "Valor Inicial";
             // 
             // nudInitialValue
             // 
             this.nudInitialValue.DecimalPlaces = 2;
-            this.nudInitialValue.Location = new System.Drawing.Point(268, 29);
+            this.nudInitialValue.Location = new System.Drawing.Point(149, 29);
             this.nudInitialValue.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -92,14 +95,14 @@
             this.lblResidualValue.AutoSize = true;
             this.lblResidualValue.Location = new System.Drawing.Point(6, 60);
             this.lblResidualValue.Name = "lblResidualValue";
-            this.lblResidualValue.Size = new System.Drawing.Size(130, 15);
+            this.lblResidualValue.Size = new System.Drawing.Size(132, 15);
             this.lblResidualValue.TabIndex = 8;
-            this.lblResidualValue.Text = "Residual Value (Optional)";
+            this.lblResidualValue.Text = "Valor Residual (Opcional)";
             // 
             // nudResidualValue
             // 
             this.nudResidualValue.DecimalPlaces = 2;
-            this.nudResidualValue.Location = new System.Drawing.Point(268, 56);
+            this.nudResidualValue.Location = new System.Drawing.Point(149, 56);
             this.nudResidualValue.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -108,10 +111,11 @@
             this.nudResidualValue.Name = "nudResidualValue";
             this.nudResidualValue.Size = new System.Drawing.Size(191, 21);
             this.nudResidualValue.TabIndex = 9;
+            this.nudResidualValue.ValueChanged += new System.EventHandler(this.nudResidualValue_ValueChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(112, 277);
+            this.button2.Location = new System.Drawing.Point(74, 205);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(191, 25);
             this.button2.TabIndex = 12;
@@ -123,6 +127,7 @@
             // 
             this.gbData.Controls.Add(this.nudCoeficiente);
             this.gbData.Controls.Add(this.lblCoeficiente);
+            this.gbData.Controls.Add(this.button2);
             this.gbData.Controls.Add(this.cmbMethod);
             this.gbData.Controls.Add(this.label6);
             this.gbData.Controls.Add(this.nudYears);
@@ -133,14 +138,14 @@
             this.gbData.Controls.Add(this.nudResidualValue);
             this.gbData.Location = new System.Drawing.Point(14, 12);
             this.gbData.Name = "gbData";
-            this.gbData.Size = new System.Drawing.Size(474, 180);
+            this.gbData.Size = new System.Drawing.Size(358, 397);
             this.gbData.TabIndex = 14;
             this.gbData.TabStop = false;
             this.gbData.Text = "Data";
             // 
             // nudCoeficiente
             // 
-            this.nudCoeficiente.Location = new System.Drawing.Point(268, 142);
+            this.nudCoeficiente.Location = new System.Drawing.Point(149, 142);
             this.nudCoeficiente.Name = "nudCoeficiente";
             this.nudCoeficiente.Size = new System.Drawing.Size(191, 21);
             this.nudCoeficiente.TabIndex = 17;
@@ -160,7 +165,7 @@
             // 
             this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMethod.FormattingEnabled = true;
-            this.cmbMethod.Location = new System.Drawing.Point(268, 113);
+            this.cmbMethod.Location = new System.Drawing.Point(149, 113);
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(191, 23);
             this.cmbMethod.TabIndex = 15;
@@ -171,13 +176,13 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 116);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 15);
+            this.label6.Size = new System.Drawing.Size(121, 15);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Type of Method";
+            this.label6.Text = "Metodo de depreciacion";
             // 
             // nudYears
             // 
-            this.nudYears.Location = new System.Drawing.Point(268, 86);
+            this.nudYears.Location = new System.Drawing.Point(149, 86);
             this.nudYears.Name = "nudYears";
             this.nudYears.Size = new System.Drawing.Size(191, 21);
             this.nudYears.TabIndex = 11;
@@ -187,44 +192,87 @@
             this.lblYears.AutoSize = true;
             this.lblYears.Location = new System.Drawing.Point(5, 88);
             this.lblYears.Name = "lblYears";
-            this.lblYears.Size = new System.Drawing.Size(33, 15);
+            this.lblYears.Size = new System.Drawing.Size(31, 15);
             this.lblYears.TabIndex = 10;
-            this.lblYears.Text = "Years";
+            this.lblYears.Text = "Años";
             // 
             // DgvDepreciation
             // 
-            this.DgvDepreciation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvDepreciation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DgvDepreciation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.DgvDepreciation.BackgroundColor = System.Drawing.Color.White;
+            this.DgvDepreciation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvDepreciation.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DgvDepreciation.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvDepreciation.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvDepreciation.ColumnHeadersHeight = 30;
+            this.DgvDepreciation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvDepreciation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Years,
             this.Depreciation,
             this.Depreciation_Acum,
             this.Book_Value});
-            this.DgvDepreciation.Location = new System.Drawing.Point(494, 92);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvDepreciation.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvDepreciation.EnableHeadersVisualStyles = false;
+            this.DgvDepreciation.Location = new System.Drawing.Point(392, 72);
             this.DgvDepreciation.Name = "DgvDepreciation";
+            this.DgvDepreciation.ReadOnly = true;
+            this.DgvDepreciation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Honeydew;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MintCream;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvDepreciation.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvDepreciation.RowHeadersVisible = false;
             this.DgvDepreciation.RowTemplate.Height = 25;
-            this.DgvDepreciation.Size = new System.Drawing.Size(402, 317);
-            this.DgvDepreciation.TabIndex = 15;
+            this.DgvDepreciation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvDepreciation.Size = new System.Drawing.Size(553, 337);
+            this.DgvDepreciation.TabIndex = 3;
             // 
             // Years
             // 
             this.Years.HeaderText = "Years";
             this.Years.Name = "Years";
+            this.Years.ReadOnly = true;
+            this.Years.Width = 70;
             // 
             // Depreciation
             // 
             this.Depreciation.HeaderText = "Depreciation";
             this.Depreciation.Name = "Depreciation";
+            this.Depreciation.ReadOnly = true;
+            this.Depreciation.Width = 128;
             // 
             // Depreciation_Acum
             // 
             this.Depreciation_Acum.HeaderText = "Acumulated_Depreciation";
             this.Depreciation_Acum.Name = "Depreciation_Acum";
+            this.Depreciation_Acum.ReadOnly = true;
+            this.Depreciation_Acum.Width = 226;
             // 
             // Book_Value
             // 
             this.Book_Value.HeaderText = "Book_Value";
             this.Book_Value.Name = "Book_Value";
+            this.Book_Value.ReadOnly = true;
+            this.Book_Value.Width = 120;
             // 
             // Depreciacion
             // 
@@ -232,10 +280,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(910, 421);
+            this.ClientSize = new System.Drawing.Size(957, 421);
             this.Controls.Add(this.DgvDepreciation);
             this.Controls.Add(this.gbData);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.labelDepreciation);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Name = "Depreciacion";

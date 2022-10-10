@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace Economy.Forms
         int years;
         int type;
         int profitNumber = 0;
+        bool edit = false;
         DataGridView dgvFNE;
         public FormAddCosts(int years, DataGridView dgvFNE)
         {
@@ -29,13 +31,22 @@ namespace Economy.Forms
             this.dgvFNE = dgvFNE;
         }
 
+
+        #region -> form movement
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        #endregion
+
         private void LoadDGV(int columns)
         {
             for (int i = 0; i < columns + 2; i++)
             {
                 if (i == 0)
                 {
-                    dgvProfit.Columns.Add("", "");
+                    dgvProfit.Columns.Add("", "NombreCosto");
                     continue;
                 }
                 dgvProfit.Columns.Add((i - 1).ToString(), (i - 1).ToString());
@@ -48,7 +59,7 @@ namespace Economy.Forms
 
         private void radioButton2_Click(object sender, EventArgs e)
         {
-            label4.Text = "Amount to grow";
+            label4.Text = "Monto Constante";
             numericUpDown1.Enabled = true;
             type = 1;
             numericUpDown1.DecimalPlaces = 2;
@@ -57,7 +68,7 @@ namespace Economy.Forms
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            label4.Text = "Growth Rate %";
+            label4.Text = "Tasa de Crecimiento %";
             numericUpDown1.Enabled = true;
             type = 2;
             numericUpDown1.DecimalPlaces = 0;
@@ -73,39 +84,85 @@ namespace Economy.Forms
             numericUpDown1.DecimalPlaces = 2;
             numericUpDown1.Maximum = 100000000;
         }
+        private bool IsValidated()
+        {
+            // Validando que el nombre no vaya vacio
+            if (txtProfitName.Text.Trim() == "")
+            {
+                MessageBox.Show("Escriba un nombre valido para la ganancia");
+                return false;
+            }
+            if (txtAmount.Value == 0)
+            {
+                MessageBox.Show("Digite un valor valido en el campo \"monto\"");
+                return false;
+            }
+            if (radioButton2.Checked || radioButton3.Checked)
+            {
+                if (numericUpDown1.Value == 0)
+                {
+                    MessageBox.Show("Ingrese un valor valido para los gradientes");
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
+            // Validando que los datos no esten vacios
+            if (!IsValidated())
+            {
+                return;
+            }
+
+            if (edit)
+            {
+                NewCost(dgvProfit.CurrentRow.Index); // editando un Costo
+
+                TotalProfits(); // calculando el total de los Costos
+                SetCostos();
+                ResetValues(); // reseteando el valor de los campos
+                edit = false;
+                return;
+            }
+
+            NewCost(profitNumber);
+
+            profitNumber += 1;
+            TotalProfits();// calculando el total de los Costos
+            SetCostos();
+            ResetValues();// reseteando el valor de los campos
+        }
+
+        private void NewCost(int row)
+        {
             decimal montoAcumulado = txtAmount.Value;
-            dgvProfit.Rows[profitNumber].Cells[0].Value = txtProfitName.Text;
+            dgvProfit.Rows[row].Cells[0].Value = txtProfitName.Text;
             for (int i = 0; i < years; i++)
             {
                 if (type == 0)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = txtAmount.Value;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = txtAmount.Value;
                 }
                 else if (type == 1)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
                     montoAcumulado = montoAcumulado + numericUpDown1.Value;
                 }
                 else if (type == 2)
                 {
-                    dgvProfit.Rows[profitNumber].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
                     montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value) / 100);
                 }
             }
-
-            profitNumber += 1;
-            TotalProfits();
-            SetCostos();
         }
 
         private void SetCostos()
         {
             for (int i = 0; i < years; i++)
             {
-                if (FNEData.Cost == null)
+                if (FNEData.Cost == null || FNEData.Cost.Count == 0)
                 {
                     dgvFNE.Rows[1].Cells[i + 2].Value = (decimal)0;
                     continue;
@@ -138,6 +195,88 @@ namespace Economy.Forms
                 array[i] = (decimal)dgvProfit.Rows[profitNumber].Cells[i + 2].Value;
             }
             FNEData.Cost = array.ToList();
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private void FormAddCosts_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void ValidateNegativeNumber(KeyEventArgs e, decimal DefaultNum, NumericUpDown num)
+        {
+            if (e.KeyCode == Keys.Subtract)
+            {
+                MessageBox.Show("Ingrese un valor valido");
+                num.ResetText();
+                num.Value = DefaultNum;
+                num.UpButton();
+                num.DownButton();
+                return;
+            }
+        }
+
+        private void ResetValues()
+        {
+            txtProfitName.Text = "";
+            txtAmount.Value = 0;
+            txtAmount.UpButton();
+            txtAmount.DownButton();
+            numericUpDown1.Value = 0;
+            numericUpDown1.UpButton();
+            numericUpDown1.DownButton();
+        }
+
+        private void txtAmount_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValidateNegativeNumber(e, 0, txtAmount);
+        }
+
+        private void numericUpDown1_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValidateNegativeNumber(e, 0, numericUpDown1);
+        }
+
+        private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {// Editar
+            txtProfitName.Text = dgvProfit.CurrentRow.Cells[0].Value.ToString();
+            txtAmount.Value = decimal.Parse(dgvProfit.CurrentRow.Cells[2].Value.ToString());
+            txtAmount.UpButton();
+            txtAmount.DownButton();
+            radioButton1.Checked = true;
+            edit = true;
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {// Eliminar
+            dgvProfit.Rows.RemoveAt(dgvProfit.CurrentRow.Index);
+            profitNumber--;
+            if (profitNumber == 0)
+            {
+                dgvProfit.Rows.RemoveAt(0);
+                FNEData.Cost.Clear();
+                SetCostos();
+                return;
+            }
+            TotalProfits(); //calculando el total de las ganancias
+            SetCostos();
+        }
+
+        private void dgvProfit_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            if (profitNumber == 0) return;
+            if (e.RowIndex >= profitNumber) return;
+
+            dgvProfit.CurrentCell = dgvProfit.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            contextMenuStrip1.Show(Cursor.Position);
         }
     }
 }

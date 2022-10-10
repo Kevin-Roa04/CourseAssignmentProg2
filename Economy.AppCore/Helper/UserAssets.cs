@@ -23,11 +23,11 @@ namespace Economy.AppCore.Helper
                               on UAssets.Asset.AssetName equals Assets.AssetName
                               where UAssets.Asset.AssetName == Assets.AssetName
                               select new {
-                                  AssetName = Assets.AssetName,
-                                  AssetDescription = Assets.AssetDescription,
-                                  UsefulLife = Assets.UsefulLife,
+                                  NombreActivo = Assets.AssetName,
+                                  Descripcion = Assets.AssetDescription,
+                                  VidaUtil = Assets.UsefulLife,
                                   Depreciable = Assets.Depreciable,
-                                  AssetAmount = UAssets.AssetAmount
+                                  Monto = UAssets.AssetAmount
                               }).ToList();
             return result;
         }
