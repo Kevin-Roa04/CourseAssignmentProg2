@@ -77,6 +77,7 @@
             this.lblUsedProject = new System.Windows.Forms.Label();
             this.gunaBarDataset1 = new Guna.Charts.WinForms.GunaBarDataset();
             this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
             this.SuspendLayout();
@@ -159,7 +160,7 @@
             // 
             this.pbCompare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCompare.Image = ((System.Drawing.Image)(resources.GetObject("pbCompare.Image")));
-            this.pbCompare.Location = new System.Drawing.Point(325, 99);
+            this.pbCompare.Location = new System.Drawing.Point(324, 100);
             this.pbCompare.Name = "pbCompare";
             this.pbCompare.Size = new System.Drawing.Size(36, 37);
             this.pbCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -167,6 +168,8 @@
             this.pbCompare.TabStop = false;
             this.pbCompare.DragDrop += new System.Windows.Forms.DragEventHandler(this.pbCompare_DragDrop);
             this.pbCompare.DragEnter += new System.Windows.Forms.DragEventHandler(this.pbCompare_DragEnter);
+            this.pbCompare.DragOver += new System.Windows.Forms.DragEventHandler(this.pbCompare_DragOver);
+            this.pbCompare.DragLeave += new System.EventHandler(this.pbCompare_DragLeave);
             // 
             // gcScatter
             // 
@@ -304,12 +307,24 @@
             // 
             this.gunaPolarAreaDataset1.Label = "PolarArea1";
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.label1.ForeColor = System.Drawing.Color.DarkGray;
+            this.label1.Location = new System.Drawing.Point(324, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 32);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Deslice cualquier función para comparar";
+            // 
             // FormAnalyst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 647);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUsedProject);
             this.Controls.Add(this.flpUsedProject);
             this.Controls.Add(this.lblFuture);
@@ -354,5 +369,6 @@
         private System.Windows.Forms.Label lblUsedProject;
         private Guna.Charts.WinForms.GunaBarDataset gunaBarDataset1;
         private Guna.Charts.WinForms.GunaPolarAreaDataset gunaPolarAreaDataset1;
+        private System.Windows.Forms.Label label1;
     }
 }

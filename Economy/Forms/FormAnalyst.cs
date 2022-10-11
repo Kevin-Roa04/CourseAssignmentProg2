@@ -235,6 +235,7 @@ namespace Economy.Forms
                 }
 
             }
+            this.pbCompare.Image = Properties.Resources.notes__1_;
 
         }
         private void UpdateUsedComponent()
@@ -286,7 +287,7 @@ namespace Economy.Forms
         {
 
             Project project = projectServices.FindbyId(id, GlobalUser);
-            foreach (LPoint lPoint in gunaBarDataset1.DataPoints)
+            foreach (LPoint lPoint in gunaPolarAreaDataset1.DataPoints)
             {
                 if (lPoint.Label == project.Name)
                 {
@@ -431,6 +432,21 @@ namespace Economy.Forms
         private void FormAnalyst_MouseDown(object sender, MouseEventArgs e)
         {
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pbCompare_DragOver(object sender, DragEventArgs e)
+        {
+            if (used)
+                this.pbCompare.Image = Properties.Resources.flick_to_right;
+           
+
+            else
+                this.pbCompare.Image = Properties.Resources.flick_to_left;
+        }
+
+        private void pbCompare_DragLeave(object sender, EventArgs e)
+        {
+            this.pbCompare.Image = Properties.Resources.notes__1_;
         }
     }
 }

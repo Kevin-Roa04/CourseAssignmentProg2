@@ -65,13 +65,13 @@ namespace Economy.UsersControl
             this.gbData.Controls.Add(this.txbString1);
             this.gbData.Controls.Add(this.lbString1);
             this.gbData.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.gbData.ForeColor = System.Drawing.Color.Black;
+            this.gbData.ForeColor = System.Drawing.Color.DimGray;
             this.gbData.Location = new System.Drawing.Point(17, 15);
             this.gbData.Name = "gbData";
             this.gbData.Size = new System.Drawing.Size(516, 257);
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
-            this.gbData.Text = "Data";
+            this.gbData.Text = "Datos";
             // 
             // txbTypeExit
             // 
@@ -97,10 +97,12 @@ namespace Economy.UsersControl
             // 
             // txbString5
             // 
+            this.txbString5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString5.ForeColor = System.Drawing.Color.DimGray;
             this.txbString5.Location = new System.Drawing.Point(275, 204);
             this.txbString5.Name = "txbString5";
             this.txbString5.ReadOnly = true;
-            this.txbString5.Size = new System.Drawing.Size(100, 29);
+            this.txbString5.Size = new System.Drawing.Size(100, 26);
             this.txbString5.TabIndex = 22;
             this.txbString5.Click += new System.EventHandler(this.txbString5_Click);
             this.txbString5.TextChanged += new System.EventHandler(this.txbString5_TextChanged);
@@ -111,7 +113,7 @@ namespace Economy.UsersControl
             // 
             this.lbString5.AutoSize = true;
             this.lbString5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbString5.ForeColor = System.Drawing.Color.Black;
+            this.lbString5.ForeColor = System.Drawing.Color.DarkGray;
             this.lbString5.Location = new System.Drawing.Point(13, 207);
             this.lbString5.Name = "lbString5";
             this.lbString5.Size = new System.Drawing.Size(54, 22);
@@ -120,10 +122,12 @@ namespace Economy.UsersControl
             // 
             // txbString4
             // 
+            this.txbString4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString4.ForeColor = System.Drawing.Color.DimGray;
             this.txbString4.Location = new System.Drawing.Point(275, 157);
             this.txbString4.Name = "txbString4";
             this.txbString4.ReadOnly = true;
-            this.txbString4.Size = new System.Drawing.Size(100, 29);
+            this.txbString4.Size = new System.Drawing.Size(100, 26);
             this.txbString4.TabIndex = 20;
             this.txbString4.Click += new System.EventHandler(this.txbString4_Click);
             this.txbString4.DoubleClick += new System.EventHandler(this.txbString4_DoubleClick);
@@ -133,7 +137,7 @@ namespace Economy.UsersControl
             // 
             this.lbString4.AutoSize = true;
             this.lbString4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbString4.ForeColor = System.Drawing.Color.Black;
+            this.lbString4.ForeColor = System.Drawing.Color.DarkGray;
             this.lbString4.Location = new System.Drawing.Point(13, 160);
             this.lbString4.Name = "lbString4";
             this.lbString4.Size = new System.Drawing.Size(54, 22);
@@ -142,10 +146,12 @@ namespace Economy.UsersControl
             // 
             // txbString3
             // 
+            this.txbString3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString3.ForeColor = System.Drawing.Color.DimGray;
             this.txbString3.Location = new System.Drawing.Point(275, 112);
             this.txbString3.Name = "txbString3";
             this.txbString3.ReadOnly = true;
-            this.txbString3.Size = new System.Drawing.Size(100, 29);
+            this.txbString3.Size = new System.Drawing.Size(100, 26);
             this.txbString3.TabIndex = 18;
             this.txbString3.Click += new System.EventHandler(this.txbString3_Click);
             this.txbString3.DoubleClick += new System.EventHandler(this.txbString3_DoubleClick);
@@ -155,7 +161,7 @@ namespace Economy.UsersControl
             // 
             this.lbString3.AutoSize = true;
             this.lbString3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbString3.ForeColor = System.Drawing.Color.Black;
+            this.lbString3.ForeColor = System.Drawing.Color.DarkGray;
             this.lbString3.Location = new System.Drawing.Point(13, 115);
             this.lbString3.Name = "lbString3";
             this.lbString3.Size = new System.Drawing.Size(54, 22);
@@ -164,10 +170,12 @@ namespace Economy.UsersControl
             // 
             // txbString2
             // 
+            this.txbString2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString2.ForeColor = System.Drawing.Color.DimGray;
             this.txbString2.Location = new System.Drawing.Point(275, 69);
             this.txbString2.Name = "txbString2";
             this.txbString2.ReadOnly = true;
-            this.txbString2.Size = new System.Drawing.Size(100, 29);
+            this.txbString2.Size = new System.Drawing.Size(100, 26);
             this.txbString2.TabIndex = 16;
             this.txbString2.Click += new System.EventHandler(this.txbString2_Click);
             this.txbString2.DoubleClick += new System.EventHandler(this.txbString2_DoubleClick);
@@ -177,7 +185,7 @@ namespace Economy.UsersControl
             // 
             this.lbString2.AutoSize = true;
             this.lbString2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbString2.ForeColor = System.Drawing.Color.Black;
+            this.lbString2.ForeColor = System.Drawing.Color.DarkGray;
             this.lbString2.Location = new System.Drawing.Point(13, 72);
             this.lbString2.Name = "lbString2";
             this.lbString2.Size = new System.Drawing.Size(54, 22);
@@ -186,11 +194,12 @@ namespace Economy.UsersControl
             // 
             // txbString1
             // 
-            this.txbString1.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txbString1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString1.ForeColor = System.Drawing.Color.DimGray;
             this.txbString1.Location = new System.Drawing.Point(275, 30);
             this.txbString1.Name = "txbString1";
             this.txbString1.ReadOnly = true;
-            this.txbString1.Size = new System.Drawing.Size(100, 29);
+            this.txbString1.Size = new System.Drawing.Size(100, 26);
             this.txbString1.TabIndex = 14;
             this.txbString1.Click += new System.EventHandler(this.txbString1_Click);
             this.txbString1.TextChanged += new System.EventHandler(this.txbString1_TextChanged);
@@ -201,7 +210,7 @@ namespace Economy.UsersControl
             // 
             this.lbString1.AutoSize = true;
             this.lbString1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbString1.ForeColor = System.Drawing.Color.Black;
+            this.lbString1.ForeColor = System.Drawing.Color.DarkGray;
             this.lbString1.Location = new System.Drawing.Point(13, 33);
             this.lbString1.Name = "lbString1";
             this.lbString1.Size = new System.Drawing.Size(54, 22);
