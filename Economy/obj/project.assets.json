@@ -6676,28 +6676,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Quezada\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Cristina\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "projectUniqueName": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy\\Economy.csproj",
       "projectName": "Economy",
-      "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy\\Economy.csproj",
-      "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy\\obj\\",
+      "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy\\Economy.csproj",
+      "packagesPath": "C:\\Users\\Cristina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0-windows7.0"
@@ -6710,14 +6702,14 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
+            "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj": {
+              "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj"
             },
-            "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             },
-            "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
+            "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Infraestructure\\Economy.Infraestructure.csproj"
             }
           }
         }
@@ -6773,6 +6765,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[5.0.15, 5.0.15]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -6781,7 +6779,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   },

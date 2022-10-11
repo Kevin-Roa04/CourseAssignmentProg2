@@ -28,6 +28,12 @@
     <Compile Update="FormCreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FmrInteresNosemejante1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FmrMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FormAnalyst.cs">
       <SubType>Form</SubType>
     </Compile>

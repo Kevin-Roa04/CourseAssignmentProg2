@@ -531,9 +531,9 @@ namespace Economy.Forms
                 else if (Selection == 2)
                 {
 
-                    FmrInteres fmrInteres = new FmrInteres(nominal);
-                    fmrInteres.FormCreateProject = this;
-                    fmrInteres.ShowDialog();
+                    FmrMenu fmrMenu = new FmrMenu (nominal);
+                    fmrMenu.FormCreateProject = this;
+                    fmrMenu.ShowDialog();
 
                 }
                 else if (Selection == 3)

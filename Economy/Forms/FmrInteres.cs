@@ -17,7 +17,7 @@ namespace InteresPratica
     public partial class FmrInteres : Form
     {
         public INominalServices nominalServices ;
-        public FormCreateProject FormCreateProject;
+       
      
         public FmrInteres(INominalServices services)
         {
