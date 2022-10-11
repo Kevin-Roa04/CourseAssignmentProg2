@@ -6478,28 +6478,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Quezada\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Cristina\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+      "projectUniqueName": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
       "projectName": "Economy.AppCore",
-      "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
-      "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\obj\\",
+      "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+      "packagesPath": "C:\\Users\\Cristina\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.AppCore\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -6512,8 +6504,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (7)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             }
           }
         }
@@ -6562,16 +6554,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\Quezada\\Desktop\\pru\\CourseAssignmentProg2\\Economy.AppCore\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

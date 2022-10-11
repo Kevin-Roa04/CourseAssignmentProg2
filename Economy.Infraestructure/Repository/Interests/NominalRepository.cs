@@ -71,6 +71,16 @@ namespace Economy.Infraestructure.Repository.Interests
             throw new NotImplementedException();
         }
 
+        public double GetfutuonoSemejante(double interes, double m, double periodo, double presente, double tiempo)
+        {
+            double t = periodo * tiempo;
+            double i = interes / m;
+            double o = i / 100;
+            double futuro = presente * (Math.Pow(1 + o, t));
+            double f = Math.Round(futuro, 2);
+            return f;
+        }
+
         public double Getfuturo(double Nominal, double M, double Presente, double periodo)
         {
             double J = Nominal / 100;
@@ -95,6 +105,16 @@ namespace Economy.Infraestructure.Repository.Interests
             double x = futuro * Math.Pow(1 + J / M, -1 * M * periodo);
             double presente = Math.Round(x, 2);
             return presente;
+        }
+
+        public double getPresentenosemejante(double interes, double m, double periodo, double futuro, double tiempo)
+        {
+            double t = periodo * tiempo;
+            double i = interes / m;
+            double o = i / 100;
+            double presente = futuro / Math.Pow(1 + o, t);
+            double p = Math.Round(presente, 2);
+            return p;
         }
 
         public int Update(InteresNominal t)

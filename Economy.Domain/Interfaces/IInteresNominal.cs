@@ -9,6 +9,8 @@ namespace Economy.Domain.Interfaces
 {
      public interface IInteresNominal : IRepository<InteresNominal>
     {
+        double getPresentenosemejante (double interes, double m, double periodo, double futuro, double tiempo);
+        double GetfutuonoSemejante (double interes, double m, double periodo, double presente, double tiempo);
         double Getfuturo(double Nominal, double M, double Presente, double periodo);
         double GetPresente(double nominal, double M, double futuro, double periodo);
         double GeTPeriodo(double nominal, double M, double presente, double futuro);

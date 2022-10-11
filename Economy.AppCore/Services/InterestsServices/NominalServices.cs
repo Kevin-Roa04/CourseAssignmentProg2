@@ -51,6 +51,11 @@ namespace Economy.AppCore.Services.InterestsServices
             throw new NotImplementedException();
         }
 
+        public double GetfutuonoSemejante(double interes, double m, double periodo, double presente, double tiempo)
+        {
+            return interesNominal.GetfutuonoSemejante(interes, m, periodo, presente, tiempo);
+        }
+
         public double Getfuturo(double Nominal, double M, double Presente, double periodo)
         {
             return interesNominal.Getfuturo(Nominal, M, Presente, periodo);
@@ -64,6 +69,11 @@ namespace Economy.AppCore.Services.InterestsServices
         public double GetPresente(double nominal, double M, double futuro, double periodo)
         {
             return interesNominal.GetPresente(nominal, M, futuro, periodo);
+        }
+
+        public double getPresentenosemejante(double interes, double m, double periodo, double futuro, double tiempo)
+        {
+            return interesNominal.getPresentenosemejante(interes, m, periodo, futuro, tiempo);
         }
 
         public int Update(InteresNominal t)
