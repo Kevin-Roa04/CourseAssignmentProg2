@@ -42,16 +42,16 @@ namespace Economy.UsersControl
             this.lbString2 = new System.Windows.Forms.Label();
             this.txbString1 = new System.Windows.Forms.TextBox();
             this.lbString1 = new System.Windows.Forms.Label();
-            this.btnCalculate = new System.Windows.Forms.Button();
             this.txbInfo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCalcular = new Economy.BeatifulComponents.RJButton();
             this.gbData.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbData
             // 
-            this.gbData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(202)))), ((int)(((byte)(140)))));
+            this.gbData.BackColor = System.Drawing.Color.White;
             this.gbData.Controls.Add(this.txbTypeExit);
             this.gbData.Controls.Add(this.txbTypeEntry);
             this.gbData.Controls.Add(this.txbString5);
@@ -110,11 +110,11 @@ namespace Economy.UsersControl
             // lbString5
             // 
             this.lbString5.AutoSize = true;
-            this.lbString5.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbString5.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbString5.ForeColor = System.Drawing.Color.Black;
             this.lbString5.Location = new System.Drawing.Point(13, 207);
             this.lbString5.Name = "lbString5";
-            this.lbString5.Size = new System.Drawing.Size(54, 21);
+            this.lbString5.Size = new System.Drawing.Size(54, 22);
             this.lbString5.TabIndex = 21;
             this.lbString5.Text = "label5";
             // 
@@ -132,11 +132,11 @@ namespace Economy.UsersControl
             // lbString4
             // 
             this.lbString4.AutoSize = true;
-            this.lbString4.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbString4.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbString4.ForeColor = System.Drawing.Color.Black;
             this.lbString4.Location = new System.Drawing.Point(13, 160);
             this.lbString4.Name = "lbString4";
-            this.lbString4.Size = new System.Drawing.Size(54, 21);
+            this.lbString4.Size = new System.Drawing.Size(54, 22);
             this.lbString4.TabIndex = 19;
             this.lbString4.Text = "label4";
             // 
@@ -154,11 +154,11 @@ namespace Economy.UsersControl
             // lbString3
             // 
             this.lbString3.AutoSize = true;
-            this.lbString3.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbString3.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbString3.ForeColor = System.Drawing.Color.Black;
             this.lbString3.Location = new System.Drawing.Point(13, 115);
             this.lbString3.Name = "lbString3";
-            this.lbString3.Size = new System.Drawing.Size(54, 21);
+            this.lbString3.Size = new System.Drawing.Size(54, 22);
             this.lbString3.TabIndex = 17;
             this.lbString3.Text = "label3";
             // 
@@ -176,11 +176,11 @@ namespace Economy.UsersControl
             // lbString2
             // 
             this.lbString2.AutoSize = true;
-            this.lbString2.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbString2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbString2.ForeColor = System.Drawing.Color.Black;
             this.lbString2.Location = new System.Drawing.Point(13, 72);
             this.lbString2.Name = "lbString2";
-            this.lbString2.Size = new System.Drawing.Size(54, 21);
+            this.lbString2.Size = new System.Drawing.Size(54, 22);
             this.lbString2.TabIndex = 15;
             this.lbString2.Text = "label2";
             // 
@@ -200,23 +200,13 @@ namespace Economy.UsersControl
             // lbString1
             // 
             this.lbString1.AutoSize = true;
-            this.lbString1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbString1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbString1.ForeColor = System.Drawing.Color.Black;
             this.lbString1.Location = new System.Drawing.Point(13, 33);
             this.lbString1.Name = "lbString1";
-            this.lbString1.Size = new System.Drawing.Size(51, 21);
+            this.lbString1.Size = new System.Drawing.Size(54, 22);
             this.lbString1.TabIndex = 13;
             this.lbString1.Text = "label1";
-            // 
-            // btnCalculate
-            // 
-            this.btnCalculate.Location = new System.Drawing.Point(241, 354);
-            this.btnCalculate.Name = "btnCalculate";
-            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
-            this.btnCalculate.TabIndex = 11;
-            this.btnCalculate.Text = "Calcular";
-            this.btnCalculate.UseVisualStyleBackColor = true;
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // txbInfo
             // 
@@ -230,15 +220,35 @@ namespace Economy.UsersControl
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(202)))), ((int)(((byte)(140)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnCalcular);
             this.panel1.Controls.Add(this.gbData);
             this.panel1.Controls.Add(this.txbInfo);
-            this.panel1.Controls.Add(this.btnCalculate);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(551, 397);
             this.panel1.TabIndex = 13;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCalcular.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCalcular.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCalcular.BorderRadius = 4;
+            this.btnCalcular.BorderSize = 0;
+            this.btnCalcular.FlatAppearance.BorderSize = 0;
+            this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalcular.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCalcular.ForeColor = System.Drawing.Color.White;
+            this.btnCalcular.Location = new System.Drawing.Point(217, 354);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(123, 29);
+            this.btnCalcular.TabIndex = 13;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.TextColor = System.Drawing.Color.White;
+            this.btnCalcular.UseVisualStyleBackColor = false;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // UserControlFunction
             // 
@@ -257,7 +267,6 @@ namespace Economy.UsersControl
 
         #endregion
         private System.Windows.Forms.GroupBox gbData;
-        private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.TextBox txbInfo;
         private System.Windows.Forms.TextBox txbTypeExit;
         private System.Windows.Forms.TextBox txbTypeEntry;
@@ -272,5 +281,6 @@ namespace Economy.UsersControl
         private System.Windows.Forms.TextBox txbString1;
         private System.Windows.Forms.Label lbString1;
         private System.Windows.Forms.Panel panel1;
+        private BeatifulComponents.RJButton btnCalcular;
     }
 }

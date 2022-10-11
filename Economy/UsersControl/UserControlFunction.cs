@@ -326,6 +326,345 @@ namespace Economy.UsersControl
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            
+        }
+        public void FillTextBox()
+        {
+            switch (singleton.Index)
+            {
+                case 1:
+                    if (singleton.Selection && singleton.Entry.Count > 0)
+                    {
+                        txbString1.Text = $"{singleton.Entry.First()} - {singleton.Entry.Last()}";
+                        break;
+                    }
+                    else if (singleton.ValueTask > 0)
+                    {
+                        txbString1.Text = singleton.ValueTask.ToString();
+                        break;
+                    }
+                    txbString1.Text = string.Empty;
+                    break;
+                case 2:
+                    if (singleton.Selection && singleton.Exit.Count > 0)
+                    {
+                        txbString2.Text = $"{singleton.Exit.First()} - {singleton.Exit.Last()}";
+                        break;
+                    }
+                    else if (singleton.ValueTask != 0)
+                    {
+                        txbString2.Text = singleton.ValueTask.ToString();
+                        break;
+                    }
+                    txbString2.Text = string.Empty;
+                    break;
+                case 3:
+                    if (singleton.ValueTask > 0)
+                    {
+                        txbString3.Text = singleton.ValueTask.ToString();
+                        break;
+                    }
+                    txbString3.Text = string.Empty;
+                    break;
+                case 4:
+                    if (singleton.ValueTask > 0)
+                    {
+                        txbString4.Text = singleton.ValueTask.ToString();
+                        break;
+                    }
+                    txbString4.Text = string.Empty;
+                    break;
+            }
+        }
+
+        private void txbString1_Click(object sender, EventArgs e)
+        {
+            if ((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
+                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            {
+                txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
+                return;
+            }
+            if (singleton.Selection)
+            {
+                singleton.Type = true;
+                singleton.MinRow = 0;
+                singleton.MinColumn = 0;
+                singleton.MaxRow = 0;
+                singleton.MaxColumn = 0;
+            }
+            singleton.Index = 1;
+            txbInfo.Visible = false;
+            FormExcel.Activate();
+        }
+
+        private void txbString2_Click(object sender, EventArgs e)
+        {
+            if((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
+                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            {
+                txbInfo.Visible = false;
+                return;
+            }
+            else if (TypeIndex == 0 && (Index == 9 || Index == 13))
+            {
+                return;
+            }
+            if (singleton.Selection && Index == 7)
+            {
+                singleton.Type = false;
+                singleton.MinRow = 0;
+                singleton.MinColumn = 0;
+                singleton.MaxRow = 0;
+                singleton.MaxColumn = 0;
+            }
+            else
+            {
+                singleton.Selection = false;
+            }
+            singleton.Index = 2;
+            FormExcel.Activate();
+            txbInfo.Visible = false;
+        }
+
+        private void txbString3_Click(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
+            {
+                txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
+                return;
+            }
+            singleton.Index = 3;
+            FormExcel.Activate();
+            txbInfo.Visible = false;
+        }
+
+        private void txbString4_Click(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && (Index <= 2 || Index == 4 || Index == 3 || Index == 10 || Index == 11 || Index == 12))
+            {
+                txbInfo.Visible = false;
+                return;
+            }
+            if (TypeIndex == 0 && Index == 13)
+            {
+                return;
+            }
+            singleton.Index = 4;
+            FormExcel.Activate();
+            txbInfo.Visible = false;
+        }
+
+        private void txbString5_Click(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && Index == 11)
+            {
+                txbInfo.Visible = true;
+                return;
+            }
+            else if (txbString5.ReadOnly == false)
+            {
+                txbInfo.Visible = true;
+                return;
+            }
+            txbInfo.Visible = false;
+        }
+
+        private void txbString5_TextChanged(object sender, EventArgs e)
+        {
+            if (txbString5.Text == "2" && TypeIndex == 0)
+            {
+                lbString4.Visible = true;
+                txbString4.Visible = true;
+                return;
+            }
+            if (txbString5.Text == "2" && TypeIndex == 0 && (Index == 3 || Index == 4))
+            {
+                lbString4.Text = "Periodo de gracia";
+                lbString4.Visible = true;
+                txbString4.Visible = true;
+                return;
+            }
+            if (TypeIndex == 0 && (Index == 11 || Index == 3))
+            {
+                return;
+            }
+            txbString4.Visible = false;
+            lbString4.Visible = false;
+        }
+
+        private void txbString5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txbString5.ReadOnly == false)
+            {
+                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+                if ( e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txbString2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txbString2.ReadOnly == false)
+            {
+                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txbString1_DoubleClick(object sender, EventArgs e)
+        {
+            if ((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            {
+                singleton.Index = 1;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+        }
+        private void CleanTextboxs()
+        {
+            txbString1.Text = string.Empty;
+            txbString2.Text = string.Empty;
+            txbString3.Text = string.Empty;
+            txbString4.Text = string.Empty;
+            txbString5.Text = string.Empty;
+        }
+
+        private void txbString2_DoubleClick(object sender, EventArgs e)
+        {
+            if((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
+            {
+                singleton.Index = 2;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+            if (TypeIndex == 0 && Index == 9)
+            {
+                singleton.Index = 2;
+                FormExcel.Activate();
+            }
+        }
+
+        private void txbString3_DoubleClick(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && Index <= 6)
+            {
+                singleton.Index = 3;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+        }
+
+        private void txbString4_DoubleClick(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && Index <= 2)
+            {
+                singleton.Index = 4;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+        }
+
+        private void txbString1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txbString1.ReadOnly == false)
+            {
+                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txbString3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txbString3.ReadOnly == false)
+            {
+                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.' && Index != 4)
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txbString4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txbString4.ReadOnly == false)
+            {
+                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+                if (e.KeyChar == '.')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txbString5_DoubleClick(object sender, EventArgs e)
+        {
+            if (TypeIndex == 0 && Index == 11)
+            {
+                singleton.Index = 5;
+                txbInfo.Visible = false;
+                FormExcel.Activate();
+            }
+        }
+
+        private void txbString1_TextChanged(object sender, EventArgs e)
+        {
+            if(TypeIndex == 0 && Index == 2 && !string.IsNullOrEmpty(txbString1.Text))
+            {
+                lbString2.Visible = false;
+                txbString2.Visible = false;
+            }
+            else if (string.IsNullOrEmpty(txbString1.Text))
+            {
+                lbString2.Visible = true;
+                txbString2.Visible = true;
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
             int type;
             double tasa = 0;
             try
@@ -476,7 +815,7 @@ namespace Economy.UsersControl
                         }
                         catch
                         {
-                            if(type == 2 && string.IsNullOrEmpty(txbString4.Text))
+                            if (type == 2 && string.IsNullOrEmpty(txbString4.Text))
                             {
                                 MessageBox.Show("Ingresar informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 break;
@@ -826,7 +1165,7 @@ namespace Economy.UsersControl
                         FormExcel.Activate();
                         break;
                     case 11: // Depreciacion Doble Saldo Decreciente
-                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) || 
+                        if (string.IsNullOrEmpty(txbString1.Text) || string.IsNullOrEmpty(txbString2.Text) ||
                             string.IsNullOrEmpty(txbString3.Text) || string.IsNullOrEmpty(txbString4.Text))
                         {
                             MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -838,22 +1177,22 @@ namespace Economy.UsersControl
                             MessageBox.Show("Ingrese informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if(!string.IsNullOrEmpty(txbString5.Text) && double.Parse(txbString5.Text) <= 0)
+                        if (!string.IsNullOrEmpty(txbString5.Text) && double.Parse(txbString5.Text) <= 0)
                         {
                             MessageBox.Show("El factor debe de ser mayor a 0");
                             break;
                         }
-                        if(double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
+                        if (double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
                         {
                             MessageBox.Show("El periodo no puede ser mayor a la vida útil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if(double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
+                        if (double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
                         {
                             MessageBox.Show("El valor residual no puede ser mayor al valor del activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if(double.Parse(txbString4.Text) == 0)
+                        if (double.Parse(txbString4.Text) == 0)
                         {
                             MessageBox.Show("El periodo debe ser mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
@@ -863,7 +1202,7 @@ namespace Economy.UsersControl
                         double piv = 0;
                         for (int i = Int32.Parse(txbString4.Text); i <= double.Parse(txbString3.Text); i++)
                         {
-                            if(double.Parse(txbString2.Text) == 0 && i == double.Parse(txbString3.Text))
+                            if (double.Parse(txbString2.Text) == 0 && i == double.Parse(txbString3.Text))
                             {
                                 piv = Math.Round(double.Parse(txbString1.Text) - singleton.ValueFunctionList.Sum(), 2);
                                 singleton.ValueFunctionList.Add(piv);
@@ -890,12 +1229,12 @@ namespace Economy.UsersControl
                             MessageBox.Show("Ingrese informacion válida para los calculos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if(double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
+                        if (double.Parse(txbString1.Text) < double.Parse(txbString2.Text))
                         {
                             MessageBox.Show("El valor residual no puede ser mayor al valor del activo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if(double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
+                        if (double.Parse(txbString3.Text) < double.Parse(txbString4.Text))
                         {
                             MessageBox.Show("El periodo no pude ser mayor a la vida útil", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
@@ -924,7 +1263,7 @@ namespace Economy.UsersControl
                             MessageBox.Show("No puede haber campos vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                         }
-                        if (!string.IsNullOrEmpty(txbString2.Text) && !string.IsNullOrEmpty(txbString4.Text) && 
+                        if (!string.IsNullOrEmpty(txbString2.Text) && !string.IsNullOrEmpty(txbString4.Text) &&
                             (double.Parse(txbString2.Text) + double.Parse(txbString4.Text) != 100))
                         {
                             MessageBox.Show("La suma de los dos porcentajes debe de ser igual a 100, debe de cambiar " +
@@ -933,7 +1272,7 @@ namespace Economy.UsersControl
                         }
                         if (string.IsNullOrEmpty(txbString2.Text))
                         {
-                            singleton.ValueFunction = (decimal)((double.Parse(txbString1.Text) * ((100 - double.Parse(txbString4.Text)) / 100)) + 
+                            singleton.ValueFunction = (decimal)((double.Parse(txbString1.Text) * ((100 - double.Parse(txbString4.Text)) / 100)) +
                                 (double.Parse(txbString3.Text) * double.Parse(txbString4.Text)));
                         }
                         else if (string.IsNullOrEmpty(txbString4.Text))
@@ -1001,7 +1340,7 @@ namespace Economy.UsersControl
                             MessageBox.Show("Debes de llenar todos los datos");
                             break;
                         }
-                        if(decimal.Parse(txbString2.Text) == 0)
+                        if (decimal.Parse(txbString2.Text) == 0)
                         {
                             MessageBox.Show("No se puede dividir entre 0");
                             break;
@@ -1012,7 +1351,7 @@ namespace Economy.UsersControl
                         break;
                 }
             }
-            if(bandera)
+            if (bandera)
             {
                 singleton.Entry.Clear();
                 singleton.Exit.Clear();
@@ -1020,340 +1359,6 @@ namespace Economy.UsersControl
                 bandera = false;
                 FormFunction.Close();
             }
-        }
-        public void FillTextBox()
-        {
-            switch (singleton.Index)
-            {
-                case 1:
-                    if (singleton.Selection && singleton.Entry.Count > 0)
-                    {
-                        txbString1.Text = $"{singleton.Entry.First()} - {singleton.Entry.Last()}";
-                        break;
-                    }
-                    else if (singleton.ValueTask > 0)
-                    {
-                        txbString1.Text = singleton.ValueTask.ToString();
-                        break;
-                    }
-                    txbString1.Text = string.Empty;
-                    break;
-                case 2:
-                    if (singleton.Selection && singleton.Exit.Count > 0)
-                    {
-                        txbString2.Text = $"{singleton.Exit.First()} - {singleton.Exit.Last()}";
-                        break;
-                    }
-                    else if (singleton.ValueTask != 0)
-                    {
-                        txbString2.Text = singleton.ValueTask.ToString();
-                        break;
-                    }
-                    txbString2.Text = string.Empty;
-                    break;
-                case 3:
-                    if (singleton.ValueTask > 0)
-                    {
-                        txbString3.Text = singleton.ValueTask.ToString();
-                        break;
-                    }
-                    txbString3.Text = string.Empty;
-                    break;
-                case 4:
-                    if (singleton.ValueTask > 0)
-                    {
-                        txbString4.Text = singleton.ValueTask.ToString();
-                        break;
-                    }
-                    txbString4.Text = string.Empty;
-                    break;
-            }
-        }
-
-        private void txbString1_Click(object sender, EventArgs e)
-        {
-            if ((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
-                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
-            if (singleton.Selection)
-            {
-                singleton.Type = true;
-                singleton.MinRow = 0;
-                singleton.MinColumn = 0;
-                singleton.MaxRow = 0;
-                singleton.MaxColumn = 0;
-            }
-            singleton.Index = 1;
-            txbInfo.Visible = false;
-            FormExcel.Activate();
-        }
-
-        private void txbString2_Click(object sender, EventArgs e)
-        {
-            if((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12)) 
-                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            else if (TypeIndex == 0 && (Index == 9 || Index == 13))
-            {
-                return;
-            }
-            if (singleton.Selection && Index == 7)
-            {
-                singleton.Type = false;
-                singleton.MinRow = 0;
-                singleton.MinColumn = 0;
-                singleton.MaxRow = 0;
-                singleton.MaxColumn = 0;
-            }
-            else
-            {
-                singleton.Selection = false;
-            }
-            singleton.Index = 2;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
-        }
-
-        private void txbString3_Click(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
-            singleton.Index = 3;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
-        }
-
-        private void txbString4_Click(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && (Index <= 2 || Index == 4 || Index == 3 || Index == 10 || Index == 11 || Index == 12))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
-            singleton.Index = 4;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
-        }
-
-        private void txbString5_Click(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && Index == 11)
-            {
-                txbInfo.Visible = true;
-                return;
-            }
-            else if (txbString5.ReadOnly == false)
-            {
-                txbInfo.Visible = true;
-                return;
-            }
-            txbInfo.Visible = false;
-        }
-
-        private void txbString5_TextChanged(object sender, EventArgs e)
-        {
-            if (txbString5.Text == "2" && TypeIndex == 0)
-            {
-                lbString4.Visible = true;
-                txbString4.Visible = true;
-                return;
-            }
-            if (txbString5.Text == "2" && TypeIndex == 0 && (Index == 3 || Index == 4))
-            {
-                lbString4.Text = "Periodo de gracia";
-                lbString4.Visible = true;
-                txbString4.Visible = true;
-                return;
-            }
-            if (TypeIndex == 0 && (Index == 11 || Index == 3))
-            {
-                return;
-            }
-            txbString4.Visible = false;
-            lbString4.Visible = false;
-        }
-
-        private void txbString5_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txbString5.ReadOnly == false)
-            {
-                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
-                {
-                    e.Handled = true;
-                }
-                if ( e.KeyChar == '.')
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void txbString2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txbString2.ReadOnly == false)
-            {
-                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.')
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void txbString1_DoubleClick(object sender, EventArgs e)
-        {
-            if ((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                singleton.Index = 1;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
-        }
-        private void CleanTextboxs()
-        {
-            txbString1.Text = string.Empty;
-            txbString2.Text = string.Empty;
-            txbString3.Text = string.Empty;
-            txbString4.Text = string.Empty;
-            txbString5.Text = string.Empty;
-        }
-
-        private void txbString2_DoubleClick(object sender, EventArgs e)
-        {
-            if((TypeIndex == 0 && Index <= 6) || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                singleton.Index = 2;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
-            if (TypeIndex == 0 && Index == 9)
-            {
-                singleton.Index = 2;
-                FormExcel.Activate();
-            }
-        }
-
-        private void txbString3_DoubleClick(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && Index <= 6)
-            {
-                singleton.Index = 3;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
-        }
-
-        private void txbString4_DoubleClick(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && Index <= 2)
-            {
-                singleton.Index = 4;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
-        }
-
-        private void txbString1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txbString1.ReadOnly == false)
-            {
-                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.')
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void txbString3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txbString3.ReadOnly == false)
-            {
-                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.' && Index != 4)
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void txbString4_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (txbString4.ReadOnly == false)
-            {
-                if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
-                {
-                    e.Handled = true;
-                }
-                if (e.KeyChar == '.')
-                {
-                    e.Handled = false;
-                }
-            }
-        }
-
-        private void txbString5_DoubleClick(object sender, EventArgs e)
-        {
-            if (TypeIndex == 0 && Index == 11)
-            {
-                singleton.Index = 5;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
-        }
-
-        private void txbString1_TextChanged(object sender, EventArgs e)
-        {
-            if(TypeIndex == 0 && Index == 2 && !string.IsNullOrEmpty(txbString1.Text))
-            {
-                lbString2.Visible = false;
-                txbString2.Visible = false;
-            }
-            else if (string.IsNullOrEmpty(txbString1.Text))
-            {
-                lbString2.Visible = true;
-                txbString2.Visible = true;
-            }
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

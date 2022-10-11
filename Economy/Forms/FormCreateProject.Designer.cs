@@ -404,6 +404,7 @@ namespace Economy.Forms
             chartFont9.FontName = "Arial";
             this.gunaChart2.Legend.LabelFont = chartFont9;
             this.gunaChart2.Location = new System.Drawing.Point(634, 467);
+            this.gunaChart2.Margin = new System.Windows.Forms.Padding(6);
             this.gunaChart2.Name = "gunaChart2";
             this.gunaChart2.Size = new System.Drawing.Size(262, 194);
             this.gunaChart2.TabIndex = 62;

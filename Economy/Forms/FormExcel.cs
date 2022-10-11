@@ -34,7 +34,19 @@ namespace Economy.Forms
         private Singleton singleton;
         private string fileName;
         public Project project;
-        
+        private const int CS_DropShadow = 0x00020000;
+
+        #region Form shadow
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+#endregion
         public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1,
             ICalculateServices<Serie> calculateServiceSerie, string fileName)
         {
@@ -52,6 +64,7 @@ namespace Economy.Forms
             ColumnsIndex = 0;
             singleton = Singleton.instance1;
             this.fileName = fileName;
+            this.lblName.Text += $" {fileName}";
         }
 
         private void FormExcel_Load(object sender, EventArgs e)
@@ -531,7 +544,7 @@ namespace Economy.Forms
         private void btnFX_MouseEnter(object sender, EventArgs e)
         {
             Button btn = new Button();
-            pnBotones.Controls.Add(p);
+            //pnBotones.Controls.Add(p);
             p.BackColor = Color.FromArgb(0, 180, 185);
             p.Size = new Size(190, 3);
             p.Location = new Point(btn.Location.X + 392, btn.Location.Y + 35);
@@ -540,20 +553,20 @@ namespace Economy.Forms
 
         private void btnFX_MouseLeave(object sender, EventArgs e)
         {
-            pnBotones.Controls.Remove(p);
+           // pnBotones.Controls.Remove(p);
         }
 
         private void btnFB_MouseEnter(object sender, EventArgs e)
         {
             Button btn = new Button();
-            pnBotones.Controls.Add(p);
+           // pnBotones.Controls.Add(p);
             p.BackColor = Color.FromArgb(0, 180, 185);
             p.Size = new Size(170, 3);
             p.Location = new Point(btn.Location.X + 605, btn.Location.Y + 35);
         }
         private void btnFB_MouseLeave(Object sender, EventArgs e)
         {
-            pnBotones.Controls.Remove(p);
+          //  pnBotones.Controls.Remove(p);
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -600,5 +613,30 @@ namespace Economy.Forms
             FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie, 1);
             formsFX.Show();
         }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+                }
+
+        private void FadeIn_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity >= 1)
+            {
+                FadeIn.Stop();
+            }
+            this.Opacity += .2;
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void FormExcel_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
     }
+  
 }

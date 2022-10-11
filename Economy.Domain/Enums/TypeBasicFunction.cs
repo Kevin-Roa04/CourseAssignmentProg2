@@ -10,7 +10,7 @@ namespace Economy.Domain.Enums
     {
         Suma,
         Resta,
-        Multiplicacion,
-        Division
+        Multiplicación,
+        División
     }
 }

@@ -51,6 +51,7 @@ namespace Economy.Forms
             this.rbSF = new System.Windows.Forms.RadioButton();
             this.rbCF = new System.Windows.Forms.RadioButton();
             this.PbClose = new System.Windows.Forms.PictureBox();
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtYears)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -380,6 +381,11 @@ namespace Economy.Forms
             this.PbClose.TabStop = false;
             this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
+            // ellipseControl1
+            // 
+            this.ellipseControl1.CornerRadius = 10;
+            this.ellipseControl1.TargetControl = this;
+            // 
             // FormFNE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -433,5 +439,6 @@ namespace Economy.Forms
         private BeatifulComponents.RJButton rjButton4;
         private BeatifulComponents.RJButton rjButton5;
         private System.Windows.Forms.PictureBox PbClose;
+        private BeatifulComponents.EllipseControl ellipseControl1;
     }
 }

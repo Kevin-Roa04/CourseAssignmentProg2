@@ -29,115 +29,80 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.cpFX = new Economy.BeatifulComponents.CustomPanel();
-            this.lbFX = new System.Windows.Forms.ListBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFX));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cpFX.SuspendLayout();
+            this.lbFX = new System.Windows.Forms.ListBox();
+            this.PbClose = new System.Windows.Forms.PictureBox();
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cpFX
-            // 
-            this.cpFX.BackColor = System.Drawing.Color.White;
-            this.cpFX.BorderRadius = 30;
-            this.cpFX.Controls.Add(this.lbFX);
-            this.cpFX.ForeColor = System.Drawing.Color.Black;
-            this.cpFX.GradientAngle = 90F;
-            this.cpFX.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(190)))), ((int)(((byte)(255)))));
-            this.cpFX.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(80)))), ((int)(((byte)(187)))));
-            this.cpFX.Location = new System.Drawing.Point(16, 16);
-            this.cpFX.Name = "cpFX";
-            this.cpFX.Size = new System.Drawing.Size(347, 320);
-            this.cpFX.TabIndex = 0;
-            // 
-            // lbFX
-            // 
-            this.lbFX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.lbFX.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbFX.ForeColor = System.Drawing.Color.White;
-            this.lbFX.FormattingEnabled = true;
-            this.lbFX.ItemHeight = 21;
-            this.lbFX.Location = new System.Drawing.Point(12, 17);
-            this.lbFX.Name = "lbFX";
-            this.lbFX.Size = new System.Drawing.Size(323, 277);
-            this.lbFX.TabIndex = 0;
-            this.lbFX.DoubleClick += new System.EventHandler(this.lbFX_DoubleClick);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.cpFX);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lbFX);
+            this.panel1.Location = new System.Drawing.Point(0, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(379, 356);
+            this.panel1.Size = new System.Drawing.Size(367, 290);
             this.panel1.TabIndex = 1;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // panel5
+            // lbFX
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(10, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(359, 10);
-            this.panel5.TabIndex = 13;
+            this.lbFX.BackColor = System.Drawing.Color.White;
+            this.lbFX.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbFX.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbFX.FormattingEnabled = true;
+            this.lbFX.ItemHeight = 22;
+            this.lbFX.Location = new System.Drawing.Point(12, 17);
+            this.lbFX.Name = "lbFX";
+            this.lbFX.Size = new System.Drawing.Size(352, 268);
+            this.lbFX.TabIndex = 0;
+            this.lbFX.SelectedIndexChanged += new System.EventHandler(this.lbFX_SelectedIndexChanged);
+            this.lbFX.DoubleClick += new System.EventHandler(this.lbFX_DoubleClick);
             // 
-            // panel4
+            // PbClose
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(10, 346);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(359, 10);
-            this.panel4.TabIndex = 12;
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(356, 7);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 53;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
-            // panel3
+            // ellipseControl1
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(369, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 356);
-            this.panel3.TabIndex = 11;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 356);
-            this.panel2.TabIndex = 10;
+            this.ellipseControl1.CornerRadius = 11;
+            this.ellipseControl1.TargetControl = this;
             // 
             // FormFX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 356);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(379, 335);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PbClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormFX";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FormFX_Load);
-            this.cpFX.ResumeLayout(false);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormFX_MouseDown);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private BeatifulComponents.CustomPanel cpFX;
-        private System.Windows.Forms.ListBox lbFX;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox PbClose;
+        private System.Windows.Forms.ListBox lbFX;
+        private BeatifulComponents.EllipseControl ellipseControl1;
     }
 }

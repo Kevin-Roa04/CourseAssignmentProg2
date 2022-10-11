@@ -82,13 +82,6 @@ namespace Economy.Forms
 
         #endregion
 
-        #region -> form movement
-
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-        #endregion
 
         private void LoadDGV(int columns)
         {
@@ -573,13 +566,8 @@ namespace Economy.Forms
         {
             this.Close();
         }
-
-        private void FormFNE_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
+    
+       
         private void txtYears_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
         }
@@ -587,5 +575,31 @@ namespace Economy.Forms
         private void txtYears_Validated(object sender, EventArgs e)
         {
         }
+
+        #region -> form movement
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        #endregion
+        private void FormFNE_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        #region Form shadow
+        private const int CS_DropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+        #endregion
     }
 }
