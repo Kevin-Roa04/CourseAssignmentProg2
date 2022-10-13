@@ -144,7 +144,7 @@ namespace Economy.Forms
             //calculateFNE();
             VPN();
             TIR();
-            RazonBeneficiosCostos();
+            //RazonBeneficiosCostos();
         }
 
         private void FNEnotFinanced()
@@ -164,7 +164,7 @@ namespace Economy.Forms
             //calculateFNE();
             VPN();
             TIR();
-            RazonBeneficiosCostos();
+            //RazonBeneficiosCostos();
         }
 
 

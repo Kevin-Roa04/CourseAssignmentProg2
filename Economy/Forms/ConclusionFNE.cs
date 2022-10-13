@@ -61,24 +61,9 @@ namespace Economy.Forms
             return $"\n -> PROYECTO CON FINANCIAMIENTO";
         }
 
-        private string tirPosvpnPosFinanciamiento()
-        {
-            return $"\n    VPN: {VPNFinanciamiento}\n" +
-                $"TIR: {TIRFinanciamiento}\n" +
-                $"tasa inversionista = {FNEData.TasaInversionista}\n" +
-                $"tasa de institucion fiunancierta = {FNEData.TasaInstitucionFinanciera}" ;
-
-        }
-
         private string sinFinanciamientoCabecera()
         {
-            return $"\n\n\n -> PROYECTO SIN FINANCIAMIENTO";
-        }
-        private string tirPosvpnPosSinFinanciamiento()
-        {
-            return $"\n    VPN: {VPNSinFinanciamiento}\n" +
-                $"TIR: {TIRSinFinanciamiento}";
-
+            return $"\n -> PROYECTO SIN FINANCIAMIENTO";
         }
 
         private string sinFinanciamientoConclusion(double vpn, double tir)
@@ -114,13 +99,58 @@ namespace Economy.Forms
             return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
         }
 
+
+        private string FinanciamientoConclusion(double vpn, double tir)
+        {
+            return $"\n    En la parte del proyecto con financiamiento podemos observar que en la tabla de Flujo Neto De Efectivo (FNE) hay un Valor Presente Neto (VPN) de {vpn} " +
+                VPNFinanciamientoConclusion(vpn) + $", Por otro lado tenemos a la Tasa Interna de Retorno (TIR) que tiene un valor de {tir}% " +
+                TIRFinanciemientoConclusion(tir);
+        }
+
+        private string VPNFinanciamientoConclusion(double vpn)
+        {
+            if (vpn < 0)
+            {
+                return $"lo que nos indica que el VPN es negativo, lo que significa que tendremos perdidas asi que no es conveniente realizar esta inversion tomando en cuenta el VPN";
+            }
+            else if (vpn > 0)
+            {
+                return $"lo que nos indica que el VPN es positivo, lo que significa que tendremos ganancias, asi que es conveniente realizar esta inversion tomando en cuenta el VPN";
+            }
+            return $"lo que nos indica que el VPN es nulo, lo que significa es que la decision si invertir o no, es indiferente y depende de la desicion que tome el usuario, esto tomando en cuenta el VPN";
+        }
+
+        private string TIRFinanciemientoConclusion(double tir)
+        {
+            if (tir < FNEData.TasaInversionista)
+            {
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar la inversion es menor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}%, y la tasa que realmente obtenemos es de {tir}%";
+            }
+            else if (tir > FNEData.TasaInversionista)
+            {
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es mayor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+            }
+            return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+        }
+
         private void ConclusionFNE_Load(object sender, EventArgs e)
         {
-            richTextBox1.Text = financiamientoCabecera() +
-                                sinFinanciamientoConclusion(VPNSinFinanciamiento, TIRSinFinanciamiento)+
+            printConclusion();
+        }
 
-                                sinFinanciamientoCabecera() +
-                                tirPosvpnPosSinFinanciamiento();
+        private void printConclusion()
+        {
+            if (VPNFinanciamiento == 0)
+            {
+                richTextBox1.Text = sinFinanciamientoCabecera() +
+                                sinFinanciamientoConclusion(VPNSinFinanciamiento, TIRSinFinanciamiento);
+                return;
+            }
+            richTextBox1.Text = sinFinanciamientoCabecera() +
+                                sinFinanciamientoConclusion(VPNSinFinanciamiento, TIRSinFinanciamiento) +
+
+                                financiamientoCabecera() +
+                                FinanciamientoConclusion(VPNFinanciamiento, TIRFinanciamiento);
         }
     }
 }
