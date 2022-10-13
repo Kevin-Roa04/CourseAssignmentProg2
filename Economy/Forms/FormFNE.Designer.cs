@@ -35,6 +35,7 @@ namespace Economy.Forms
             this.txtYears = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.VisualizarConclusion = new System.Windows.Forms.Label();
             this.rjButton5 = new Economy.BeatifulComponents.RJButton();
             this.rjButton4 = new Economy.BeatifulComponents.RJButton();
             this.rjButton3 = new Economy.BeatifulComponents.RJButton();
@@ -97,6 +98,7 @@ namespace Economy.Forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.VisualizarConclusion);
             this.groupBox1.Controls.Add(this.rjButton5);
             this.groupBox1.Controls.Add(this.rjButton4);
             this.groupBox1.Controls.Add(this.rjButton3);
@@ -117,6 +119,20 @@ namespace Economy.Forms
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuracion del Proyecto";
+            // 
+            // VisualizarConclusion
+            // 
+            this.VisualizarConclusion.AutoSize = true;
+            this.VisualizarConclusion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VisualizarConclusion.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
+            this.VisualizarConclusion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.VisualizarConclusion.Location = new System.Drawing.Point(6, 414);
+            this.VisualizarConclusion.Name = "VisualizarConclusion";
+            this.VisualizarConclusion.Size = new System.Drawing.Size(122, 18);
+            this.VisualizarConclusion.TabIndex = 18;
+            this.VisualizarConclusion.Text = "Visualizar Conclusión";
+            this.VisualizarConclusion.Visible = false;
+            this.VisualizarConclusion.Click += new System.EventHandler(this.VisualizarConclusion_Click);
             // 
             // rjButton5
             // 
@@ -440,5 +456,6 @@ namespace Economy.Forms
         private BeatifulComponents.RJButton rjButton5;
         private System.Windows.Forms.PictureBox PbClose;
         private BeatifulComponents.EllipseControl ellipseControl1;
+        private System.Windows.Forms.Label VisualizarConclusion;
     }
 }

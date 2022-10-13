@@ -27,6 +27,15 @@ namespace Economy.Forms
         private FmrCalendarioDePago fmrCalendarioDePago;
         private Depreciacion depreciacion;
         private FrmAssets frmAssets;
+
+
+        double VPNFinanciamiento;
+        double VPNSinFinanciamiento;
+        double TIRFinanciamiento;
+        double TIRSinFinanciamiento;
+        double RazonBeneficioCostoFinanciamiento = 0;
+        double RazonBeneficioCostoSinFinanciamiento = 0;
+
         public FormFNE( IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
             InitializeComponent();
@@ -103,14 +112,17 @@ namespace Economy.Forms
             dgvFNE.Rows[2].Cells[0].Value = "Intereses";
             dgvFNE.Rows[3].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[4].Cells[0].Value = "Utilidad antes de impuestos";
+            dgvFNE.Rows[4].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[5].Cells[0].Value = "IR";
             dgvFNE.Rows[6].Cells[0].Value = "Utilidad despues de impuestos";
+            dgvFNE.Rows[6].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[7].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[8].Cells[0].Value = "Valor de rescate";
             dgvFNE.Rows[9].Cells[0].Value = "Prestamo";
             dgvFNE.Rows[10].Cells[0].Value = "Amortizacion del prestamo";
             dgvFNE.Rows[11].Cells[0].Value = "Inversiones Totales";
             dgvFNE.Rows[12].Cells[0].Value = "FNE";
+            dgvFNE.Rows[12].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
             FNEnotFinanced();
             calculateFNE();
         }
@@ -132,6 +144,7 @@ namespace Economy.Forms
             //calculateFNE();
             VPN();
             TIR();
+            RazonBeneficiosCostos();
         }
 
         private void FNEnotFinanced()
@@ -151,6 +164,7 @@ namespace Economy.Forms
             //calculateFNE();
             VPN();
             TIR();
+            RazonBeneficiosCostos();
         }
 
 
@@ -158,6 +172,17 @@ namespace Economy.Forms
         {
             calculateFNE();
             calculated = true;
+            if (rbCF.Checked)
+            {
+                rbSF.Checked = true;
+                rbCF.Checked = true;
+            }
+            else
+            {
+                rbCF.Checked = true;
+                rbSF.Checked = true;
+            }
+            VisualizarConclusion.Visible = true;
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
@@ -360,6 +385,11 @@ namespace Economy.Forms
             dgvFNE.Rows[16].Cells[1].Value = $"{Math.Round(CalculateTir()*100, 2)} %";
         }
 
+        private void RazonBeneficiosCostos()
+        {
+            dgvFNE.Rows[17].Cells[0].Value = "Razon Beneficio Costo";
+        }
+
         private void SaveTMAR()
         {
             FNEData.TasaInversionista = (float)txtTMAR.Value / 100;
@@ -527,11 +557,14 @@ namespace Economy.Forms
         {
             if(rbCF.Checked == true)
             {
+                if (!rbCF.Enabled) return;
                 FNEFinanced();
                 if (calculated == true)
                 {
                     calculateFNE();
                     CalculateVPNFinanced();
+                    VPNFinanciamiento = CalculateVPNFinanced();
+                    TIRFinanciamiento = Math.Round(CalculateTir() * 100, 2);
                 }
             }
         }
@@ -545,6 +578,8 @@ namespace Economy.Forms
                 {
                     calculateFNE();
                     VPNnotFinanced();
+                    VPNSinFinanciamiento = CalculateVPNnotFinanced();
+                    TIRSinFinanciamiento = Math.Round(CalculateTir() * 100, 2);
                 }
             }
 
@@ -601,5 +636,12 @@ namespace Economy.Forms
             }
         }
         #endregion
+
+        private void VisualizarConclusion_Click(object sender, EventArgs e)
+        {
+            ConclusionFNE conclusionFNE = new ConclusionFNE(VPNFinanciamiento, VPNSinFinanciamiento, TIRFinanciamiento,
+                                      TIRSinFinanciamiento, RazonBeneficioCostoFinanciamiento, RazonBeneficioCostoSinFinanciamiento);
+            conclusionFNE.ShowDialog();
+        }
     }
 }

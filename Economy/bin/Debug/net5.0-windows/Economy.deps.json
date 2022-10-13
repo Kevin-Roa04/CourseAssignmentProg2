@@ -1407,6 +1407,7 @@
       },
       "Economy.Domain/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.16",
           "Microsoft.Extensions.Configuration": "5.0.0",
           "Microsoft.Extensions.Hosting": "5.0.0"

@@ -158,6 +158,9 @@ namespace Economy.Domain.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
 
+                    b.Property<string>("Period")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Type")
                         .HasMaxLength(50)
                         .IsUnicode(false)

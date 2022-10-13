@@ -43,12 +43,12 @@ namespace Economy.Forms
             this.grpocaculos = new System.Windows.Forms.GroupBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvAmortization = new System.Windows.Forms.DataGridView();
-            this.Years = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PbClose = new System.Windows.Forms.PictureBox();
+            this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Credit_Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Outstanding_Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PbClose = new System.Windows.Forms.PictureBox();
             this.grpocaculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
@@ -169,7 +169,7 @@ namespace Economy.Forms
             this.dgvAmortization.ColumnHeadersHeight = 30;
             this.dgvAmortization.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAmortization.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Years,
+            this.Años,
             this.Credit_Memo,
             this.Interest,
             this.Payment,
@@ -193,12 +193,25 @@ namespace Economy.Forms
             this.dgvAmortization.Size = new System.Drawing.Size(581, 346);
             this.dgvAmortization.TabIndex = 3;
             // 
-            // Years
+            // PbClose
             // 
-            this.Years.HeaderText = "Years";
-            this.Years.Name = "Years";
-            this.Years.ReadOnly = true;
-            this.Years.Width = 70;
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(883, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 20;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            // 
+            // Años
+            // 
+            this.Años.HeaderText = "Años";
+            this.Años.Name = "Años";
+            this.Años.ReadOnly = true;
+            this.Años.Width = 68;
             // 
             // Credit_Memo
             // 
@@ -227,19 +240,6 @@ namespace Economy.Forms
             this.Outstanding_Balance.Name = "Outstanding_Balance";
             this.Outstanding_Balance.ReadOnly = true;
             this.Outstanding_Balance.Width = 190;
-            // 
-            // PbClose
-            // 
-            this.PbClose.BackColor = System.Drawing.Color.Transparent;
-            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(883, 12);
-            this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
-            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbClose.TabIndex = 20;
-            this.PbClose.TabStop = false;
-            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // FmrCalendarioDePago
             // 
@@ -276,11 +276,11 @@ namespace Economy.Forms
         private System.Windows.Forms.GroupBox grpocaculos;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.DataGridView dgvAmortization;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Years;
+        private System.Windows.Forms.PictureBox PbClose;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Años;
         private System.Windows.Forms.DataGridViewTextBoxColumn Credit_Memo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
         private System.Windows.Forms.DataGridViewTextBoxColumn Outstanding_Balance;
-        private System.Windows.Forms.PictureBox PbClose;
     }
 }

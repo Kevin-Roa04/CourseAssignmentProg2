@@ -45,10 +45,10 @@
             this.nudYears = new System.Windows.Forms.NumericUpDown();
             this.lblYears = new System.Windows.Forms.Label();
             this.DgvDepreciation = new System.Windows.Forms.DataGridView();
-            this.Years = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Depreciation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Depreciation_Acum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Book_Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Depreciación = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepreciaciónAcumulada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorEnLibro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudInitialValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudResidualValue)).BeginInit();
             this.gbData.SuspendLayout();
@@ -215,10 +215,10 @@
             this.DgvDepreciation.ColumnHeadersHeight = 30;
             this.DgvDepreciation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DgvDepreciation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Years,
-            this.Depreciation,
-            this.Depreciation_Acum,
-            this.Book_Value});
+            this.Años,
+            this.Depreciación,
+            this.DepreciaciónAcumulada,
+            this.ValorEnLibro});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -228,7 +228,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvDepreciation.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDepreciation.EnableHeadersVisualStyles = false;
-            this.DgvDepreciation.Location = new System.Drawing.Point(392, 72);
+            this.DgvDepreciation.Location = new System.Drawing.Point(392, 61);
             this.DgvDepreciation.Name = "DgvDepreciation";
             this.DgvDepreciation.ReadOnly = true;
             this.DgvDepreciation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -246,33 +246,33 @@
             this.DgvDepreciation.Size = new System.Drawing.Size(553, 337);
             this.DgvDepreciation.TabIndex = 3;
             // 
-            // Years
+            // Años
             // 
-            this.Years.HeaderText = "Years";
-            this.Years.Name = "Years";
-            this.Years.ReadOnly = true;
-            this.Years.Width = 70;
+            this.Años.HeaderText = "Años";
+            this.Años.Name = "Años";
+            this.Años.ReadOnly = true;
+            this.Años.Width = 68;
             // 
-            // Depreciation
+            // Depreciación
             // 
-            this.Depreciation.HeaderText = "Depreciation";
-            this.Depreciation.Name = "Depreciation";
-            this.Depreciation.ReadOnly = true;
-            this.Depreciation.Width = 128;
+            this.Depreciación.HeaderText = "Depreciación";
+            this.Depreciación.Name = "Depreciación";
+            this.Depreciación.ReadOnly = true;
+            this.Depreciación.Width = 133;
             // 
-            // Depreciation_Acum
+            // DepreciaciónAcumulada
             // 
-            this.Depreciation_Acum.HeaderText = "Acumulated_Depreciation";
-            this.Depreciation_Acum.Name = "Depreciation_Acum";
-            this.Depreciation_Acum.ReadOnly = true;
-            this.Depreciation_Acum.Width = 226;
+            this.DepreciaciónAcumulada.HeaderText = "DepreciaciónAcumulada";
+            this.DepreciaciónAcumulada.Name = "DepreciaciónAcumulada";
+            this.DepreciaciónAcumulada.ReadOnly = true;
+            this.DepreciaciónAcumulada.Width = 218;
             // 
-            // Book_Value
+            // ValorEnLibro
             // 
-            this.Book_Value.HeaderText = "Book_Value";
-            this.Book_Value.Name = "Book_Value";
-            this.Book_Value.ReadOnly = true;
-            this.Book_Value.Width = 120;
+            this.ValorEnLibro.HeaderText = "ValorEnLibro";
+            this.ValorEnLibro.Name = "ValorEnLibro";
+            this.ValorEnLibro.ReadOnly = true;
+            this.ValorEnLibro.Width = 123;
             // 
             // Depreciacion
             // 
@@ -315,9 +315,9 @@
         private System.Windows.Forms.DataGridView DgvDepreciation;
         private System.Windows.Forms.NumericUpDown nudCoeficiente;
         private System.Windows.Forms.Label lblCoeficiente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Years;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Depreciation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Depreciation_Acum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Book_Value;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Años;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Depreciación;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepreciaciónAcumulada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValorEnLibro;
     }
 }
