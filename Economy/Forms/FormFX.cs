@@ -65,6 +65,7 @@ namespace Economy.Forms
             typeFunctionsDictionary.Add("Depreciacion_Linea_Recta", "Depreciación línea recta");
             typeFunctionsDictionary.Add("Depreciacion_Doble_Saldo_Decreciente", "Depreciación de doble saldo decreciente");
             typeFunctionsDictionary.Add("Depreciacion_Suma_Digito_De_Años", "Depreciación de suma de los digítos de los años");
+            typeFunctionsDictionary.Add("TMAR_Mixta", "TMAR_Mixta");
         }
         private void FormFX_Load(object sender, EventArgs e)
         {

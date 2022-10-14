@@ -44,7 +44,7 @@ namespace Economy.UsersControl
             this.lbString1 = new System.Windows.Forms.Label();
             this.txbInfo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnCalcular = new Economy.BeatifulComponents.RJButton();
+            this.btnCalculate = new Economy.BeatifulComponents.RJButton();
             this.gbData.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -230,7 +230,7 @@ namespace Economy.UsersControl
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnCalcular);
+            this.panel1.Controls.Add(this.btnCalculate);
             this.panel1.Controls.Add(this.gbData);
             this.panel1.Controls.Add(this.txbInfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -239,25 +239,25 @@ namespace Economy.UsersControl
             this.panel1.Size = new System.Drawing.Size(551, 397);
             this.panel1.TabIndex = 13;
             // 
-            // btnCalcular
+            // btnCalculate
             // 
-            this.btnCalcular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnCalcular.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnCalcular.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnCalcular.BorderRadius = 4;
-            this.btnCalcular.BorderSize = 0;
-            this.btnCalcular.FlatAppearance.BorderSize = 0;
-            this.btnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalcular.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCalcular.ForeColor = System.Drawing.Color.White;
-            this.btnCalcular.Location = new System.Drawing.Point(217, 354);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(123, 29);
-            this.btnCalcular.TabIndex = 13;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.TextColor = System.Drawing.Color.White;
-            this.btnCalcular.UseVisualStyleBackColor = false;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            this.btnCalculate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCalculate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.btnCalculate.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCalculate.BorderRadius = 4;
+            this.btnCalculate.BorderSize = 0;
+            this.btnCalculate.FlatAppearance.BorderSize = 0;
+            this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCalculate.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCalculate.ForeColor = System.Drawing.Color.White;
+            this.btnCalculate.Location = new System.Drawing.Point(217, 354);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(123, 29);
+            this.btnCalculate.TabIndex = 13;
+            this.btnCalculate.Text = "Calcular";
+            this.btnCalculate.TextColor = System.Drawing.Color.White;
+            this.btnCalculate.UseVisualStyleBackColor = false;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // UserControlFunction
             // 
@@ -290,6 +290,6 @@ namespace Economy.UsersControl
         private System.Windows.Forms.TextBox txbString1;
         private System.Windows.Forms.Label lbString1;
         private System.Windows.Forms.Panel panel1;
-        private BeatifulComponents.RJButton btnCalcular;
+        private BeatifulComponents.RJButton btnCalculate;
     }
 }

@@ -30,10 +30,10 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormExcel));
             this.dgvExcel = new System.Windows.Forms.DataGridView();
             this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,14 +75,14 @@ namespace Economy.Forms
             this.dgvExcel.BackgroundColor = System.Drawing.Color.White;
             this.dgvExcel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvExcel.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExcel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExcel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.A1,
@@ -93,35 +93,40 @@ namespace Economy.Forms
             this.F1,
             this.G1,
             this.H1});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvExcel.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvExcel.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvExcel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvExcel.EnableHeadersVisualStyles = false;
             this.dgvExcel.GridColor = System.Drawing.Color.LightGray;
             this.dgvExcel.Location = new System.Drawing.Point(10, 91);
             this.dgvExcel.Name = "dgvExcel";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvExcel.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvExcel.RowHeadersVisible = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            this.dgvExcel.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.dgvExcel.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvExcel.RowTemplate.Height = 25;
             this.dgvExcel.Size = new System.Drawing.Size(995, 501);
             this.dgvExcel.TabIndex = 2;
+            this.dgvExcel.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvExcel_CellBeginEdit);
             this.dgvExcel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellClick);
+            this.dgvExcel.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellLeave);
             this.dgvExcel.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvExcel_CellMouseUp);
+            this.dgvExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellValueChanged);
             this.dgvExcel.CurrentCellChanged += new System.EventHandler(this.dgvExcel_CurrentCellChanged);
+            this.dgvExcel.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvExcel_EditingControlShowing);
             // 
             // A1
             // 
@@ -252,7 +257,7 @@ namespace Economy.Forms
             this.guardarToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.guardarToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
@@ -273,7 +278,7 @@ namespace Economy.Forms
             this.aExcelToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.aExcelToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.aExcelToolStripMenuItem.Name = "aExcelToolStripMenuItem";
-            this.aExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.aExcelToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.aExcelToolStripMenuItem.Text = "Excel";
             this.aExcelToolStripMenuItem.Click += new System.EventHandler(this.aExcelToolStripMenuItem_Click);
             // 
@@ -282,7 +287,7 @@ namespace Economy.Forms
             this.pDFToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.pDFToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.pDFToolStripMenuItem.Text = "PDF";
             this.pDFToolStripMenuItem.Click += new System.EventHandler(this.pDFToolStripMenuItem_Click);
             // 
@@ -302,7 +307,7 @@ namespace Economy.Forms
             this.excelToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.excelToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
-            this.excelToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.excelToolStripMenuItem.Size = new System.Drawing.Size(119, 26);
             this.excelToolStripMenuItem.Text = "Excel";
             this.excelToolStripMenuItem.Click += new System.EventHandler(this.excelToolStripMenuItem_Click);
             // 

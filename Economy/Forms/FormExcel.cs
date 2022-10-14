@@ -3,6 +3,7 @@ using Economy.AppCore.Singleton;
 using Economy.Domain.Entities;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using org.mariuszgromada.math.mxparser;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,10 @@ namespace Economy.Forms
         private string fileName;
         public Project project;
         private const int CS_DropShadow = 0x00020000;
+        private bool first;
+        private int RowsExpression;
+        private int ColumnsExpression;
+        private decimal value;
 
         #region Form shadow
         protected override CreateParams CreateParams
@@ -65,6 +70,10 @@ namespace Economy.Forms
             singleton = Singleton.instance1;
             this.fileName = fileName;
             this.lblName.Text += $" {fileName}";
+            first = true;
+            RowsFunction = 0;
+            ColumnsExpression = 0;
+            value = 0;
         }
 
         private void FormExcel_Load(object sender, EventArgs e)
@@ -75,23 +84,24 @@ namespace Economy.Forms
             }
             AuxColumns = Columns.ToList();
             DirectoryInfo directory = new DirectoryInfo(Application.StartupPath + @"Excel");
-            if(!directory.Exists)
+            if (!directory.Exists)
             {
                 Directory.CreateDirectory(Application.StartupPath + @"Excel");
                 directory.Attributes = FileAttributes.Hidden;
             }
             int rows = 1;
-            while (rows < 30)
+            while (rows < 20)
             {
                 dgvExcel.Rows.Add();
                 rows++;
             }
-            if(project != null)
+            AddColummns();
+            AddColummns();
+            if (project != null)
             {
                 ImportarExcel(Application.StartupPath + @"Excel" + $@"\{project.Name}");
             }
         }
-
         private void dgvExcel_CurrentCellChanged(object sender, EventArgs e)
         {
             try
@@ -117,9 +127,10 @@ namespace Economy.Forms
                             singleton.MaxRow = row;
                         }
 
-                        if (singleton.MinColumn == 0 && singleton.MaxColumn == 0)
+                        if (singleton.MinColumn == singleton.MaxColumn && first)
                         {
                             singleton.MinColumn = column;
+                            first = false;
                         }
                         else
                         {
@@ -162,15 +173,38 @@ namespace Economy.Forms
                     if (!singleton.Selection)
                     {
                         GetRowAndColumn();
-                        double ValueCell = double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
+                        decimal ValueCell = decimal.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
                         if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
                         {
                             throw new ArgumentException();
                         }
-                        singleton.ValueTask = Double.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
+                        singleton.ValueTask = decimal.ToDouble(ValueCell);
                         existe.Activate();
                     }
-
+                }
+                else
+                {
+                    btnFB.Visible = true;
+                    btnFE.Visible = true;
+                    if(RowsExpression != -1 && ColumnsExpression != -1)
+                    {
+                        if(dgvExcel.CurrentCell != dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression])
+                        {
+                            if (dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value != null)
+                            {
+                                if(dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value.ToString().StartsWith("="))
+                                {
+                                    if(dgvExcel.CurrentCell.ToString().Length > 0)
+                                    {
+                                        value = Convert.ToDecimal(dgvExcel.CurrentCell.Value);
+                                        dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value += value.ToString();
+                                        dgvExcel.BeginEdit(false);
+                                        dgvExcel.CurrentCell = dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression];
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
             catch
@@ -229,6 +263,8 @@ namespace Economy.Forms
             RowsFunction = Rows;
             FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie, 0);
             formsFX.Show();
+            btnFB.Visible = false;
+            btnFE.Visible = false;
         }
         private void GetRowAndColumn()
         {
@@ -253,7 +289,7 @@ namespace Economy.Forms
                     int sumatoria = 0;
                     for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                     {
-                        if(singleton.MaxColumn - 1 == j)
+                        if (singleton.MaxColumn - 1 == j)
                         {
                             AddColummns();
                         }
@@ -275,7 +311,7 @@ namespace Economy.Forms
                 {
                     for (int j = singleton.MinColumn; j < (singleton.MaxColumn + singleton.MinColumn); j++)
                     {
-                        if (singleton.MaxColumn - 1 == j)
+                        if (dgvExcel.ColumnCount - 1 == j)
                         {
                             AddColummns();
                         }
@@ -297,7 +333,7 @@ namespace Economy.Forms
                     int sumatoria = 0;
                     for (int j = singleton.MinColumn; j < (singleton.MinColumn + singleton.ValueFunctionList.Count); j++)
                     {
-                        if ((singleton.MinColumn + singleton.ValueFunctionList.Count) - 1 == j)
+                        if (dgvExcel.ColumnCount - 1 == j)
                         {
                             AddColummns();
                         }
@@ -337,12 +373,15 @@ namespace Economy.Forms
                     {
                         if (singleton.Type)
                         {
+                            first = true;
                             singleton.Entry.Clear();
+                            decimal ValueCell;
                             for (int i = singleton.MinRow; i <= singleton.MaxRow; i++)
                             {
                                 for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                                 {
-                                    singleton.Entry.Add(double.Parse(Convert.ToString(dgvExcel.Rows[i].Cells[j].Value)));
+                                    ValueCell = decimal.Parse((string)dgvExcel.Rows[i].Cells[j].Value);
+                                    singleton.Entry.Add(decimal.ToDouble(ValueCell));
                                 }
                             }
                             existe.Activate();
@@ -350,12 +389,16 @@ namespace Economy.Forms
                         }
                         else
                         {
+                            first = true;
                             singleton.Exit.Clear();
+                            decimal ValueCell;
                             for (int i = singleton.MinRow; i <= singleton.MaxRow; i++)
                             {
                                 for (int j = singleton.MinColumn; j <= singleton.MaxColumn; j++)
                                 {
-                                    singleton.Exit.Add(double.Parse(Convert.ToString(dgvExcel.Rows[i].Cells[j].Value)));
+
+                                    ValueCell = decimal.Parse((string)dgvExcel.Rows[i].Cells[j].Value);
+                                    singleton.Exit.Add(decimal.ToDouble(ValueCell));
                                 }
                             }
                             existe.Activate();
@@ -612,6 +655,8 @@ namespace Economy.Forms
             RowsFunction = Rows;
             FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie, 1);
             formsFX.Show();
+            btnFB.Visible = false;
+            btnFE.Visible = false;
         }
 
         private void PbClose_Click(object sender, EventArgs e)
@@ -637,6 +682,89 @@ namespace Economy.Forms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        private void dgvExcel_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvExcel.CurrentCell != null)
+                    return;
+
+                if(dgvExcel.CurrentCell.Value != null)
+                {
+                    if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
+                    {
+                        //RowsExpression = dgvExcel.CurrentCell.RowIndex;
+                        //ColumnsExpression = dgvExcel.CurrentCell.ColumnIndex;
+                        Expression expression = new Expression(dgvExcel.CurrentCell.Value.ToString().Substring(1));
+                        dgvExcel.CurrentCell.Value = expression.calculate().ToString();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        DataGridViewTextBoxEditingControl cellTextBox = new DataGridViewTextBoxEditingControl();
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Enter)
+            {
+                if(cellTextBox.Focused && cellTextBox != null)
+                {
+                    if (dgvExcel.CurrentCell.Value != null)
+                    {
+                        if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
+                        {
+                            Expression expression = new Expression(dgvExcel.CurrentCell.Value.ToString().Substring(1));
+                            dgvExcel.CurrentCell.Value = expression.calculate().ToString();
+                        }
+                    }
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void dgvExcel_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            cellTextBox = e.Control as DataGridViewTextBoxEditingControl;
+        }
+
+        private void dgvExcel_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvExcel.CurrentCell != null)
+                    return;
+
+                if (dgvExcel.CurrentCell.Value != null)
+                {
+                    if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
+                    {
+                        RowsExpression = dgvExcel.CurrentCell.RowIndex;
+                        ColumnsExpression = dgvExcel.CurrentCell.ColumnIndex;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void dgvExcel_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            try
+            {
+                if(dgvExcel.CurrentCell.Value.ToString() != string.Empty)
+                {
+                    SendKeys.Send("{Right}");
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
-  
 }
