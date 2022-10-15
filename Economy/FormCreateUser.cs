@@ -104,10 +104,7 @@ namespace Economy
         }
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FormLogin formLogin = new FormLogin();
-            formLogin.UsersServices = this.UsersServices;
-            formLogin.ShowDialog();
+            this.Close();
         }
 
         private bool ValidateUtil()
@@ -151,11 +148,11 @@ namespace Economy
 
                     if (succes)
                     {
-                        MessageBox.Show("The user has been successfully created", "User created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Usuario creado exitosamente.", "Usuario creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                         return;
                     }
-                    MessageBox.Show("An error occurred when creating the user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ha ocurrido un error creando al usuario. Intentelo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -175,6 +172,15 @@ namespace Economy
         private void PbClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void FadeIn_Tick(object sender, EventArgs e)
+        {
+            if (Opacity >= 1)
+            {
+                FadeIn.Stop();
+            }
+            this.Opacity += .2;
         }
     }
 }

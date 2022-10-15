@@ -29,6 +29,7 @@ namespace Economy
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreateUser));
             this.customPanel1 = new Economy.BeatifulComponents.CustomPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@ namespace Economy
             this.lblPhoneNE = new System.Windows.Forms.Label();
             this.PbClose = new System.Windows.Forms.PictureBox();
             this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
+            this.FadeIn = new System.Windows.Forms.Timer(this.components);
             this.customPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -352,7 +354,7 @@ namespace Economy
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(833, 8);
+            this.PbClose.Location = new System.Drawing.Point(841, 8);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -365,12 +367,18 @@ namespace Economy
             this.ellipseControl1.CornerRadius = 10;
             this.ellipseControl1.TargetControl = this;
             // 
+            // FadeIn
+            // 
+            this.FadeIn.Enabled = true;
+            this.FadeIn.Interval = 40;
+            this.FadeIn.Tick += new System.EventHandler(this.FadeIn_Tick);
+            // 
             // FormCreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(853, 508);
+            this.ClientSize = new System.Drawing.Size(864, 508);
             this.Controls.Add(this.PbClose);
             this.Controls.Add(this.lblPhoneNE);
             this.Controls.Add(this.lblEmailNE);
@@ -388,6 +396,7 @@ namespace Economy
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCreateUser";
+            this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogin";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -428,6 +437,7 @@ namespace Economy
         private System.Windows.Forms.Label lblPhoneNE;
         private System.Windows.Forms.PictureBox PbClose;
         private BeatifulComponents.EllipseControl ellipseControl1;
+        private System.Windows.Forms.Timer FadeIn;
     }
 }
 
