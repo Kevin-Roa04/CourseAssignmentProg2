@@ -18,17 +18,21 @@ namespace Economy.Forms
 {
     public partial class FormAddProfit : Form
     {
+        public IProfitService profitService { get; set; }
+        Project project;
+
         int years;
         int type;
         int profitNumber = 0;
         bool edit = false;
         DataGridView dgvFNE;
-        public FormAddProfit(int years, DataGridView dgvFNE)
+        public FormAddProfit(Project project, int years, DataGridView dgvFNE)
         {
             InitializeComponent();
             this.years = years;
             LoadDGV(years);
             this.dgvFNE = dgvFNE;
+            this.project = project;
         }
 
         private void LoadDGV(int columns)
@@ -117,6 +121,15 @@ namespace Economy.Forms
                 edit = false;
                 return;
             }
+
+            profitService.Create(new Profit
+            {
+                Nombre = txtProfitName.Text,
+                ValorInicial = decimal.Parse(txtAmount.Text),
+                TipoIncremento = (short)this.type,
+                ValorIncremento = (decimal)numericUpDown1.Value,
+                ProjectId = project.Id,
+            });
 
             NewProfit(profitNumber); // nueva ganancia
 

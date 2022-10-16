@@ -65,6 +65,10 @@ namespace Economy
             services.AddScoped<ICalculateServices<Annuity>, CalculateAnnuities>();
             services.AddScoped<ICalculateServices<Serie>, CalculateSerie>();
 
+            //FNE
+            services.AddScoped<IProfitService, ProfitService>();
+            services.AddScoped<IProfitRepository, ProfitRepository>();
+
             services.AddScoped<INominalServices, NominalServices>();
             services.AddScoped<IInteresNominal, NominalRepository>();
             //simple

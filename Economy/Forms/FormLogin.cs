@@ -91,18 +91,21 @@ namespace Economy.Forms
         private ICalculateServices<Interest> CalculateServicesInterest;
         private ICalculateServices<Serie> calculateServicesSerie;
         #endregion
+
         private User User;
         private ISimpleService simpleService;
         private ICompuestoService compuestoService1;
         private IConvertService convertService1;
         private IDepreciationService depreciationService;
         private IAmortizacionServices amortizacionServices;
+        private IProfitService profitService;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
             ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal,
             ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
-            IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices
+            IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices,
+            IProfitService profitService
             )
         {
             this.InterestServices = interest;
@@ -119,6 +122,7 @@ namespace Economy.Forms
             this.convertService1 = convertService;
             this.depreciationService = depreciationService;
             this.amortizacionServices = amortizacionServices;
+            this.profitService = profitService;
 
             InitializeComponent();
            
@@ -208,6 +212,7 @@ namespace Economy.Forms
                 formCreateProject.convertService1 = this.convertService1;
                 formCreateProject.depreciationService = this.depreciationService;
                 formCreateProject.amortizacionServices = this.amortizacionServices;
+                formCreateProject.profitService = this.profitService;
                 formCreateProject.ShowDialog();
 
             }

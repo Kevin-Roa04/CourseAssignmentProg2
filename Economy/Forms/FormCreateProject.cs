@@ -39,6 +39,10 @@ namespace Economy.Forms
         public ICalculateServices<Serie> CalculateServicesSerie;
         public INominalServices nominal;
         #endregion
+
+        #region -> FNE
+        public IProfitService profitService { get; set; }
+        #endregion
         private User GlobalUser;
         private int Selection = -1;
         public ISimpleService simpleService;
@@ -554,7 +558,8 @@ namespace Economy.Forms
                 }
                 else if (Selection == 6)
                 {
-                    FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
+                    FormFNE FNE = new FormFNE(project, amortizacionServices, depreciationService);
+                    FNE.ProfitService = this.profitService;
                     FNE.ShowDialog();
                 }
                 

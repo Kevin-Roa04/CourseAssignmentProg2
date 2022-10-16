@@ -23,7 +23,6 @@ namespace Economy.Domain.Entities
         public virtual DbSet<Annuity> Annuities { get; set; }
         public virtual DbSet<Cost> Costs { get; set; }
         public virtual DbSet<Depreciacion> Depreciacions { get; set; }
-        public virtual DbSet<Fneproject> Fneprojects { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
         public virtual DbSet<InversionFne> InversionFnes { get; set; }
         public virtual DbSet<Profit> Profits { get; set; }
@@ -62,30 +61,30 @@ namespace Economy.Domain.Entities
             {
                 entity.ToTable("Amortizacion");
 
-                entity.Property(e => e.FneprojectId).HasColumnName("FNEProjectId");
-
                 entity.Property(e => e.TasaPrestamo).HasColumnType("money");
 
                 entity.Property(e => e.ValorInversion).HasColumnType("money");
 
-                entity.HasOne(d => d.Fneproject)
+                entity.HasOne(d => d.Project)
                     .WithMany(p => p.Amortizacions)
-                    .HasForeignKey(d => d.FneprojectId)
-                    .HasConstraintName("FK__Amortizac__FNEPr__656C112C");
+                    .HasForeignKey(d => d.ProjectId)
+                    .HasConstraintName("FK__Amortizac__Proje__398D8EEE");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Amortizacions)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Amortizac__UserI__6477ECF3");
+                    .HasConstraintName("FK__Amortizac__UserI__38996AB5");
             });
 
             modelBuilder.Entity<Annuity>(entity =>
             {
                 entity.ToTable("Annuity");
 
-                entity.HasIndex(e => e.ProjectId, "IX_Annuity_projectId");
-
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date");
 
                 entity.Property(e => e.End).HasColumnName("end");
 
@@ -132,8 +131,6 @@ namespace Economy.Domain.Entities
             {
                 entity.ToTable("Cost");
 
-                entity.Property(e => e.FneprojectId).HasColumnName("FNEProjectId");
-
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(50)
@@ -143,52 +140,46 @@ namespace Economy.Domain.Entities
 
                 entity.Property(e => e.ValorInicial).HasColumnType("money");
 
-                entity.HasOne(d => d.Fneproject)
+                entity.HasOne(d => d.Project)
                     .WithMany(p => p.Costs)
-                    .HasForeignKey(d => d.FneprojectId)
+                    .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cost__FNEProject__6B24EA82");
+                    .HasConstraintName("FK__Cost__ProjectId__3F466844");
             });
 
             modelBuilder.Entity<Depreciacion>(entity =>
             {
                 entity.ToTable("Depreciacion");
 
-                entity.Property(e => e.FneprojectId).HasColumnName("FNEProjectId");
-
                 entity.Property(e => e.Valor).HasColumnType("money");
 
                 entity.Property(e => e.ValorResidual).HasColumnType("money");
 
-                entity.HasOne(d => d.Fneproject)
+                entity.HasOne(d => d.Activo)
                     .WithMany(p => p.Depreciacions)
-                    .HasForeignKey(d => d.FneprojectId)
-                    .HasConstraintName("FK__Depreciac__FNEPr__60A75C0F");
+                    .HasForeignKey(d => d.ActivoId)
+                    .HasConstraintName("FK__Depreciac__Activ__35BCFE0A");
+
+                entity.HasOne(d => d.Project)
+                    .WithMany(p => p.Depreciacions)
+                    .HasForeignKey(d => d.ProjectId)
+                    .HasConstraintName("FK__Depreciac__Proje__34C8D9D1");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Depreciacions)
                     .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Depreciac__UserI__5FB337D6");
-            });
-
-            modelBuilder.Entity<Fneproject>(entity =>
-            {
-                entity.ToTable("FNEProject");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Fneprojects)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__FNEProjec__UserI__5CD6CB2B");
+                    .HasConstraintName("FK__Depreciac__UserI__33D4B598");
             });
 
             modelBuilder.Entity<Interest>(entity =>
             {
                 entity.ToTable("Interest");
 
-                entity.HasIndex(e => e.ProjectId, "IX_Interest_projectId");
-
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date");
 
                 entity.Property(e => e.End).HasColumnName("end");
 
@@ -231,28 +222,24 @@ namespace Economy.Domain.Entities
             {
                 entity.ToTable("InversionFNE");
 
-                entity.Property(e => e.FneprojectId).HasColumnName("FNEProjectId");
-
                 entity.Property(e => e.Monto).HasColumnType("money");
 
                 entity.HasOne(d => d.Activo)
                     .WithMany(p => p.InversionFnes)
                     .HasForeignKey(d => d.ActivoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inversion__Activ__74AE54BC");
+                    .HasConstraintName("FK__Inversion__Activ__4316F928");
 
-                entity.HasOne(d => d.Fneproject)
+                entity.HasOne(d => d.Project)
                     .WithMany(p => p.InversionFnes)
-                    .HasForeignKey(d => d.FneprojectId)
+                    .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inversion__FNEPr__6E01572D");
+                    .HasConstraintName("FK__Inversion__Proje__4222D4EF");
             });
 
             modelBuilder.Entity<Profit>(entity =>
             {
                 entity.ToTable("Profit");
-
-                entity.Property(e => e.FneprojectId).HasColumnName("FNEProjectId");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
@@ -263,18 +250,16 @@ namespace Economy.Domain.Entities
 
                 entity.Property(e => e.ValorInicial).HasColumnType("money");
 
-                entity.HasOne(d => d.Fneproject)
+                entity.HasOne(d => d.Project)
                     .WithMany(p => p.Profits)
-                    .HasForeignKey(d => d.FneprojectId)
+                    .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Profit__FNEProje__68487DD7");
+                    .HasConstraintName("FK__Profit__ProjectI__3C69FB99");
             });
 
             modelBuilder.Entity<Project>(entity =>
             {
                 entity.ToTable("Project");
-
-                entity.HasIndex(e => e.UserId, "IX_Project_userId");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -287,6 +272,16 @@ namespace Economy.Domain.Entities
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("name");
+
+                entity.Property(e => e.Path)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("path");
+
+                entity.Property(e => e.Period)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("period");
 
                 entity.Property(e => e.Type)
                     .HasMaxLength(50)
@@ -306,9 +301,11 @@ namespace Economy.Domain.Entities
             {
                 entity.ToTable("Serie");
 
-                entity.HasIndex(e => e.ProjectId, "IX_Serie_projectId");
-
                 entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasColumnName("date");
 
                 entity.Property(e => e.DownPayment)
                     .HasColumnType("decimal(9, 2)")

@@ -1,6 +1,8 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Economy.Domain.Entities;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.VisualBasic;
 using Org.BouncyCastle.Asn1.Cmp;
 using Proto1._0;
@@ -18,6 +20,7 @@ namespace Economy.Forms
     {
         bool calculated = false;
         double TMARMixtaTotal;
+        public IProfitService ProfitService { get; set; }
 
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
@@ -28,6 +31,7 @@ namespace Economy.Forms
         private FrmDepreciacion depreciacion;
         private FrmAssets frmAssets;
 
+        private Project project;
 
         double VPNFinanciamiento;
         double VPNSinFinanciamiento;
@@ -36,16 +40,18 @@ namespace Economy.Forms
         double RazonBeneficioCostoFinanciamiento = 0;
         double RazonBeneficioCostoSinFinanciamiento = 0;
 
-        public FormFNE( IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
+        public FormFNE(Project project, IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
             InitializeComponent();
-            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
+            addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
+
             addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
             this.amortizacionServices = amortizacionServices;
             this.depreciationService = depreciationService;
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
             depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
             frmAssets = new FrmAssets(depreciacion);
+            this.project = project;
         }
 
         private void FormFNE_Load(object sender, EventArgs e)
@@ -112,17 +118,17 @@ namespace Economy.Forms
             dgvFNE.Rows[2].Cells[0].Value = "Intereses";
             dgvFNE.Rows[3].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[4].Cells[0].Value = "Utilidad antes de impuestos";
-            dgvFNE.Rows[4].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[4].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[5].Cells[0].Value = "IR";
             dgvFNE.Rows[6].Cells[0].Value = "Utilidad despues de impuestos";
-            dgvFNE.Rows[6].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[6].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[7].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[8].Cells[0].Value = "Valor de rescate";
             dgvFNE.Rows[9].Cells[0].Value = "Prestamo";
             dgvFNE.Rows[10].Cells[0].Value = "Amortizacion del prestamo";
             dgvFNE.Rows[11].Cells[0].Value = "Inversiones Totales";
             dgvFNE.Rows[12].Cells[0].Value = "FNE";
-            dgvFNE.Rows[12].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[12].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             FNEnotFinanced();
             calculateFNE();
         }
@@ -187,6 +193,7 @@ namespace Economy.Forms
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
+            addProfit.profitService = this.ProfitService;
             addProfit.ShowDialog();
             if(FNEData.Profit == null) pictureBox1.BackColor = Color.Gray;
             else if (FNEData.Profit.Count == 0) pictureBox1.BackColor = Color.Gray;
@@ -543,7 +550,7 @@ namespace Economy.Forms
 
         private void ResetFNEDataValues()
         {
-            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
+            addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
             depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
             addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
