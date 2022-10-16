@@ -1,6 +1,6 @@
 ﻿namespace Proto1._0
 {
-    partial class Depreciacion
+    partial class FrmDepreciacion
     {
         /// <summary>
         /// Required designer variable.

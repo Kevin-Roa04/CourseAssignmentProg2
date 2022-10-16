@@ -10,7 +10,7 @@ namespace Economy.AppCore.IServices
 {
     public interface IAmortizacionServices : IServices<Amortizacion>
     {
-        AmortizationDTO Metodo1(Amortizacion amotizacion);
-        AmortizationDTO Metodo2(Amortizacion amotizacion);
+        AmortizationDTO Metodo1(Amortizacion amotizacion, double saldo);
+        AmortizationDTO Metodo2(Amortizacion amotizacion, double saldo);
     }
 }

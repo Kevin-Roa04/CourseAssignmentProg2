@@ -22,6 +22,7 @@ namespace Economy.Domain.Entities
         public bool Incremental { get; set; }
         public int TotalPeriod { get; set; }
         public DateTime Date { get; set; }
+
         public virtual Project Project { get; set; }
     }
 }

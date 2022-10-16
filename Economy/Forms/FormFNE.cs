@@ -25,7 +25,7 @@ namespace Economy.Forms
         private FormAddProfit addProfit;
         private FormAddCosts addCost;
         private FmrCalendarioDePago fmrCalendarioDePago;
-        private Depreciacion depreciacion;
+        private FrmDepreciacion depreciacion;
         private FrmAssets frmAssets;
 
 
@@ -44,7 +44,7 @@ namespace Economy.Forms
             this.amortizacionServices = amortizacionServices;
             this.depreciationService = depreciationService;
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
             frmAssets = new FrmAssets(depreciacion);
         }
 
@@ -545,7 +545,7 @@ namespace Economy.Forms
         {
             addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new Depreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
             addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
             UserAssets.UAssets.Clear();
             frmAssets = new FrmAssets(depreciacion);

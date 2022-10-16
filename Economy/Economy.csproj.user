@@ -55,7 +55,7 @@
     <Compile Update="Forms\CalculateInt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Depreciacion.cs">
+    <Compile Update="Forms\FrmDepreciacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FmrCalendarioDePago.cs">

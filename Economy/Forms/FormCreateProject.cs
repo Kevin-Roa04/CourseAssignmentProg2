@@ -549,7 +549,7 @@ namespace Economy.Forms
                 }
                 else if (Selection == 5)
                 {
-                    Depreciacion depreciacion = new Depreciacion(depreciationService, 0, null);
+                    FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
                     depreciacion.ShowDialog();
                 }
                 else if (Selection == 6)

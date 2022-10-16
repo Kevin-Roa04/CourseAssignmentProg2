@@ -32,14 +32,14 @@ namespace Economy.AppCore.Services.InterestsServices
             throw new NotImplementedException();
         }
 
-        public AmortizationDTO Metodo1(Amortizacion amotizacion)
+        public AmortizationDTO Metodo1(Amortizacion amotizacion, double saldo)
         {
-            return amortizacion.Metodo1(amotizacion);
+            return amortizacion.Metodo1(amotizacion, saldo);
         }
 
-        public AmortizationDTO Metodo2(Amortizacion amotizacion)
+        public AmortizationDTO Metodo2(Amortizacion amotizacion, double saldo)
         {
-            return amortizacion.Metodo2(amotizacion);
+            return amortizacion.Metodo2(amotizacion, saldo);
         }
 
         public int Update(Amortizacion t)

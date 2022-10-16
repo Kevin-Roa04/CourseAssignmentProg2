@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Proto1._0
 {
-    public partial class Depreciacion : Form
+    public partial class FrmDepreciacion : Form
     {
         public bool flag = false;
 
         IDepreciationService dep;
         int years;
         DataGridView dgvFNE;
-        public Depreciacion(IDepreciationService dep, int years, DataGridView dataGridView)
+        public FrmDepreciacion(IDepreciationService dep, int years, DataGridView dataGridView)
         {
             this.dep = dep;
             this.years = years;

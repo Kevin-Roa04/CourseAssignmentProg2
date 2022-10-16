@@ -203,11 +203,11 @@ namespace Economy.Forms
             dgvAmortization.Visible = true;
             Amortizacion amo = new Amortizacion()
             {
-                interes = Convert.ToDouble(txtinters.Text),
-                inversion = Convert.ToDouble(txtknversion.Text),
-                plazo = Convert.ToDouble(txtplazo.Text),
-                Saldo = Convert.ToDouble(txtknversion.Text)
+                TasaPrestamo = Convert.ToDecimal(txtinters.Text),
+                ValorInversion = Convert.ToDecimal(txtknversion.Text),
+                Plazo = Convert.ToInt32(txtplazo.Text),
             };
+            double saldo = Convert.ToDouble(txtknversion.Text);
             AmortizationDTO amortizationDTO = new AmortizationDTO();
             for (int i = 0; i <= Convert.ToDouble(txtplazo.Text); i++)
             {
@@ -220,16 +220,16 @@ namespace Economy.Forms
                 {
                     if (index == 0)
                     {
-                        amortizationDTO =  amortizacionServices.Metodo1(amo);
+                        amortizationDTO =  amortizacionServices.Metodo1(amo, saldo);
                         this.dgvAmortization.Rows.Add(i, amortizationDTO.Credit_memo, amortizationDTO.interest, amortizationDTO.payment, amortizationDTO.outstanding_balance);
                     }
                     else if (index == 1)
                     {
-                        amortizationDTO = amortizacionServices.Metodo2(amo);
+                        amortizationDTO = amortizacionServices.Metodo2(amo, saldo);
                         this.dgvAmortization.Rows.Add(i, amortizationDTO.Credit_memo, amortizationDTO.interest, amortizationDTO.payment, amortizationDTO.outstanding_balance);
                     }
                 }
-                amo.Saldo = amortizationDTO.outstanding_balance;
+                saldo = amortizationDTO.outstanding_balance;
             }
         }
 

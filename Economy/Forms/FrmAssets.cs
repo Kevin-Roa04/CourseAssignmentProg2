@@ -23,8 +23,8 @@ namespace Economy.Forms
     public partial class FrmAssets : Form
     {
         AutoCompleteStringCollection source;
-        Depreciacion depreciacion;
-        public FrmAssets(Depreciacion depreciacion)
+        FrmDepreciacion depreciacion;
+        public FrmAssets(FrmDepreciacion depreciacion)
         {
             InitializeComponent();
             source = new AutoCompleteStringCollection();

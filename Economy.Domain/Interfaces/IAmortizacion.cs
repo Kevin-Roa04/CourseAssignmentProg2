@@ -10,8 +10,8 @@ namespace Economy.Domain.Interfaces
 {
    public interface IAmortizacion : IRepository<Amortizacion>
     {
-        AmortizationDTO Metodo1(Amortizacion amotizacion );
-        AmortizationDTO Metodo2(Amortizacion amotizacion);
+        AmortizationDTO Metodo1(Amortizacion amotizacion, double saldo);
+        AmortizationDTO Metodo2(Amortizacion amotizacion, double saldo);
 
     }
 }

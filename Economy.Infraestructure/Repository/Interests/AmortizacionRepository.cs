@@ -31,41 +31,41 @@ namespace Economy.Infraestructure.Repository.Interests
             throw new NotImplementedException();
         }
 
-        public AmortizationDTO Metodo1(Amortizacion amotizacion)
+        public AmortizationDTO Metodo1(Amortizacion amotizacion, double saldo)
         {
             AmortizationDTO amortizacion = new AmortizationDTO();
-            double y = amotizacion.interes / 100;
-            amortizacion.payment = Math.Round(amotizacion.inversion * (y * Math.Pow(1 + y, amotizacion.plazo)) / (Math.Pow(1 + y, amotizacion.plazo) - 1));
-            amortizacion.interest = Math.Round(amotizacion.Saldo * y, 2);
+            double y = (double)amotizacion.TasaPrestamo / 100;
+            amortizacion.payment = Math.Round((double)amotizacion.ValorInversion * (y * Math.Pow(1 + y, amotizacion.Plazo)) / (Math.Pow(1 + y, amotizacion.Plazo) - 1));
+            amortizacion.interest = Math.Round(saldo * y, 2);
             amortizacion.Credit_memo = Math.Round(amortizacion.payment - amortizacion.interest, 2);
-            if(amortizacion.Credit_memo > amotizacion.Saldo)
+            if(amortizacion.Credit_memo > saldo)
             {
-                amortizacion.Credit_memo = amotizacion.Saldo;
-                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+                amortizacion.Credit_memo = saldo;
+                amortizacion.outstanding_balance = Math.Round(saldo - amortizacion.Credit_memo, 2);
             }
             else
             {
-                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+                amortizacion.outstanding_balance = Math.Round(saldo - amortizacion.Credit_memo, 2);
             }
             return amortizacion;
 
         }
 
-        public AmortizationDTO Metodo2(Amortizacion amotizacion)
+        public AmortizationDTO Metodo2(Amortizacion amotizacion, double saldo)
         {
             AmortizationDTO amortizacion = new AmortizationDTO();
-            double y = amotizacion.interes / 100;
-            amortizacion.Credit_memo = Math.Round(amotizacion.inversion / amotizacion.plazo, 2);
-            amortizacion.interest = Math.Round(amotizacion.Saldo * y, 2);
+            double y = (double)amotizacion.TasaPrestamo / 100;
+            amortizacion.Credit_memo = Math.Round((double)amotizacion.ValorInversion / amotizacion.Plazo, 2);
+            amortizacion.interest = Math.Round(saldo * y, 2);
             amortizacion.payment = Math.Round(amortizacion.Credit_memo + amortizacion.interest, 2);
-            if (amortizacion.Credit_memo > amotizacion.Saldo)
+            if (amortizacion.Credit_memo > saldo)
             {
-                amortizacion.Credit_memo = amotizacion.Saldo;
-                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+                amortizacion.Credit_memo = saldo;
+                amortizacion.outstanding_balance = Math.Round(saldo - amortizacion.Credit_memo, 2);
             }
             else
             {
-                amortizacion.outstanding_balance = Math.Round(amotizacion.Saldo - amortizacion.Credit_memo, 2);
+                amortizacion.outstanding_balance = Math.Round(saldo - amortizacion.Credit_memo, 2);
             }
             return amortizacion;
         }

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace Economy.Domain.Entities
 {
-    public class Amortizacion
+    public partial class Amortizacion
     {
         public int Id { get; set; }
-        public double interes { get; set; }
-        public double inversion { get; set; }
-        public double plazo { get; set; }
+        public int? UserId { get; set; }
+        public decimal TasaPrestamo { get; set; }
+        public decimal ValorInversion { get; set; }
+        public int Plazo { get; set; }
+        public short TipoAmortizacion { get; set; }
+        public int? FneprojectId { get; set; }
 
-        public double Abono { get; set; }
-        public double Intereses { get; set; }
-        public double Saldo { get; set; }
+        public virtual Fneproject Fneproject { get; set; }
+        public virtual User User { get; set; }
     }
 }
