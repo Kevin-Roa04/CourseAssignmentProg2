@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Economy.Forms.FrmInformation;
 
 namespace Economy.Forms
 {
@@ -120,6 +121,8 @@ namespace Economy.Forms
         }
         private void FormAnalyst_Load(object sender, EventArgs e)
         {
+            ToolTip toolTipConclusion = new ToolTip();
+            toolTipConclusion.SetToolTip(this.pbInterestInfomation,"Conclusión de los flujos de cajas");
             this.pbCompare.AllowDrop = true;
             //gcScatter.Datasets.Add(gunaScatterDataset1);
             gcScatter.Datasets.Add(gunaBarDataset1);
@@ -447,6 +450,30 @@ namespace Economy.Forms
         private void pbCompare_DragLeave(object sender, EventArgs e)
         {
             this.pbCompare.Image = Properties.Resources.notes__1_;
+        }
+
+        private void pbInterestInfomation_Click(object sender, EventArgs e)
+        {
+            if (ProjectIds.Count == 1)
+            {
+                MessageBox.Show("Debes de agregar más flujos de caja para poner hacer la conclusión.");
+            }
+            else
+            {
+                List<InterestInformation> interestInformation = new List<InterestInformation>();
+                foreach(int id in ProjectIds)
+                {
+                    Necessary necessary = CalculateNecessary(projectServices.FindbyId(id, GlobalUser));
+                    interestInformation.Add(new InterestInformation()
+                    {
+                        Name = necessary.ProjectName,
+                        Present = necessary.Present
+                    }) ;
+                }
+                FrmInformation frmInformation = new FrmInformation(2);
+                frmInformation.interestInformations = interestInformation;
+                frmInformation.ShowDialog();
+            }
         }
     }
 }

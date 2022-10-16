@@ -18,23 +18,26 @@ namespace Economy.BeatifulComponents
         private string letter = "";
         private string description = "";
         private string nameProject = "";
+        private int fontDescription = 10;
+        private int fontLetter = 30;
 
         // Labels
         public Label LabelDescription;
         public Label LabelLetter;
         public Label LabelNameProject;
+
         public ProjectComponent()
         {
-         
+            
             this.Cursor = Cursors.Hand;
             this.BackColor = Color.White;
             this.ForeColor = Color.Black;
             this.Size = new Size(150, 150);
             this.LabelDescription = new Label();
             this.LabelDescription.Size = new Size(12, 12);
-            this.LabelDescription.Cursor= Cursors.Hand;
-            this.LabelDescription.Location = new Point((int)(this.Width*.5), (int)(this.Height*.7));
-            this.LabelDescription.Font = new Font(this.Font.FontFamily, 10, FontStyle.Regular, GraphicsUnit.Pixel);
+            this.LabelDescription.Cursor = Cursors.Hand;
+            this.LabelDescription.Location = new Point((int)(this.Width * .5), (int)(this.Height * .7));
+            this.LabelDescription.Font = new Font(this.Font.FontFamily, fontDescription, FontStyle.Regular, GraphicsUnit.Pixel);
             this.LabelDescription.ForeColor = Color.Black;
             this.LabelDescription.AutoSize = true;
 
@@ -42,10 +45,10 @@ namespace Economy.BeatifulComponents
             this.LabelLetter = new Label();
             this.LabelLetter.Size = new Size(12, 12);
             this.LabelLetter.Location = new Point((int)(this.Width * .5), (int)(this.Height * .5));
-            this.LabelLetter.Font = new Font(this.Font.FontFamily, 30, FontStyle.Bold, GraphicsUnit.Pixel);
+            this.LabelLetter.Font = new Font(this.Font.FontFamily, fontLetter, FontStyle.Bold, GraphicsUnit.Pixel);
             this.LabelLetter.ForeColor = Color.Black;
             this.LabelLetter.AutoSize = true;
-            this.LabelLetter.Cursor= Cursors.Hand;
+            this.LabelLetter.Cursor = Cursors.Hand;
 
             this.LabelNameProject = new Label();
             this.LabelNameProject.Size = new Size(12, 12);
@@ -53,7 +56,7 @@ namespace Economy.BeatifulComponents
             this.LabelNameProject.Font = new Font(this.Font.FontFamily, 10, FontStyle.Regular, GraphicsUnit.Pixel);
             this.LabelNameProject.ForeColor = Color.Black;
             this.LabelNameProject.AutoSize = true;
-            this.LabelNameProject.Cursor= Cursors.Hand;
+            this.LabelNameProject.Cursor = Cursors.Hand;
 
             this.Controls.Add(LabelNameProject);
             this.Controls.Add(LabelLetter);
@@ -61,6 +64,23 @@ namespace Economy.BeatifulComponents
         }
 
         // Properties
+        public int FontDescription
+        {
+            get => fontDescription;
+            set { fontDescription = value;
+                LabelDescription.Font= new Font(this.Font.FontFamily, fontDescription, FontStyle.Regular, GraphicsUnit.Pixel);
+                LabelDescription.Location = new Point((int)((this.Width - LabelDescription.Width) * .5), (int)((this.Height - LabelDescription.Height) * .7));
+                this.Invalidate(); }
+        }
+        public int FontLetter
+        {
+            get => fontLetter;
+            set { fontLetter = value; this.Invalidate(); 
+                LabelLetter.Font = new Font(this.Font.FontFamily, fontLetter, FontStyle.Bold, GraphicsUnit.Pixel);
+                LabelLetter.Location = new Point((int)((this.Width - LabelLetter.Width) * .5), (int)((this.Height - LabelLetter.Height) * .5));
+                this.Invalidate();
+            }
+        }
         public int BorderRadius
         {
             get => borderRadius;
@@ -68,21 +88,21 @@ namespace Economy.BeatifulComponents
         }
         public string Letter
         {
-            get => letter;                              set { letter = value; LabelLetter.Text = value; LabelLetter.Location = new Point((int)((this.Width-LabelLetter.Width)*.5),(int)((this.Height-LabelLetter.Height)*.5)); this.Invalidate(); }
+            get => letter; set { letter = value; LabelLetter.Text = value; LabelLetter.Location = new Point((int)((this.Width - LabelLetter.Width) * .5), (int)((this.Height - LabelLetter.Height) * .5)); this.Invalidate(); }
         }
         public string NameProject
         {
             get => nameProject;
-            set { nameProject = value; LabelNameProject.Text = value; LabelNameProject.Location = new Point((int)((this.Width - LabelNameProject.Width) * .5), (int)((this.Height - LabelLetter.Height) * .3)); this.Invalidate();}
+            set { nameProject = value; LabelNameProject.Text = value; LabelNameProject.Location = new Point((int)((this.Width - LabelNameProject.Width) * .5), (int)((this.Height - LabelLetter.Height) * .3)); this.Invalidate(); }
         }
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
             base.OnMouseClick(e);
         }
-        
 
-        public string Description { get => description; set { description = value; LabelDescription.Text = value; LabelDescription.Location = new Point((int)((this.Width - LabelDescription.Width) * .5), (int)((this.Height-LabelDescription.Height)*.7)); this.Invalidate(); } }
+
+        public string Description { get => description; set { description = value; LabelDescription.Text = value; LabelDescription.Location = new Point((int)((this.Width - LabelDescription.Width) * .5), (int)((this.Height - LabelDescription.Height) * .7)); this.Invalidate(); } }
         //Methods
 
         private GraphicsPath GetCustomPanelPath(RectangleF rectangle, float radius)
@@ -114,9 +134,9 @@ namespace Economy.BeatifulComponents
 
             // e.Graphics.DrawString(description, new Font(this.Font.FontFamily, 10, FontStyle.Bold,GraphicsUnit.Pixel), Brushes.White, (float)(this.Size.Width*.5)-this.description.Length, (float)(this.Height * .7));
             // BorderRadius
-            LabelDescription.Location = new Point((int)((this.Width - LabelDescription.Width) * .5), (int)((this.Height-LabelDescription.Height) * .7));
-            LabelLetter.Location = new Point((int)((this.Width - LabelLetter.Width) * .5), (int)((this.Height-LabelLetter.Width) * .5));
-            LabelNameProject.Location= new Point((int)((this.Width - LabelNameProject.Width) * .5), (int)((this.Height - LabelLetter.Height) * .3));
+            LabelDescription.Location = new Point((int)((this.Width - LabelDescription.Width) * .5), (int)((this.Height - LabelDescription.Height) * .7));
+            LabelLetter.Location = new Point((int)((this.Width - LabelLetter.Width) * .5), (int)((this.Height - LabelLetter.Width) * .5));
+            LabelNameProject.Location = new Point((int)((this.Width - LabelNameProject.Width) * .5), (int)((this.Height - LabelLetter.Height) * .3));
             RectangleF rectangleF = new RectangleF(0, 0, this.Width, this.Height);
 
             if (borderRadius > 2)

@@ -49,6 +49,9 @@
     <Compile Update="Forms\FormFX.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FormNameProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\FrmAssetAmount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +80,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FrmAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FrmInformation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Inicio.cs">

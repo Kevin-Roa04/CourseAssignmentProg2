@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "jYVV2cQL11qVwbgpSjIoEcmypUYZxmUdNVx2uQFUfQ9S+l3a41e/tvM6xh8+TCFQqssOdXzb6GC9jf7b69B2rw==",
+=======
+  "dgSpecHash": "PPn6ClN8qjeB4NTYuc2Hx2Mcv7KLMby+Zr+5rlS7kLhqGDgh0veAfR4VsmGHos2mp/4pPi/HLgOwU+Vf2iPKjw==",
+>>>>>>> UI
   "success": true,
   "projectFilePath": "C:\\Users\\Quezada\\Desktop\\PruebaMayor\\CourseAssignmentProg2\\Economy\\Economy.csproj",
   "expectedPackageFiles": [
@@ -9,7 +13,10 @@
     "C:\\Users\\Quezada\\.nuget\\packages\\guna.charts.winforms\\1.0.4\\guna.charts.winforms.1.0.4.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
+<<<<<<< HEAD
     "C:\\Users\\Quezada\\.nuget\\packages\\mathparser.org-mxparser\\5.0.7\\mathparser.org-mxparser.5.0.7.nupkg.sha512",
+=======
+>>>>>>> UI
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Quezada\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

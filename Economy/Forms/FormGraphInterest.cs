@@ -191,10 +191,7 @@ namespace Economy.Forms
             this.ReDraws.Interval = 1000;
             this.ReDraws.AutoReset = true;
             this.ReDraws.Enabled = true;
-            ToolTip toolTipChanged = new ToolTip();
-            toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
-            ToolTip toolTipUpdateGraph = new ToolTip();
-            toolTipUpdateGraph.SetToolTip(this.btnUpdate, "Regresar a la gráfica principal");
+            AddTooltips();
             graph.Refresh();
             lblValues(0, 0);
 
@@ -212,6 +209,27 @@ namespace Economy.Forms
 
             typeSerie.Add("Arithmetic", "Aritmética");
             typeSerie.Add("Geometric", "Geométrica");
+        }
+        private void AddTooltips()
+        {
+            ToolTip toolTipChanged = new ToolTip();
+            toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
+            ToolTip toolTipUpdateGraph = new ToolTip();
+            toolTipUpdateGraph.SetToolTip(this.btnUpdate, "Regresar a la gráfica principal");
+            ToolTip toolTipRate = new ToolTip();
+            toolTipRate.SetToolTip(this.lblRate, "Significa el interés en el cuál trabajaremos todo el proyecto. \n Ejemplo: La tasa de interés del banco.");
+            ToolTip toolTipSerieType = new ToolTip();
+            toolTipSerieType.SetToolTip(this.lblTypeSerie, "Aritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
+            ToolTip toolTipFlowType = new ToolTip();
+            toolTipFlowType.SetToolTip(this.lblFlowType, "Entrada: Significa que ese interés le genera un ingreso (Entrada de dinero). \nSalida: Significa que ese interés le genera un egreso (Salida de dinero).");
+            ToolTip toolTipInitial = new ToolTip();
+            toolTipInitial.SetToolTip(this.lblInitial, "Inicio de pago");
+            ToolTip toolTipEnd = new ToolTip();
+            toolTipInitial.SetToolTip(this.lblEnd, "Final de pago");
+            ToolTip toolTipImage =new ToolTip();
+            toolTipImage.SetToolTip(this.btnImage, "Crear imagen del gráfico.");
+            ToolTip toolTipCompare = new ToolTip();
+            toolTipCompare.SetToolTip(this.pbCompare, "Comparar más flujos de cajas");
         }
         public int VerificateInterest(object t)
         {
@@ -398,7 +416,9 @@ namespace Economy.Forms
             txtDuration.Visible = false;
             pbNext.Visible = false;
             lblTI.Visible = true;
+            pbInterestInfomation.Visible = true;
             cmbTypeSA.Visible = true;
+
 
         }
         public void DesactiveForm()
@@ -422,6 +442,7 @@ namespace Economy.Forms
             lblDecremental.Visible = false;
             lblInitial.Visible = false;
             lblTI.Visible = false;
+            pbInterestInfomation.Visible = false;
             lblWI.Visible = false;
             lblEnd.Visible = false;
             lblFinalPayment.Visible = false;
@@ -1778,6 +1799,12 @@ namespace Economy.Forms
         private void FormGraphInterest_FormClosing(object sender, FormClosingEventArgs e)
         {
             ReDraws.Stop();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            FrmInformation frmInformation = new FrmInformation(1);
+            frmInformation.ShowDialog();
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)

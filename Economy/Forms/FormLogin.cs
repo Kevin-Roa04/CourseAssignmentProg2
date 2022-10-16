@@ -154,12 +154,17 @@ namespace Economy.Forms
 
         private void btnSignUp_Click(object sender, EventArgs e)
         {
-
+            this.FadeOut.Enabled = true;
             FadeOut.Start();
+            this.Hide();
             FormCreateUser formCreateUser = new FormCreateUser();
             formCreateUser.UsersServices = this.UsersServices;
             formCreateUser.ShowDialog();
-            this.ShowDialog();
+            this.Opacity = 0;
+            this.Show();
+            this.FadeIn.Enabled = true;
+            this.FadeIn.Start();
+          
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -185,7 +190,7 @@ namespace Economy.Forms
                     tLock.Enabled = true;
                     intents = 0;
                 }
-                MessageBox.Show("User is not registered");
+                MessageBox.Show("El usuario no se encuentra registrado.");
                 return;
             }
             else
@@ -277,6 +282,23 @@ namespace Economy.Forms
         private void txtPassword_TabIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!lblSeconds.Visible)
+            {
+                if (Convert.ToInt32(e.KeyChar) == 13)
+                {
+                    btnSignIn_Click(null, null);
+                }
+            }
+
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+           
         }
     }
 }
