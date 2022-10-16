@@ -78,8 +78,10 @@
             this.gunaBarDataset1 = new Guna.Charts.WinForms.GunaBarDataset();
             this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
             this.label1 = new System.Windows.Forms.Label();
+            this.pbInterestInfomation = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).BeginInit();
             this.SuspendLayout();
             // 
             // PbClose
@@ -318,12 +320,25 @@
             this.label1.TabIndex = 64;
             this.label1.Text = "Deslice cualquier función para comparar";
             // 
+            // pbInterestInfomation
+            // 
+            this.pbInterestInfomation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbInterestInfomation.Image = ((System.Drawing.Image)(resources.GetObject("pbInterestInfomation.Image")));
+            this.pbInterestInfomation.Location = new System.Drawing.Point(859, 48);
+            this.pbInterestInfomation.Name = "pbInterestInfomation";
+            this.pbInterestInfomation.Size = new System.Drawing.Size(25, 25);
+            this.pbInterestInfomation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbInterestInfomation.TabIndex = 65;
+            this.pbInterestInfomation.TabStop = false;
+            this.pbInterestInfomation.Click += new System.EventHandler(this.pbInterestInfomation_Click);
+            // 
             // FormAnalyst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(928, 647);
+            this.Controls.Add(this.pbInterestInfomation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUsedProject);
             this.Controls.Add(this.flpUsedProject);
@@ -345,6 +360,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAnalyst_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +386,6 @@
         private Guna.Charts.WinForms.GunaBarDataset gunaBarDataset1;
         private Guna.Charts.WinForms.GunaPolarAreaDataset gunaPolarAreaDataset1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbInterestInfomation;
     }
 }

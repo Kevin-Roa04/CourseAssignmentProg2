@@ -82,6 +82,9 @@
     <Compile Update="Forms\FrmAssets.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\FrmInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
