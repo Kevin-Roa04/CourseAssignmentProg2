@@ -435,7 +435,7 @@ namespace Economy.Forms
             }
             else if (Selection == 5)
             {
-                Depreciacion depreciacion = new Depreciacion(depreciationService, 0, null);
+                FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
                 depreciacion.ShowDialog();
 
             }
@@ -641,106 +641,16 @@ namespace Economy.Forms
             this.PC6.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC6.LabelNameProject.MouseClick += new MouseEventHandler(PCMouseClick);
         }
-<<<<<<< HEAD
-
-        private void btnCreate_Click(object sender, EventArgs e)
-        {
-            if (txtProjectName.Texts =="")
-            {
-                MessageBox.Show("Rellene el formulario.");
-                return;
-            }
-            else if (txtProjectName.Texts.Length > 20)
-            {
-                MessageBox.Show("El nombre del proyecto tiene que tener 20 letras.");
-                return;
-            }
-            try
-            {
-                Project project = new Project()
-                {
-                    Name = txtProjectName.Texts,
-                    Creation = DateTime.Now,
-                    Type = ((TypeProject)Selection).ToString(),
-                    User = GlobalUser,
-                    UserId = GlobalUser.Id
-                };
-                projectServices.Create(project);
-                this.Hide();
-                if (Selection == 0)
-                {
-                    FormGraphInterest formGraphInterest = new FormGraphInterest(project);
-                    formGraphInterest.InterestServices = this.InterestServices;
-                    formGraphInterest.projectServices = this.projectServices;
-                    formGraphInterest.SerieServices = this.SerieServices;
-                    formGraphInterest.AnnuityServices = this.AnnuityServices;
-                    formGraphInterest.FormCreateProject = this;
-                    formGraphInterest.ShowDialog();
-                }
-                else if (Selection == 1)
-                {
-                    FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, txtProjectName.Texts);
-                    formExcel.ShowDialog();
 
 
-                }
-                else if (Selection == 2)
-                {
-
-                    FmrMenu fmrMenu = new FmrMenu (nominal);
-                    fmrMenu.FormCreateProject = this;
-                    fmrMenu.ShowDialog();
-
-                }
-                else if (Selection == 3)
-                {
-                    Inicio ins = new Inicio(simpleService, compuestoService1, convertService1);
-                    ins.FormCreateProject = this;
-                    ins.ShowDialog();
-                }
-                else if (Selection == 4)
-                {
-                    FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null);
-                    fmrCalendarioDePago.ShowDialog();
-                }
-                else if (Selection == 5)
-                {
-                    FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
-                    depreciacion.ShowDialog();
-                }
-                else if (Selection == 6)
-                {
-                    FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
-                    FNE.ShowDialog();
-                }
-                
-                Selection = -1;
-                txtProjectName.Visible = false;
-                lblLetters.Visible = false;
-                lblProjectName.Visible = false;
-                btnCreate.Visible = false;
-                lblTypeProject.Text = "";
-                lblTypeProject.Visible = false;
-                projects();
-                this.Opacity = 0;
-                this.FadeIn.Start();
-                CreatePieChart();
-                CreateLineChart();
-                this.Show();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
+      
 
         private void lblName_Click(object sender, EventArgs e)
         {
 
         }
 
-=======
->>>>>>> UI
         private void FormCreateProject_Load_1(object sender, EventArgs e)
         {
             if (projectServices.GetProjectByUser(GlobalUser.Id).ToList().Count > 0)
