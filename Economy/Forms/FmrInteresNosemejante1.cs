@@ -477,6 +477,14 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("NO SE PUEDEN LETRAS");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtpresente_KeyPress(object sender, KeyPressEventArgs e)
@@ -486,6 +494,14 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("NO SE PUEDEN LETRAS");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtinteres_KeyPress(object sender, KeyPressEventArgs e)
@@ -495,6 +511,13 @@ namespace Economy.Forms
                 e.Handled = true;
                 MessageBox.Show("NO SE PUEDEN LETRAS");
             }
+            else if (
+             e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+             || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
         }
 
         private void txtxaños_KeyPress(object sender, KeyPressEventArgs e)
@@ -503,6 +526,13 @@ namespace Economy.Forms
             {
                 e.Handled = true;
                 MessageBox.Show("NO SE PUEDEN LETRAS");
+            }
+            else if (
+            e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+            || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
             }
         }
 

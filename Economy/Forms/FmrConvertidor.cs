@@ -34,17 +34,33 @@ namespace InteresPratica
                 if (char.IsLetter(e.KeyChar))
                 {
                     e.Handled = true;
-                    MessageBox.Show("NO SE PUEDEN LETRAS");
-                }
+                    MessageBox.Show("No se pueden Letras");
             }
+            else if (
+       e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+       || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
+        }
 
         private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtxotranominal_TextChanged(object sender, EventArgs e)
@@ -57,8 +73,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtefectivacontinua_KeyPress(object sender, KeyPressEventArgs e)
@@ -66,8 +90,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         public double ConvertM()
@@ -230,7 +262,7 @@ namespace InteresPratica
             }
             double M = ConvertM();
             label12.Text = nominalServices.ConvertEfectiva(double.Parse(texnominal.Text), M).ToString();
-          
+            Clean();
         }
 
         private void btnotratasa_Click(object sender, EventArgs e)
@@ -249,7 +281,7 @@ namespace InteresPratica
             double m1 = ConvertM();
             double m2 = ConvertM1();
             label16.Text = nominalServices.ConvetNominal(double.Parse(txtxotranominal.Text), m1, m2).ToString();
-            
+            Clean();
         }
 
         private void btnefectiva_Click(object sender, EventArgs e)
@@ -274,7 +306,9 @@ namespace InteresPratica
             {
                 MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
                 return;
+                
             }
+            Clean();
         }
 
         private void bntcontefec_Click(object sender, EventArgs e)
@@ -290,7 +324,23 @@ namespace InteresPratica
                 return;
             }
             label2.Text = nominalServices.EfectivaContinua(double.Parse(txtefectivacontinua.Text)).ToString();
-          
+            Clean();
+        }
+
+        public void Clean()
+        {
+            txtefectiva.Clear();
+            txtefectivacontinua.Clear();
+            txtxotranominal.Clear();
+            texnominal.Clear();
+            cmbactual.SelectedIndex = -1;
+            cmbdespues.SelectedIndex = -1;
+            cmbnominal.SelectedIndex = -1;
+        }
+
+        private void FmrConvertidor_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

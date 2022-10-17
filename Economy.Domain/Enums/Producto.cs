@@ -8,11 +8,12 @@ namespace Economy.Domain.Enums
 {
     public enum Producto
     {
-        anual,
-        trimestres,
-        cuatrimestres,
+        Anual,
+        Trimestres,
+        Cuatrimestres,
         Mensual,
-        semestre,
+        Semestre,
         Semanal
+
     }
 }

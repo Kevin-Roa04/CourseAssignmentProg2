@@ -8,9 +8,9 @@ namespace Economy.Domain.Enums.Interesnosemejante
 {
     public enum Anual
     {
-        semestre,
-        trimestres,
-        cuatrimestres,
+        Semestre,
+        Trimestres,
+        Cuatrimestres,
         Mensual,
         Semanal,
         Dias

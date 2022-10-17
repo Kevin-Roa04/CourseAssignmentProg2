@@ -55,12 +55,20 @@ namespace InteresPratica
             this.label8 = new System.Windows.Forms.Label();
             this.txtefectiva = new System.Windows.Forms.TextBox();
             this.texnominal = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.bntcontefec);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
@@ -91,7 +99,7 @@ namespace InteresPratica
             this.groupBox2.Size = new System.Drawing.Size(797, 444);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Convertidor de tasas";
             // 
             // bntcontefec
             // 
@@ -126,7 +134,7 @@ namespace InteresPratica
             // 
             this.txtefectivacontinua.Location = new System.Drawing.Point(629, 250);
             this.txtefectivacontinua.Name = "txtefectivacontinua";
-            this.txtefectivacontinua.Size = new System.Drawing.Size(136, 23);
+            this.txtefectivacontinua.Size = new System.Drawing.Size(60, 23);
             this.txtefectivacontinua.TabIndex = 42;
             this.txtefectivacontinua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtefectivacontinua_KeyPress);
             // 
@@ -142,7 +150,7 @@ namespace InteresPratica
             // cmbnominal
             // 
             this.cmbnominal.FormattingEnabled = true;
-            this.cmbnominal.Location = new System.Drawing.Point(375, 47);
+            this.cmbnominal.Location = new System.Drawing.Point(325, 47);
             this.cmbnominal.Name = "cmbnominal";
             this.cmbnominal.Size = new System.Drawing.Size(187, 23);
             this.cmbnominal.TabIndex = 40;
@@ -252,9 +260,9 @@ namespace InteresPratica
             // 
             // txtxotranominal
             // 
-            this.txtxotranominal.Location = new System.Drawing.Point(230, 170);
+            this.txtxotranominal.Location = new System.Drawing.Point(223, 173);
             this.txtxotranominal.Name = "txtxotranominal";
-            this.txtxotranominal.Size = new System.Drawing.Size(136, 23);
+            this.txtxotranominal.Size = new System.Drawing.Size(96, 23);
             this.txtxotranominal.TabIndex = 25;
             this.txtxotranominal.TextChanged += new System.EventHandler(this.txtxotranominal_TextChanged);
             this.txtxotranominal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtxotranominal_KeyPress);
@@ -309,7 +317,7 @@ namespace InteresPratica
             // 
             this.txtefectiva.Location = new System.Drawing.Point(642, 119);
             this.txtefectiva.Name = "txtefectiva";
-            this.txtefectiva.Size = new System.Drawing.Size(136, 23);
+            this.txtefectiva.Size = new System.Drawing.Size(58, 23);
             this.txtefectiva.TabIndex = 15;
             this.txtefectiva.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox7_KeyPress);
             // 
@@ -317,9 +325,45 @@ namespace InteresPratica
             // 
             this.texnominal.Location = new System.Drawing.Point(223, 47);
             this.texnominal.Name = "texnominal";
-            this.texnominal.Size = new System.Drawing.Size(136, 23);
+            this.texnominal.Size = new System.Drawing.Size(60, 23);
             this.texnominal.TabIndex = 13;
             this.texnominal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texnominal_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(289, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 15);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "%";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(325, 181);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 15);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "%";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(706, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 15);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "%";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(695, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 15);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "%";
             // 
             // FmrConvertidor
             // 
@@ -330,7 +374,7 @@ namespace InteresPratica
             this.Controls.Add(this.groupBox2);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "FmrConvertidor";
-            this.Text = "FmrConvertidor";
+            this.Load += new System.EventHandler(this.FmrConvertidor_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -365,5 +409,9 @@ namespace InteresPratica
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtefectiva;
         private System.Windows.Forms.TextBox texnominal;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -4,8 +4,11 @@
     "\\Economy",
     "\\Economy.Domain",
     "\\Economy.Domain\\Interfaces",
+    "\\Economy.Infraestructure",
+    "\\Economy.Infraestructure\\Repository",
+    "\\Economy.Infraestructure\\Repository\\Interests",
     "\\Economy\\Forms"
   ],
-  "SelectedNode": "\\Economy.Domain\\Interfaces\\IRepository.cs",
+  "SelectedNode": "\\Economy.Infraestructure\\Repository\\Interests\\NominalRepository.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -8,7 +8,7 @@ namespace Economy.Domain.Enums.Interesnosemejante
 {
     public enum Trismestre
     {
-        AÑOS,
+        Años,
         Semestres,
         Mensual,
         Cuatrimestres,
