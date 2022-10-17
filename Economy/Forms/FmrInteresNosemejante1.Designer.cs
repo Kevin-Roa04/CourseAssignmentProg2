@@ -30,6 +30,13 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbsemestral = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbanual = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbtrismtral = new System.Windows.Forms.ComboBox();
+            this.cmbcuatrimestal = new System.Windows.Forms.ComboBox();
+            this.cmbperiodo = new System.Windows.Forms.ComboBox();
             this.txtxaños = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtpresente = new System.Windows.Forms.TextBox();
@@ -45,18 +52,13 @@ namespace Economy.Forms
             this.btnacepatar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbmostrasr = new System.Windows.Forms.ComboBox();
-            this.cmbperiodo = new System.Windows.Forms.ComboBox();
-            this.cmbcuatrimestal = new System.Windows.Forms.ComboBox();
-            this.cmbanual = new System.Windows.Forms.ComboBox();
-            this.cmbtrismtral = new System.Windows.Forms.ComboBox();
-            this.cmbsemestral = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cmbsemestral);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cmbanual);
@@ -83,6 +85,65 @@ namespace Economy.Forms
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Calculos";
+            // 
+            // cmbsemestral
+            // 
+            this.cmbsemestral.FormattingEnabled = true;
+            this.cmbsemestral.Location = new System.Drawing.Point(365, 217);
+            this.cmbsemestral.Name = "cmbsemestral";
+            this.cmbsemestral.Size = new System.Drawing.Size(106, 23);
+            this.cmbsemestral.TabIndex = 47;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(365, 170);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 15);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "Periodo actual";
+            // 
+            // cmbanual
+            // 
+            this.cmbanual.FormattingEnabled = true;
+            this.cmbanual.Location = new System.Drawing.Point(365, 275);
+            this.cmbanual.Name = "cmbanual";
+            this.cmbanual.Size = new System.Drawing.Size(106, 23);
+            this.cmbanual.TabIndex = 45;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(235, 170);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 15);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "Periodo que Desea";
+            // 
+            // cmbtrismtral
+            // 
+            this.cmbtrismtral.FormattingEnabled = true;
+            this.cmbtrismtral.Location = new System.Drawing.Point(365, 188);
+            this.cmbtrismtral.Name = "cmbtrismtral";
+            this.cmbtrismtral.Size = new System.Drawing.Size(106, 23);
+            this.cmbtrismtral.TabIndex = 46;
+            // 
+            // cmbcuatrimestal
+            // 
+            this.cmbcuatrimestal.FormattingEnabled = true;
+            this.cmbcuatrimestal.Location = new System.Drawing.Point(365, 246);
+            this.cmbcuatrimestal.Name = "cmbcuatrimestal";
+            this.cmbcuatrimestal.Size = new System.Drawing.Size(106, 23);
+            this.cmbcuatrimestal.TabIndex = 44;
+            // 
+            // cmbperiodo
+            // 
+            this.cmbperiodo.FormattingEnabled = true;
+            this.cmbperiodo.Location = new System.Drawing.Point(238, 193);
+            this.cmbperiodo.Name = "cmbperiodo";
+            this.cmbperiodo.Size = new System.Drawing.Size(96, 23);
+            this.cmbperiodo.TabIndex = 43;
+            this.cmbperiodo.SelectedIndexChanged += new System.EventHandler(this.cmbperiodo_SelectedIndexChanged);
             // 
             // txtxaños
             // 
@@ -121,7 +182,7 @@ namespace Economy.Forms
             // 
             this.txtinteres.Location = new System.Drawing.Point(123, 128);
             this.txtinteres.Name = "txtinteres";
-            this.txtinteres.Size = new System.Drawing.Size(93, 23);
+            this.txtinteres.Size = new System.Drawing.Size(76, 23);
             this.txtinteres.TabIndex = 4;
             this.txtinteres.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtinteres_KeyPress);
             // 
@@ -139,9 +200,9 @@ namespace Economy.Forms
             this.lblinteres.AutoSize = true;
             this.lblinteres.Location = new System.Drawing.Point(57, 136);
             this.lblinteres.Name = "lblinteres";
-            this.lblinteres.Size = new System.Drawing.Size(42, 15);
+            this.lblinteres.Size = new System.Drawing.Size(45, 15);
             this.lblinteres.TabIndex = 7;
-            this.lblinteres.Text = "Interes";
+            this.lblinteres.Text = "Interés ";
             // 
             // lblfuturo
             // 
@@ -202,9 +263,9 @@ namespace Economy.Forms
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(343, 26);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 15);
+            this.label2.Size = new System.Drawing.Size(116, 15);
             this.label2.TabIndex = 46;
-            this.label2.Text = "Que Desea Hacer";
+            this.label2.Text = " ¿ Que Desea Hacer ?";
             // 
             // cmbmostrasr
             // 
@@ -221,75 +282,26 @@ namespace Economy.Forms
             this.cmbmostrasr.TabIndex = 45;
             this.cmbmostrasr.SelectedIndexChanged += new System.EventHandler(this.cmbmostrasr_SelectedIndexChanged);
             // 
-            // cmbperiodo
+            // label6
             // 
-            this.cmbperiodo.FormattingEnabled = true;
-            this.cmbperiodo.Location = new System.Drawing.Point(238, 193);
-            this.cmbperiodo.Name = "cmbperiodo";
-            this.cmbperiodo.Size = new System.Drawing.Size(96, 23);
-            this.cmbperiodo.TabIndex = 43;
-            this.cmbperiodo.SelectedIndexChanged += new System.EventHandler(this.cmbperiodo_SelectedIndexChanged);
-            // 
-            // cmbcuatrimestal
-            // 
-            this.cmbcuatrimestal.FormattingEnabled = true;
-            this.cmbcuatrimestal.Location = new System.Drawing.Point(365, 246);
-            this.cmbcuatrimestal.Name = "cmbcuatrimestal";
-            this.cmbcuatrimestal.Size = new System.Drawing.Size(106, 23);
-            this.cmbcuatrimestal.TabIndex = 44;
-            // 
-            // cmbanual
-            // 
-            this.cmbanual.FormattingEnabled = true;
-            this.cmbanual.Location = new System.Drawing.Point(365, 275);
-            this.cmbanual.Name = "cmbanual";
-            this.cmbanual.Size = new System.Drawing.Size(106, 23);
-            this.cmbanual.TabIndex = 45;
-            // 
-            // cmbtrismtral
-            // 
-            this.cmbtrismtral.FormattingEnabled = true;
-            this.cmbtrismtral.Location = new System.Drawing.Point(365, 188);
-            this.cmbtrismtral.Name = "cmbtrismtral";
-            this.cmbtrismtral.Size = new System.Drawing.Size(106, 23);
-            this.cmbtrismtral.TabIndex = 46;
-            // 
-            // cmbsemestral
-            // 
-            this.cmbsemestral.FormattingEnabled = true;
-            this.cmbsemestral.Location = new System.Drawing.Point(365, 217);
-            this.cmbsemestral.Name = "cmbsemestral";
-            this.cmbsemestral.Size = new System.Drawing.Size(106, 23);
-            this.cmbsemestral.TabIndex = 47;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(235, 170);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 15);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "Periodo que Desea";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(365, 170);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 15);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "Periodo actual";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(206, 136);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 15);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "%";
             // 
             // FmrInteresNosemejante1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.ClientSize = new System.Drawing.Size(885, 504);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbmostrasr);
             this.Controls.Add(this.groupBox1);
             this.Name = "FmrInteresNosemejante1";
-            this.Text = "FmrInteresNosemejante1";
+            this.Text = "Interés Nominal";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -322,5 +334,6 @@ namespace Economy.Forms
         private System.Windows.Forms.ComboBox cmbperiodo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbmostrasr;
+        private System.Windows.Forms.Label label6;
     }
 }

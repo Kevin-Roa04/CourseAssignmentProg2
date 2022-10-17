@@ -9,10 +9,10 @@ namespace Economy.Domain.Enums.Interesnosemejante
     public enum Cuatrimestre
     {
         Años,
-        SEMESTRES,
-        TRIMESTRES,
-        MENSUAL,
-        SEMANAL,
-        DIAS
+        Semestres,
+        Trimestres,
+        Mensual,
+        Semanal,
+        Dias
     }
 }

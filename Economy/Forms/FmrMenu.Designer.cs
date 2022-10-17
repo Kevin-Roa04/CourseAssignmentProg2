@@ -37,8 +37,8 @@ namespace Economy.Forms
             // 
             this.cmbmenu.FormattingEnabled = true;
             this.cmbmenu.Items.AddRange(new object[] {
-            "Interes semejante a su periodo",
-            "Interes no semejante a su periodo"});
+            "Interés semejante a su periodo",
+            "Interés no semejante a su periodo"});
             this.cmbmenu.Location = new System.Drawing.Point(12, 48);
             this.cmbmenu.Name = "cmbmenu";
             this.cmbmenu.Size = new System.Drawing.Size(287, 23);

@@ -159,8 +159,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show(" No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
     
@@ -239,8 +247,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtinteres_KeyPress(object sender, KeyPressEventArgs e)
@@ -249,8 +265,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void txtxaños_KeyPress(object sender, KeyPressEventArgs e)
@@ -259,8 +283,16 @@ namespace InteresPratica
             if (char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
-                MessageBox.Show("NO SE PUEDEN LETRAS");
+                MessageBox.Show("No se pueden Letras");
             }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+
         }
 
         private void FmrInteres_Load(object sender, EventArgs e)

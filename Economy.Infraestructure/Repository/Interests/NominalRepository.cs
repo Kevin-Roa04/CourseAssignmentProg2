@@ -19,9 +19,9 @@ namespace Economy.Infraestructure.Repository.Interests
         {
             double J = nominal / 100;
             double x = (Math.Pow(Math.Sqrt(1 + J ), M) -1) * M;
-            double y = x * 100;
-            double efectiva = Math.Round(x, 2);
-            return efectiva;
+            //double y = x * 100;
+            //double efectiva = Math.Round(x, 2);
+            return x;
         }
 
         public double ConvertExponencial(double nominal)
@@ -61,7 +61,7 @@ namespace Economy.Infraestructure.Repository.Interests
         {
             double x;
             x = efectiva / 100;
-            double efecti = Math.Log(1 + Math.Exp(x));
+            double efecti = Math.Log(1 +x);
             double nominal = Math.Round(efecti * 100, 2);
             return nominal;
         }
