@@ -37,9 +37,9 @@ namespace Economy.Forms
         public Project project;
         private const int CS_DropShadow = 0x00020000;
         private bool first;
-        private int RowsExpression;
-        private int ColumnsExpression;
-        private decimal value;
+        private int? RowsExpression;
+        private int? ColumnsExpression;
+        private string cadena;
 
         #region Form shadow
         protected override CreateParams CreateParams
@@ -55,7 +55,6 @@ namespace Economy.Forms
         public FormExcel(ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateServices1,
             ICalculateServices<Serie> calculateServiceSerie, string fileName)
         {
-            //Principal
             InitializeComponent();
             Columns = new List<string>();
             indexColumns = 8;
@@ -71,9 +70,8 @@ namespace Economy.Forms
             this.fileName = fileName;
             this.lblName.Text += $" {fileName}";
             first = true;
-            RowsFunction = 0;
-            ColumnsExpression = 0;
-            value = 0;
+            RowsExpression = null;
+            ColumnsExpression = null;
         }
 
         private void FormExcel_Load(object sender, EventArgs e)
@@ -118,7 +116,7 @@ namespace Economy.Forms
                 {
                     if (singleton.Selection)
                     {
-                        if (singleton.MinRow == singleton.MaxRow)
+                        if (singleton.MinRow == singleton.MaxRow && first)
                         {
                             singleton.MinRow = row;
                         }
@@ -139,7 +137,47 @@ namespace Economy.Forms
                     }
                     return;
                 }
+                dgvExcel.EditMode = DataGridViewEditMode.EditOnEnter;
                 GetRowAndColumn();
+                if (RowsExpression != null && ColumnsExpression != null)
+                {
+                    if (!(row == RowsExpression && column == ColumnsExpression))
+                    {
+                        int Row = (int)RowsExpression;
+                        int Column = (int)ColumnsExpression;
+                        if (dgvExcel.Rows[Row].Cells[Column].Value != null && cadena != null)
+                        {
+                            try
+                            {
+                                double.Parse(cadena);
+                                cadena = string.Empty;
+                                RowsExpression = null;
+                                ColumnsExpression = null;
+                            }
+                            catch
+                            {
+                                try
+                                {
+                                    double piv = double.Parse(dgvExcel.CurrentCell.Value.ToString());
+                                    if (dgvExcel.Rows[Row].Cells[Column].Value.ToString().StartsWith("="))
+                                    {
+                                        dgvExcel.Rows[Row].Cells[Column].Value = cadena +
+                                            dgvExcel.CurrentCell.Value;
+                                        cellTextBox.Text = cadena + dgvExcel.CurrentCell.Value;
+                                    }
+                                }
+                                catch
+                                {
+                                    if (dgvExcel.Rows[Row].Cells[Column].Value.ToString().StartsWith("="))
+                                    {
+                                        dgvExcel.Rows[Row].Cells[Column].Value = cadena;
+                                        cellTextBox.Text = cadena;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
                 {
                     btnFE.Visible = true;
@@ -159,58 +197,6 @@ namespace Economy.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dgvExcel_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            singleton.MinRow = dgvExcel.CurrentCell.RowIndex;
-            Form existe = Application.OpenForms.OfType<Form>().Where(pre => pre.Name == "FormFunction").SingleOrDefault<Form>();
-            try
-            {
-                if (existe != null)
-                {
-                    if (!singleton.Selection)
-                    {
-                        GetRowAndColumn();
-                        decimal ValueCell = decimal.Parse((string)dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value);
-                        if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
-                        {
-                            throw new ArgumentException();
-                        }
-                        singleton.ValueTask = decimal.ToDouble(ValueCell);
-                        existe.Activate();
-                    }
-                }
-                else
-                {
-                    btnFB.Visible = true;
-                    btnFE.Visible = true;
-                    if(RowsExpression != -1 && ColumnsExpression != -1)
-                    {
-                        if(dgvExcel.CurrentCell != dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression])
-                        {
-                            if (dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value != null)
-                            {
-                                if(dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value.ToString().StartsWith("="))
-                                {
-                                    if(dgvExcel.CurrentCell.ToString().Length > 0)
-                                    {
-                                        value = Convert.ToDecimal(dgvExcel.CurrentCell.Value);
-                                        dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression].Value += value.ToString();
-                                        dgvExcel.BeginEdit(false);
-                                        dgvExcel.CurrentCell = dgvExcel.Rows[RowsExpression].Cells[ColumnsExpression];
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Porfavor seleccione una celda que contenga un número", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                existe.BringToFront();
             }
         }
         private void AddColummns()
@@ -265,6 +251,7 @@ namespace Economy.Forms
             formsFX.Show();
             btnFB.Visible = false;
             btnFE.Visible = false;
+            dgvExcel.EditMode = DataGridViewEditMode.EditOnKeystroke;
         }
         private void GetRowAndColumn()
         {
@@ -661,8 +648,39 @@ namespace Economy.Forms
 
         private void PbClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            bool value = false;
+            for(int i = 0; i < dgvExcel.RowCount; i ++)
+            { 
+                if(!value)
+                {
+                    for (int j = 0; j < dgvExcel.ColumnCount; j++)
+                    {
+                        if (dgvExcel.Rows[i].Cells[j].Value != null)
+                        {
+                            if (dgvExcel.Rows[i].Cells[j].Value.ToString() != string.Empty)
+                            {
+                                value = true;
+                                break;
+                            }
+                        }
+                    }
                 }
+                else
+                {
+                    break;
+                }
+            }
+            if (value)
+            {
+                DialogResult result = MessageBox.Show("¿Desea guardar los datos ingresados?", "Información",
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Guardar(dgvExcel);
+                }
+            }
+            this.Close();
+        }
 
         private void FadeIn_Tick(object sender, EventArgs e)
         {
@@ -683,47 +701,27 @@ namespace Economy.Forms
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void dgvExcel_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (dgvExcel.CurrentCell != null)
-                    return;
-
-                if(dgvExcel.CurrentCell.Value != null)
-                {
-                    if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
-                    {
-                        //RowsExpression = dgvExcel.CurrentCell.RowIndex;
-                        //ColumnsExpression = dgvExcel.CurrentCell.ColumnIndex;
-                        Expression expression = new Expression(dgvExcel.CurrentCell.Value.ToString().Substring(1));
-                        dgvExcel.CurrentCell.Value = expression.calculate().ToString();
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-        }
         DataGridViewTextBoxEditingControl cellTextBox = new DataGridViewTextBoxEditingControl();
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(keyData == Keys.Enter)
+            try
             {
-                if(cellTextBox.Focused && cellTextBox != null)
+                if (keyData == Keys.Enter)
                 {
-                    if (dgvExcel.CurrentCell.Value != null)
+                    if (cellTextBox.Text.ToString().StartsWith("="))
                     {
-                        if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
-                        {
-                            Expression expression = new Expression(dgvExcel.CurrentCell.Value.ToString().Substring(1));
-                            dgvExcel.CurrentCell.Value = expression.calculate().ToString();
-                        }
+                        Expression expression = new Expression(cellTextBox.Text.ToString().Substring(1));
+                        dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = expression.calculate().
+                            ToString();
+                        cadena = dgvExcel.CurrentCell.Value.ToString();
                     }
                 }
+                return base.ProcessCmdKey(ref msg, keyData);
             }
-            return base.ProcessCmdKey(ref msg, keyData);
+            catch
+            {
+                return base.ProcessCmdKey(ref msg, keyData);
+            }
         }
         private void dgvExcel_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
@@ -732,17 +730,52 @@ namespace Economy.Forms
 
         private void dgvExcel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (cellTextBox != null)
             {
-                if (dgvExcel.CurrentCell != null)
-                    return;
-
-                if (dgvExcel.CurrentCell.Value != null)
+                if (cellTextBox.Text.ToString().StartsWith("="))
                 {
-                    if (dgvExcel.CurrentCell.Value.ToString().StartsWith("="))
+                    try
                     {
+                        if (cadena == string.Empty)
+                        {
+                            throw new ArgumentException();
+                        }
+                        double.Parse(cadena);
+                    }
+                    catch
+                    {
+                        cadena = cellTextBox.Text.ToString();
                         RowsExpression = dgvExcel.CurrentCell.RowIndex;
                         ColumnsExpression = dgvExcel.CurrentCell.ColumnIndex;
+                    }
+                }
+            }
+        }
+
+        private void dgvExcel_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            try
+            {
+                if (!(dgvExcel.CurrentCell.Value is null))
+                {
+                    if (cadena == string.Empty)
+                    {
+                        if (dgvExcel.CurrentCell.Value.ToString() != string.Empty)
+                        {
+                            SendKeys.Send("{Right}");
+                        }
+                    }
+                    else
+                    {
+                        if (RowsExpression != null && ColumnsExpression != null)
+                        {
+                            int Row = (int)RowsExpression;
+                            int Column = (int)ColumnsExpression;
+                            if (dgvExcel.Rows[Row].Cells[Column].Value.ToString() != string.Empty && cadena != null)
+                            {
+                                SendKeys.Send("{Right}");
+                            }
+                        }
                     }
                 }
             }
@@ -752,18 +785,21 @@ namespace Economy.Forms
             }
         }
 
-        private void dgvExcel_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        private void dgvExcel_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            if (RowsExpression != null && ColumnsExpression != null)
             {
-                if(dgvExcel.CurrentCell.Value.ToString() != string.Empty)
+                int Row = (int)RowsExpression;
+                int Column = (int)ColumnsExpression;
+                DataGridViewCell cell = dgvExcel.Rows[Row].Cells[Column];
+                if (!(cell.Value is null))
                 {
-                    SendKeys.Send("{Right}");
+                    if (cell.Value.ToString() != string.Empty && cadena != null)
+                    {
+                        dgvExcel.CurrentCell = cell;
+                        dgvExcel.BeginEdit(true);
+                    }
                 }
-            }
-            catch
-            {
-
             }
         }
     }

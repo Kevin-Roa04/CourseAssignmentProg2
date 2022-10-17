@@ -21,6 +21,6 @@ namespace Economy.Domain.Enums
         Depreciacion_Linea_Recta,
         Depreciacion_Doble_Saldo_Decreciente,
         Depreciacion_Suma_Digito_De_Años,
-        TMAR_Mixta
+        Tmar_Mixta
     }
 }

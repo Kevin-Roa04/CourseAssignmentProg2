@@ -62,6 +62,8 @@ namespace Economy.UsersControl
                         txbString3.Visible = false;
                         txbString4.Visible = false;
                         txbString5.Visible = false;
+                        txbString1.Left = 290;
+                        txbString2.Left = 290;
                         break;
                     case 1: //To-Nominal_Rate
                         lbString1.Text = "Tasa efectica";
@@ -74,6 +76,8 @@ namespace Economy.UsersControl
                         txbString3.Visible = false;
                         txbString1.ReadOnly = false;
                         txbString2.ReadOnly = false;
+                        txbString1.Left = 290;
+                        txbString2.Left = 290;
                         break;
                     case 2: // Annuities
                         lbString1.Text = "Presente";
@@ -86,8 +90,6 @@ namespace Economy.UsersControl
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vacio será 0";
                         break;
                     case 4: //Future Annuities
                         lbString1.Text = "Anualidad";
@@ -102,8 +104,6 @@ namespace Economy.UsersControl
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0";
                         break;
                     case 3: //Present Annuities
                         lbString1.Text = "Anualidad";
@@ -118,11 +118,9 @@ namespace Economy.UsersControl
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0";
                         break;
                     case 5: //Present Series
-                        lbString1.Text = "Pago inicial";
+                        lbString1.Text = "Anualidad";
                         lbString2.Text = "Gradiente aritmético";
                         lbString3.Text = "Tasa";
                         lbString4.Text = "Periodo de la serie";
@@ -132,11 +130,9 @@ namespace Economy.UsersControl
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con la serie aritmetica ingrese \"0\" " +
-                            "o serie geometrica \"1\". El valor si deja vacio será 0";
                         break;
                     case 6: //Future Series
-                        lbString1.Text = "Pago inical";
+                        lbString1.Text = "Anualidad";
                         lbString2.Text = "Gradiente aritmético";
                         lbString3.Text = "Tasa";
                         lbString4.Text = "Periodo de la serie";
@@ -146,8 +142,6 @@ namespace Economy.UsersControl
                         txbString3.ReadOnly = false;
                         txbString4.ReadOnly = false;
                         txbString5.ReadOnly = false;
-                        txbInfo.Text = "Si desea trabajar con la serie aritmetica ingrese \"0\" " +
-                            "o serie geometrica \"1\". El valor si deja vacio será 0";
                         break;
                     case 7: //FNE
                         lbString1.Text = "Entradas";
@@ -155,6 +149,8 @@ namespace Economy.UsersControl
                         lbString3.Visible = false;
                         lbString4.Visible = false;
                         lbString5.Visible = false;
+                        txbString1.ReadOnly = true;
+                        txbString2.ReadOnly = true;
                         txbString3.Visible = false;
                         txbString4.Visible = false;
                         txbString5.Visible = false;
@@ -167,6 +163,7 @@ namespace Economy.UsersControl
                         lbString3.Text = "Tasa";
                         lbString4.Visible = false;
                         lbString5.Visible = false;
+                        txbString1.ReadOnly = true;
                         txbString4.Visible = false;
                         txbString5.Visible = false;
                         txbTypeEntry.Visible = false;
@@ -178,13 +175,13 @@ namespace Economy.UsersControl
                         lbString3.Visible = false;
                         lbString4.Visible = false;
                         lbString5.Visible = false;
+                        txbString1.ReadOnly = true;
                         txbString2.ReadOnly = false;
                         txbString3.Visible = false;
                         txbString4.Visible = false;
                         txbString5.Visible = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
-                        txbInfo.Text = "Valor estimado. El valor si deja vacio será 10%";
                         break;
                     case 10: //Depreciacion Linea Recta
                         lbString1.Text = "Valor del activo";
@@ -213,8 +210,6 @@ namespace Economy.UsersControl
                         txbString5.ReadOnly = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
-                        txbInfo.Visible = false;
-                        txbInfo.Text = "Tipo de disminución del saldo. Si se omite el valor será de 2";
                         break;
                     case 12: //Depreciacion Suma Digito de los años
                         lbString1.Text = "Valor del activo";
@@ -243,12 +238,10 @@ namespace Economy.UsersControl
                         txbString5.Visible = false;
                         txbTypeEntry.Visible = false;
                         txbTypeExit.Visible = false;
-                        txbString1.Left = 295;
-                        txbString2.Left = 295;
-                        txbString3.Left = 295;
-                        txbString4.Left = 295;
-                        txbInfo.Text = "Si no se posee una tasa de una institución financiera deje " +
-                            "vacio los campo de tasa y porcentaje de la institución financiera";
+                        txbString1.Left = 310;
+                        txbString2.Left = 310;
+                        txbString3.Left = 310;
+                        txbString4.Left = 310;
                         break;
 
                 }
@@ -1004,10 +997,6 @@ namespace Economy.UsersControl
                                 (tasaInversionista * PorcenInstitucion)) * 100), 2);
                         }
                         bandera = true;
-                        txbString1.Left = 275;
-                        txbString2.Left = 275;
-                        txbString3.Left = 275;
-                        txbString4.Left = 275;
                         FormExcel.Activate();
                         break;
                 }
@@ -1092,12 +1081,12 @@ namespace Economy.UsersControl
                         txbString1.Text = $"{singleton.Entry.First()} - {singleton.Entry.Last()}";
                         break;
                     }
-                    else if (singleton.ValueTask > 0)
+                    else if (singleton.ValueTask != 0)
                     {
                         txbString1.Text = singleton.ValueTask.ToString();
+                        singleton.ValueTask = 0;
                         break;
                     }
-                    txbString1.Text = string.Empty;
                     break;
                 case 2:
                     if (singleton.Selection && singleton.Exit.Count > 0)
@@ -1108,130 +1097,86 @@ namespace Economy.UsersControl
                     else if (singleton.ValueTask != 0)
                     {
                         txbString2.Text = singleton.ValueTask.ToString();
+                        singleton.ValueTask = 0;
                         break;
                     }
-                    txbString2.Text = string.Empty;
                     break;
                 case 3:
-                    if (singleton.ValueTask > 0)
+                    if (singleton.ValueTask != 0)
                     {
                         txbString3.Text = singleton.ValueTask.ToString();
+                        singleton.ValueTask = 0;
                         break;
                     }
-                    txbString3.Text = string.Empty;
                     break;
                 case 4:
-                    if (singleton.ValueTask > 0)
+                    if (singleton.ValueTask != 0)
                     {
                         txbString4.Text = singleton.ValueTask.ToString();
+                        singleton.ValueTask = 0;
                         break;
                     }
-                    txbString4.Text = string.Empty;
+                    break;
+                case 5:
+                    if(singleton.ValueTask != 0)
+                    {
+                        txbString5.Text = singleton.ValueTask.ToString();
+                        singleton.ValueTask = 0;
+                        break;
+                    }
                     break;
             }
         }
 
         private void txbString1_Click(object sender, EventArgs e)
         {
-            if ((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
-                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
-            if (singleton.Selection)
+            txbString1.Focus();
+            FocusTexboxs();
+            if (Index == 7 || Index == 8 || Index == 9)
             {
                 singleton.Type = true;
                 singleton.MinRow = 0;
                 singleton.MinColumn = 0;
                 singleton.MaxRow = 0;
                 singleton.MaxColumn = 0;
-                txbString1.Text = "";
             }
             singleton.Index = 1;
-            txbInfo.Visible = false;
-            FormExcel.Activate();
         }
 
         private void txbString2_Click(object sender, EventArgs e)
         {
-            if ((TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
-                || (TypeIndex == 1 && (Index == 1 || Index == 3)))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            else if (TypeIndex == 0 && (Index == 9 || Index == 13))
-            {
-                return;
-            }
-            if (singleton.Selection && Index == 7)
+            txbString2.Focus();
+            FocusTexboxs();
+            if (Index == 7)
             {
                 singleton.Type = false;
                 singleton.MinRow = 0;
                 singleton.MinColumn = 0;
                 singleton.MaxRow = 0;
                 singleton.MaxColumn = 0;
-                txbString2.Text = "";
-            }
-            else
-            {
-                singleton.Selection = false;
             }
             singleton.Index = 2;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
         }
 
         private void txbString3_Click(object sender, EventArgs e)
         {
-            if (TypeIndex == 0 && (Index <= 6 || Index == 10 || Index == 11 || Index == 12))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
+            txbString3.Focus();
+            FocusTexboxs();
             singleton.Index = 3;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
         }
 
         private void txbString4_Click(object sender, EventArgs e)
         {
-            if (TypeIndex == 0 && (Index <= 2 || Index == 4 || Index == 3 || Index == 10 || Index == 11 || Index == 12 || Index == 5 || Index == 6))
-            {
-                txbInfo.Visible = false;
-                return;
-            }
-            if (TypeIndex == 0 && Index == 13)
-            {
-                return;
-            }
+            txbString4.Focus();
+            FocusTexboxs();
             singleton.Index = 4;
-            FormExcel.Activate();
-            txbInfo.Visible = false;
         }
 
         private void txbString5_Click(object sender, EventArgs e)
         {
-            if (TypeIndex == 0 && Index == 11)
-            {
-                txbInfo.Visible = true;
-                return;
-            }
-            else if (txbString5.ReadOnly == false)
-            {
-                txbInfo.Visible = true;
-                return;
-            }
-            txbInfo.Visible = false;
+            txbString5.Focus();
+            FocusTexboxs();
+            singleton.Index = 5;
         }
 
         private void txbString5_TextChanged(object sender, EventArgs e)
@@ -1263,6 +1208,14 @@ namespace Economy.UsersControl
 
         private void txbString5_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                txbString1.Focus();
+                FocusTexboxs();
+                singleton.Index = 1;
+                return;
+            }
             if (txbString5.ReadOnly == false)
             {
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -1278,6 +1231,21 @@ namespace Economy.UsersControl
 
         private void txbString2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                if (Index == 0 || Index == 1 || Index == 7 || Index == 9)
+                {
+                    txbString1.Focus();
+                    FocusTexboxs();
+                    singleton.Index = 1;
+                    return;
+                }
+                txbString3.Focus();
+                FocusTexboxs();
+                singleton.Index = 3;
+                return;
+            }
             if (txbString2.ReadOnly == false)
             {
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -1346,6 +1314,24 @@ namespace Economy.UsersControl
 
         private void txbString1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                if (Index == 2)
+                {
+                    if(txbString2.Visible == false)
+                    {
+                        txbString3.Focus();
+                        FocusTexboxs();
+                        singleton.Index = 3;
+                        return;
+                    }
+                }
+                txbString2.Focus();
+                FocusTexboxs();
+                singleton.Index = 2;
+                return;
+            }
             if (txbString1.ReadOnly == false)
             {
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -1361,6 +1347,28 @@ namespace Economy.UsersControl
 
         private void txbString3_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                if (Index == 8 || Index == 10)
+                {
+                    txbString1.Focus();
+                    FocusTexboxs();
+                    singleton.Index = 1;
+                    return;
+                }
+                if(Index == 4 && txbString4.Visible == false)
+                {
+                    txbString1.Focus();
+                    singleton.Index = 1;
+                    FocusTexboxs();
+                    return;
+                }
+                txbString4.Focus();
+                FocusTexboxs();
+                singleton.Index = 4;
+                return;
+            }
             if (txbString3.ReadOnly == false)
             {
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -1376,6 +1384,20 @@ namespace Economy.UsersControl
 
         private void txbString4_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                if (Index == 12 || Index == 13)
+                {
+                    txbString1.Focus();
+                    FocusTexboxs();
+                    singleton.Index = 1;
+                    return;
+                }
+                txbString5.Focus();
+                FocusTexboxs();
+                return;
+            }
             if (txbString4.ReadOnly == false)
             {
                 if (!char.IsNumber(e.KeyChar) && !(e.KeyChar == Convert.ToChar(Keys.Back)))
@@ -1458,6 +1480,256 @@ namespace Economy.UsersControl
                     lbString2.Visible = false;
                     txbString2.Visible = false;
                 }
+            }
+        }
+
+        private void FocusTexboxs()
+        {
+            switch(Index)
+            {
+                case 0:
+                    if(txbString1.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa capitalizable cada cierto periodo en porcentaje (%).";
+                    }
+                    if(txbString2.Focused)
+                    {
+                        txbInfo.Text = "Indica el número de las capitalizaciones que tiene la tasa en todo" +
+                            " el período.";
+                    }
+                    break;
+                case 1:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva no periodica (anual) en porcentaje (%).";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Indica el número de las capitalizaciones que tiene la tasa nominal" +
+                            " a la que se quiere convertir.";
+                    }
+                    break;
+                case 2:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa el valor del dinero al comienzo del período. Y solo se podrá" +
+                            " ingresar el presente o el futuro.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Representa el valor del dinero al final del período. Y solo se podrá" +
+                            " ingresar el presente o el futuro.";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Indica el período en el que se realizo el último pago.";
+                    }
+                    if(txbString5.Focused)
+                    {
+                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
+                            "anualidad anticipada \"1\". El valor si deja vaccio será 0.";
+                    }
+                    break;
+                case 4:
+                case 3:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa la cantidad de dinero que es pagada en todos los períodos " +
+                            "de la serie.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Indica el período en el que se realizo el último pago.";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Representa el período en el que no se realizo ningún pago.";
+                    }
+                    if (txbString5.Focused)
+                    {
+                        txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
+                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0.";
+                    }
+                    break;
+                case 6:
+                case 5:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa la cantidad de dinero que es pagada en todos los períodos " +
+                            "de la serie.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "El gradiente aritmético o el gradiente geometricorepresenta el incremento " +
+                            "de la anualidad durante todo el período de la serie. El gradiente aritmético es una" +
+                            "cantidad de dinero constante, mientras que el gradiente geometrico es una porcentaje (%).";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Indica el período en el que se realizo el último pago.";
+                    }
+                    if (txbString5.Focused)
+                    {
+                        txbInfo.Text = "Si desea trabajar con la serie aritmetica ingrese \"0\" " +
+                             "o serie geometrica \"1\". El valor si deja vacio será 0.";
+                    }
+                    break;
+                case 7:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa todos los ingresos obtenidos.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Representa todas costos o gastos que se adquirieron.";
+                    }
+                    break;
+                case 8:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa la ganancias obtenidas en el proyecto. Los resta de los ingresos y los" +
+                            " gastos.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero que se gasta al inicio del proyecto, " +
+                            "para que pueda operarse el proyecto de una manera correcta.";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) del proyecto en porcentaje (%).";
+                    }
+                    break;
+                case 9:
+                    lbString1.Text = "Inversion y FNE";
+                    lbString2.Text = "Tasa";
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Representa todos los gastos o ingresos que se obtuvieron a lo " +
+                            "largo de todo el proyecto.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) del proyecto en porcentaje (%). Si " +
+                            "se deja vacío el valor será de 10%.";
+                    }
+                    break;
+                case 10:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero con la que se compra un activo fijo.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero que valdrá el activo fijo cuando acabe" +
+                            " la vida útil.";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Son los años que se depreciará el actvo fijo.";
+                    }
+                    break;
+                case 11:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero con la que se compra un activo fijo.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero que valdrá el activo fijo cuando acabe" +
+                            " la vida útil.";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Son los años que se depreciará el actvo fijo.";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Indica en que año quiere comenar a depreciar el activo fijo. " +
+                            "El período debe de ser menor a la vida útil.";
+                    }
+                    if (txbString5.Focused)
+                    {
+                        txbInfo.Text = "Tipo de disminución del activo. Si se omite el valor será de 2";
+                    }
+                    break;
+                case 12:
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero con la que se compra un activo fijo.";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Es la cantidad de dinero que valdrá el activo fijo cuando acabe" +
+                            " la vida útil.";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Son los años que se depreciará el actvo fijo.";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Indica en que año quiere comenar a depreciar el activo fijo. " +
+                            "El período debe de ser menor a la vida útil.";
+                    }
+                    break;
+                case 13:
+                    lbString1.Text = "Tasa del inversionista";
+                    lbString2.Text = "Porcentaje de aportacion";
+                    lbString3.Text = "Tasa de la institución financiera";
+                    lbString4.Text = "Porcentaje de la institución financiera";
+                    if (txbString1.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) de la o las entidades que estan a " +
+                            "cargo del proyecto, la tasa debe de estar en porcentaje (%).";
+                    }
+                    if (txbString2.Focused)
+                    {
+                        txbInfo.Text = "Es el porcentaje que la o las entidadades cubren del proyecto, " +
+                            "esta debe de estar en porcentaje (%). Y sólo se podra ingresar datos en \"Porcentaje " +
+                            "de aportación\" o \"Porcentaje de la institución financiera\".";
+                    }
+                    if (txbString3.Focused)
+                    {
+                        txbInfo.Text = "Indica la tasa efectiva (anual) de la institución a la que se pidió un " +
+                            "prestamo para cubir la cantidad de inversión faltante del proyecto, la tasa debe de " +
+                            "estar en porcentaje (%).";
+                    }
+                    if (txbString4.Focused)
+                    {
+                        txbInfo.Text = "Es el porcentaje que la o las entidadades cubren del proyecto, " +
+                            "esta debe de estar en porcentaje (%). Y sólo se podra ingresar datos en \"Porcentaje " +
+                            "de aportación\" o \"Porcentaje de la institución financiera\".";
+                    }
+                    break;
+            }
+        }
+
+        private void gbData_Enter(object sender, EventArgs e)
+        {
+            txbString1.Focus();
+            singleton.Index = 1;
+            FocusTexboxs();
+            if (Index == 7 || Index == 8 || Index == 9)
+            {
+                singleton.Type = true;
+                singleton.Type = true;
+                singleton.MinRow = 0;
+                singleton.MinColumn = 0;
+                singleton.MaxRow = 0;
+                singleton.MaxColumn = 0;
             }
         }
     }

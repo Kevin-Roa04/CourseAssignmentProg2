@@ -101,7 +101,7 @@ namespace Economy.Forms
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExcel.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvExcel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.dgvExcel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvExcel.EnableHeadersVisualStyles = false;
             this.dgvExcel.GridColor = System.Drawing.Color.LightGray;
             this.dgvExcel.Location = new System.Drawing.Point(10, 91);
@@ -124,7 +124,6 @@ namespace Economy.Forms
             this.dgvExcel.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellClick);
             this.dgvExcel.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellLeave);
             this.dgvExcel.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvExcel_CellMouseUp);
-            this.dgvExcel.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExcel_CellValueChanged);
             this.dgvExcel.CurrentCellChanged += new System.EventHandler(this.dgvExcel_CurrentCellChanged);
             this.dgvExcel.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvExcel_EditingControlShowing);
             // 

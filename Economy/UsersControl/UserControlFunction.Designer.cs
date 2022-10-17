@@ -35,12 +35,12 @@ namespace Economy.UsersControl
             this.txbString5 = new System.Windows.Forms.TextBox();
             this.lbString5 = new System.Windows.Forms.Label();
             this.txbString4 = new System.Windows.Forms.TextBox();
+            this.txbString2 = new System.Windows.Forms.TextBox();
+            this.txbString1 = new System.Windows.Forms.TextBox();
             this.lbString4 = new System.Windows.Forms.Label();
             this.txbString3 = new System.Windows.Forms.TextBox();
             this.lbString3 = new System.Windows.Forms.Label();
-            this.txbString2 = new System.Windows.Forms.TextBox();
             this.lbString2 = new System.Windows.Forms.Label();
-            this.txbString1 = new System.Windows.Forms.TextBox();
             this.lbString1 = new System.Windows.Forms.Label();
             this.txbInfo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -57,12 +57,12 @@ namespace Economy.UsersControl
             this.gbData.Controls.Add(this.txbString5);
             this.gbData.Controls.Add(this.lbString5);
             this.gbData.Controls.Add(this.txbString4);
+            this.gbData.Controls.Add(this.txbString2);
+            this.gbData.Controls.Add(this.txbString1);
             this.gbData.Controls.Add(this.lbString4);
             this.gbData.Controls.Add(this.txbString3);
             this.gbData.Controls.Add(this.lbString3);
-            this.gbData.Controls.Add(this.txbString2);
             this.gbData.Controls.Add(this.lbString2);
-            this.gbData.Controls.Add(this.txbString1);
             this.gbData.Controls.Add(this.lbString1);
             this.gbData.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gbData.ForeColor = System.Drawing.Color.DimGray;
@@ -72,6 +72,7 @@ namespace Economy.UsersControl
             this.gbData.TabIndex = 1;
             this.gbData.TabStop = false;
             this.gbData.Text = "Datos";
+            this.gbData.Enter += new System.EventHandler(this.gbData_Enter);
             // 
             // txbTypeExit
             // 
@@ -133,6 +134,33 @@ namespace Economy.UsersControl
             this.txbString4.DoubleClick += new System.EventHandler(this.txbString4_DoubleClick);
             this.txbString4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString4_KeyPress);
             // 
+            // txbString2
+            // 
+            this.txbString2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString2.ForeColor = System.Drawing.Color.DimGray;
+            this.txbString2.Location = new System.Drawing.Point(275, 69);
+            this.txbString2.Name = "txbString2";
+            this.txbString2.ReadOnly = true;
+            this.txbString2.Size = new System.Drawing.Size(100, 26);
+            this.txbString2.TabIndex = 16;
+            this.txbString2.Click += new System.EventHandler(this.txbString2_Click);
+            this.txbString2.DoubleClick += new System.EventHandler(this.txbString2_DoubleClick);
+            this.txbString2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString2_KeyPress);
+            // 
+            // txbString1
+            // 
+            this.txbString1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txbString1.ForeColor = System.Drawing.Color.DimGray;
+            this.txbString1.Location = new System.Drawing.Point(275, 30);
+            this.txbString1.Name = "txbString1";
+            this.txbString1.ReadOnly = true;
+            this.txbString1.Size = new System.Drawing.Size(100, 26);
+            this.txbString1.TabIndex = 14;
+            this.txbString1.Click += new System.EventHandler(this.txbString1_Click);
+            this.txbString1.TextChanged += new System.EventHandler(this.txbString1_TextChanged);
+            this.txbString1.DoubleClick += new System.EventHandler(this.txbString1_DoubleClick);
+            this.txbString1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString1_KeyPress);
+            // 
             // lbString4
             // 
             this.lbString4.AutoSize = true;
@@ -168,19 +196,6 @@ namespace Economy.UsersControl
             this.lbString3.TabIndex = 17;
             this.lbString3.Text = "label3";
             // 
-            // txbString2
-            // 
-            this.txbString2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txbString2.ForeColor = System.Drawing.Color.DimGray;
-            this.txbString2.Location = new System.Drawing.Point(275, 69);
-            this.txbString2.Name = "txbString2";
-            this.txbString2.ReadOnly = true;
-            this.txbString2.Size = new System.Drawing.Size(100, 26);
-            this.txbString2.TabIndex = 16;
-            this.txbString2.Click += new System.EventHandler(this.txbString2_Click);
-            this.txbString2.DoubleClick += new System.EventHandler(this.txbString2_DoubleClick);
-            this.txbString2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString2_KeyPress);
-            // 
             // lbString2
             // 
             this.lbString2.AutoSize = true;
@@ -191,20 +206,6 @@ namespace Economy.UsersControl
             this.lbString2.Size = new System.Drawing.Size(54, 22);
             this.lbString2.TabIndex = 15;
             this.lbString2.Text = "label2";
-            // 
-            // txbString1
-            // 
-            this.txbString1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txbString1.ForeColor = System.Drawing.Color.DimGray;
-            this.txbString1.Location = new System.Drawing.Point(275, 30);
-            this.txbString1.Name = "txbString1";
-            this.txbString1.ReadOnly = true;
-            this.txbString1.Size = new System.Drawing.Size(100, 26);
-            this.txbString1.TabIndex = 14;
-            this.txbString1.Click += new System.EventHandler(this.txbString1_Click);
-            this.txbString1.TextChanged += new System.EventHandler(this.txbString1_TextChanged);
-            this.txbString1.DoubleClick += new System.EventHandler(this.txbString1_DoubleClick);
-            this.txbString1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString1_KeyPress);
             // 
             // lbString1
             // 
@@ -225,7 +226,6 @@ namespace Economy.UsersControl
             this.txbInfo.ReadOnly = true;
             this.txbInfo.Size = new System.Drawing.Size(258, 70);
             this.txbInfo.TabIndex = 12;
-            this.txbInfo.Visible = false;
             // 
             // panel1
             // 

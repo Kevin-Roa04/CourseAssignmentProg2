@@ -29,11 +29,13 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFX));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbFX = new System.Windows.Forms.ListBox();
             this.PbClose = new System.Windows.Forms.PictureBox();
             this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
+            this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +63,7 @@ namespace Economy.Forms
             this.lbFX.TabIndex = 0;
             this.lbFX.SelectedIndexChanged += new System.EventHandler(this.lbFX_SelectedIndexChanged);
             this.lbFX.DoubleClick += new System.EventHandler(this.lbFX_DoubleClick);
+            this.lbFX.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbFX_MouseMove);
             // 
             // PbClose
             // 
@@ -104,5 +107,6 @@ namespace Economy.Forms
         private System.Windows.Forms.PictureBox PbClose;
         private System.Windows.Forms.ListBox lbFX;
         private BeatifulComponents.EllipseControl ellipseControl1;
+        private System.Windows.Forms.ToolTip ttInfo;
     }
 }

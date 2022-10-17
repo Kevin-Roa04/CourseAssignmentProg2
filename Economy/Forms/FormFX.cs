@@ -65,7 +65,7 @@ namespace Economy.Forms
             typeFunctionsDictionary.Add("Depreciacion_Linea_Recta", "Depreciación línea recta");
             typeFunctionsDictionary.Add("Depreciacion_Doble_Saldo_Decreciente", "Depreciación de doble saldo decreciente");
             typeFunctionsDictionary.Add("Depreciacion_Suma_Digito_De_Años", "Depreciación de suma de los digítos de los años");
-            typeFunctionsDictionary.Add("TMAR_Mixta", "TMAR_Mixta");
+            typeFunctionsDictionary.Add("Tmar_Mixta", "Tmar Mixta");
         }
         private void FormFX_Load(object sender, EventArgs e)
         {
@@ -126,6 +126,92 @@ namespace Economy.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void lbFX_MouseMove(object sender, MouseEventArgs e)
+        {
+            ListBox lb = (ListBox)sender;
+            int index = lb.IndexFromPoint(e.Location);
+
+            if (index >= 0 && index < lb.Items.Count)
+            {
+                string toolTipString = lb.Items[index].ToString();
+                if (ttInfo.GetToolTip(lb) != toolTipString)
+                {
+                    if (index == 0)
+                    {
+                        ttInfo.SetToolTip(lb, "Conversión de una tasa nominal a " +
+                            "una tasa efectiva anual");
+                    }
+                    if (index == 1)
+                    {
+                        ttInfo.SetToolTip(lb, "Conversión de una tasa efectiva anual" +
+                            " a una tasa nominal");
+                    }
+                    if (index == 2)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo de los pagos que se realizarán " +
+                            "en un cierto período de tiempo");
+                    }
+                    if (index == 3)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo del valor del dinero al inicio de " +
+                            " un período de tiempo con pagos uniformes");
+                    }
+                    if (index == 4)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo del valor del dinero al final de " +
+                            " un período de tiempo con pagos uniformes");
+                    }
+                    if (index == 5)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo del valor del dinero al inicio de " +
+                            " un período de tiempo con pagos crecientes o decrecientes");
+                    }
+                    if (index == 6)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo del valor del dinero al final de " +
+                            " un período de tiempo con pagos crecientes o decrecientes");
+                    }
+                    if (index == 7)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo de los ingresos menos los egresos " +
+                            "del proyecto");
+                    }
+                    if (index == 8)
+                    {
+                        ttInfo.SetToolTip(lb, "Representa el valor del dinero en el tiempo, " +
+                            "sirve para conocer cuanto se va a ganar o perder en el proyecto");
+                    }
+                    if (index == 9)
+                    {
+                        ttInfo.SetToolTip(lb, "Es el porcentaje de ingresos o pérdidas que se obtiene" +
+                            " como consecuencia de una inversión");
+                    }
+                    if (index == 10)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo de la depreciación de un activo, a través" +
+                            " del método de \"Linea Recta\"");
+                    }
+                    if (index == 11)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo de la depreciación de un activo, a través" +
+                            " del método de \"Doble Saldo Decreciente\"");
+                    }
+                    if (index == 12)
+                    {
+                        ttInfo.SetToolTip(lb, "Cálculo de la depreciación de un activo, a través" +
+                            " del método de \"Suma Dígito de los años\"");
+                    }
+                    if (index == 13)
+                    {
+                        ttInfo.SetToolTip(lb, "Es el promedio ponderada de la tasa de todos los " +
+                            "aportadores de capital del proyecto");
+                    }
+                }
+            }
+            else
+                ttInfo.Hide(lb);
         }
     }
 }
