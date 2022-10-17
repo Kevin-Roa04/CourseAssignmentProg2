@@ -47,6 +47,7 @@ namespace Economy.Forms
         public IActivosService activosService { get; set; }
         public IDepreciacionService depreciacionService { get; set; }
         public IAmorizacionService amortizacionService { get; set; }
+        public IFNEService fneService { get; set; }
         #endregion
 
         private User GlobalUser;
@@ -571,6 +572,7 @@ namespace Economy.Forms
                     FNE.ActivosService = this.activosService;
                     FNE.depreciacionService = this.depreciacionService;
                     FNE.AmorizacionService = this.amortizacionService;
+                    FNE.fneService = this.fneService;
                     FNE.ShowDialog();
                 }
                 

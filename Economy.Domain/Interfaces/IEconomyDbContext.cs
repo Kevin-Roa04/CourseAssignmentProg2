@@ -17,6 +17,7 @@ namespace Economy.Domain.Interfaces
         public DbSet<Serie> Series { get; set; }
         public DbSet<Interest> Interests { get; set; }
         public DbSet<Activo> Activos { get; set; }
+        public DbSet<Fne> Fnes { get; set; }
         public DbSet<Amortizacion> Amortizacions { get; set; }
         public DbSet<Cost> Costs { get; set; }
         public DbSet<Depreciacion> Depreciacions { get; set; }

@@ -8,7 +8,6 @@ namespace Economy.Domain.Entities
     public partial class Amortizacion
     {
         public int Id { get; set; }
-        public int? UserId { get; set; }
         public decimal TasaPrestamo { get; set; }
         public decimal ValorInversion { get; set; }
         public int Plazo { get; set; }
@@ -16,6 +15,5 @@ namespace Economy.Domain.Entities
         public int? ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
-        public virtual User User { get; set; }
     }
 }

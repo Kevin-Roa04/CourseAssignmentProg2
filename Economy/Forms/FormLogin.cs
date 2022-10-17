@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,6 +105,7 @@ namespace Economy.Forms
         private IActivosService activosService;
         private IDepreciacionService depreciacionService;
         private IAmorizacionService amorizacionService;
+        private IFNEService FneService;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
@@ -111,7 +113,7 @@ namespace Economy.Forms
             ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
             IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices,
             IProfitService profitService, ICostService costService, IInversionFNEService inversionFNEService, IActivosService activosService,
-            IDepreciacionService depreciacionService, IAmorizacionService amorizacionService
+            IDepreciacionService depreciacionService, IAmorizacionService amorizacionService, IFNEService FneService
             )
         {
             this.InterestServices = interest;
@@ -134,6 +136,7 @@ namespace Economy.Forms
             this.activosService = activosService;
             this.depreciacionService = depreciacionService;
             this.amorizacionService = amorizacionService;
+            this.FneService = FneService;
 
             InitializeComponent();
            
@@ -229,6 +232,7 @@ namespace Economy.Forms
                 formCreateProject.activosService = this.activosService;
                 formCreateProject.depreciacionService = this.depreciacionService;
                 formCreateProject.amortizacionService = this.amorizacionService;
+                formCreateProject.fneService = this.FneService;
 
                 formCreateProject.ShowDialog();
 

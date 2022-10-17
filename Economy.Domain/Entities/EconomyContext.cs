@@ -23,6 +23,7 @@ namespace Economy.Domain.Entities
         public virtual DbSet<Annuity> Annuities { get; set; }
         public virtual DbSet<Cost> Costs { get; set; }
         public virtual DbSet<Depreciacion> Depreciacions { get; set; }
+        public virtual DbSet<Fne> Fnes { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
         public virtual DbSet<InversionFne> InversionFnes { get; set; }
         public virtual DbSet<Profit> Profits { get; set; }
@@ -68,12 +69,7 @@ namespace Economy.Domain.Entities
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.Amortizacions)
                     .HasForeignKey(d => d.ProjectId)
-                    .HasConstraintName("FK__Amortizac__Proje__398D8EEE");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Amortizacions)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Amortizac__UserI__38996AB5");
+                    .HasConstraintName("FK__Amortizac__Proje__37A5467C");
             });
 
             modelBuilder.Entity<Annuity>(entity =>
@@ -144,7 +140,7 @@ namespace Economy.Domain.Entities
                     .WithMany(p => p.Costs)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cost__ProjectId__3F466844");
+                    .HasConstraintName("FK__Cost__ProjectId__3D5E1FD2");
             });
 
             modelBuilder.Entity<Depreciacion>(entity =>
@@ -158,17 +154,24 @@ namespace Economy.Domain.Entities
                 entity.HasOne(d => d.Activo)
                     .WithMany(p => p.Depreciacions)
                     .HasForeignKey(d => d.ActivoId)
-                    .HasConstraintName("FK__Depreciac__Activ__35BCFE0A");
+                    .HasConstraintName("FK__Depreciac__Activ__34C8D9D1");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.Depreciacions)
                     .HasForeignKey(d => d.ProjectId)
-                    .HasConstraintName("FK__Depreciac__Proje__34C8D9D1");
+                    .HasConstraintName("FK__Depreciac__Proje__33D4B598");
+            });
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Depreciacions)
-                    .HasForeignKey(d => d.UserId)
-                    .HasConstraintName("FK__Depreciac__UserI__33D4B598");
+            modelBuilder.Entity<Fne>(entity =>
+            {
+                entity.ToTable("FNE");
+
+                entity.Property(e => e.Tmar).HasColumnName("TMAR");
+
+                entity.HasOne(d => d.Project)
+                    .WithMany(p => p.Fnes)
+                    .HasForeignKey(d => d.ProjectId)
+                    .HasConstraintName("FK__FNE__ProjectId__5CD6CB2B");
             });
 
             modelBuilder.Entity<Interest>(entity =>
@@ -228,13 +231,13 @@ namespace Economy.Domain.Entities
                     .WithMany(p => p.InversionFnes)
                     .HasForeignKey(d => d.ActivoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inversion__Activ__4316F928");
+                    .HasConstraintName("FK__Inversion__Activ__412EB0B6");
 
                 entity.HasOne(d => d.Project)
                     .WithMany(p => p.InversionFnes)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inversion__Proje__4222D4EF");
+                    .HasConstraintName("FK__Inversion__Proje__403A8C7D");
             });
 
             modelBuilder.Entity<Profit>(entity =>
@@ -254,7 +257,7 @@ namespace Economy.Domain.Entities
                     .WithMany(p => p.Profits)
                     .HasForeignKey(d => d.ProjectId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Profit__ProjectI__3C69FB99");
+                    .HasConstraintName("FK__Profit__ProjectI__3A81B327");
             });
 
             modelBuilder.Entity<Project>(entity =>

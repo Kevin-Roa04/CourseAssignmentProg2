@@ -78,6 +78,8 @@ namespace Economy
             services.AddScoped<IDepreciacionRepository, DepreciacionRepository>();
             services.AddScoped<IAmorizacionService, AmortizacionService>();
             services.AddScoped<IAmortizacionRepository, Infraestructure.Repository.AmortizacionRepository>();
+            services.AddScoped<IFNEService, FNEService>();
+            services.AddScoped<IFNERepository, FNERepository>();
 
             services.AddScoped<INominalServices, NominalServices>();
             services.AddScoped<IInteresNominal, NominalRepository>();

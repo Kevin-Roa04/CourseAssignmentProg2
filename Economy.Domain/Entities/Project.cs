@@ -13,6 +13,7 @@ namespace Economy.Domain.Entities
             Annuities = new HashSet<Annuity>();
             Costs = new HashSet<Cost>();
             Depreciacions = new HashSet<Depreciacion>();
+            Fnes = new HashSet<Fne>();
             Interests = new HashSet<Interest>();
             InversionFnes = new HashSet<InversionFne>();
             Profits = new HashSet<Profit>();
@@ -32,6 +33,7 @@ namespace Economy.Domain.Entities
         public virtual ICollection<Annuity> Annuities { get; set; }
         public virtual ICollection<Cost> Costs { get; set; }
         public virtual ICollection<Depreciacion> Depreciacions { get; set; }
+        public virtual ICollection<Fne> Fnes { get; set; }
         public virtual ICollection<Interest> Interests { get; set; }
         public virtual ICollection<InversionFne> InversionFnes { get; set; }
         public virtual ICollection<Profit> Profits { get; set; }

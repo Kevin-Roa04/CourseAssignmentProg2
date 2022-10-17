@@ -8,7 +8,6 @@ namespace Economy.Domain.Entities
     public partial class Depreciacion
     {
         public int Id { get; set; }
-        public int? UserId { get; set; }
         public int? ActivoId { get; set; }
         public short TipoDepreciacion { get; set; }
         public decimal Valor { get; set; }
@@ -17,6 +16,5 @@ namespace Economy.Domain.Entities
 
         public virtual Activo Activo { get; set; }
         public virtual Project Project { get; set; }
-        public virtual User User { get; set; }
     }
 }

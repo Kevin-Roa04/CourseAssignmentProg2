@@ -26,6 +26,7 @@ namespace Economy.Forms
         public IActivosService ActivosService { get; set; }
         public IDepreciacionService depreciacionService { get; set; }
         public IAmorizacionService AmorizacionService { get; set; }
+        public IFNEService fneService { get; set; }
 
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
@@ -61,6 +62,29 @@ namespace Economy.Forms
         private void FormFNE_Load(object sender, EventArgs e)
         {
             LoadFNETable();
+        }
+
+        private void AddFNEToDB()
+        {
+            if (fneService.GetByProjectId(project.Id) == null)
+            {
+                fneService.Create(new Fne
+                {
+                    ProjectId = project.Id,
+                    Years = (short)txtYears.Value,
+                    Tmar = (double)txtTMAR.Value
+                });
+            }
+            else
+            {
+                fneService.Update(new Fne
+                {
+                    ProjectId = project.Id,
+                    Years = (short)txtYears.Value,
+                    Tmar = (double)txtTMAR.Value
+                });
+            }
+
         }
 
 
@@ -549,6 +573,7 @@ namespace Economy.Forms
 
         private void LoadFNETable()
         {
+            AddFNEToDB();
             if (dgvFNE.Rows.Count > 0)
             {
                 dgvFNE.Columns.Clear();
@@ -603,14 +628,18 @@ namespace Economy.Forms
 
         private void txtTMAR_ValueChanged(object sender, EventArgs e)
         {
+            AddFNEToDB();
             SaveTMAR();
         }
 
         private void txtTMAR_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateNegativeNumber(e, 1, txtTMAR);
-            if(e.KeyCode == Keys.Enter) SaveTMAR();
-                
+            if (e.KeyCode == Keys.Enter)
+            {
+                SaveTMAR();
+                AddFNEToDB();
+            }
         }
 
         private void PbClose_Click(object sender, EventArgs e)
