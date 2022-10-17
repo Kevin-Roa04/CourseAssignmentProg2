@@ -1,5 +1,6 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
+using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
 using Proto1._0;
@@ -22,34 +23,41 @@ namespace Economy.Forms
 {
     public partial class FrmAssets : Form
     {
+        public IInversionFNEService inversionFNEService { get; set; }
+        public IActivosService activosService { get; set; }
+        public IDepreciacionService depreciacionService { get; set; }
+        private Project project;
+
         AutoCompleteStringCollection source;
         FrmDepreciacion depreciacion;
-        public FrmAssets(FrmDepreciacion depreciacion)
+        public FrmAssets(FrmDepreciacion depreciacion, Project project)
         {
             InitializeComponent();
             source = new AutoCompleteStringCollection();
             this.depreciacion = depreciacion;
-            AutocompleteAssetsData(); 
+            this.project = project;
         }
         private void FrmAssets_Load(object sender, EventArgs e)
         {
+            AssetsData.assets = activosService.GetAll();
+            AutocompleteAssetsData();
         }
 
         private void AutocompleteAssetsData()
         {
-            foreach(Asset asset in AssetsData.assets)
+            foreach(Activo asset in AssetsData.assets)
             {
-                source.Add(asset.AssetName);
+                source.Add(asset.NombreActivo);
             }
 
             this.txtAssets.AutoCompleteCustomSource = source;
         }
 
-        private Asset findAsset()
+        private Activo findAsset()
         {
             foreach(var asset in AssetsData.assets)
             {
-                if(asset.AssetName == txtAssets.Text)
+                if(asset.NombreActivo == txtAssets.Text)
                 {
                     return asset;
                 }
@@ -59,9 +67,10 @@ namespace Economy.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Asset asset = findAsset();
+            Activo asset = findAsset();
             if (asset != null) {
-                FrmAssetAmount frmAssetAmount = new FrmAssetAmount(asset);
+                FrmAssetAmount frmAssetAmount = new FrmAssetAmount(asset, project);
+                frmAssetAmount.inversionFNEService = inversionFNEService;
                 frmAssetAmount.ShowDialog();
             }
             else {
@@ -73,6 +82,7 @@ namespace Economy.Forms
             //colocar la sumatoria en pantalla
             calculateTotalAssets();
             depreciacion.flag = true;
+            depreciacion.depreciationService = this.depreciacionService;
             depreciacion.ShowDialog();
             depreciacion.flag = false;
             txtAssets.Text = "";
@@ -87,9 +97,9 @@ namespace Economy.Forms
 
             for(int i = 0; i < dgvAssets.Rows.Count; i++)
             {
-                if ((bool)dgvAssets.Rows[i].Cells[3].Value == true) // si es depreciable
+                if ((bool)dgvAssets.Rows[i].Cells[2].Value == true) // si es depreciable
                 {
-                    Depreciable += (double)dgvAssets.Rows[i].Cells[4].Value;
+                    Depreciable += (double)dgvAssets.Rows[i].Cells[3].Value;
                 }
                 else // si no es depreciable
                 {
@@ -109,6 +119,7 @@ namespace Economy.Forms
         private void btnDepreciacion_Click(object sender, EventArgs e)
         {
             if(FNEData.DepreciableAssetsValue == 0) return;
+            depreciacion.depreciationService = this.depreciacionService;
             depreciacion.ShowDialog();
         }
 

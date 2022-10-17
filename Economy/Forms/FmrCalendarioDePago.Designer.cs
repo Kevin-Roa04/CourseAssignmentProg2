@@ -43,12 +43,12 @@ namespace Economy.Forms
             this.grpocaculos = new System.Windows.Forms.GroupBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvAmortization = new System.Windows.Forms.DataGridView();
-            this.PbClose = new System.Windows.Forms.PictureBox();
             this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Credit_Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Outstanding_Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.grpocaculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
@@ -72,16 +72,16 @@ namespace Economy.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Metodo de amortizacion";
+            this.label1.Text = "Método de amortización";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(33, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.Size = new System.Drawing.Size(55, 15);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Interes";
+            this.label2.Text = "Interés %";
             // 
             // label3
             // 
@@ -97,9 +97,9 @@ namespace Economy.Forms
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(33, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 15);
+            this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Inversion";
+            this.label4.Text = "Prestamo";
             // 
             // txtknversion
             // 
@@ -193,19 +193,6 @@ namespace Economy.Forms
             this.dgvAmortization.Size = new System.Drawing.Size(581, 346);
             this.dgvAmortization.TabIndex = 3;
             // 
-            // PbClose
-            // 
-            this.PbClose.BackColor = System.Drawing.Color.Transparent;
-            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(883, 12);
-            this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
-            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbClose.TabIndex = 20;
-            this.PbClose.TabStop = false;
-            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
-            // 
             // Años
             // 
             this.Años.HeaderText = "Años";
@@ -240,6 +227,19 @@ namespace Economy.Forms
             this.Outstanding_Balance.Name = "Outstanding_Balance";
             this.Outstanding_Balance.ReadOnly = true;
             this.Outstanding_Balance.Width = 190;
+            // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(883, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 20;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // FmrCalendarioDePago
             // 

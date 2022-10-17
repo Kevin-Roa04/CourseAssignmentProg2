@@ -10,9 +10,9 @@ namespace Economy.AppCore.Helper
     public class UserAssets
     {
         public static List<UserAsset> UAssets = new List<UserAsset>();
-        public static IEnumerable<Asset> AssetsExtraction()
+        public static IEnumerable<Activo> AssetsExtraction()
         {
-            List<Asset> assets = UAssets.Select(x => x.Asset).ToList();
+            List<Activo> assets = UAssets.Select(x => x.Asset).ToList();
             return assets;
         }
 
@@ -20,12 +20,11 @@ namespace Economy.AppCore.Helper
         {
             dynamic result = (from UAssets in UAssets.ToList()
                               join Assets in AssetsData.assets.ToList()
-                              on UAssets.Asset.AssetName equals Assets.AssetName
-                              where UAssets.Asset.AssetName == Assets.AssetName
+                              on UAssets.Asset.NombreActivo equals Assets.NombreActivo
+                              where UAssets.Asset.NombreActivo == Assets.NombreActivo
                               select new {
-                                  NombreActivo = Assets.AssetName,
-                                  Descripcion = Assets.AssetDescription,
-                                  VidaUtil = Assets.UsefulLife,
+                                  NombreActivo = Assets.NombreActivo,
+                                  VidaUtil = Assets.VidaUtil,
                                   Depreciable = Assets.Depreciable,
                                   Monto = UAssets.AssetAmount
                               }).ToList();

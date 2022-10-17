@@ -21,6 +21,11 @@ namespace Economy.Forms
         bool calculated = false;
         double TMARMixtaTotal;
         public IProfitService ProfitService { get; set; }
+        public ICostService CostService { get; set; }
+        public IInversionFNEService InversionService { get; set; }
+        public IActivosService ActivosService { get; set; }
+        public IDepreciacionService depreciacionService { get; set; }
+        public IAmorizacionService AmorizacionService { get; set; }
 
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
@@ -44,13 +49,12 @@ namespace Economy.Forms
         {
             InitializeComponent();
             addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
-
-            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
+            addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
             this.amortizacionServices = amortizacionServices;
             this.depreciationService = depreciationService;
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
-            frmAssets = new FrmAssets(depreciacion);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
+            frmAssets = new FrmAssets(depreciacion, project);
             this.project = project;
         }
 
@@ -481,6 +485,7 @@ namespace Economy.Forms
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
+            addCost.costService = this.CostService;
             addCost.ShowDialog();
             if(FNEData.Cost == null) pictureBox2.BackColor = Color.Gray;
             else if (FNEData.Cost.Count == 0) pictureBox2.BackColor = Color.Gray;
@@ -489,6 +494,9 @@ namespace Economy.Forms
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
+            frmAssets.inversionFNEService = this.InversionService;
+            frmAssets.activosService = this.ActivosService;
+            frmAssets.depreciacionService = this.depreciacionService;
             //depreciacion.ShowDialog();
             frmAssets.ShowDialog();
             if(FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
@@ -496,6 +504,7 @@ namespace Economy.Forms
 
         private void rjButton4_Click(object sender, EventArgs e)
         {
+            fmrCalendarioDePago.amorizacionService = this.AmorizacionService;
             fmrCalendarioDePago.ShowDialog();
             ActivateFinancedProject();
             if(FNEData.TasaInstitucionFinanciera > 0 ) pictureBox4.BackColor = Color.LimeGreen;
@@ -551,11 +560,11 @@ namespace Economy.Forms
         private void ResetFNEDataValues()
         {
             addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
-            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
+            addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
             UserAssets.UAssets.Clear();
-            frmAssets = new FrmAssets(depreciacion);
+            frmAssets = new FrmAssets(depreciacion, project);
             //reesetear valores de FNEData
             FNEData.resetValues();
         }

@@ -1,4 +1,5 @@
 ﻿using Economy.AppCore.Helper;
+using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,11 +16,14 @@ namespace Economy.Forms
 {
     public partial class FrmAssetAmount : Form
     {
-        Asset asset;
-        public FrmAssetAmount(Asset asset)
+        public IInversionFNEService inversionFNEService { get; set; }
+        private Project project;
+        Activo asset;
+        public FrmAssetAmount(Activo asset, Project project)
         {
             InitializeComponent();
             this.asset = asset;
+            this.project = project;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +33,12 @@ namespace Economy.Forms
                 MessageBox.Show("El valor no puede ser 0");
                 return;
             }
+            inversionFNEService.Create(new InversionFne
+            {
+                Monto = txtAssetAmount.Value,
+                ActivoId = asset.Id,
+                ProjectId = project.Id
+            });
             UserAssets.UAssets.Add(new UserAsset(asset, (double)txtAssetAmount.Value));
             this.Close();
         }

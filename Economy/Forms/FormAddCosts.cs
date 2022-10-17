@@ -1,5 +1,6 @@
 ﻿using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Economy.AppCore.Services;
 using Economy.AppCore.Singleton;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
@@ -18,17 +19,21 @@ namespace Economy.Forms
 {
     public partial class FormAddCosts : Form
     {
+        public ICostService costService { get; set; }
+
         int years;
         int type;
         int profitNumber = 0;
         bool edit = false;
         DataGridView dgvFNE;
-        public FormAddCosts(int years, DataGridView dgvFNE)
+        Project project;
+        public FormAddCosts(Project project, int years, DataGridView dgvFNE)
         {
             InitializeComponent();
             this.years = years;
             LoadDGV(years);
             this.dgvFNE = dgvFNE;
+            this.project = project;
         }
 
 
@@ -126,6 +131,16 @@ namespace Economy.Forms
                 edit = false;
                 return;
             }
+
+
+            costService.Create(new Cost
+            {
+                Nombre = txtProfitName.Text,
+                ValorInicial = decimal.Parse(txtAmount.Text),
+                TipoIncremento = (short)this.type,
+                ValorIncremento = (decimal)numericUpDown1.Value,
+                ProjectId = project.Id,
+            });
 
             NewCost(profitNumber);
 

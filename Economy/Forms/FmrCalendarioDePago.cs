@@ -18,16 +18,20 @@ namespace Economy.Forms
 {
     public partial class FmrCalendarioDePago : Form
     {
+        public IAmorizacionService amorizacionService { get; set; }
+        private Project project;
+
         public IAmortizacionServices amortizacionServices;
         int years;
         DataGridView dgvFNE;
-        public FmrCalendarioDePago(IAmortizacionServices services, int years, DataGridView dgvFNE)
+        public FmrCalendarioDePago(IAmortizacionServices services, int years, DataGridView dgvFNE, Project project)
         {
             InitializeComponent();
             this.amortizacionServices = services;
             this.cmelegir.DropDownStyle = ComboBoxStyle.DropDownList;
             this.years = years;
             this.dgvFNE = dgvFNE;
+            this.project = project; 
         }
 
 
@@ -121,12 +125,34 @@ namespace Economy.Forms
 
             //extrayendo datos para FNE
             InterestData();
-            if (years == 0) return;
+            if (years == 0) return; // si es diferente de 0 , es parte del FNE
             setInterest();
             setPrestamo();
             setAmortizacionDelPrestamo();
             setInersionesTotales();
             SaveTasaInstitucionFinanciera();
+            if(amorizacionService.GetByProjectId(project.Id) == null)
+            {
+                amorizacionService.Create(new Amortizacion
+                {
+                    TasaPrestamo = decimal.Parse(txtinters.Text),
+                    ValorInversion = decimal.Parse(txtknversion.Text),
+                    Plazo = int.Parse(txtplazo.Text),
+                    TipoAmortizacion = (short)cmelegir.SelectedIndex,
+                    ProjectId = project.Id
+                });
+            }
+            else
+            {
+                amorizacionService.Update(new Amortizacion
+                {
+                    TasaPrestamo = decimal.Parse(txtinters.Text),
+                    ValorInversion = decimal.Parse(txtknversion.Text),
+                    Plazo = int.Parse(txtplazo.Text),
+                    TipoAmortizacion = (short)cmelegir.SelectedIndex,
+                    ProjectId = project.Id
+                });
+            }
         }
 
         private void SaveTasaInstitucionFinanciera()

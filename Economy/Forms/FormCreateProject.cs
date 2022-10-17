@@ -42,7 +42,13 @@ namespace Economy.Forms
 
         #region -> FNE
         public IProfitService profitService { get; set; }
+        public ICostService costService { get; set; }
+        public IInversionFNEService inversionFNEService { get; set; }
+        public IActivosService activosService { get; set; }
+        public IDepreciacionService depreciacionService { get; set; }
+        public IAmorizacionService amortizacionService { get; set; }
         #endregion
+
         private User GlobalUser;
         private int Selection = -1;
         public ISimpleService simpleService;
@@ -548,18 +554,23 @@ namespace Economy.Forms
                 }
                 else if (Selection == 4)
                 {
-                    FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null);
+                    FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
                     fmrCalendarioDePago.ShowDialog();
                 }
                 else if (Selection == 5)
                 {
-                    FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
+                    FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null, project);
                     depreciacion.ShowDialog();
                 }
                 else if (Selection == 6)
                 {
                     FormFNE FNE = new FormFNE(project, amortizacionServices, depreciationService);
                     FNE.ProfitService = this.profitService;
+                    FNE.CostService = this.costService;
+                    FNE.InversionService = this.inversionFNEService;
+                    FNE.ActivosService = this.activosService;
+                    FNE.depreciacionService = this.depreciacionService;
+                    FNE.AmorizacionService = this.amortizacionService;
                     FNE.ShowDialog();
                 }
                 

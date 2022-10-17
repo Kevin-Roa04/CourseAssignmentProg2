@@ -87,7 +87,8 @@ namespace Economy.Forms
             this.dgvAssets.ColumnHeadersHeight = 30;
             this.dgvAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAssets.EnableHeadersVisualStyles = false;
-            this.dgvAssets.Location = new System.Drawing.Point(12, 78);
+            this.dgvAssets.Location = new System.Drawing.Point(43, 78);
+            this.dgvAssets.MaximumSize = new System.Drawing.Size(574, 383);
             this.dgvAssets.Name = "dgvAssets";
             this.dgvAssets.ReadOnly = true;
             this.dgvAssets.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -102,7 +103,7 @@ namespace Economy.Forms
             this.dgvAssets.RowHeadersVisible = false;
             this.dgvAssets.RowTemplate.Height = 25;
             this.dgvAssets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAssets.Size = new System.Drawing.Size(574, 383);
+            this.dgvAssets.Size = new System.Drawing.Size(516, 383);
             this.dgvAssets.TabIndex = 3;
             // 
             // button1
@@ -118,7 +119,7 @@ namespace Economy.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(592, 78);
+            this.label2.Location = new System.Drawing.Point(581, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 15);
             this.label2.TabIndex = 5;
@@ -127,7 +128,7 @@ namespace Economy.Forms
             // notDepreciable
             // 
             this.notDepreciable.AutoSize = true;
-            this.notDepreciable.Location = new System.Drawing.Point(731, 78);
+            this.notDepreciable.Location = new System.Drawing.Point(720, 78);
             this.notDepreciable.Name = "notDepreciable";
             this.notDepreciable.Size = new System.Drawing.Size(17, 15);
             this.notDepreciable.TabIndex = 6;
@@ -136,7 +137,7 @@ namespace Economy.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(609, 111);
+            this.label3.Location = new System.Drawing.Point(598, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 7;
@@ -145,7 +146,7 @@ namespace Economy.Forms
             // Depreciable
             // 
             this.Depreciable.AutoSize = true;
-            this.Depreciable.Location = new System.Drawing.Point(731, 111);
+            this.Depreciable.Location = new System.Drawing.Point(720, 111);
             this.Depreciable.Name = "Depreciable";
             this.Depreciable.Size = new System.Drawing.Size(17, 15);
             this.Depreciable.TabIndex = 8;
@@ -154,7 +155,7 @@ namespace Economy.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(693, 139);
+            this.label4.Location = new System.Drawing.Point(682, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 15);
             this.label4.TabIndex = 9;
@@ -163,7 +164,7 @@ namespace Economy.Forms
             // total
             // 
             this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(731, 139);
+            this.total.Location = new System.Drawing.Point(720, 139);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(17, 15);
             this.total.TabIndex = 10;
@@ -171,7 +172,7 @@ namespace Economy.Forms
             // 
             // btnDepreciacion
             // 
-            this.btnDepreciacion.Location = new System.Drawing.Point(624, 179);
+            this.btnDepreciacion.Location = new System.Drawing.Point(613, 179);
             this.btnDepreciacion.Name = "btnDepreciacion";
             this.btnDepreciacion.Size = new System.Drawing.Size(138, 39);
             this.btnDepreciacion.TabIndex = 11;

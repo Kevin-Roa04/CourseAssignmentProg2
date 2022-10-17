@@ -1,5 +1,7 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
+using Economy.AppCore.IServices;
+using Economy.Domain.Entities;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
 using System;
@@ -12,16 +14,19 @@ namespace Proto1._0
 {
     public partial class FrmDepreciacion : Form
     {
+        public IDepreciacionService depreciationService { get; set; }
+        private Project project;
         public bool flag = false;
 
         IDepreciationService dep;
         int years;
         DataGridView dgvFNE;
-        public FrmDepreciacion(IDepreciationService dep, int years, DataGridView dataGridView)
+        public FrmDepreciacion(IDepreciationService dep, int years, DataGridView dataGridView, Project project)
         {
             this.dep = dep;
             this.years = years;
             InitializeComponent();
+            this.project = project;
             if (years > 0) // solo cuoando se ocupa en el FNE
             {
                 nudYears.Value = years;
@@ -34,13 +39,35 @@ namespace Proto1._0
             if(Validations())
             {
                 FillDgv();
-                if (years == 0) return;
+                if (years == 0) return; // si es diferente de 0, es parte del FNE
                 ExtraerData();
                 //colocando valores en la tabla FNE
                 setDepreciation(3);
                 setDepreciation(7);
                 setInersionesTotales();
                 setVR();
+                //ingresando valores a la base de datos
+                if (depreciationService.GetByProjectId(project.Id) == null)
+                {
+                    depreciationService.Create(new Depreciacion
+                    {
+                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                        Valor = FNEData.Inversion,
+                        ValorResidual = FNEData.ValorDeRescate,
+                        ProjectId = project.Id,
+                    });
+                }
+                else
+                {
+                    depreciationService.Update(new Depreciacion
+                    {
+                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                        Valor = FNEData.Inversion,
+                        ValorResidual = FNEData.ValorDeRescate,
+                        ProjectId = project.Id,
+                    });
+
+                }
             }
         }
         private void setVR()
@@ -94,13 +121,35 @@ namespace Proto1._0
             nudYears.Value = years;
             cmbMethod.SelectedIndex = 0;
             FillDgv();
-            if (years == 0) return;
+            if (years == 0) return; // si es diferente de 0, es parte del FNE
             ExtraerData();
             //colocando valores en la tabla FNE
             setDepreciation(3);
             setDepreciation(7);
             setInersionesTotales();
             setVR();
+            //ingresando valores a la base de datos
+            if (depreciationService.GetByProjectId(project.Id) == null)
+            {
+                depreciationService.Create(new Depreciacion
+                {
+                    TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                    Valor = FNEData.Inversion,
+                    ValorResidual = FNEData.ValorDeRescate,
+                    ProjectId = project.Id,
+                });
+            }
+            else
+            {
+                depreciationService.Update(new Depreciacion
+                {
+                    TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                    Valor = FNEData.Inversion,
+                    ValorResidual = FNEData.ValorDeRescate,
+                    ProjectId = project.Id,
+                });
+
+            }
         }
 
 
@@ -230,6 +279,28 @@ namespace Proto1._0
                     setDepreciation(7);
                     setInersionesTotales();
                     setVR();
+                    //ingresando valores a la base de datos
+                    if (depreciationService.GetByProjectId(project.Id) == null)
+                    {
+                        depreciationService.Create(new Depreciacion
+                        {
+                            TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                            Valor = FNEData.Inversion,
+                            ValorResidual = FNEData.ValorDeRescate,
+                            ProjectId = project.Id,
+                        });
+                    }
+                    else
+                    {
+                        depreciationService.Update(new Depreciacion
+                        {
+                            TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                            Valor = FNEData.Inversion,
+                            ValorResidual = FNEData.ValorDeRescate,
+                            ProjectId = project.Id,
+                        });
+
+                    }
                 }
             }
 

@@ -99,13 +99,19 @@ namespace Economy.Forms
         private IDepreciationService depreciationService;
         private IAmortizacionServices amortizacionServices;
         private IProfitService profitService;
+        private ICostService costService;
+        private IInversionFNEService inversionFNEService;
+        private IActivosService activosService;
+        private IDepreciacionService depreciacionService;
+        private IAmorizacionService amorizacionService;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
             ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal,
             ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
             IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices,
-            IProfitService profitService
+            IProfitService profitService, ICostService costService, IInversionFNEService inversionFNEService, IActivosService activosService,
+            IDepreciacionService depreciacionService, IAmorizacionService amorizacionService
             )
         {
             this.InterestServices = interest;
@@ -123,6 +129,11 @@ namespace Economy.Forms
             this.depreciationService = depreciationService;
             this.amortizacionServices = amortizacionServices;
             this.profitService = profitService;
+            this.costService = costService;
+            this.inversionFNEService = inversionFNEService;
+            this.activosService = activosService;
+            this.depreciacionService = depreciacionService;
+            this.amorizacionService = amorizacionService;
 
             InitializeComponent();
            
@@ -213,6 +224,12 @@ namespace Economy.Forms
                 formCreateProject.depreciationService = this.depreciationService;
                 formCreateProject.amortizacionServices = this.amortizacionServices;
                 formCreateProject.profitService = this.profitService;
+                formCreateProject.costService = this.costService;
+                formCreateProject.inversionFNEService = this.inversionFNEService;
+                formCreateProject.activosService = this.activosService;
+                formCreateProject.depreciacionService = this.depreciacionService;
+                formCreateProject.amortizacionService = this.amorizacionService;
+
                 formCreateProject.ShowDialog();
 
             }

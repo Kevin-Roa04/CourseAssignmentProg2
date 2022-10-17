@@ -68,6 +68,16 @@ namespace Economy
             //FNE
             services.AddScoped<IProfitService, ProfitService>();
             services.AddScoped<IProfitRepository, ProfitRepository>();
+            services.AddScoped<ICostService, CostService>();
+            services.AddScoped<ICostRepository, CostRepository>();
+            services.AddScoped<IInversionFNEService, InversionFNEService>();
+            services.AddScoped<IInversionFNERepository, InversionFNERepository>();
+            services.AddScoped<IActivosService, ActivosService>();
+            services.AddScoped<IActivosRepository, ActivosRepository>();
+            services.AddScoped<IDepreciacionService, DepreciacionService>();
+            services.AddScoped<IDepreciacionRepository, DepreciacionRepository>();
+            services.AddScoped<IAmorizacionService, AmortizacionService>();
+            services.AddScoped<IAmortizacionRepository, Infraestructure.Repository.AmortizacionRepository>();
 
             services.AddScoped<INominalServices, NominalServices>();
             services.AddScoped<IInteresNominal, NominalRepository>();
@@ -85,7 +95,7 @@ namespace Economy
             services.AddScoped<IModelDepreciation, DepreciationRepository>();
 
             services.AddScoped<IAmortizacionServices, AmortizacionServices>();
-            services.AddScoped<IAmortizacion, AmortizacionRepository>();
+            services.AddScoped<IAmortizacion, Infraestructure.Repository.Interests.AmortizacionRepository>();
             services.AddScoped<FormLogin>();
 
             using (var serviceScope = services.BuildServiceProvider())
