@@ -364,7 +364,7 @@ namespace Economy.Forms
             // FadeIn
             // 
             this.FadeIn.Enabled = true;
-            this.FadeIn.Interval = 40;
+            this.FadeIn.Interval = 30;
             this.FadeIn.Tick += new System.EventHandler(this.FadeIn_Tick);
             // 
             // FormExcel

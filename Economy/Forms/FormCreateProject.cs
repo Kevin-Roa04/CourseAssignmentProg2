@@ -477,6 +477,8 @@ namespace Economy.Forms
             formGraphInterest.AnnuityServices = this.AnnuityServices;
             formGraphInterest.FormCreateProject = this;
             formGraphInterest.lblPR.Visible = false;
+            formGraphInterest.lblDragDrop.Visible = true;
+            formGraphInterest.lblSelection.Visible = true;
             this.Opacity = 0;
             this.Hide();
             formGraphInterest.ShowDialog();
@@ -511,7 +513,11 @@ namespace Economy.Forms
                 {
                     FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, project.Name);
                     formExcel.project = project;
+                    this.Opacity = 0;
+                    this.Hide();
                     formExcel.ShowDialog();
+                    Selection = -1;
+
                     this.FadeIn.Start();
                     projects();
                     this.Show();
@@ -626,9 +632,7 @@ namespace Economy.Forms
             this.PC2.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC2.LabelNameProject.MouseClick += new MouseEventHandler(PCMouseClick);
 
-            this.PC3.LabelDescription.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC3.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC3.LabelNameProject.MouseClick += new MouseEventHandler(PCMouseClick);
+            
 
             this.PC4.LabelDescription.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC4.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
@@ -674,10 +678,6 @@ namespace Economy.Forms
             this.PC2.LabelDescription.Name = "PC2";
             this.PC2.LabelLetter.Name = "PC2";
             this.PC2.LabelNameProject.Name = "PC2";
-            this.PC3.MouseClick += new MouseEventHandler(PCMouseClick);
-            this.PC3.LabelDescription.Name = "PC3";
-            this.PC3.LabelLetter.Name = "PC3";
-            this.PC3.LabelNameProject.Name = "PC3";
             this.PC4.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC4.LabelDescription.Name = "PC4";
             this.PC4.LabelLetter.Name = "PC4";
@@ -705,6 +705,11 @@ namespace Economy.Forms
         private void lblFunctionType_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormCreateProject_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

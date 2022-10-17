@@ -65,7 +65,6 @@ namespace Economy.Forms
             this.PC1 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC2 = new Economy.BeatifulComponents.ProjectComponent();
             this.flpCProject = new System.Windows.Forms.FlowLayoutPanel();
-            this.PC3 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC4 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC5 = new Economy.BeatifulComponents.ProjectComponent();
             this.PC6 = new Economy.BeatifulComponents.ProjectComponent();
@@ -142,7 +141,6 @@ namespace Economy.Forms
             this.flpCProject.Controls.Add(this.PC0);
             this.flpCProject.Controls.Add(this.PC1);
             this.flpCProject.Controls.Add(this.PC2);
-            this.flpCProject.Controls.Add(this.PC3);
             this.flpCProject.Controls.Add(this.PC4);
             this.flpCProject.Controls.Add(this.PC5);
             this.flpCProject.Controls.Add(this.PC6);
@@ -150,22 +148,6 @@ namespace Economy.Forms
             this.flpCProject.Name = "flpCProject";
             this.flpCProject.Size = new System.Drawing.Size(126, 610);
             this.flpCProject.TabIndex = 3;
-            // 
-            // PC3
-            // 
-            this.PC3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(92)))), ((int)(((byte)(170)))));
-            this.PC3.BorderRadius = 16;
-            this.PC3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PC3.Description = "Calcular interés";
-            this.PC3.FontDescription = 9;
-            this.PC3.FontLetter = 20;
-            this.PC3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.PC3.Letter = "CI";
-            this.PC3.Location = new System.Drawing.Point(3, 306);
-            this.PC3.Name = "PC3";
-            this.PC3.NameProject = "";
-            this.PC3.Size = new System.Drawing.Size(97, 95);
-            this.PC3.TabIndex = 3;
             // 
             // PC4
             // 
@@ -177,7 +159,7 @@ namespace Economy.Forms
             this.PC4.FontLetter = 20;
             this.PC4.ForeColor = System.Drawing.Color.Black;
             this.PC4.Letter = "A";
-            this.PC4.Location = new System.Drawing.Point(3, 407);
+            this.PC4.Location = new System.Drawing.Point(3, 306);
             this.PC4.Name = "PC4";
             this.PC4.NameProject = "";
             this.PC4.Size = new System.Drawing.Size(97, 95);
@@ -193,7 +175,7 @@ namespace Economy.Forms
             this.PC5.FontLetter = 20;
             this.PC5.ForeColor = System.Drawing.Color.Black;
             this.PC5.Letter = "D";
-            this.PC5.Location = new System.Drawing.Point(3, 508);
+            this.PC5.Location = new System.Drawing.Point(3, 407);
             this.PC5.Name = "PC5";
             this.PC5.NameProject = "";
             this.PC5.Size = new System.Drawing.Size(97, 95);
@@ -209,7 +191,7 @@ namespace Economy.Forms
             this.PC6.FontLetter = 19;
             this.PC6.ForeColor = System.Drawing.Color.Black;
             this.PC6.Letter = "FNE";
-            this.PC6.Location = new System.Drawing.Point(3, 609);
+            this.PC6.Location = new System.Drawing.Point(3, 508);
             this.PC6.Name = "PC6";
             this.PC6.NameProject = "";
             this.PC6.Size = new System.Drawing.Size(97, 95);
@@ -476,6 +458,7 @@ namespace Economy.Forms
             this.Opacity = 0D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCreateProject";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCreateProject_FormClosing);
             this.Load += new System.EventHandler(this.FormCreateProject_Load_1);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormCreateProject_MouseDown);
             this.flpCProject.ResumeLayout(false);
@@ -492,7 +475,6 @@ namespace Economy.Forms
         private BeatifulComponents.ProjectComponent PC1;
         private BeatifulComponents.ProjectComponent PC2;
         private System.Windows.Forms.FlowLayoutPanel flpCProject;
-        private BeatifulComponents.ProjectComponent PC3;
         private BeatifulComponents.ProjectComponent PC4;
         private BeatifulComponents.ProjectComponent PC5;
         private BeatifulComponents.ProjectComponent PC6;

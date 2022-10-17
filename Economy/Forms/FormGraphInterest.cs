@@ -355,7 +355,7 @@ namespace Economy.Forms
                 projectServices.Update(Project);
                 ActivateForm();
                 lblValues(0, 0);
-                lblEditMode.Visible = false;
+                lblPR.Visible = false;
                 pbChanged.Visible = true;
             }
         }
@@ -807,6 +807,8 @@ namespace Economy.Forms
                 lblTypeIdgv.Visible = true;
                 cmbTypeIdgv.Visible = true;
                 customPanel1.Visible = true;
+                this.lblDragDrop.Visible = true;
+                this.lblSelection.Visible = true;
                 CleanForms();
                 FillDGV();
 
@@ -838,6 +840,7 @@ namespace Economy.Forms
 
         private void cmbTypeIdgv_OnSelectedIndexChanged(object sender, EventArgs e)
         {
+            this.lblSelection.Visible = false;
             FillDGV();
         }
 
@@ -1744,6 +1747,10 @@ namespace Economy.Forms
                 FillDGV();
                 ClearPanel();
                 lblValues(0, 0);
+                if (Rate(Project) == 0)
+                {
+                    lblDragDrop.Visible = false;
+                }
                 graph_Paint(null, null);
             }
             catch

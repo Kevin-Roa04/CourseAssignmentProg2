@@ -726,7 +726,7 @@ namespace Economy.Forms
         private void dgvExcel_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             cellTextBox = e.Control as DataGridViewTextBoxEditingControl;
-        }
+          }
 
         private void dgvExcel_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
@@ -758,24 +758,9 @@ namespace Economy.Forms
             {
                 if (!(dgvExcel.CurrentCell.Value is null))
                 {
-                    if (cadena == string.Empty)
+                    if (dgvExcel.CurrentCell.Value.ToString() != string.Empty)
                     {
-                        if (dgvExcel.CurrentCell.Value.ToString() != string.Empty)
-                        {
-                            SendKeys.Send("{Right}");
-                        }
-                    }
-                    else
-                    {
-                        if (RowsExpression != null && ColumnsExpression != null)
-                        {
-                            int Row = (int)RowsExpression;
-                            int Column = (int)ColumnsExpression;
-                            if (dgvExcel.Rows[Row].Cells[Column].Value.ToString() != string.Empty && cadena != null)
-                            {
-                                SendKeys.Send("{Right}");
-                            }
-                        }
+                        SendKeys.Send("{Right}");
                     }
                 }
             }
