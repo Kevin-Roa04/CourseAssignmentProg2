@@ -105,6 +105,7 @@
             this.txtProjectName.Texts = "";
             this.txtProjectName.UnderlinedStyle = false;
             this.txtProjectName._TextChanged += new System.EventHandler(this.txtProjectName__TextChanged);
+            this.txtProjectName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProjectName_KeyPress);
             // 
             // lblTypeProject
             // 

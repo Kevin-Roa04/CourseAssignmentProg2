@@ -355,6 +355,7 @@ namespace Economy.Forms
                 projectServices.Update(Project);
                 ActivateForm();
                 lblValues(0, 0);
+                lblEditMode.Visible = false;
                 pbChanged.Visible = true;
             }
         }
@@ -1266,6 +1267,7 @@ namespace Economy.Forms
             Interest = null;
 
             interests.Clear();
+            lblEditMode.Visible = false;
             lblValues(0, 0);
 
         }
@@ -1770,6 +1772,7 @@ namespace Economy.Forms
 
         private void graph_DragDrop(object sender, DragEventArgs e)
         {
+
             foreach (var item in (List<object>)e.Data.GetData(typeof(List<object>)))
             {
                 if (!interests.Any(x => (int)x.GetType().GetProperty("Id").GetValue(x) == (int)item.GetType().GetProperty("Id").GetValue(item)))
@@ -1778,13 +1781,18 @@ namespace Economy.Forms
                 }
              
             }
-
+            lblEditMode.Visible = true;
             ClearPanel();
         }
         
 
         private void pbCompare_Click(object sender, EventArgs e)
         {
+            if (Rate(Project) == 0)
+            {
+                MessageBox.Show("Agrega a menos un interés para poder comparar");
+                return;
+            }
             FormAnalyst formAnalyst = new FormAnalyst(Project.UserId);
             formAnalyst.InterestServices = InterestServices;
             formAnalyst.SerieServices = SerieServices;

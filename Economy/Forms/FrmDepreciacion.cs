@@ -6,12 +6,27 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Proto1._0
 {
     public partial class FrmDepreciacion : Form
     {
+        #region -> FormShadow
+
+        private const int CS_DropShadow = 0x00020000;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+        #endregion
         public bool flag = false;
 
         IDepreciationService dep;
@@ -31,17 +46,7 @@ namespace Proto1._0
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(Validations())
-            {
-                FillDgv();
-                if (years == 0) return;
-                ExtraerData();
-                //colocando valores en la tabla FNE
-                setDepreciation(3);
-                setDepreciation(7);
-                setInersionesTotales();
-                setVR();
-            }
+           
         }
         private void setVR()
         {
@@ -83,7 +88,7 @@ namespace Proto1._0
         {
             if (flag == true) this.Close();
 
-            cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
+            
             cmbMethod.SelectedIndex = -1;
 
             if (FNEData.DepreciableAssetsValue == 0) return;
@@ -233,6 +238,48 @@ namespace Proto1._0
                 }
             }
 
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (Validations())
+            {
+                FillDgv();
+                if (years == 0) return;
+                ExtraerData();
+                //colocando valores en la tabla FNE
+                setDepreciation(3);
+                setDepreciation(7);
+                setInersionesTotales();
+                setVR();
+            }
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region -> form movement
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        #endregion
+        private void FrmDepreciacion_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void FadeIn_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity == 1)
+            {
+                FadeIn.Stop();
+            }
+            this.Opacity += 0.2;
         }
     }
 }

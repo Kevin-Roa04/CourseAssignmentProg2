@@ -43,12 +43,14 @@ namespace Economy.Forms
             this.grpocaculos = new System.Windows.Forms.GroupBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvAmortization = new System.Windows.Forms.DataGridView();
-            this.PbClose = new System.Windows.Forms.PictureBox();
             this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Credit_Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Outstanding_Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PbClose = new System.Windows.Forms.PictureBox();
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
+            this.ellipseControl2 = new Economy.BeatifulComponents.EllipseControl();
             this.grpocaculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
@@ -77,29 +79,32 @@ namespace Economy.Forms
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(33, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 15);
+            this.label2.Size = new System.Drawing.Size(47, 18);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Interes";
+            this.label2.Text = "Interés";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(33, 215);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 15);
+            this.label3.Size = new System.Drawing.Size(36, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Plazo";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(33, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 15);
+            this.label4.Size = new System.Drawing.Size(57, 18);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Inversion";
+            this.label4.Text = "Inversión";
             // 
             // txtknversion
             // 
@@ -190,21 +195,8 @@ namespace Economy.Forms
             this.dgvAmortization.RowHeadersVisible = false;
             this.dgvAmortization.RowTemplate.Height = 25;
             this.dgvAmortization.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAmortization.Size = new System.Drawing.Size(581, 346);
+            this.dgvAmortization.Size = new System.Drawing.Size(566, 346);
             this.dgvAmortization.TabIndex = 3;
-            // 
-            // PbClose
-            // 
-            this.PbClose.BackColor = System.Drawing.Color.Transparent;
-            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(883, 12);
-            this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
-            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbClose.TabIndex = 20;
-            this.PbClose.TabStop = false;
-            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // Años
             // 
@@ -240,6 +232,29 @@ namespace Economy.Forms
             this.Outstanding_Balance.Name = "Outstanding_Balance";
             this.Outstanding_Balance.ReadOnly = true;
             this.Outstanding_Balance.Width = 190;
+            // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(883, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 20;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            // 
+            // ellipseControl1
+            // 
+            this.ellipseControl1.CornerRadius = 10;
+            this.ellipseControl1.TargetControl = this;
+            // 
+            // ellipseControl2
+            // 
+            this.ellipseControl2.CornerRadius = 7;
+            this.ellipseControl2.TargetControl = this.dgvAmortization;
             // 
             // FmrCalendarioDePago
             // 
@@ -282,5 +297,7 @@ namespace Economy.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Interest;
         private System.Windows.Forms.DataGridViewTextBoxColumn Payment;
         private System.Windows.Forms.DataGridViewTextBoxColumn Outstanding_Balance;
+        private BeatifulComponents.EllipseControl ellipseControl1;
+        private BeatifulComponents.EllipseControl ellipseControl2;
     }
 }

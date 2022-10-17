@@ -113,5 +113,12 @@ namespace Economy.Forms
             
         }
 
+        private void txtProjectName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                this.btnCreate_Click(null, null);
+            }
+        }
     }
 }

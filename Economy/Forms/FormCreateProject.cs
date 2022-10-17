@@ -476,6 +476,7 @@ namespace Economy.Forms
             formGraphInterest.SerieServices = this.SerieServices;
             formGraphInterest.AnnuityServices = this.AnnuityServices;
             formGraphInterest.FormCreateProject = this;
+            formGraphInterest.lblPR.Visible = false;
             this.Opacity = 0;
             this.Hide();
             formGraphInterest.ShowDialog();

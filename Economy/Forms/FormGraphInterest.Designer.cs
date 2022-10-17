@@ -31,9 +31,9 @@ namespace Economy.Forms
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbInterestInfomation = new System.Windows.Forms.PictureBox();
             this.cmbTime = new Economy.BeatifulComponents.RJComboBox();
@@ -84,6 +84,8 @@ namespace Economy.Forms
             this.FadeIn = new System.Windows.Forms.Timer(this.components);
             this.pbDelete = new System.Windows.Forms.PictureBox();
             this.pbCompare = new System.Windows.Forms.PictureBox();
+            this.lblEditMode = new System.Windows.Forms.Label();
+            this.lblPR = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChanged)).BeginInit();
@@ -134,7 +136,7 @@ namespace Economy.Forms
             this.panel1.Controls.Add(this.cmbTypeSA);
             this.panel1.Controls.Add(this.pbNext);
             this.panel1.Controls.Add(this.txtDuration);
-            this.panel1.Location = new System.Drawing.Point(7, 10);
+            this.panel1.Location = new System.Drawing.Point(7, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(387, 712);
             this.panel1.TabIndex = 0;
@@ -671,7 +673,7 @@ namespace Economy.Forms
             this.customPanel1.GradientAngle = 90F;
             this.customPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.customPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.customPanel1.Location = new System.Drawing.Point(405, 405);
+            this.customPanel1.Location = new System.Drawing.Point(405, 424);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Size = new System.Drawing.Size(685, 313);
             this.customPanel1.TabIndex = 43;
@@ -685,23 +687,23 @@ namespace Economy.Forms
             this.dgvInterest.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInterest.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInterest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInterest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInterest.EnableHeadersVisualStyles = false;
             this.dgvInterest.GridColor = System.Drawing.Color.Linen;
             this.dgvInterest.Location = new System.Drawing.Point(-3, 6);
@@ -709,9 +711,9 @@ namespace Economy.Forms
             this.dgvInterest.ReadOnly = true;
             this.dgvInterest.RowHeadersVisible = false;
             this.dgvInterest.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dgvInterest.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.dgvInterest.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInterest.RowTemplate.Height = 25;
             this.dgvInterest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInterest.Size = new System.Drawing.Size(688, 307);
@@ -735,7 +737,7 @@ namespace Economy.Forms
             "Interés"});
             this.cmbTypeIdgv.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTypeIdgv.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbTypeIdgv.Location = new System.Drawing.Point(535, 357);
+            this.cmbTypeIdgv.Location = new System.Drawing.Point(535, 376);
             this.cmbTypeIdgv.Name = "cmbTypeIdgv";
             this.cmbTypeIdgv.Padding = new System.Windows.Forms.Padding(1);
             this.cmbTypeIdgv.Size = new System.Drawing.Size(143, 30);
@@ -749,7 +751,7 @@ namespace Economy.Forms
             this.lblTypeIdgv.AutoSize = true;
             this.lblTypeIdgv.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTypeIdgv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.lblTypeIdgv.Location = new System.Drawing.Point(431, 364);
+            this.lblTypeIdgv.Location = new System.Drawing.Point(431, 383);
             this.lblTypeIdgv.Name = "lblTypeIdgv";
             this.lblTypeIdgv.Size = new System.Drawing.Size(93, 18);
             this.lblTypeIdgv.TabIndex = 42;
@@ -760,7 +762,7 @@ namespace Economy.Forms
             // 
             this.btnImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImage.Image = ((System.Drawing.Image)(resources.GetObject("btnImage.Image")));
-            this.btnImage.Location = new System.Drawing.Point(1114, 185);
+            this.btnImage.Location = new System.Drawing.Point(1123, 214);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(36, 37);
             this.btnImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -772,7 +774,7 @@ namespace Economy.Forms
             // 
             this.btnPDF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPDF.Image = ((System.Drawing.Image)(resources.GetObject("btnPDF.Image")));
-            this.btnPDF.Location = new System.Drawing.Point(1115, 119);
+            this.btnPDF.Location = new System.Drawing.Point(1124, 148);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(36, 48);
             this.btnPDF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -784,7 +786,7 @@ namespace Economy.Forms
             // 
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(1114, 63);
+            this.btnUpdate.Location = new System.Drawing.Point(1123, 92);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(36, 30);
             this.btnUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -860,7 +862,7 @@ namespace Economy.Forms
             // 
             this.pnScroll.AutoScroll = true;
             this.pnScroll.Controls.Add(this.graph);
-            this.pnScroll.Location = new System.Drawing.Point(400, 3);
+            this.pnScroll.Location = new System.Drawing.Point(400, 22);
             this.pnScroll.Name = "pnScroll";
             this.pnScroll.Size = new System.Drawing.Size(700, 332);
             this.pnScroll.TabIndex = 50;
@@ -870,7 +872,7 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(1143, 10);
+            this.PbClose.Location = new System.Drawing.Point(1155, 10);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -888,7 +890,7 @@ namespace Economy.Forms
             // 
             this.pbDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbDelete.Image = ((System.Drawing.Image)(resources.GetObject("pbDelete.Image")));
-            this.pbDelete.Location = new System.Drawing.Point(1114, 624);
+            this.pbDelete.Location = new System.Drawing.Point(1123, 617);
             this.pbDelete.Name = "pbDelete";
             this.pbDelete.Size = new System.Drawing.Size(36, 37);
             this.pbDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -903,7 +905,7 @@ namespace Economy.Forms
             // 
             this.pbCompare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCompare.Image = ((System.Drawing.Image)(resources.GetObject("pbCompare.Image")));
-            this.pbCompare.Location = new System.Drawing.Point(1115, 246);
+            this.pbCompare.Location = new System.Drawing.Point(1124, 275);
             this.pbCompare.Name = "pbCompare";
             this.pbCompare.Size = new System.Drawing.Size(36, 37);
             this.pbCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -911,12 +913,36 @@ namespace Economy.Forms
             this.pbCompare.TabStop = false;
             this.pbCompare.Click += new System.EventHandler(this.pbCompare_Click);
             // 
+            // lblEditMode
+            // 
+            this.lblEditMode.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblEditMode.ForeColor = System.Drawing.Color.YellowGreen;
+            this.lblEditMode.Location = new System.Drawing.Point(1106, 52);
+            this.lblEditMode.Name = "lblEditMode";
+            this.lblEditMode.Size = new System.Drawing.Size(76, 31);
+            this.lblEditMode.TabIndex = 54;
+            this.lblEditMode.Text = "Gráfica en modo edición";
+            this.lblEditMode.Visible = false;
+            // 
+            // lblPR
+            // 
+            this.lblPR.AutoSize = true;
+            this.lblPR.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPR.ForeColor = System.Drawing.Color.DimGray;
+            this.lblPR.Location = new System.Drawing.Point(46, 7);
+            this.lblPR.Name = "lblPR";
+            this.lblPR.Size = new System.Drawing.Size(279, 16);
+            this.lblPR.TabIndex = 55;
+            this.lblPR.Text = "Escriba la duración del proyecto y la tasa del proyecto";
+            // 
             // FormGraphInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1166, 737);
+            this.ClientSize = new System.Drawing.Size(1178, 753);
+            this.Controls.Add(this.lblPR);
+            this.Controls.Add(this.lblEditMode);
             this.Controls.Add(this.pbCompare);
             this.Controls.Add(this.pbDelete);
             this.Controls.Add(this.PbClose);
@@ -1010,5 +1036,7 @@ namespace Economy.Forms
         private System.Windows.Forms.Label lblRateProject;
         private System.Windows.Forms.PictureBox pbCompare;
         private System.Windows.Forms.PictureBox pbInterestInfomation;
+        private System.Windows.Forms.Label lblEditMode;
+        public System.Windows.Forms.Label lblPR;
     }
 }
