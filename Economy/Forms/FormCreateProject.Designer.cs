@@ -89,7 +89,7 @@ namespace Economy.Forms
             // 
             // PC0
             // 
-            this.PC0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(239)))), ((int)(((byte)(255)))));
+            this.PC0.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(174)))), ((int)(((byte)(169)))));
             this.PC0.BorderRadius = 16;
             this.PC0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PC0.Description = "Interés y gráfica";
@@ -331,12 +331,12 @@ namespace Economy.Forms
             // 
             this.lblClickFunction.AutoSize = true;
             this.lblClickFunction.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblClickFunction.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblClickFunction.ForeColor = System.Drawing.Color.DimGray;
             this.lblClickFunction.Location = new System.Drawing.Point(214, 172);
             this.lblClickFunction.Name = "lblClickFunction";
-            this.lblClickFunction.Size = new System.Drawing.Size(178, 18);
+            this.lblClickFunction.Size = new System.Drawing.Size(125, 18);
             this.lblClickFunction.TabIndex = 65;
-            this.lblClickFunction.Text = "Toca cualquier función hecha:";
+            this.lblClickFunction.Text = "Funciones recientes:\r\n";
             this.lblClickFunction.Visible = false;
             // 
             // label2
@@ -424,7 +424,7 @@ namespace Economy.Forms
             // 
             this.lblFunctionType.AutoSize = true;
             this.lblFunctionType.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFunctionType.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblFunctionType.ForeColor = System.Drawing.Color.DimGray;
             this.lblFunctionType.Location = new System.Drawing.Point(484, 171);
             this.lblFunctionType.Name = "lblFunctionType";
             this.lblFunctionType.Size = new System.Drawing.Size(64, 18);

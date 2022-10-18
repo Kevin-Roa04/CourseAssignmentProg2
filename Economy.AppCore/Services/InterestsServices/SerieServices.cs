@@ -77,33 +77,67 @@ namespace Economy.AppCore.Services.InterestsServices
             {
                 if (t.Quantity == 0.0M)
                 {
-                    t.Quantity =Math.Round((decimal) (t.FinalPayment - t.DownPayment) / (t.End - 1),2);
+
+                    t.Quantity =Math.Round((decimal) (t.FinalPayment - t.DownPayment) / ((t.End - t.Initial)),2);
+                    t.Quantity = Math.Abs(t.Quantity);
                 }
                 else if (t.DownPayment == 0.0M)
                 {
-                    t.DownPayment = Math.Round((decimal)(t.FinalPayment - ((t.End-1)*t.Quantity)),2);
+                    if (!t.Incremental)
+                    {
+                      t.DownPayment = Math.Round((decimal)(t.FinalPayment + (((t.End-t.Initial) ) * t.Quantity)), 2);
+                    }
+                    else
+                        t.DownPayment = Math.Round((decimal)(t.FinalPayment - (((t.End-t.Initial))*t.Quantity)),2);
                 }
                 else if (t.FinalPayment == 0.0M)
                 {
-                    t.FinalPayment = Math.Round((decimal)(t.DownPayment + ((t.End - 1) * t.Quantity)),2);
+                    if (!t.Incremental)
+                    {
+                        t.FinalPayment = Math.Round((decimal)(t.DownPayment -(((t.End-t.Initial)) * t.Quantity)), 2);
+                        if (t.FinalPayment < 0)
+                        {
+                            throw new ArgumentException("Al hacer el decremento el pago final no debería ser menor que 0, compruebe la cantidad monetaria o el pago inicial.");
+                        }
+                    }
+                    else
+                    {
+                        t.FinalPayment = Math.Round((decimal)(t.DownPayment + (((t.End-t.Initial)) * t.Quantity)), 2);
+                    }
+                   
                 }
             }
             if (t.Type == TypeSeries.Geometric.ToString())
             {
                 if (t.Quantity == 0.0M)
                 {
-                    double exponent = ((double)1 / (double)(t.End - 1));
+                    double exponent = ((double)1 / (double)(t.End - t.Initial));
                     t.Quantity =Math.Round( (decimal)(Math.Pow((double)(t.FinalPayment/t.DownPayment), exponent)-1)*100 ,2);
+                    t.Quantity = Math.Abs(t.Quantity);
                 }
                 else if (t.DownPayment == 0.0M)
                 {
                     decimal decimalPercent = t.Quantity / 100;
-                    t.DownPayment = Math.Round((decimal)(t.FinalPayment) / (decimal)Math.Pow((double)(1 + decimalPercent), t.End - 1), 2);
+                    if (!t.Incremental)
+                    {
+                      t.DownPayment= Math.Round((decimal)(t.FinalPayment) / (decimal)Math.Pow((double)(1  -decimalPercent), (t.End-t.Initial)), 2);
+                    }
+                    else
+                        t.DownPayment = Math.Round((decimal)(t.FinalPayment) / (decimal)Math.Pow((double)(1 + decimalPercent), (t.End-t.Initial) ), 2);
                 }
                 else if (t.FinalPayment == 0.0M)
                 {
                     decimal decimalPercent = t.Quantity / 100;
-                    t.FinalPayment = Math.Round((decimal)t.DownPayment * (decimal)(Math.Pow((double)(1 + decimalPercent), t.End - 1)), 2);
+                    if (!t.Incremental)
+                    {
+                        t.FinalPayment = Math.Round((decimal)t.DownPayment * (decimal)(Math.Pow((double)(1 - decimalPercent), t.End - 1)), 2);
+                        if (t.FinalPayment < 0)
+                        {
+                            throw new ArgumentException("Al hacer el decremento el pago final no debería ser menor que 0, compruebe la cantidad porcentual o el pago inicial.");
+                        }
+                    }
+                    else
+                        t.FinalPayment = Math.Round((decimal)t.DownPayment * (decimal)(Math.Pow((double)(1 + decimalPercent), t.End - 1)), 2);
                 }
                 
             }

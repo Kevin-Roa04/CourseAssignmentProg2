@@ -39,7 +39,7 @@ namespace Economy.Forms
         }
         private void DictionaryProjectColor()
         {
-            ProjectColor.Add("InterestWithGraph", Color.FromArgb(224, 239, 255));
+            ProjectColor.Add("InterestWithGraph", Color.FromArgb(57, 174, 169));
             ProjectColor.Add("Excel", Color.FromArgb(177, 215, 185));
             ProjectColor.Add("RateConversion", Color.FromArgb(250, 112, 112));
             ProjectColor.Add("InterestConversion", Color.FromArgb(100, 92, 170));

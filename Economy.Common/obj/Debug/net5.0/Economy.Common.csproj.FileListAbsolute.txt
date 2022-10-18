@@ -46,3 +46,15 @@ C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.dll
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\ref\Economy.Common.dll
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.deps.json
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\bin\Debug\net5.0\Economy.Common.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.csproj.AssemblyReference.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.AssemblyInfoInputs.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.AssemblyInfo.cs
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.csproj.CoreCompileInputs.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\refint\Economy.Common.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\Economy.Common.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Common\obj\Debug\net5.0\ref\Economy.Common.dll

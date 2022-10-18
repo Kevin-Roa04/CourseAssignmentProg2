@@ -78,3 +78,23 @@ C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Deb
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\ref\Economy.Infraestructure.dll
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.pdb
 C:\Users\Kevin Roa\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.genruntimeconfig.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.deps.json
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.json
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.runtimeconfig.dev.json
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Infraestructure.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Common.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Domain.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Common.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\bin\Debug\net5.0\Economy.Domain.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.AssemblyInfo.cs
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.csproj.CopyComplete
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\refint\Economy.Infraestructure.dll
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.pdb
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\Economy.Infraestructure.genruntimeconfig.cache
+C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.Infraestructure\obj\Debug\net5.0\ref\Economy.Infraestructure.dll

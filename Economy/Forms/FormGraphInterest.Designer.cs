@@ -30,11 +30,16 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbCapitalization = new Economy.BeatifulComponents.RJComboBox();
+            this.lblCapitalization = new System.Windows.Forms.Label();
+            this.pbFlowType = new System.Windows.Forms.PictureBox();
+            this.pbInfTS = new System.Windows.Forms.PictureBox();
+            this.pbInfRate = new System.Windows.Forms.PictureBox();
             this.pbInterestInfomation = new System.Windows.Forms.PictureBox();
             this.cmbTime = new Economy.BeatifulComponents.RJComboBox();
             this.pbChanged = new System.Windows.Forms.PictureBox();
@@ -88,7 +93,11 @@ namespace Economy.Forms
             this.lblPR = new System.Windows.Forms.Label();
             this.lblDragDrop = new System.Windows.Forms.Label();
             this.lblSelection = new System.Windows.Forms.Label();
+            this.pbInfCapitalization = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFlowType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfTS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChanged)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).BeginInit();
@@ -102,10 +111,17 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pbInfCapitalization);
+            this.panel1.Controls.Add(this.cmbCapitalization);
+            this.panel1.Controls.Add(this.lblCapitalization);
+            this.panel1.Controls.Add(this.pbFlowType);
+            this.panel1.Controls.Add(this.pbInfTS);
+            this.panel1.Controls.Add(this.pbInfRate);
             this.panel1.Controls.Add(this.pbInterestInfomation);
             this.panel1.Controls.Add(this.cmbTime);
             this.panel1.Controls.Add(this.pbChanged);
@@ -140,10 +156,84 @@ namespace Economy.Forms
             this.panel1.Controls.Add(this.txtDuration);
             this.panel1.Location = new System.Drawing.Point(7, 29);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(387, 712);
+            this.panel1.Size = new System.Drawing.Size(437, 712);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // cmbCapitalization
+            // 
+            this.cmbCapitalization.BackColor = System.Drawing.Color.White;
+            this.cmbCapitalization.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.cmbCapitalization.BorderSize = 1;
+            this.cmbCapitalization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cmbCapitalization.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbCapitalization.ForeColor = System.Drawing.Color.DimGray;
+            this.cmbCapitalization.IconColor = System.Drawing.Color.Gray;
+            this.cmbCapitalization.Items.AddRange(new object[] {
+            "Semanas",
+            "Mes",
+            "Bimestres",
+            "Trimestres",
+            "Cuatrimestres",
+            "Semestres",
+            "Años"});
+            this.cmbCapitalization.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cmbCapitalization.ListTextColor = System.Drawing.Color.DimGray;
+            this.cmbCapitalization.Location = new System.Drawing.Point(255, 103);
+            this.cmbCapitalization.Name = "cmbCapitalization";
+            this.cmbCapitalization.Padding = new System.Windows.Forms.Padding(1);
+            this.cmbCapitalization.Size = new System.Drawing.Size(116, 30);
+            this.cmbCapitalization.TabIndex = 58;
+            this.cmbCapitalization.Texts = "";
+            // 
+            // lblCapitalization
+            // 
+            this.lblCapitalization.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblCapitalization.ForeColor = System.Drawing.Color.DimGray;
+            this.lblCapitalization.Location = new System.Drawing.Point(256, 86);
+            this.lblCapitalization.Name = "lblCapitalization";
+            this.lblCapitalization.Size = new System.Drawing.Size(133, 35);
+            this.lblCapitalization.TabIndex = 59;
+            this.lblCapitalization.Text = "Capitalización de la tasa:";
+            // 
+            // pbFlowType
+            // 
+            this.pbFlowType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbFlowType.Image = ((System.Drawing.Image)(resources.GetObject("pbFlowType.Image")));
+            this.pbFlowType.Location = new System.Drawing.Point(106, 425);
+            this.pbFlowType.Name = "pbFlowType";
+            this.pbFlowType.Size = new System.Drawing.Size(13, 13);
+            this.pbFlowType.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbFlowType.TabIndex = 57;
+            this.pbFlowType.TabStop = false;
+            this.pbFlowType.Visible = false;
+            this.pbFlowType.WaitOnLoad = true;
+            // 
+            // pbInfTS
+            // 
+            this.pbInfTS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbInfTS.Image = ((System.Drawing.Image)(resources.GetObject("pbInfTS.Image")));
+            this.pbInfTS.Location = new System.Drawing.Point(87, 209);
+            this.pbInfTS.Name = "pbInfTS";
+            this.pbInfTS.Size = new System.Drawing.Size(13, 13);
+            this.pbInfTS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbInfTS.TabIndex = 56;
+            this.pbInfTS.TabStop = false;
+            this.pbInfTS.Visible = false;
+            this.pbInfTS.WaitOnLoad = true;
+            // 
+            // pbInfRate
+            // 
+            this.pbInfRate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbInfRate.Image = ((System.Drawing.Image)(resources.GetObject("pbInfRate.Image")));
+            this.pbInfRate.Location = new System.Drawing.Point(113, 99);
+            this.pbInfRate.Name = "pbInfRate";
+            this.pbInfRate.Size = new System.Drawing.Size(13, 13);
+            this.pbInfRate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbInfRate.TabIndex = 55;
+            this.pbInfRate.TabStop = false;
+            this.pbInfRate.WaitOnLoad = true;
             // 
             // pbInterestInfomation
             // 
@@ -164,7 +254,7 @@ namespace Economy.Forms
             this.cmbTime.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.cmbTime.BorderSize = 1;
             this.cmbTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cmbTime.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbTime.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbTime.ForeColor = System.Drawing.Color.DimGray;
             this.cmbTime.IconColor = System.Drawing.Color.Gray;
             this.cmbTime.Items.AddRange(new object[] {
@@ -188,7 +278,7 @@ namespace Economy.Forms
             // 
             this.pbChanged.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbChanged.Image = ((System.Drawing.Image)(resources.GetObject("pbChanged.Image")));
-            this.pbChanged.Location = new System.Drawing.Point(362, 4);
+            this.pbChanged.Location = new System.Drawing.Point(405, 4);
             this.pbChanged.Name = "pbChanged";
             this.pbChanged.Size = new System.Drawing.Size(19, 21);
             this.pbChanged.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -270,7 +360,7 @@ namespace Economy.Forms
             // 
             this.lblRate.AutoSize = true;
             this.lblRate.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblRate.ForeColor = System.Drawing.Color.DimGray;
             this.lblRate.Location = new System.Drawing.Point(8, 108);
             this.lblRate.Name = "lblRate";
             this.lblRate.Size = new System.Drawing.Size(111, 18);
@@ -299,12 +389,13 @@ namespace Economy.Forms
             this.txtRate.Texts = "";
             this.txtRate.UnderlinedStyle = false;
             this.txtRate._TextChanged += new System.EventHandler(this.txtRate__TextChanged);
+            this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             // 
             // lblFinalPayment
             // 
             this.lblFinalPayment.AutoSize = true;
             this.lblFinalPayment.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFinalPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblFinalPayment.ForeColor = System.Drawing.Color.DimGray;
             this.lblFinalPayment.Location = new System.Drawing.Point(169, 580);
             this.lblFinalPayment.Name = "lblFinalPayment";
             this.lblFinalPayment.Size = new System.Drawing.Size(60, 18);
@@ -316,7 +407,7 @@ namespace Economy.Forms
             // 
             this.lblDownPayment.AutoSize = true;
             this.lblDownPayment.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDownPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblDownPayment.ForeColor = System.Drawing.Color.DimGray;
             this.lblDownPayment.Location = new System.Drawing.Point(45, 580);
             this.lblDownPayment.Name = "lblDownPayment";
             this.lblDownPayment.Size = new System.Drawing.Size(69, 18);
@@ -423,7 +514,7 @@ namespace Economy.Forms
             // 
             this.lblWI.AutoSize = true;
             this.lblWI.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblWI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblWI.ForeColor = System.Drawing.Color.DimGray;
             this.lblWI.Location = new System.Drawing.Point(82, 502);
             this.lblWI.Name = "lblWI";
             this.lblWI.Size = new System.Drawing.Size(131, 18);
@@ -435,7 +526,7 @@ namespace Economy.Forms
             // 
             this.lblDecremental.AutoSize = true;
             this.lblDecremental.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDecremental.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblDecremental.ForeColor = System.Drawing.Color.DimGray;
             this.lblDecremental.Location = new System.Drawing.Point(28, 267);
             this.lblDecremental.Name = "lblDecremental";
             this.lblDecremental.Size = new System.Drawing.Size(78, 18);
@@ -447,7 +538,7 @@ namespace Economy.Forms
             // 
             this.lblFlowType.AutoSize = true;
             this.lblFlowType.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFlowType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblFlowType.ForeColor = System.Drawing.Color.DimGray;
             this.lblFlowType.Location = new System.Drawing.Point(30, 431);
             this.lblFlowType.Name = "lblFlowType";
             this.lblFlowType.Size = new System.Drawing.Size(79, 18);
@@ -469,7 +560,7 @@ namespace Economy.Forms
             "Salida"});
             this.cmbFlowType.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbFlowType.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbFlowType.Location = new System.Drawing.Point(120, 425);
+            this.cmbFlowType.Location = new System.Drawing.Point(133, 425);
             this.cmbFlowType.Name = "cmbFlowType";
             this.cmbFlowType.Padding = new System.Windows.Forms.Padding(1);
             this.cmbFlowType.Size = new System.Drawing.Size(130, 30);
@@ -481,7 +572,7 @@ namespace Economy.Forms
             // 
             this.lblEnd.AutoSize = true;
             this.lblEnd.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblEnd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblEnd.ForeColor = System.Drawing.Color.DimGray;
             this.lblEnd.Location = new System.Drawing.Point(205, 340);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(33, 18);
@@ -494,7 +585,7 @@ namespace Economy.Forms
             // 
             this.lblInitial.AutoSize = true;
             this.lblInitial.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblInitial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblInitial.ForeColor = System.Drawing.Color.DimGray;
             this.lblInitial.Location = new System.Drawing.Point(71, 340);
             this.lblInitial.Name = "lblInitial";
             this.lblInitial.Size = new System.Drawing.Size(38, 18);
@@ -554,7 +645,7 @@ namespace Economy.Forms
             // 
             this.lblTypeSerie.AutoSize = true;
             this.lblTypeSerie.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTypeSerie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblTypeSerie.ForeColor = System.Drawing.Color.DimGray;
             this.lblTypeSerie.Location = new System.Drawing.Point(11, 219);
             this.lblTypeSerie.Name = "lblTypeSerie";
             this.lblTypeSerie.Size = new System.Drawing.Size(81, 18);
@@ -588,7 +679,7 @@ namespace Economy.Forms
             // lblDuration
             // 
             this.lblDuration.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblDuration.ForeColor = System.Drawing.Color.DimGray;
             this.lblDuration.Location = new System.Drawing.Point(15, 28);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(83, 43);
@@ -599,7 +690,7 @@ namespace Economy.Forms
             // 
             this.lblTI.AutoSize = true;
             this.lblTI.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.lblTI.ForeColor = System.Drawing.Color.DimGray;
             this.lblTI.Location = new System.Drawing.Point(7, 162);
             this.lblTI.Name = "lblTI";
             this.lblTI.Size = new System.Drawing.Size(93, 18);
@@ -635,7 +726,7 @@ namespace Economy.Forms
             // 
             this.pbNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbNext.Image = ((System.Drawing.Image)(resources.GetObject("pbNext.Image")));
-            this.pbNext.Location = new System.Drawing.Point(317, 34);
+            this.pbNext.Location = new System.Drawing.Point(395, 107);
             this.pbNext.Name = "pbNext";
             this.pbNext.Size = new System.Drawing.Size(25, 24);
             this.pbNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -675,7 +766,7 @@ namespace Economy.Forms
             this.customPanel1.GradientAngle = 90F;
             this.customPanel1.GradientBottomColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
             this.customPanel1.GradientTopColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.customPanel1.Location = new System.Drawing.Point(405, 424);
+            this.customPanel1.Location = new System.Drawing.Point(467, 424);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.Size = new System.Drawing.Size(685, 313);
             this.customPanel1.TabIndex = 43;
@@ -689,23 +780,23 @@ namespace Economy.Forms
             this.dgvInterest.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvInterest.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvInterest.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvInterest.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvInterest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvInterest.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvInterest.EnableHeadersVisualStyles = false;
             this.dgvInterest.GridColor = System.Drawing.Color.Linen;
             this.dgvInterest.Location = new System.Drawing.Point(-3, 6);
@@ -713,9 +804,9 @@ namespace Economy.Forms
             this.dgvInterest.ReadOnly = true;
             this.dgvInterest.RowHeadersVisible = false;
             this.dgvInterest.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            this.dgvInterest.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            this.dgvInterest.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvInterest.RowTemplate.Height = 25;
             this.dgvInterest.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvInterest.Size = new System.Drawing.Size(688, 307);
@@ -739,7 +830,7 @@ namespace Economy.Forms
             "Interés"});
             this.cmbTypeIdgv.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbTypeIdgv.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbTypeIdgv.Location = new System.Drawing.Point(535, 376);
+            this.cmbTypeIdgv.Location = new System.Drawing.Point(597, 376);
             this.cmbTypeIdgv.Name = "cmbTypeIdgv";
             this.cmbTypeIdgv.Padding = new System.Windows.Forms.Padding(1);
             this.cmbTypeIdgv.Size = new System.Drawing.Size(143, 30);
@@ -752,8 +843,8 @@ namespace Economy.Forms
             // 
             this.lblTypeIdgv.AutoSize = true;
             this.lblTypeIdgv.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTypeIdgv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.lblTypeIdgv.Location = new System.Drawing.Point(431, 383);
+            this.lblTypeIdgv.ForeColor = System.Drawing.Color.DimGray;
+            this.lblTypeIdgv.Location = new System.Drawing.Point(493, 383);
             this.lblTypeIdgv.Name = "lblTypeIdgv";
             this.lblTypeIdgv.Size = new System.Drawing.Size(93, 18);
             this.lblTypeIdgv.TabIndex = 42;
@@ -764,7 +855,7 @@ namespace Economy.Forms
             // 
             this.btnImage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImage.Image = ((System.Drawing.Image)(resources.GetObject("btnImage.Image")));
-            this.btnImage.Location = new System.Drawing.Point(1123, 214);
+            this.btnImage.Location = new System.Drawing.Point(1164, 214);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(36, 37);
             this.btnImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -776,7 +867,7 @@ namespace Economy.Forms
             // 
             this.btnPDF.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPDF.Image = ((System.Drawing.Image)(resources.GetObject("btnPDF.Image")));
-            this.btnPDF.Location = new System.Drawing.Point(1124, 148);
+            this.btnPDF.Location = new System.Drawing.Point(1165, 148);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(36, 48);
             this.btnPDF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -788,7 +879,7 @@ namespace Economy.Forms
             // 
             this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(1123, 92);
+            this.btnUpdate.Location = new System.Drawing.Point(1164, 92);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(36, 30);
             this.btnUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -864,7 +955,7 @@ namespace Economy.Forms
             // 
             this.pnScroll.AutoScroll = true;
             this.pnScroll.Controls.Add(this.graph);
-            this.pnScroll.Location = new System.Drawing.Point(400, 22);
+            this.pnScroll.Location = new System.Drawing.Point(450, 22);
             this.pnScroll.Name = "pnScroll";
             this.pnScroll.Size = new System.Drawing.Size(700, 332);
             this.pnScroll.TabIndex = 50;
@@ -874,7 +965,7 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(1155, 10);
+            this.PbClose.Location = new System.Drawing.Point(1196, 11);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -892,7 +983,7 @@ namespace Economy.Forms
             // 
             this.pbDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbDelete.Image = ((System.Drawing.Image)(resources.GetObject("pbDelete.Image")));
-            this.pbDelete.Location = new System.Drawing.Point(1123, 617);
+            this.pbDelete.Location = new System.Drawing.Point(1165, 619);
             this.pbDelete.Name = "pbDelete";
             this.pbDelete.Size = new System.Drawing.Size(36, 37);
             this.pbDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -907,7 +998,7 @@ namespace Economy.Forms
             // 
             this.pbCompare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCompare.Image = ((System.Drawing.Image)(resources.GetObject("pbCompare.Image")));
-            this.pbCompare.Location = new System.Drawing.Point(1124, 275);
+            this.pbCompare.Location = new System.Drawing.Point(1165, 275);
             this.pbCompare.Name = "pbCompare";
             this.pbCompare.Size = new System.Drawing.Size(36, 37);
             this.pbCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -919,7 +1010,7 @@ namespace Economy.Forms
             // 
             this.lblEditMode.Font = new System.Drawing.Font("Trebuchet MS", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblEditMode.ForeColor = System.Drawing.Color.YellowGreen;
-            this.lblEditMode.Location = new System.Drawing.Point(1106, 52);
+            this.lblEditMode.Location = new System.Drawing.Point(1147, 52);
             this.lblEditMode.Name = "lblEditMode";
             this.lblEditMode.Size = new System.Drawing.Size(76, 31);
             this.lblEditMode.TabIndex = 54;
@@ -942,7 +1033,7 @@ namespace Economy.Forms
             this.lblDragDrop.AutoSize = true;
             this.lblDragDrop.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblDragDrop.ForeColor = System.Drawing.Color.DimGray;
-            this.lblDragDrop.Location = new System.Drawing.Point(753, 385);
+            this.lblDragDrop.Location = new System.Drawing.Point(808, 385);
             this.lblDragDrop.Name = "lblDragDrop";
             this.lblDragDrop.Size = new System.Drawing.Size(344, 16);
             this.lblDragDrop.TabIndex = 56;
@@ -954,19 +1045,31 @@ namespace Economy.Forms
             this.lblSelection.AutoSize = true;
             this.lblSelection.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblSelection.ForeColor = System.Drawing.Color.DimGray;
-            this.lblSelection.Location = new System.Drawing.Point(538, 358);
+            this.lblSelection.Location = new System.Drawing.Point(600, 358);
             this.lblSelection.Name = "lblSelection";
             this.lblSelection.Size = new System.Drawing.Size(146, 15);
             this.lblSelection.TabIndex = 57;
             this.lblSelection.Text = "Seleccione algún tipo de interés";
             this.lblSelection.Visible = false;
             // 
+            // pbInfCapitalization
+            // 
+            this.pbInfCapitalization.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbInfCapitalization.Image = ((System.Drawing.Image)(resources.GetObject("pbInfCapitalization.Image")));
+            this.pbInfCapitalization.Location = new System.Drawing.Point(368, 78);
+            this.pbInfCapitalization.Name = "pbInfCapitalization";
+            this.pbInfCapitalization.Size = new System.Drawing.Size(13, 13);
+            this.pbInfCapitalization.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbInfCapitalization.TabIndex = 60;
+            this.pbInfCapitalization.TabStop = false;
+            this.pbInfCapitalization.WaitOnLoad = true;
+            // 
             // FormGraphInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1178, 753);
+            this.ClientSize = new System.Drawing.Size(1219, 753);
             this.Controls.Add(this.lblSelection);
             this.Controls.Add(this.lblDragDrop);
             this.Controls.Add(this.lblPR);
@@ -993,6 +1096,9 @@ namespace Economy.Forms
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFlowType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfTS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbChanged)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbNext)).EndInit();
@@ -1007,6 +1113,7 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,5 +1175,11 @@ namespace Economy.Forms
         public System.Windows.Forms.Label lblPR;
         public System.Windows.Forms.Label lblDragDrop;
         public System.Windows.Forms.Label lblSelection;
+        private System.Windows.Forms.PictureBox pbInfTS;
+        public System.Windows.Forms.PictureBox pbInfRate;
+        private System.Windows.Forms.PictureBox pbFlowType;
+        public BeatifulComponents.RJComboBox cmbCapitalization;
+        private System.Windows.Forms.Label lblCapitalization;
+        public System.Windows.Forms.PictureBox pbInfCapitalization;
     }
 }

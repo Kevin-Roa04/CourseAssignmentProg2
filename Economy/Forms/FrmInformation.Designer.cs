@@ -34,6 +34,8 @@
             this.rtbInformation = new System.Windows.Forms.RichTextBox();
             this.lblInformation = new System.Windows.Forms.Label();
             this.pbClipBoard = new System.Windows.Forms.PictureBox();
+            this.cbIntruction = new System.Windows.Forms.CheckBox();
+            this.lblIntruction = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbClipBoard)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +45,7 @@
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(384, 12);
+            this.PbClose.Location = new System.Drawing.Point(391, 12);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -62,7 +64,7 @@
             this.rtbInformation.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbInformation.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.rtbInformation.ForeColor = System.Drawing.Color.DimGray;
-            this.rtbInformation.Location = new System.Drawing.Point(12, 49);
+            this.rtbInformation.Location = new System.Drawing.Point(12, 64);
             this.rtbInformation.Name = "rtbInformation";
             this.rtbInformation.ReadOnly = true;
             this.rtbInformation.Size = new System.Drawing.Size(385, 444);
@@ -92,12 +94,38 @@
             this.pbClipBoard.TabStop = false;
             this.pbClipBoard.Click += new System.EventHandler(this.pbClipBoard_Click);
             // 
+            // cbIntruction
+            // 
+            this.cbIntruction.AutoSize = true;
+            this.cbIntruction.Checked = true;
+            this.cbIntruction.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbIntruction.Location = new System.Drawing.Point(310, 28);
+            this.cbIntruction.Name = "cbIntruction";
+            this.cbIntruction.Size = new System.Drawing.Size(15, 14);
+            this.cbIntruction.TabIndex = 57;
+            this.cbIntruction.UseVisualStyleBackColor = true;
+            this.cbIntruction.Visible = false;
+            this.cbIntruction.CheckedChanged += new System.EventHandler(this.cbIntruction_CheckedChanged);
+            // 
+            // lblIntruction
+            // 
+            this.lblIntruction.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblIntruction.ForeColor = System.Drawing.Color.DimGray;
+            this.lblIntruction.Location = new System.Drawing.Point(191, 12);
+            this.lblIntruction.Name = "lblIntruction";
+            this.lblIntruction.Size = new System.Drawing.Size(113, 50);
+            this.lblIntruction.TabIndex = 56;
+            this.lblIntruction.Text = "Ordenar valor de los flujos de caja de menor a mayor";
+            this.lblIntruction.Visible = false;
+            // 
             // FrmInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(409, 505);
+            this.ClientSize = new System.Drawing.Size(417, 520);
+            this.Controls.Add(this.cbIntruction);
+            this.Controls.Add(this.lblIntruction);
             this.Controls.Add(this.pbClipBoard);
             this.Controls.Add(this.lblInformation);
             this.Controls.Add(this.rtbInformation);
@@ -121,5 +149,7 @@
         private System.Windows.Forms.RichTextBox rtbInformation;
         private System.Windows.Forms.Label lblInformation;
         private System.Windows.Forms.PictureBox pbClipBoard;
+        private System.Windows.Forms.CheckBox cbIntruction;
+        private System.Windows.Forms.Label lblIntruction;
     }
 }

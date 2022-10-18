@@ -76,12 +76,12 @@
             this.lblProjectName.AutoSize = true;
             this.lblProjectName.BackColor = System.Drawing.Color.Transparent;
             this.lblProjectName.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblProjectName.ForeColor = System.Drawing.Color.Silver;
+            this.lblProjectName.ForeColor = System.Drawing.Color.DimGray;
             this.lblProjectName.Location = new System.Drawing.Point(57, 42);
             this.lblProjectName.Name = "lblProjectName";
-            this.lblProjectName.Size = new System.Drawing.Size(128, 18);
+            this.lblProjectName.Size = new System.Drawing.Size(143, 18);
             this.lblProjectName.TabIndex = 60;
-            this.lblProjectName.Text = "Nombre de la función";
+            this.lblProjectName.Text = "Nombre del documento:";
             // 
             // txtProjectName
             // 

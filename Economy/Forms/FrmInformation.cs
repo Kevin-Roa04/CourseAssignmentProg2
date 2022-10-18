@@ -62,7 +62,7 @@ namespace Economy.Forms
 
 
         }
-        private void InterestInformationConclusion()
+        private void InterestInformationAscConclusion()
         {
             rtbInformation.AppendText($"\n \nEl análisis correspondiente a los: ");
 
@@ -80,7 +80,35 @@ namespace Economy.Forms
             rtbInformation.AppendText($"{interestInformations.OrderBy(x => x.Present).FirstOrDefault().Present} ");
 
             rtbInformation.SelectionColor = Color.DimGray;
+            rtbInformation.AppendText("Nos resulta más barato y más eficiente");
+            rtbInformation.SelectionColor = Color.Black;
+            rtbInformation.AppendText($"\nPromedio de los presentes: ");
+            rtbInformation.SelectionColor = Color.DimGray;
+            rtbInformation.AppendText($"{interestInformations.Sum(x=>x.Present)*1.0M/interestInformations.Count}");
+        }
+        private void InterestInformationDescConclusion()
+        {
+            rtbInformation.AppendText($"\n \nEl análisis correspondiente a los: ");
+
+            rtbInformation.SelectionColor = Color.Black;
+            rtbInformation.AppendText($"{interestInformations.Count} ");
+            rtbInformation.SelectionColor = Color.DimGray;
+            rtbInformation.AppendText("Flujos de caja, indica que: ");
+
+            rtbInformation.SelectionColor = Color.Black;
+            rtbInformation.AppendText($"{interestInformations.OrderByDescending(x => x.Present).FirstOrDefault().Name} ");
+            rtbInformation.SelectionColor = Color.DimGray;
+            rtbInformation.AppendText("Teniendo un valor presente de: ");
+
+            rtbInformation.SelectionColor = Color.Black;
+            rtbInformation.AppendText($"{interestInformations.OrderByDescending(x => x.Present).FirstOrDefault().Present} ");
+
+            rtbInformation.SelectionColor = Color.DimGray;
             rtbInformation.AppendText("Nos resulta mejor y más eficiente");
+            rtbInformation.SelectionColor = Color.Black;
+            rtbInformation.AppendText($"\nPromedio de los presentes: ");
+            rtbInformation.SelectionColor = Color.DimGray;
+            rtbInformation.AppendText($"{interestInformations.Sum(x => x.Present) * 1.0M / interestInformations.Count}");
         }
         private void FrmInformation_Load(object sender, EventArgs e)
         {
@@ -92,7 +120,9 @@ namespace Economy.Forms
             }
             else if (type == 2)
             {
-                InterestInformationConclusion();
+                lblIntruction.Visible = true;
+                cbIntruction.Visible = true;
+                InterestInformationAscConclusion();
             }
         }
 
@@ -119,6 +149,20 @@ namespace Economy.Forms
         private void pbClipBoard_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(rtbInformation.Text);
+        }
+
+        private void cbIntruction_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbIntruction.Checked)
+            {
+                rtbInformation.Clear();
+                InterestInformationAscConclusion();
+            }
+            else
+            {
+                rtbInformation.Clear();
+                InterestInformationDescConclusion();
+            }
         }
     }
 }

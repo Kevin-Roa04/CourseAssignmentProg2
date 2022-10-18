@@ -79,6 +79,7 @@
             this.gunaPolarAreaDataset1 = new Guna.Charts.WinForms.GunaPolarAreaDataset();
             this.label1 = new System.Windows.Forms.Label();
             this.pbInterestInfomation = new System.Windows.Forms.PictureBox();
+            this.lblConclusion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterestInfomation)).BeginInit();
@@ -107,7 +108,7 @@
             this.flpProjects.AllowDrop = true;
             this.flpProjects.BackColor = System.Drawing.Color.White;
             this.flpProjects.ForeColor = System.Drawing.Color.White;
-            this.flpProjects.Location = new System.Drawing.Point(11, 100);
+            this.flpProjects.Location = new System.Drawing.Point(11, 128);
             this.flpProjects.Name = "flpProjects";
             this.flpProjects.Size = new System.Drawing.Size(303, 451);
             this.flpProjects.TabIndex = 53;
@@ -117,12 +118,12 @@
             this.lbl.AutoSize = true;
             this.lbl.BackColor = System.Drawing.Color.Transparent;
             this.lbl.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.lbl.Location = new System.Drawing.Point(32, 79);
+            this.lbl.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl.Location = new System.Drawing.Point(32, 105);
             this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(68, 18);
+            this.lbl.Size = new System.Drawing.Size(125, 18);
             this.lbl.TabIndex = 54;
-            this.lbl.Text = "Funciones:";
+            this.lbl.Text = "Funciones recientes:";
             // 
             // lblName
             // 
@@ -162,7 +163,7 @@
             // 
             this.pbCompare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbCompare.Image = ((System.Drawing.Image)(resources.GetObject("pbCompare.Image")));
-            this.pbCompare.Location = new System.Drawing.Point(324, 100);
+            this.pbCompare.Location = new System.Drawing.Point(371, 105);
             this.pbCompare.Name = "pbCompare";
             this.pbCompare.Size = new System.Drawing.Size(36, 37);
             this.pbCompare.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -181,7 +182,7 @@
             chartFont9.FontName = "Arial";
             this.gcScatter.Legend.LabelFont = chartFont9;
             this.gcScatter.Legend.LabelForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(156)))), ((int)(((byte)(168)))));
-            this.gcScatter.Location = new System.Drawing.Point(559, 79);
+            this.gcScatter.Location = new System.Drawing.Point(559, 86);
             this.gcScatter.Name = "gcScatter";
             this.gcScatter.Size = new System.Drawing.Size(357, 257);
             this.gcScatter.TabIndex = 58;
@@ -220,13 +221,12 @@
             this.gcPolarArea.BackColor = System.Drawing.Color.White;
             chartFont1.FontName = "Arial";
             this.gcPolarArea.Legend.LabelFont = chartFont1;
-            this.gcPolarArea.Location = new System.Drawing.Point(559, 369);
+            this.gcPolarArea.Location = new System.Drawing.Point(559, 374);
             this.gcPolarArea.Name = "gcPolarArea";
             this.gcPolarArea.Size = new System.Drawing.Size(357, 264);
             this.gcPolarArea.TabIndex = 59;
-            chartFont2.FontName = "Arial";
+            chartFont2.FontName = "Trebuchet MS";
             chartFont2.Size = 9;
-            chartFont2.Style = Guna.Charts.WinForms.ChartFontStyle.Bold;
             this.gcPolarArea.Title.Font = chartFont2;
             this.gcPolarArea.Title.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(157)))), ((int)(((byte)(166)))));
             this.gcPolarArea.Title.Text = "Número de intereses de cada función";
@@ -285,7 +285,7 @@
             this.flpUsedProject.AllowDrop = true;
             this.flpUsedProject.AutoScroll = true;
             this.flpUsedProject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.flpUsedProject.Location = new System.Drawing.Point(324, 161);
+            this.flpUsedProject.Location = new System.Drawing.Point(325, 180);
             this.flpUsedProject.Name = "flpUsedProject";
             this.flpUsedProject.Size = new System.Drawing.Size(141, 390);
             this.flpUsedProject.TabIndex = 62;
@@ -294,8 +294,8 @@
             // 
             this.lblUsedProject.AutoSize = true;
             this.lblUsedProject.Font = new System.Drawing.Font("Trebuchet MS", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblUsedProject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(157)))), ((int)(((byte)(155)))));
-            this.lblUsedProject.Location = new System.Drawing.Point(339, 144);
+            this.lblUsedProject.ForeColor = System.Drawing.Color.DimGray;
+            this.lblUsedProject.Location = new System.Drawing.Point(339, 161);
             this.lblUsedProject.Name = "lblUsedProject";
             this.lblUsedProject.Size = new System.Drawing.Size(112, 15);
             this.lblUsedProject.TabIndex = 63;
@@ -313,32 +313,45 @@
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.label1.ForeColor = System.Drawing.Color.DarkGray;
-            this.label1.Location = new System.Drawing.Point(324, 65);
+            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.Location = new System.Drawing.Point(324, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 32);
+            this.label1.Size = new System.Drawing.Size(153, 32);
             this.label1.TabIndex = 64;
-            this.label1.Text = "Deslice cualquier función para comparar";
+            this.label1.Text = "Deslice cualquier función para comparar o dejar de compararla";
             // 
             // pbInterestInfomation
             // 
             this.pbInterestInfomation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbInterestInfomation.Image = ((System.Drawing.Image)(resources.GetObject("pbInterestInfomation.Image")));
-            this.pbInterestInfomation.Location = new System.Drawing.Point(859, 48);
+            this.pbInterestInfomation.Location = new System.Drawing.Point(779, 37);
             this.pbInterestInfomation.Name = "pbInterestInfomation";
-            this.pbInterestInfomation.Size = new System.Drawing.Size(25, 25);
+            this.pbInterestInfomation.Size = new System.Drawing.Size(44, 33);
             this.pbInterestInfomation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbInterestInfomation.TabIndex = 65;
             this.pbInterestInfomation.TabStop = false;
             this.pbInterestInfomation.Click += new System.EventHandler(this.pbInterestInfomation_Click);
+            // 
+            // lblConclusion
+            // 
+            this.lblConclusion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblConclusion.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblConclusion.ForeColor = System.Drawing.Color.DimGray;
+            this.lblConclusion.Location = new System.Drawing.Point(655, 35);
+            this.lblConclusion.Name = "lblConclusion";
+            this.lblConclusion.Size = new System.Drawing.Size(133, 37);
+            this.lblConclusion.TabIndex = 66;
+            this.lblConclusion.Text = "Hacer conclusión de los flujos de cajas";
+            this.lblConclusion.Click += new System.EventHandler(this.lblConclusion_Click);
             // 
             // FormAnalyst
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(928, 647);
+            this.ClientSize = new System.Drawing.Size(928, 657);
             this.Controls.Add(this.pbInterestInfomation);
+            this.Controls.Add(this.lblConclusion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblUsedProject);
             this.Controls.Add(this.flpUsedProject);
@@ -387,5 +400,6 @@
         private Guna.Charts.WinForms.GunaPolarAreaDataset gunaPolarAreaDataset1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbInterestInfomation;
+        private System.Windows.Forms.Label lblConclusion;
     }
 }

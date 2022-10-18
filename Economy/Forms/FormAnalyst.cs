@@ -475,5 +475,10 @@ namespace Economy.Forms
                 frmInformation.ShowDialog();
             }
         }
+
+        private void lblConclusion_Click(object sender, EventArgs e)
+        {
+            pbInterestInfomation_Click(null, null);
+        }
     }
 }

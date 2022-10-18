@@ -212,16 +212,25 @@ namespace Economy.Forms
         }
         private void AddTooltips()
         {
+            ToolTip toolTipDuration = new ToolTip();
+            toolTipDuration.ToolTipIcon = ToolTipIcon.Info;
+            toolTipDuration.SetToolTip(this.lblDuration, "\nDuración del proyecto o función. Por ejemplo: plazo a pagar una casa");
             ToolTip toolTipChanged = new ToolTip();
             toolTipChanged.SetToolTip(this.pbChanged, "Cambiar los valores de la duración del proyecto y la tasa.");
             ToolTip toolTipUpdateGraph = new ToolTip();
             toolTipUpdateGraph.SetToolTip(this.btnUpdate, "Regresar a la gráfica principal");
             ToolTip toolTipRate = new ToolTip();
-            toolTipRate.SetToolTip(this.lblRate, "Significa el interés en el cuál trabajaremos todo el proyecto. \n Ejemplo: La tasa de interés del banco.");
+            toolTipRate.SetToolTip(this.lblRate, "\nSignifica el interés en el cuál trabajaremos todo el proyecto. \n Ejemplo: La tasa de interés del banco.\n");
+            toolTipRate.ToolTipIcon = ToolTipIcon.Info;
+            toolTipRate.SetToolTip(this.pbInfRate, "\nSignifica el interés en el cuál trabajaremos todo el proyecto. \n Ejemplo: La tasa de interés del banco.\n");
             ToolTip toolTipSerieType = new ToolTip();
-            toolTipSerieType.SetToolTip(this.lblTypeSerie, "Aritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
+            toolTipSerieType.SetToolTip(this.lblTypeSerie, "\nAritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
+            toolTipSerieType.ToolTipIcon= ToolTipIcon.Info;
+            toolTipSerieType.SetToolTip(this.pbInfTS, "\nAritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
             ToolTip toolTipFlowType = new ToolTip();
-            toolTipFlowType.SetToolTip(this.lblFlowType, "Entrada: Significa que ese interés le genera un ingreso (Entrada de dinero). \nSalida: Significa que ese interés le genera un egreso (Salida de dinero).");
+            toolTipFlowType.SetToolTip(this.lblFlowType, "\nEntrada: Significa que ese interés le genera un ingreso (Entrada de dinero). \n\nSalida: Significa que ese interés le genera un egreso (Salida de dinero).");
+            toolTipFlowType.ToolTipIcon = ToolTipIcon.Info;
+            toolTipFlowType.SetToolTip(this.pbFlowType, "\nEntrada: Significa que ese interés le genera un ingreso (Entrada de dinero). \n\nSalida: Significa que ese interés le genera un egreso (Salida de dinero).");
             ToolTip toolTipInitial = new ToolTip();
             toolTipInitial.SetToolTip(this.lblInitial, "Inicio de pago");
             ToolTip toolTipEnd = new ToolTip();
@@ -357,6 +366,7 @@ namespace Economy.Forms
                 lblValues(0, 0);
                 lblPR.Visible = false;
                 pbChanged.Visible = true;
+                pbInfRate.Visible = false;
             }
         }
         public void UpdateInterests()
@@ -424,6 +434,8 @@ namespace Economy.Forms
         }
         public void DesactiveForm()
         {
+            pbInfTS.Visible = false;
+            pbInfRate.Visible = true;
             cmbTime.Visible = true;
             txtRate.Enabled = true;
             lblDuration.Visible = true;
@@ -448,6 +460,7 @@ namespace Economy.Forms
             lblEnd.Visible = false;
             lblFinalPayment.Visible = false;
             lblFlowType.Visible = false;
+            pbFlowType.Visible = false;
             lblTypeSerie.Visible = false;
             lblDownPayment.Visible = false;
         }
@@ -461,6 +474,7 @@ namespace Economy.Forms
             lblRate.Visible = true;
             txtRate.Visible = true;
             lblFlowType.Visible = true;
+            pbFlowType.Visible = true;
             cmbFlowType.Visible = true;
             lblWI.Visible = true;
             lblWI.Text = "C$";
@@ -468,6 +482,7 @@ namespace Economy.Forms
         }
         private void SerieFunction()
         {
+            pbInfTS.Visible = true;
             lblTypeSerie.Visible = true;
             cmbTypeSerie.Visible = true;
             cmbTypeSerie.SelectedIndex = -1;
@@ -480,6 +495,7 @@ namespace Economy.Forms
             lblRate.Visible = true;
             txtRate.Visible = true;
             lblFlowType.Visible = true;
+            pbFlowType.Visible = true;
             cmbFlowType.Visible = true;
             lblDownPayment.Visible = true;
             txtDownPayment.Visible = true;
@@ -498,6 +514,7 @@ namespace Economy.Forms
             txtRate.Visible = true;
             lblFlowType.Visible = true;
             cmbFlowType.Visible = true;
+            pbFlowType.Visible = true;
         }
         private void ChangeVisibleForm()
         {
@@ -519,6 +536,7 @@ namespace Economy.Forms
             txtDownPayment.Visible = false;
             lblFinalPayment.Visible = false;
             txtFinalPayment.Visible = false;
+            pbInfTS.Visible = false;
         }
         #endregion
         private void cmbTypeSA_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -1820,6 +1838,14 @@ namespace Economy.Forms
         {
             FrmInformation frmInformation = new FrmInformation(1);
             frmInformation.ShowDialog();
+        }
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyChar) == 13)
+            {
+                pbNext_Click(null, null);
+            }
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
