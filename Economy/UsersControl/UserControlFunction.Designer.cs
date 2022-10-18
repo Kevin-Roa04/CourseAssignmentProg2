@@ -29,7 +29,13 @@ namespace Economy.UsersControl
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.chbIncremento = new System.Windows.Forms.CheckBox();
+            this.lblPercent4 = new System.Windows.Forms.Label();
+            this.lblPercent3 = new System.Windows.Forms.Label();
+            this.lblPercent2 = new System.Windows.Forms.Label();
+            this.lblPercent1 = new System.Windows.Forms.Label();
             this.txbTypeExit = new System.Windows.Forms.TextBox();
             this.txbTypeEntry = new System.Windows.Forms.TextBox();
             this.txbString5 = new System.Windows.Forms.TextBox();
@@ -45,6 +51,7 @@ namespace Economy.UsersControl
             this.txbInfo = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCalculate = new Economy.BeatifulComponents.RJButton();
+            this.ttInfo = new System.Windows.Forms.ToolTip(this.components);
             this.gbData.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +59,11 @@ namespace Economy.UsersControl
             // gbData
             // 
             this.gbData.BackColor = System.Drawing.Color.White;
+            this.gbData.Controls.Add(this.chbIncremento);
+            this.gbData.Controls.Add(this.lblPercent4);
+            this.gbData.Controls.Add(this.lblPercent3);
+            this.gbData.Controls.Add(this.lblPercent2);
+            this.gbData.Controls.Add(this.lblPercent1);
             this.gbData.Controls.Add(this.txbTypeExit);
             this.gbData.Controls.Add(this.txbTypeEntry);
             this.gbData.Controls.Add(this.txbString5);
@@ -73,6 +85,58 @@ namespace Economy.UsersControl
             this.gbData.TabStop = false;
             this.gbData.Text = "Datos";
             this.gbData.Enter += new System.EventHandler(this.gbData_Enter);
+            // 
+            // chbIncremento
+            // 
+            this.chbIncremento.AutoSize = true;
+            this.chbIncremento.Location = new System.Drawing.Point(396, 72);
+            this.chbIncremento.Name = "chbIncremento";
+            this.chbIncremento.Size = new System.Drawing.Size(114, 25);
+            this.chbIncremento.TabIndex = 14;
+            this.chbIncremento.Text = "Incremento";
+            this.chbIncremento.UseVisualStyleBackColor = true;
+            this.chbIncremento.Visible = false;
+            this.chbIncremento.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chbIncremento_MouseMove);
+            // 
+            // lblPercent4
+            // 
+            this.lblPercent4.AutoSize = true;
+            this.lblPercent4.Location = new System.Drawing.Point(400, 160);
+            this.lblPercent4.Name = "lblPercent4";
+            this.lblPercent4.Size = new System.Drawing.Size(23, 21);
+            this.lblPercent4.TabIndex = 28;
+            this.lblPercent4.Text = "%";
+            this.lblPercent4.Visible = false;
+            // 
+            // lblPercent3
+            // 
+            this.lblPercent3.AutoSize = true;
+            this.lblPercent3.Location = new System.Drawing.Point(400, 115);
+            this.lblPercent3.Name = "lblPercent3";
+            this.lblPercent3.Size = new System.Drawing.Size(23, 21);
+            this.lblPercent3.TabIndex = 27;
+            this.lblPercent3.Text = "%";
+            this.lblPercent3.Visible = false;
+            // 
+            // lblPercent2
+            // 
+            this.lblPercent2.AutoSize = true;
+            this.lblPercent2.Location = new System.Drawing.Point(400, 72);
+            this.lblPercent2.Name = "lblPercent2";
+            this.lblPercent2.Size = new System.Drawing.Size(23, 21);
+            this.lblPercent2.TabIndex = 26;
+            this.lblPercent2.Text = "%";
+            this.lblPercent2.Visible = false;
+            // 
+            // lblPercent1
+            // 
+            this.lblPercent1.AutoSize = true;
+            this.lblPercent1.Location = new System.Drawing.Point(400, 33);
+            this.lblPercent1.Name = "lblPercent1";
+            this.lblPercent1.Size = new System.Drawing.Size(23, 21);
+            this.lblPercent1.TabIndex = 25;
+            this.lblPercent1.Text = "%";
+            this.lblPercent1.Visible = false;
             // 
             // txbTypeExit
             // 
@@ -220,12 +284,13 @@ namespace Economy.UsersControl
             // 
             // txbInfo
             // 
-            this.txbInfo.Location = new System.Drawing.Point(146, 278);
+            this.txbInfo.Location = new System.Drawing.Point(84, 278);
             this.txbInfo.Multiline = true;
             this.txbInfo.Name = "txbInfo";
             this.txbInfo.ReadOnly = true;
-            this.txbInfo.Size = new System.Drawing.Size(258, 70);
+            this.txbInfo.Size = new System.Drawing.Size(395, 70);
             this.txbInfo.TabIndex = 12;
+            this.txbInfo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
             // 
@@ -291,5 +356,11 @@ namespace Economy.UsersControl
         private System.Windows.Forms.Label lbString1;
         private System.Windows.Forms.Panel panel1;
         private BeatifulComponents.RJButton btnCalculate;
+        private System.Windows.Forms.Label lblPercent4;
+        private System.Windows.Forms.Label lblPercent3;
+        private System.Windows.Forms.Label lblPercent2;
+        private System.Windows.Forms.Label lblPercent1;
+        private System.Windows.Forms.CheckBox chbIncremento;
+        private System.Windows.Forms.ToolTip ttInfo;
     }
 }

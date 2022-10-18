@@ -39,14 +39,13 @@ namespace Economy.Forms
         
         Dictionary<string,string> typeFunctionsDictionary = new Dictionary<string,string>();
         public FormFX(FormExcel formExcel, ICalculateServices<Annuity> calculateServices, ICalculateServices<Interest> calculateService,
-            ICalculateServices<Serie> calculateServicesSerie, int index)
+            ICalculateServices<Serie> calculateServicesSerie)
         {
             InitializeComponent();
             this.FormExcel = formExcel;
             this.calculateServicesAnnuity = calculateServices;
             this.CalculateServicesInterest = calculateService;
             this.CalculateServicesSerie = calculateServicesSerie;
-            this.index = index;
             TypeFunctions();
         }
 
@@ -78,15 +77,6 @@ namespace Economy.Forms
                 }
                 this.Text = "Funciones especiales";
             }
-            else if (index == 1)
-            {
-                String[] TypeFunction = Enum.GetNames(typeof(TypeBasicFunction));
-                foreach (string function in TypeFunction)
-                {
-                    this.lbFX.Items.Add(function);
-                }
-                this.Text = "Funciones básicas";
-            }
         }
 
         private void lbFX_DoubleClick(object sender, EventArgs e)
@@ -98,7 +88,7 @@ namespace Economy.Forms
                 singleton.Selection = true;
             }
             FormFunction formFunction = new FormFunction(this.FormExcel, (int)lbFX.SelectedIndex, calculateServicesAnnuity,
-                CalculateServicesInterest, CalculateServicesSerie, index);
+                CalculateServicesInterest, CalculateServicesSerie);
             formFunction.Show();
             formFunction.BringToFront();
             this.Close();
