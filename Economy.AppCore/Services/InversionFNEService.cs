@@ -23,7 +23,7 @@ namespace Economy.AppCore.Services
 
         public bool Delete(InversionFne t)
         {
-            throw new NotImplementedException();
+            return inversionFneRepository.Delete(t);
         }
 
         public List<InversionFne> GetAll()
@@ -31,14 +31,24 @@ namespace Economy.AppCore.Services
             throw new NotImplementedException();
         }
 
-        public List<InversionFne> GetByProjectId(int ProjectId)
+        public InversionFne GetById(int id)
         {
-            throw new NotImplementedException();
+            return inversionFneRepository.GetById(id);
+        }
+
+        public InversionFne GetByName(string name, int projectId)
+        {
+            return inversionFneRepository.GetByName(name, projectId);
+        }
+
+        public List<InversionFne> GetListByProjectId(int projectId)
+        {
+            return inversionFneRepository.GetListByProjectId(projectId);
         }
 
         public int Update(InversionFne t)
         {
-            throw new NotImplementedException();
+            return inversionFneRepository.Update(t);
         }
     }
 }

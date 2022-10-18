@@ -149,6 +149,11 @@
             this.nudCoeficiente.Name = "nudCoeficiente";
             this.nudCoeficiente.Size = new System.Drawing.Size(191, 21);
             this.nudCoeficiente.TabIndex = 17;
+            this.nudCoeficiente.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudCoeficiente.Visible = false;
             // 
             // lblCoeficiente
@@ -274,7 +279,7 @@
             this.ValorEnLibro.ReadOnly = true;
             this.ValorEnLibro.Width = 123;
             // 
-            // Depreciacion
+            // FrmDepreciacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -285,7 +290,7 @@
             this.Controls.Add(this.gbData);
             this.Controls.Add(this.labelDepreciation);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.Name = "Depreciacion";
+            this.Name = "FrmDepreciacion";
             this.Text = "Depreciacion";
             this.Load += new System.EventHandler(this.Depreciacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudInitialValue)).EndInit();

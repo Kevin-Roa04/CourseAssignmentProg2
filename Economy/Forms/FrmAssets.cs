@@ -3,6 +3,7 @@ using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
+using Economy.Infraestructure.Repository;
 using Proto1._0;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace Economy.Forms
         public IDepreciacionService depreciacionService { get; set; }
         private Project project;
 
+        public bool BringingDataFromDB = false;
+
         AutoCompleteStringCollection source;
         FrmDepreciacion depreciacion;
         public FrmAssets(FrmDepreciacion depreciacion, Project project)
@@ -40,11 +43,26 @@ namespace Economy.Forms
         private void FrmAssets_Load(object sender, EventArgs e)
         {
             AssetsData.assets = activosService.GetAll();
+            UserAssets.UAssets = inversionFNEService.GetListByProjectId(project.Id);
+            dgvAssets.DataSource = UserAssets.DataExtraction();
             AutocompleteAssetsData();
+
+            calculateTotalAssets();
+            notDepreciable.Text = FNEData.notDepreciableAssetsValue.ToString();
+            Depreciable.Text = FNEData.DepreciableAssetsValue.ToString();
+            total.Text = FNEData.Inversion.ToString();
+            if (BringingDataFromDB)
+            {
+                depreciacion.depreciationService = this.depreciacionService;
+                depreciacion.tmp = true;
+                depreciacion.ShowDialog();
+                BringingDataFromDB = false;
+                this.Close();
+            }
         }
 
         private void AutocompleteAssetsData()
-        {
+        { // autocopletar el texbox para seleccionar activos
             foreach(Activo asset in AssetsData.assets)
             {
                 source.Add(asset.NombreActivo);
@@ -78,6 +96,7 @@ namespace Economy.Forms
                 return;
             }
             dgvAssets.DataSource = null;
+            UserAssets.UAssets = inversionFNEService.GetListByProjectId(project.Id);
             dgvAssets.DataSource = UserAssets.DataExtraction();
             //colocar la sumatoria en pantalla
             calculateTotalAssets();
@@ -99,11 +118,11 @@ namespace Economy.Forms
             {
                 if ((bool)dgvAssets.Rows[i].Cells[2].Value == true) // si es depreciable
                 {
-                    Depreciable += (double)dgvAssets.Rows[i].Cells[3].Value;
+                    Depreciable += double.Parse(dgvAssets.Rows[i].Cells[3].Value.ToString());
                 }
                 else // si no es depreciable
                 {
-                    notDepreciable += (double)dgvAssets.Rows[i].Cells[4].Value;
+                    notDepreciable += double.Parse(dgvAssets.Rows[i].Cells[3].Value.ToString());
                 }
             }
             Total = notDepreciable + Depreciable;
@@ -113,12 +132,13 @@ namespace Economy.Forms
             this.total.Text = Total.ToString();
             //setteando la inversion total
             FNEData.DepreciableAssetsValue = (decimal)Depreciable;
+            FNEData.notDepreciableAssetsValue = (decimal)notDepreciable;
             FNEData.Inversion = (decimal)Total;
         }
 
         private void btnDepreciacion_Click(object sender, EventArgs e)
         {
-            if(FNEData.DepreciableAssetsValue == 0) return;
+            //if(FNEData.DepreciableAssetsValue == 0) return;
             depreciacion.depreciationService = this.depreciacionService;
             depreciacion.ShowDialog();
         }
@@ -140,6 +160,60 @@ namespace Economy.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InversionFne inversionFne = inversionFNEService.GetByName(seleccionarNombreActivo(), project.Id);
+            inversionFNEService.Delete(inversionFne);
+            UserAssets.UAssets = inversionFNEService.GetListByProjectId(project.Id);
+            dgvAssets.DataSource = UserAssets.DataExtraction();
+            calculateTotalAssets();
+            depreciacion.flag = true;
+            depreciacion.depreciationService = this.depreciacionService;
+            depreciacion.ShowDialog();
+            depreciacion.flag = false;
+            txtAssets.Text = "";
+        }
+
+        private double seleccionarMonto()
+        {
+            return (double)dgvAssets.CurrentRow.Cells[3].Value;
+        }
+
+        private string seleccionarNombreActivo()
+        {
+            return dgvAssets.CurrentRow.Cells[0].Value.ToString();
+        }
+
+        private void dgvAssets_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) return;
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+            dgvAssets.CurrentCell = dgvAssets.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            contextMenuStrip1.Show(Cursor.Position);
+        }
+
+        private void editarMontoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InversionFne activo = inversionFNEService.GetByName(seleccionarNombreActivo(), project.Id);
+            FrmAssetAmount frm = new FrmAssetAmount(activo.Activo, project);
+            frm.inversionFNEService = this.inversionFNEService;
+            frm.edit = true;
+            frm.ShowDialog();
+
+            dgvAssets.DataSource = null;
+            UserAssets.UAssets = inversionFNEService.GetListByProjectId(project.Id);
+            dgvAssets.DataSource = UserAssets.DataExtraction();
+            //colocar la sumatoria en pantalla
+            calculateTotalAssets();
+            depreciacion.flag = true;
+            depreciacion.depreciationService = this.depreciacionService;
+            depreciacion.tmp = true;
+            depreciacion.ShowDialog();
+            depreciacion.flag = false;
+            txtAssets.Text = "";
         }
     }
 }

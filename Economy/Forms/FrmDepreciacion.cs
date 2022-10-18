@@ -7,8 +7,10 @@ using Economy.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Proto1._0
 {
@@ -17,6 +19,7 @@ namespace Proto1._0
         public IDepreciacionService depreciationService { get; set; }
         private Project project;
         public bool flag = false;
+        public bool tmp = false;
 
         IDepreciationService dep;
         int years;
@@ -110,10 +113,11 @@ namespace Proto1._0
         {
             if (flag == true) this.Close();
 
-            cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
+            if (cmbMethod.DataSource == null) cmbMethod.DataSource = Enum.GetValues(typeof(Depreciation));
+            //cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
             cmbMethod.SelectedIndex = -1;
 
-            if (FNEData.DepreciableAssetsValue == 0) return;
+            //if (FNEData.DepreciableAssetsValue == 0) return;
             //colocando valores para hacer la depreciacion
             nudInitialValue.Enabled = false;
             nudInitialValue.Value = FNEData.DepreciableAssetsValue;
@@ -122,6 +126,24 @@ namespace Proto1._0
             cmbMethod.SelectedIndex = 0;
             FillDgv();
             if (years == 0) return; // si es diferente de 0, es parte del FNE
+            if (tmp) // traer datos de la base de datos
+            {
+                Depreciacion inv = depreciationService.GetByProjectId(project.Id);
+                nudResidualValue.Value = inv.ValorResidual;
+                FNEData.ValorDeRescate = inv.ValorResidual;
+                cmbMethod.SelectedIndex = inv.TipoDepreciacion;
+
+                FillDgv();
+                ExtraerData();
+                //colocando valores en la tabla FNE
+                setDepreciation(3);
+                setDepreciation(7);
+                setInersionesTotales();
+                setVR();
+                this.tmp = false;
+                this.Close();
+                return;
+            }
             ExtraerData();
             //colocando valores en la tabla FNE
             setDepreciation(3);
@@ -149,6 +171,25 @@ namespace Proto1._0
                     ProjectId = project.Id,
                 });
 
+            }
+            if(UserAssets.UAssets.Count == 0)// si no hay activos, vr = 0
+            {
+                depreciationService.Update(new Depreciacion
+                {
+
+                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                        Valor = FNEData.Inversion,
+                        ValorResidual = 0,
+                        ProjectId = project.Id,
+                });
+                nudResidualValue.Value = 0;
+                FillDgv();
+                ExtraerData();
+                //colocando valores en la tabla FNE
+                setDepreciation(3);
+                setDepreciation(7);
+                setInersionesTotales();
+                setVR();
             }
         }
 
@@ -267,6 +308,7 @@ namespace Proto1._0
             {
                 return;
             }
+            if (tmp) return;
             if (years > 0) // solo cuando se ocupa en el FNE
             {
                 if (Validations())

@@ -63,8 +63,8 @@ namespace Economy.Forms
 
         private void FormFNE_Load(object sender, EventArgs e)
         {
-            if(fneService.GetByProjectId(project.Id) != null) BringingDBData();
             LoadFNETable();
+            if (fneService.GetByProjectId(project.Id) != null) BringingDBData();
         }
 
 
@@ -110,7 +110,28 @@ namespace Economy.Forms
             addCost.ShowDialog();
             if(FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
 
+            //Inversiones
+            frmAssets.inversionFNEService = this.InversionService;
+            frmAssets.activosService = this.ActivosService;
+            frmAssets.depreciacionService = this.depreciacionService;
+            frmAssets.BringingDataFromDB = true;
+            frmAssets.ShowDialog();
+            if (FNEData.Depreciacion == null) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (UserAssets.UAssets.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
+
+            //Prestamo
+            fmrCalendarioDePago.amorizacionService = this.AmorizacionService;
+            fmrCalendarioDePago.BringingDataFromDB = true;
+            fmrCalendarioDePago.ShowDialog();
+            ActivateFinancedProject();
+            if (FNEData.TasaInstitucionFinanciera > 0) pictureBox4.BackColor = Color.LimeGreen;
+            else if (FNEData.TasaInstitucionFinanciera == 0) pictureBox4.BackColor = Color.Gray;
+
+
             BringingDataFromDB = false;
+
         }
 
 
@@ -550,7 +571,10 @@ namespace Economy.Forms
             frmAssets.depreciacionService = this.depreciacionService;
             //depreciacion.ShowDialog();
             frmAssets.ShowDialog();
-            if(FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
+            if (FNEData.Depreciacion == null) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if(UserAssets.UAssets.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
         }
 
         private void rjButton4_Click(object sender, EventArgs e)
@@ -559,6 +583,7 @@ namespace Economy.Forms
             fmrCalendarioDePago.ShowDialog();
             ActivateFinancedProject();
             if(FNEData.TasaInstitucionFinanciera > 0 ) pictureBox4.BackColor = Color.LimeGreen;
+            else if(FNEData.TasaInstitucionFinanciera == 0) pictureBox4.BackColor = Color.Gray;
         }
 
         private void ActivateFinancedProject()
@@ -615,7 +640,7 @@ namespace Economy.Forms
             fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
             depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
             addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
-            UserAssets.UAssets.Clear();
+            if(UserAssets.UAssets != null)UserAssets.UAssets.Clear();
             frmAssets = new FrmAssets(depreciacion, project);
             //reesetear valores de FNEData
             FNEData.resetValues();

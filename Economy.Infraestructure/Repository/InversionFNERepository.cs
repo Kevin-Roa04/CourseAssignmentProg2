@@ -1,10 +1,12 @@
 ﻿using Economy.Domain.Entities;
 using Economy.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Economy.Infraestructure.Repository
 {
@@ -23,7 +25,11 @@ namespace Economy.Infraestructure.Repository
 
         public bool Delete(InversionFne t)
         {
-            throw new NotImplementedException();
+            InversionFne inversionFne = GetById(t.Id);
+            if(inversionFne == null) return false;
+            context.InversionFnes.Remove(inversionFne);
+            context.SaveChanges();
+            return true;
         }
 
         public List<InversionFne> GetAll()
@@ -31,14 +37,34 @@ namespace Economy.Infraestructure.Repository
             throw new NotImplementedException();
         }
 
-        public List<InversionFne> GetByProjectId(int Projectid)
+        public InversionFne GetById(int id)
         {
-            throw new NotImplementedException();
+            return context.InversionFnes.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public List<InversionFne> GetByProjectId(int projectId)
+        {
+            return context.InversionFnes.Where(x => x.ProjectId == projectId).ToList();
+        }
+
+        public InversionFne GetByName(string name, int projectId)
+        {
+            List<InversionFne> inversionfne = context.InversionFnes.Where(x => x.ProjectId == projectId).Include(a => a.Activo).ToList();
+            return inversionfne.Where(x => x.Activo.NombreActivo == name).FirstOrDefault();
+        }
+
+        public List<InversionFne> GetListByProjectId(int projectId)
+        {
+            return context.InversionFnes.Where(x => x.ProjectId == projectId).Include(a => a.Activo).ToList();
         }
 
         public int Update(InversionFne t)
         {
-            throw new NotImplementedException();
+            InversionFne inversionFne = GetById(t.Id);
+            if(inversionFne == null) return 0;
+            inversionFne.Monto = t.Monto;
+            context.InversionFnes.Update(inversionFne);
+            return context.SaveChanges();
         }
     }
 }

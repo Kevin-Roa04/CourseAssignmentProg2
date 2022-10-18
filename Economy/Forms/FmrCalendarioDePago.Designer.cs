@@ -43,12 +43,12 @@ namespace Economy.Forms
             this.grpocaculos = new System.Windows.Forms.GroupBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvAmortization = new System.Windows.Forms.DataGridView();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Credit_Memo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Interest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Payment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Outstanding_Balance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PbClose = new System.Windows.Forms.PictureBox();
             this.grpocaculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
@@ -175,7 +175,7 @@ namespace Economy.Forms
             this.Payment,
             this.Outstanding_Balance});
             this.dgvAmortization.EnableHeadersVisualStyles = false;
-            this.dgvAmortization.Location = new System.Drawing.Point(315, 39);
+            this.dgvAmortization.Location = new System.Drawing.Point(324, 39);
             this.dgvAmortization.Name = "dgvAmortization";
             this.dgvAmortization.ReadOnly = true;
             this.dgvAmortization.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -190,8 +190,21 @@ namespace Economy.Forms
             this.dgvAmortization.RowHeadersVisible = false;
             this.dgvAmortization.RowTemplate.Height = 25;
             this.dgvAmortization.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAmortization.Size = new System.Drawing.Size(581, 346);
+            this.dgvAmortization.Size = new System.Drawing.Size(468, 346);
             this.dgvAmortization.TabIndex = 3;
+            // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(792, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 20;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
             // Años
             // 
@@ -202,51 +215,38 @@ namespace Economy.Forms
             // 
             // Credit_Memo
             // 
-            this.Credit_Memo.HeaderText = "Credit_Memo";
+            this.Credit_Memo.HeaderText = "Abono";
             this.Credit_Memo.Name = "Credit_Memo";
             this.Credit_Memo.ReadOnly = true;
-            this.Credit_Memo.Width = 133;
+            this.Credit_Memo.Width = 82;
             // 
             // Interest
             // 
-            this.Interest.HeaderText = "Interest";
+            this.Interest.HeaderText = "Interes";
             this.Interest.Name = "Interest";
             this.Interest.ReadOnly = true;
-            this.Interest.Width = 87;
+            this.Interest.Width = 82;
             // 
             // Payment
             // 
-            this.Payment.HeaderText = "Payment";
+            this.Payment.HeaderText = "Cuota";
             this.Payment.Name = "Payment";
             this.Payment.ReadOnly = true;
-            this.Payment.Width = 96;
+            this.Payment.Width = 78;
             // 
             // Outstanding_Balance
             // 
-            this.Outstanding_Balance.HeaderText = "Outstanding_Balance";
+            this.Outstanding_Balance.HeaderText = "SaldoInsoluto";
             this.Outstanding_Balance.Name = "Outstanding_Balance";
             this.Outstanding_Balance.ReadOnly = true;
-            this.Outstanding_Balance.Width = 190;
-            // 
-            // PbClose
-            // 
-            this.PbClose.BackColor = System.Drawing.Color.Transparent;
-            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(883, 12);
-            this.PbClose.Name = "PbClose";
-            this.PbClose.Size = new System.Drawing.Size(13, 13);
-            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbClose.TabIndex = 20;
-            this.PbClose.TabStop = false;
-            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            this.Outstanding_Balance.Width = 129;
             // 
             // FmrCalendarioDePago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(908, 397);
+            this.ClientSize = new System.Drawing.Size(817, 397);
             this.Controls.Add(this.PbClose);
             this.Controls.Add(this.dgvAmortization);
             this.Controls.Add(this.grpocaculos);

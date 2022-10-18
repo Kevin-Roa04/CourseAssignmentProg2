@@ -23,6 +23,7 @@ namespace Economy.Forms
 
         public IAmortizacionServices amortizacionServices;
         int years;
+        public bool BringingDataFromDB = false;
         DataGridView dgvFNE;
         public FmrCalendarioDePago(IAmortizacionServices services, int years, DataGridView dgvFNE, Project project)
         {
@@ -218,10 +219,30 @@ namespace Economy.Forms
                 txtplazo.Text = years.ToString();
                 txtplazo.Enabled = false;
             }
-            cmelegir.DataSource = Enum.GetValues(typeof(TypeAmortization));
-            cmelegir.SelectedIndex = -1;
+            if(cmelegir.DataSource == null ) cmelegir.DataSource = Enum.GetValues(typeof(TypeAmortization));
+            //cmelegir.SelectedIndex = -1;
             grpocaculos.Visible = true;
             //dgvAmortization.Visible = false;
+            if (BringingDataFromDB)
+            {
+                Amortizacion amortizacion = amorizacionService.GetByProjectId(project.Id);
+                cmelegir.SelectedIndex = (int)amortizacion.TipoAmortizacion;
+                txtknversion.Text = Math.Round(amortizacion.ValorInversion, 2).ToString();
+                txtinters.Text = Math.Round(amortizacion.TasaPrestamo, 2).ToString();
+                txtplazo.Text = amortizacion.Plazo.ToString(); 
+
+                FillDGV(cmelegir.SelectedIndex);
+                //extrayendo datos para FNE
+                InterestData();
+                if (years == 0) return; // si es diferente de 0 , es parte del FNE
+                setInterest();
+                setPrestamo();
+                setAmortizacionDelPrestamo();
+                setInersionesTotales();
+                SaveTasaInstitucionFinanciera();
+                BringingDataFromDB = false;
+                this.Close();
+            }
         }
         private void FillDGV(int index)
         {

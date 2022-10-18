@@ -1,6 +1,7 @@
 ﻿using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
 using Economy.Domain.Entities;
+using Economy.Infraestructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,9 @@ namespace Economy.Forms
     {
         public IInversionFNEService inversionFNEService { get; set; }
         private Project project;
+
+        public bool edit = false;
+
         Activo asset;
         public FrmAssetAmount(Activo asset, Project project)
         {
@@ -33,13 +37,34 @@ namespace Economy.Forms
                 MessageBox.Show("El valor no puede ser 0");
                 return;
             }
+
+            if (edit)
+            {
+                InversionFne fne = inversionFNEService.GetByName(asset.NombreActivo, project.Id);
+                if (fne != null)
+                {
+                    inversionFNEService.Update(new InversionFne
+                    {
+                        Id = fne.Id,
+                        Monto = txtAssetAmount.Value,
+                    });
+                    this.Close();
+                    return;
+                }
+            }
             inversionFNEService.Create(new InversionFne
             {
                 Monto = txtAssetAmount.Value,
                 ActivoId = asset.Id,
                 ProjectId = project.Id
             });
-            UserAssets.UAssets.Add(new UserAsset(asset, (double)txtAssetAmount.Value));
+            //UserAssets.UAssets.Add(new UserAsset(asset, (double)txtAssetAmount.Value));
+            UserAssets.UAssets.Add(new InversionFne
+            {
+                Monto = txtAssetAmount.Value,
+                ActivoId = asset.Id,
+                ProjectId = project.Id
+            });
             this.Close();
         }
 
