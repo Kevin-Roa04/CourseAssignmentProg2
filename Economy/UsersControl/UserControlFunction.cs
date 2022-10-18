@@ -62,6 +62,7 @@ namespace Economy.UsersControl
                     lblPercent1.Visible = true;
                     txbString1.Left = 290;
                     txbString2.Left = 290;
+                    lblPercent1.Left = 396;
                     break;
                 case 1: //To-Nominal_Rate
                     lbString1.Text = "Tasa efectica";
@@ -77,6 +78,7 @@ namespace Economy.UsersControl
                     lblPercent1.Visible = true;
                     txbString1.Left = 290;
                     txbString2.Left = 290;
+                    lblPercent1.Left = 396;
                     break;
                 case 2: // Annuities
                     lbString1.Text = "Presente";
@@ -169,7 +171,8 @@ namespace Economy.UsersControl
                     lbString3.Text = "Tasa";
                     lbString4.Visible = false;
                     lbString5.Visible = false;
-                    txbString1.ReadOnly = true;
+                    txbString2.ReadOnly = false;
+                    txbString3.ReadOnly = false;
                     txbString4.Visible = false;
                     txbString5.Visible = false;
                     txbTypeEntry.Visible = false;
@@ -666,19 +669,20 @@ namespace Economy.UsersControl
                     }
                     tasa = double.Parse(txbString3.Text) / 100;
                     Double[] value = new Double[singleton.Entry.Count + 1];
+                    double inversion = 0;
                     if (double.Parse(txbString2.Text) < 0)
                     {
-                        value[0] = double.Parse(txbString2.Text);
+                        inversion = double.Parse(txbString2.Text);
                     }
                     else if (double.Parse(txbString2.Text) > 0)
                     {
-                        value[0] = -(double.Parse(txbString2.Text));
+                        inversion = -(double.Parse(txbString2.Text));
                     }
                     for (int i = 0; i < singleton.Entry.Count; i++)
                     {
-                        value[i + 1] = singleton.Entry[i];
+                        value[i] = singleton.Entry[i];
                     }
-                    singleton.ValueFunction = Math.Round(Convert.ToDecimal(Financial.NPV(tasa, ref value)), 2);
+                    singleton.ValueFunction = Math.Round(Convert.ToDecimal(Financial.NPV(tasa, ref value) + inversion), 2);
                     bandera = true;
                     FormExcel.Activate();
                     break;
@@ -969,6 +973,7 @@ namespace Economy.UsersControl
             FocusTexboxs();
             if (Index == 7 || Index == 8 || Index == 9)
             {
+                singleton.Selection = true;
                 singleton.Type = true;
                 singleton.MinRow = 0;
                 singleton.MinColumn = 0;
@@ -990,6 +995,10 @@ namespace Economy.UsersControl
                 singleton.MaxRow = 0;
                 singleton.MaxColumn = 0;
             }
+            if(Index == 8 || Index == 9)
+            {
+                singleton.Selection = false;
+            }
             singleton.Index = 2;
         }
 
@@ -998,6 +1007,10 @@ namespace Economy.UsersControl
             txbString3.Focus();
             FocusTexboxs();
             singleton.Index = 3;
+            if (Index == 8)
+            {
+                singleton.Selection = false;
+            }
         }
 
         private void txbString4_Click(object sender, EventArgs e)
@@ -1079,6 +1092,18 @@ namespace Economy.UsersControl
                 txbString3.Focus();
                 FocusTexboxs();
                 singleton.Index = 3;
+                if (Index == 7)
+                {
+                    singleton.Type = false;
+                    singleton.MinRow = 0;
+                    singleton.MinColumn = 0;
+                    singleton.MaxRow = 0;
+                    singleton.MaxColumn = 0;
+                }
+                if (Index == 8 || Index == 9)
+                {
+                    singleton.Selection = false;
+                }
                 return;
             }
             if (txbString2.ReadOnly == false)
@@ -1096,12 +1121,17 @@ namespace Economy.UsersControl
 
         private void txbString1_DoubleClick(object sender, EventArgs e)
         {
-            if (Index <= 6 || (Index == 1 || Index == 3))
+            if (Index == 7 || Index == 8 || Index == 9)
             {
-                singleton.Index = 1;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
+                singleton.Selection = true;
+                singleton.Type = true;
+                singleton.MinRow = 0;
+                singleton.MinColumn = 0;
+                singleton.MaxRow = 0;
+                singleton.MaxColumn = 0;
             }
+            singleton.Index = 1;
+            FormExcel.Activate();
         }
         private void CleanTextboxs()
         {
@@ -1114,37 +1144,33 @@ namespace Economy.UsersControl
 
         private void txbString2_DoubleClick(object sender, EventArgs e)
         {
-            if (Index <= 6 || (Index == 1 || Index == 3))
+            if (Index == 7)
             {
-                singleton.Index = 2;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
+                singleton.Selection = true;
+                singleton.Type = true;
+                singleton.MinRow = 0;
+                singleton.MinColumn = 0;
+                singleton.MaxRow = 0;
+                singleton.MaxColumn = 0;
             }
-            if (Index == 9)
+            else if (Index == 8 || Index == 9)
             {
-                singleton.Index = 2;
-                FormExcel.Activate();
+                singleton.Selection = false;
             }
+            singleton.Index = 2;
+            FormExcel.Activate();
         }
 
         private void txbString3_DoubleClick(object sender, EventArgs e)
         {
-            if (Index <= 6)
-            {
-                singleton.Index = 3;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
+            singleton.Index = 3;
+            FormExcel.Activate();
         }
 
         private void txbString4_DoubleClick(object sender, EventArgs e)
         {
-            if (Index <= 2)
-            {
-                singleton.Index = 4;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
+            singleton.Index = 4;
+            FormExcel.Activate();
         }
 
         private void txbString1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1195,7 +1221,7 @@ namespace Economy.UsersControl
                 if((Index == 4 || Index == 3) && txbString4.Visible == false)
                 {
                     txbString5.Focus();
-                    singleton.Index = 1;
+                    singleton.Index = 5;
                     FocusTexboxs();
                     return;
                 }
@@ -1230,6 +1256,7 @@ namespace Economy.UsersControl
                     return;
                 }
                 txbString5.Focus();
+                singleton.Index = 5;
                 FocusTexboxs();
                 return;
             }
@@ -1248,12 +1275,8 @@ namespace Economy.UsersControl
 
         private void txbString5_DoubleClick(object sender, EventArgs e)
         {
-            if (Index == 11)
-            {
-                singleton.Index = 5;
-                txbInfo.Visible = false;
-                FormExcel.Activate();
-            }
+            singleton.Index = 5;
+            FormExcel.Activate();
         }
 
         private void txbString1_TextChanged(object sender, EventArgs e)

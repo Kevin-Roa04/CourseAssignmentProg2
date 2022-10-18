@@ -100,7 +100,7 @@ namespace Economy.Forms
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExcel.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvExcel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvExcel.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.dgvExcel.EnableHeadersVisualStyles = false;
             this.dgvExcel.GridColor = System.Drawing.Color.LightGray;
             this.dgvExcel.Location = new System.Drawing.Point(10, 91);

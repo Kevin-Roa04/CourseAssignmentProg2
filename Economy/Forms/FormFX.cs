@@ -81,8 +81,7 @@ namespace Economy.Forms
 
         private void lbFX_DoubleClick(object sender, EventArgs e)
         {
-            if (((int)lbFX.SelectedIndex >= 7 && index == 0) || ((int)lbFX.SelectedIndex == 0 && index == 1)
-                || ((int)lbFX.SelectedIndex == 2 && index == 1))
+            if ((int)lbFX.SelectedIndex == 7 || (int)lbFX.SelectedIndex == 8 || (int)lbFX.SelectedIndex == 9)
             {
                 Singleton singleton = Singleton.instance1;
                 singleton.Selection = true;

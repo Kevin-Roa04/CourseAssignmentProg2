@@ -388,6 +388,20 @@ namespace Economy.Forms
                             return;
                         }
                     }
+                    else
+                    {
+                        try
+                        {
+                            singleton.ValueTask = double.Parse(dgvExcel.CurrentCell.Value.ToString());
+                            existe.Activate();
+                        }
+                        catch
+                        {
+                            singleton.ValueTask = 0;
+                            existe.Activate();
+                            MessageBox.Show("Ha seleccionado un dato inválido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -674,10 +688,9 @@ namespace Economy.Forms
                     if (cellTextBox.Text.ToString().StartsWith("="))
                     {
                         Expression expression = new Expression(cellTextBox.Text.ToString().Substring(1));
-                        dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = expression.calculate().
-                            ToString();
-                        if (dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value.ToString() ==
-                            "NaN")
+                        //dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value
+                        cellTextBox.Text = expression.calculate().ToString();
+                        if (cellTextBox.Text == "NaN")
                         {
                             MessageBox.Show("Error en la fórmula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = cadena;
@@ -749,7 +762,7 @@ namespace Economy.Forms
                 DataGridViewCell cell = dgvExcel.Rows[Row].Cells[Column];
                 if (!(cell.Value is null))
                 {
-                    if (cell.Value.ToString() != string.Empty && cadena != null)
+                    if (cell.Value.ToString() != string.Empty && cadena.ToString().StartsWith("="))
                     {
                         dgvExcel.CurrentCell = cell;
                         dgvExcel.BeginEdit(true);

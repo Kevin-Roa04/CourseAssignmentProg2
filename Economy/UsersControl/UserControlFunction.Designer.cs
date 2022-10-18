@@ -89,7 +89,7 @@ namespace Economy.UsersControl
             // chbIncremento
             // 
             this.chbIncremento.AutoSize = true;
-            this.chbIncremento.Location = new System.Drawing.Point(396, 72);
+            this.chbIncremento.Location = new System.Drawing.Point(396, 71);
             this.chbIncremento.Name = "chbIncremento";
             this.chbIncremento.Size = new System.Drawing.Size(114, 25);
             this.chbIncremento.TabIndex = 14;
@@ -101,7 +101,7 @@ namespace Economy.UsersControl
             // lblPercent4
             // 
             this.lblPercent4.AutoSize = true;
-            this.lblPercent4.Location = new System.Drawing.Point(400, 160);
+            this.lblPercent4.Location = new System.Drawing.Point(381, 160);
             this.lblPercent4.Name = "lblPercent4";
             this.lblPercent4.Size = new System.Drawing.Size(23, 21);
             this.lblPercent4.TabIndex = 28;
@@ -111,7 +111,7 @@ namespace Economy.UsersControl
             // lblPercent3
             // 
             this.lblPercent3.AutoSize = true;
-            this.lblPercent3.Location = new System.Drawing.Point(400, 115);
+            this.lblPercent3.Location = new System.Drawing.Point(381, 115);
             this.lblPercent3.Name = "lblPercent3";
             this.lblPercent3.Size = new System.Drawing.Size(23, 21);
             this.lblPercent3.TabIndex = 27;
@@ -121,7 +121,7 @@ namespace Economy.UsersControl
             // lblPercent2
             // 
             this.lblPercent2.AutoSize = true;
-            this.lblPercent2.Location = new System.Drawing.Point(400, 72);
+            this.lblPercent2.Location = new System.Drawing.Point(381, 72);
             this.lblPercent2.Name = "lblPercent2";
             this.lblPercent2.Size = new System.Drawing.Size(23, 21);
             this.lblPercent2.TabIndex = 26;
@@ -131,7 +131,7 @@ namespace Economy.UsersControl
             // lblPercent1
             // 
             this.lblPercent1.AutoSize = true;
-            this.lblPercent1.Location = new System.Drawing.Point(400, 33);
+            this.lblPercent1.Location = new System.Drawing.Point(381, 33);
             this.lblPercent1.Name = "lblPercent1";
             this.lblPercent1.Size = new System.Drawing.Size(23, 21);
             this.lblPercent1.TabIndex = 25;
