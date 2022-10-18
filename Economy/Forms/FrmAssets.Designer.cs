@@ -182,7 +182,7 @@ namespace Economy.Forms
             this.btnDepreciacion.Name = "btnDepreciacion";
             this.btnDepreciacion.Size = new System.Drawing.Size(138, 39);
             this.btnDepreciacion.TabIndex = 11;
-            this.btnDepreciacion.Text = "Configura la Depreciacion";
+            this.btnDepreciacion.Text = "Configura la Depreciación";
             this.btnDepreciacion.UseVisualStyleBackColor = true;
             this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
             // 
@@ -205,19 +205,19 @@ namespace Economy.Forms
             this.editarMontoToolStripMenuItem,
             this.eliminarToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(144, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             // 
             // editarMontoToolStripMenuItem
             // 
             this.editarMontoToolStripMenuItem.Name = "editarMontoToolStripMenuItem";
-            this.editarMontoToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.editarMontoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editarMontoToolStripMenuItem.Text = "Editar Monto";
             this.editarMontoToolStripMenuItem.Click += new System.EventHandler(this.editarMontoToolStripMenuItem_Click);
             // 
             // eliminarToolStripMenuItem
             // 
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 

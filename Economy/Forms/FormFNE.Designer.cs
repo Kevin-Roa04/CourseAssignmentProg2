@@ -118,7 +118,7 @@ namespace Economy.Forms
             this.groupBox1.Size = new System.Drawing.Size(291, 444);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Configuracion del Proyecto";
+            this.groupBox1.Text = "Configuración del Proyecto";
             // 
             // VisualizarConclusion
             // 
@@ -171,7 +171,7 @@ namespace Economy.Forms
             this.rjButton4.Name = "rjButton4";
             this.rjButton4.Size = new System.Drawing.Size(163, 45);
             this.rjButton4.TabIndex = 16;
-            this.rjButton4.Text = "Agregar Prestamo";
+            this.rjButton4.Text = "Agregar Préstamo";
             this.rjButton4.TextColor = System.Drawing.Color.White;
             this.rjButton4.UseVisualStyleBackColor = false;
             this.rjButton4.Click += new System.EventHandler(this.rjButton4_Click);

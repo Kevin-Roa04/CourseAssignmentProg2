@@ -64,9 +64,9 @@
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.labelDepreciation.Location = new System.Drawing.Point(512, 27);
             this.labelDepreciation.Name = "labelDepreciation";
-            this.labelDepreciation.Size = new System.Drawing.Size(294, 31);
+            this.labelDepreciation.Size = new System.Drawing.Size(265, 31);
             this.labelDepreciation.TabIndex = 3;
-            this.labelDepreciation.Text = "Tabla de la depreciacion";
+            this.labelDepreciation.Text = "Tabla de depreciación";
             // 
             // lblInitialValue
             // 
@@ -141,7 +141,7 @@
             this.gbData.Size = new System.Drawing.Size(358, 397);
             this.gbData.TabIndex = 14;
             this.gbData.TabStop = false;
-            this.gbData.Text = "Data";
+            this.gbData.Text = "Información";
             // 
             // nudCoeficiente
             // 
@@ -183,7 +183,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 15);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Metodo de depreciacion";
+            this.label6.Text = "Método de depreciación";
             // 
             // nudYears
             // 
@@ -291,7 +291,7 @@
             this.Controls.Add(this.labelDepreciation);
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.Name = "FrmDepreciacion";
-            this.Text = "Depreciacion";
+            this.Text = "Depreciación";
             this.Load += new System.EventHandler(this.Depreciacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudInitialValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudResidualValue)).EndInit();

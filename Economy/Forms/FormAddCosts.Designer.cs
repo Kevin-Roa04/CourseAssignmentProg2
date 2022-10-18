@@ -124,7 +124,7 @@ namespace Economy.Forms
             this.groupBox1.Size = new System.Drawing.Size(274, 424);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Configuracion de los costos";
+            this.groupBox1.Text = "Configuración de los costos";
             // 
             // rjButton1
             // 
@@ -176,7 +176,7 @@ namespace Economy.Forms
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(135, 19);
             this.radioButton3.TabIndex = 11;
-            this.radioButton3.Text = "Gradiente Aritmetico";
+            this.radioButton3.Text = "Gradiente Aritmético";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
@@ -231,7 +231,7 @@ namespace Economy.Forms
             // 
             this.txtProfitName.Location = new System.Drawing.Point(115, 37);
             this.txtProfitName.Name = "txtProfitName";
-            this.txtProfitName.PlaceholderText = "Nombre Costo";
+            this.txtProfitName.PlaceholderText = "Encabezado Costo";
             this.txtProfitName.Size = new System.Drawing.Size(147, 23);
             this.txtProfitName.TabIndex = 1;
             // 
@@ -242,7 +242,7 @@ namespace Economy.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Titulo del Costo";
+            this.label1.Text = "Título del Costo";
             // 
             // PbClose
             // 

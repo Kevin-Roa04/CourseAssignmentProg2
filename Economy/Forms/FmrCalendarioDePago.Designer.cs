@@ -99,7 +99,7 @@ namespace Economy.Forms
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 15);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Prestamo";
+            this.label4.Text = "Préstamo";
             // 
             // txtknversion
             // 
@@ -222,7 +222,7 @@ namespace Economy.Forms
             // 
             // Interest
             // 
-            this.Interest.HeaderText = "Interes";
+            this.Interest.HeaderText = "Interés";
             this.Interest.Name = "Interest";
             this.Interest.ReadOnly = true;
             this.Interest.Width = 82;

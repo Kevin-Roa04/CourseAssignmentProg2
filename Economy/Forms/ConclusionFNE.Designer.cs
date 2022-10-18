@@ -68,7 +68,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(273, 28);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Conclusion del Proyecto";
+            this.label1.Text = "Conclusión del Proyecto";
             // 
             // ConclusionFNE
             // 
