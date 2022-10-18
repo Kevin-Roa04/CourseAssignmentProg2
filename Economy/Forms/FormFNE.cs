@@ -38,6 +38,7 @@ namespace Economy.Forms
         private FrmAssets frmAssets;
 
         private Project project;
+        private Fne fne;
 
         double VPNFinanciamiento;
         double VPNSinFinanciamiento;
@@ -45,6 +46,7 @@ namespace Economy.Forms
         double TIRSinFinanciamiento;
         double RazonBeneficioCostoFinanciamiento = 0;
         double RazonBeneficioCostoSinFinanciamiento = 0;
+        bool BringingDataFromDB = false;
 
         public FormFNE(Project project, IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
@@ -61,8 +63,11 @@ namespace Economy.Forms
 
         private void FormFNE_Load(object sender, EventArgs e)
         {
+            if(fneService.GetByProjectId(project.Id) != null) BringingDBData();
             LoadFNETable();
         }
+
+
 
         private void AddFNEToDB()
         {
@@ -85,6 +90,27 @@ namespace Economy.Forms
                 });
             }
 
+        }
+
+        private void BringingDBData()
+        {
+            BringingDataFromDB = true;
+            fne = fneService.GetByProjectId(project.Id);
+            txtYears.Value = (decimal)fne.Years;
+            txtTMAR.Value = (decimal) fne.Tmar;
+            // profit
+            addProfit.profitService = this.ProfitService;
+            addProfit.BringingDataFromDB = true;
+            addProfit.ShowDialog();
+            if (FNEData.Profit != null) pictureBox1.BackColor = Color.LimeGreen;
+
+            //costs
+            addCost.costService = this.CostService;
+            addCost.BringingDataFromDB=true;
+            addCost.ShowDialog();
+            if(FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
+
+            BringingDataFromDB = false;
         }
 
 
@@ -234,6 +260,7 @@ namespace Economy.Forms
             LoadFNETable();
             deactivateFinancedProject();
             resetImageColor();
+            if(!BringingDataFromDB)AddFNEToDB();
         }
 
         private void resetImageColor()
@@ -556,6 +583,7 @@ namespace Economy.Forms
             LoadFNETable();
             deactivateFinancedProject();
             resetImageColor();
+            if(!BringingDataFromDB)AddFNEToDB();
         }
 
         private void ValidateNegativeNumber(KeyEventArgs e, decimal DefaultNum, NumericUpDown num)
@@ -573,7 +601,6 @@ namespace Economy.Forms
 
         private void LoadFNETable()
         {
-            AddFNEToDB();
             if (dgvFNE.Rows.Count > 0)
             {
                 dgvFNE.Columns.Clear();
@@ -628,7 +655,7 @@ namespace Economy.Forms
 
         private void txtTMAR_ValueChanged(object sender, EventArgs e)
         {
-            AddFNEToDB();
+            if(!BringingDataFromDB)AddFNEToDB();
             SaveTMAR();
         }
 
@@ -638,12 +665,13 @@ namespace Economy.Forms
             if (e.KeyCode == Keys.Enter)
             {
                 SaveTMAR();
-                AddFNEToDB();
+                if(!BringingDataFromDB)AddFNEToDB();
             }
         }
 
         private void PbClose_Click(object sender, EventArgs e)
         {
+            ResetFNEDataValues();
             this.Close();
         }
     

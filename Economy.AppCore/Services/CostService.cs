@@ -23,7 +23,7 @@ namespace Economy.AppCore.Services
 
         public bool Delete(Cost t)
         {
-            throw new NotImplementedException();
+            return !costRepository.Delete(t);
         }
 
         public List<Cost> GetAll()
@@ -31,14 +31,24 @@ namespace Economy.AppCore.Services
             throw new NotImplementedException();
         }
 
-        public List<Cost> GetByProjectId(int projectId)
+        public Cost GetById(int id)
         {
-            throw new NotImplementedException();
+            return costRepository.GetById(id);
+        }
+
+        public Cost GetByName(string name, int projectId)
+        {
+            return costRepository.GetByName(name, projectId);
+        }
+
+        public List<Cost> GetListByProjectId(int projectId)
+        {
+            return costRepository.GetListByProjectId(projectId);
         }
 
         public int Update(Cost t)
         {
-            throw new NotImplementedException();
+            return costRepository.Update(t);
         }
     }
 }

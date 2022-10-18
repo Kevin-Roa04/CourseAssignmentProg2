@@ -290,6 +290,7 @@ namespace Economy.Forms
             this.Name = "FormAddProfit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Profits";
+            this.Load += new System.EventHandler(this.FormAddProfit_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAddProfit_MouseDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

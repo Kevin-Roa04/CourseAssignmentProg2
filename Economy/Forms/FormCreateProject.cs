@@ -83,7 +83,7 @@ namespace Economy.Forms
             ProjectClick.Add("InterestConversion",null);
             ProjectClick.Add("Amortization", null);
             ProjectClick.Add("Depreciation", null);
-            ProjectClick.Add("FNE", null);
+            ProjectClick.Add("FNE", PCFne);
         }
         private void DictionaryProjectLetter()
         {
@@ -357,6 +357,41 @@ namespace Economy.Forms
             this.Show();
 
         }
+
+        private void PCFne(object sender, MouseEventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FormFNE fne = new FormFNE(project, amortizacionServices, depreciationService);
+            fne.ProfitService = this.profitService;
+            fne.CostService = this.costService;
+            fne.InversionService = this.inversionFNEService;
+            fne.ActivosService = this.activosService;
+            fne.depreciacionService = this.depreciacionService;
+            fne.AmorizacionService = this.amortizacionService;
+            fne.fneService = this.fneService;
+            this.Opacity = 0;
+            this.Hide();
+            fne.ShowDialog();
+            Selection = -1;
+            txtProjectName.Visible = false;
+            lblLetters.Visible = false;
+            lblProjectName.Visible = false;
+            btnCreate.Visible = false;
+            lblTypeProject.Text = "";
+            lblTypeProject.Visible = false;
+            this.FadeIn.Start();
+            projects();
+            this.Show();
+        }
+
         private void PCExcel(object sender, MouseEventArgs e)
         {
             Project project;
@@ -394,6 +429,7 @@ namespace Economy.Forms
                 }
             }
         }
+
         private void CreatePieChart()
         {
 

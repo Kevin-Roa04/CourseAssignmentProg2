@@ -289,6 +289,7 @@ namespace Economy.Forms
             this.Name = "FormAddCosts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Costs";
+            this.Load += new System.EventHandler(this.FormAddCosts_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAddCosts_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfit)).EndInit();
             this.groupBox1.ResumeLayout(false);

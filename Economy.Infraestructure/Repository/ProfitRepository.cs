@@ -25,7 +25,11 @@ namespace Economy.Infraestructure.Repository
 
         public bool Delete(Profit t)
         {
-            throw new NotImplementedException();
+            Profit profit = GetByName(t.Nombre, t.ProjectId);
+            if (profit == null) return false;
+            context.Profits.Remove(profit);
+            context.SaveChanges();
+            return true;
         }
 
         public List<Profit> GetAll()
@@ -33,9 +37,32 @@ namespace Economy.Infraestructure.Repository
             throw new NotImplementedException();
         }
 
+        public Profit GetByName(string name, int projectId)
+        {
+            return context.Profits.Where(x => x.Nombre == name && x.ProjectId == projectId).FirstOrDefault();
+        }
+
+        public Profit GetById(int id)
+        {
+            return context.Profits.Where(p => p.Id == id).FirstOrDefault();
+        }
+
+        public List<Profit> GetListByProjectId(int projectId)
+        {
+            return context.Profits.Where(p => p.ProjectId == projectId).ToList();
+        }
+
         public int Update(Profit t)
         {
-            throw new NotImplementedException();
+            Profit profit = GetById(t.Id);
+            if(profit == null) return 0;
+            profit.Nombre = t.Nombre;
+            profit.ValorInicial = t.ValorInicial;
+            profit.TipoIncremento = t.TipoIncremento;
+            profit.ValorIncremento = t.ValorIncremento;
+
+            context.Profits.Update(profit);
+            return context.SaveChanges();
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Economy.AppCore.IServices
 {
     public interface ICostService : IServices<Cost>
     {
-        public List<Cost> GetByProjectId(int projectId);
+        public List<Cost> GetListByProjectId(int projectId);
+        public Cost GetById(int id);
+        public Cost GetByName(string name, int projectId);
     }
 }

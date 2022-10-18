@@ -75,6 +75,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Name = "FrmAssetAmount";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AssetAmount";
             ((System.ComponentModel.ISupportInitialize)(this.txtAssetAmount)).EndInit();
             this.ResumeLayout(false);
