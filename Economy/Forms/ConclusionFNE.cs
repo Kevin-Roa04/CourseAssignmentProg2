@@ -77,26 +77,26 @@ namespace Economy.Forms
         {
             if(vpn < 0)
             {
-                return $"lo que nos indica que el VPN es negativo, lo que significa que tendremos perdidas asi que no es conveniente realizar esta inversion tomando en cuenta el VPN";
+                return $"lo que nos indica que el VPN es negativo, lo que significa que tendremos pérdidas asi que no es conveniente realizar esta inversión tomando en cuenta el VPN";
             }
             else if(vpn > 0)
             {
-                return $"lo que nos indica que el VPN es positivo, lo que significa que tendremos ganancias, asi que es conveniente realizar esta inversion tomando en cuenta el VPN";
+                return $"lo que nos indica que el VPN es positivo, lo que significa que tendremos ganancias, asi que es conveniente realizar esta inversión tomando en cuenta el VPN";
             }
-            return $"lo que nos indica que el VPN es nulo, lo que significa es que la decision si invertir o no, es indiferente y depende de la desicion que tome el usuario, esto tomando en cuenta el VPN";
+            return $"lo que nos indica que el VPN es nulo, lo que significa es, que la decisión de invertir o no, es indiferente y depende de la decisión que tome el usuario, esto tomando en cuenta el VPN";
         }
 
         private string TIRSinFinanciemientoConclusion(double tir)
         {
             if(tir < FNEData.TasaInversionista)
             {
-                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar la inversion es menor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}%, y la tasa que realmente obtenemos es de {tir}%";
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar la inversión es menor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}%, y la tasa que realmente obtenemos es de {tir}%";
             }
             else if(tir > FNEData.TasaInversionista)
             {
-                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es mayor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversión es mayor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
             }
-            return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+            return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversión es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
         }
 
 
@@ -111,26 +111,26 @@ namespace Economy.Forms
         {
             if (vpn < 0)
             {
-                return $"lo que nos indica que el VPN es negativo, lo que significa que tendremos perdidas asi que no es conveniente realizar esta inversion tomando en cuenta el VPN";
+                return $"lo que nos indica que el VPN es negativo, lo que significa que tendremos pérdidas asi que no es conveniente realizar esta inversión tomando en cuenta el VPN";
             }
             else if (vpn > 0)
             {
-                return $"lo que nos indica que el VPN es positivo, lo que significa que tendremos ganancias, asi que es conveniente realizar esta inversion tomando en cuenta el VPN";
+                return $"lo que nos indica que el VPN es positivo, lo que significa que tendremos ganancias, asi que es conveniente realizar esta inversión tomando en cuenta el VPN";
             }
-            return $"lo que nos indica que el VPN es nulo, lo que significa es que la decision si invertir o no, es indiferente y depende de la desicion que tome el usuario, esto tomando en cuenta el VPN";
+            return $"lo que nos indica que el VPN es nulo, lo que significa, es que la decisión de invertir o no, es indiferente y depende de la decisión que tome el usuario, esto tomando en cuenta el VPN";
         }
 
         private string TIRFinanciemientoConclusion(double tir)
         {
             if (tir < FNEData.TasaInversionista)
             {
-                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar la inversion es menor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}%, y la tasa que realmente obtenemos es de {tir}%";
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar la inversión es menor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}%, y la tasa que realmente obtenemos es de {tir}%";
             }
             else if (tir > FNEData.TasaInversionista)
             {
-                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es mayor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+                return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversión es mayor al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
             }
-            return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversion es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
+            return $"esto nos da a entender que el porcentaje de ganancia que obtenemos al realizar esta inversión es igual al porcentaje que esperabamos, ya que nuestra tasa esperada era de {Math.Round(FNEData.TasaInversionista * 100, 2)}% y la tasa que realmente tenemos es de {tir}%";
         }
 
         private void ConclusionFNE_Load(object sender, EventArgs e)

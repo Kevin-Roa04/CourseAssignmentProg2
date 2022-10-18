@@ -74,7 +74,7 @@ namespace Economy.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 15);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Metodo de amortizacion";
+            this.label1.Text = "Método de amortización";
             // 
             // label2
             // 
@@ -82,9 +82,9 @@ namespace Economy.Forms
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(33, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 18);
+            this.label2.Size = new System.Drawing.Size(58, 18);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Interés";
+            this.label2.Text = "Interés %";
             // 
             // label3
             // 
@@ -102,9 +102,9 @@ namespace Economy.Forms
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(33, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 18);
+            this.label4.Size = new System.Drawing.Size(58, 18);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Inversión";
+            this.label4.Text = "Préstamo";
             // 
             // txtknversion
             // 
@@ -180,7 +180,7 @@ namespace Economy.Forms
             this.Payment,
             this.Outstanding_Balance});
             this.dgvAmortization.EnableHeadersVisualStyles = false;
-            this.dgvAmortization.Location = new System.Drawing.Point(315, 39);
+            this.dgvAmortization.Location = new System.Drawing.Point(324, 39);
             this.dgvAmortization.Name = "dgvAmortization";
             this.dgvAmortization.ReadOnly = true;
             this.dgvAmortization.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -195,7 +195,7 @@ namespace Economy.Forms
             this.dgvAmortization.RowHeadersVisible = false;
             this.dgvAmortization.RowTemplate.Height = 25;
             this.dgvAmortization.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAmortization.Size = new System.Drawing.Size(566, 346);
+            this.dgvAmortization.Size = new System.Drawing.Size(468, 346);
             this.dgvAmortization.TabIndex = 3;
             // 
             // Años
@@ -207,38 +207,38 @@ namespace Economy.Forms
             // 
             // Credit_Memo
             // 
-            this.Credit_Memo.HeaderText = "Credit_Memo";
+            this.Credit_Memo.HeaderText = "Abono";
             this.Credit_Memo.Name = "Credit_Memo";
             this.Credit_Memo.ReadOnly = true;
-            this.Credit_Memo.Width = 133;
+            this.Credit_Memo.Width = 82;
             // 
             // Interest
             // 
-            this.Interest.HeaderText = "Interest";
+            this.Interest.HeaderText = "Interés";
             this.Interest.Name = "Interest";
             this.Interest.ReadOnly = true;
-            this.Interest.Width = 87;
+            this.Interest.Width = 82;
             // 
             // Payment
             // 
-            this.Payment.HeaderText = "Payment";
+            this.Payment.HeaderText = "Cuota";
             this.Payment.Name = "Payment";
             this.Payment.ReadOnly = true;
-            this.Payment.Width = 96;
+            this.Payment.Width = 78;
             // 
             // Outstanding_Balance
             // 
-            this.Outstanding_Balance.HeaderText = "Outstanding_Balance";
+            this.Outstanding_Balance.HeaderText = "SaldoInsoluto";
             this.Outstanding_Balance.Name = "Outstanding_Balance";
             this.Outstanding_Balance.ReadOnly = true;
-            this.Outstanding_Balance.Width = 190;
+            this.Outstanding_Balance.Width = 129;
             // 
             // PbClose
             // 
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(883, 12);
+            this.PbClose.Location = new System.Drawing.Point(795, 12);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -261,7 +261,7 @@ namespace Economy.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(908, 397);
+            this.ClientSize = new System.Drawing.Size(820, 397);
             this.Controls.Add(this.PbClose);
             this.Controls.Add(this.dgvAmortization);
             this.Controls.Add(this.grpocaculos);

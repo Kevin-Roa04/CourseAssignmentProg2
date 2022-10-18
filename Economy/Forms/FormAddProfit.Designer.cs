@@ -75,7 +75,7 @@ namespace Economy.Forms
             this.groupBox1.Size = new System.Drawing.Size(274, 423);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Configuracion de las Ganancias";
+            this.groupBox1.Text = "Configuración de las Ganancias";
             // 
             // rjButton1
             // 
@@ -127,7 +127,7 @@ namespace Economy.Forms
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(135, 19);
             this.radioButton3.TabIndex = 11;
-            this.radioButton3.Text = "Gradiente Aritmetico";
+            this.radioButton3.Text = "Gradiente Aritmético";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
@@ -182,7 +182,7 @@ namespace Economy.Forms
             // 
             this.txtProfitName.Location = new System.Drawing.Point(142, 37);
             this.txtProfitName.Name = "txtProfitName";
-            this.txtProfitName.PlaceholderText = "Nombre Ganancia";
+            this.txtProfitName.PlaceholderText = "Encabezado Ganancia";
             this.txtProfitName.Size = new System.Drawing.Size(120, 23);
             this.txtProfitName.TabIndex = 1;
             // 
@@ -193,7 +193,7 @@ namespace Economy.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Titulo de la ganancia";
+            this.label1.Text = "Título de la ganancia";
             // 
             // dgvProfit
             // 
@@ -290,6 +290,7 @@ namespace Economy.Forms
             this.Name = "FormAddProfit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Profits";
+            this.Load += new System.EventHandler(this.FormAddProfit_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormAddProfit_MouseDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

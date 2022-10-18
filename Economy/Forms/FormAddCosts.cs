@@ -1,5 +1,6 @@
 ﻿using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Economy.AppCore.Services;
 using Economy.AppCore.Singleton;
 using Economy.Domain.Entities;
 using Economy.Domain.Enums;
@@ -18,17 +19,23 @@ namespace Economy.Forms
 {
     public partial class FormAddCosts : Form
     {
+        public ICostService costService { get; set; }
+
         int years;
         int type;
         int profitNumber = 0;
         bool edit = false;
+        public bool BringingDataFromDB = false;
+        string NombreAnterior;
         DataGridView dgvFNE;
-        public FormAddCosts(int years, DataGridView dgvFNE)
+        Project project;
+        public FormAddCosts(Project project, int years, DataGridView dgvFNE)
         {
             InitializeComponent();
             this.years = years;
             LoadDGV(years);
             this.dgvFNE = dgvFNE;
+            this.project = project;
         }
 
 
@@ -55,6 +62,27 @@ namespace Economy.Forms
             {
                 dgvProfit.Rows.Add();
             }
+        }
+        private void BringingDBData()
+        {
+            List<Cost> costs = costService.GetListByProjectId(project.Id);
+            foreach (Cost cost in costs)
+            {
+                txtProfitName.Text = cost.Nombre;
+                txtAmount.Value = cost.ValorInicial;
+                if (cost.TipoIncremento == 0) radioButton1.Checked = true;
+                else if (cost.TipoIncremento == 1) radioButton2.Checked = true;
+                else if (cost.TipoIncremento == 2) radioButton3.Checked = true;
+                numericUpDown1.Value = cost.ValorIncremento;
+
+                NewCost(profitNumber); // nueva ganancia
+                profitNumber += 1;
+                TotalProfits(); // calculando el total de las ganancias
+                //SetIngresos();
+                ResetValues(); // reseteando el valor de los campos
+            }
+            BringingDataFromDB = false;
+            this.Close();
         }
 
         private void radioButton2_Click(object sender, EventArgs e)
@@ -118,6 +146,17 @@ namespace Economy.Forms
 
             if (edit)
             {
+                Cost cost = costService.GetByName(NombreAnterior, project.Id);
+                costService.Update(new Cost
+                {
+                    Id = cost.Id,
+                    Nombre = txtProfitName.Text,
+                    ValorInicial = decimal.Parse(txtAmount.Text),
+                    TipoIncremento = (short)this.type,
+                    ValorIncremento = (decimal)numericUpDown1.Value,
+                    ProjectId = project.Id,
+                });
+
                 NewCost(dgvProfit.CurrentRow.Index); // editando un Costo
 
                 TotalProfits(); // calculando el total de los Costos
@@ -126,6 +165,24 @@ namespace Economy.Forms
                 edit = false;
                 return;
             }
+
+            foreach (Cost cost in costService.GetListByProjectId(project.Id))
+            {
+                if (cost.Nombre == txtProfitName.Text)
+                {
+                    MessageBox.Show("No se puede ingresar un nombre repetido.");
+                    return;
+                }
+            }
+
+            costService.Create(new Cost
+            {
+                Nombre = txtProfitName.Text,
+                ValorInicial = decimal.Parse(txtAmount.Text),
+                TipoIncremento = (short)this.type,
+                ValorIncremento = (decimal)numericUpDown1.Value,
+                ProjectId = project.Id,
+            });
 
             NewCost(profitNumber);
 
@@ -143,16 +200,16 @@ namespace Economy.Forms
             {
                 if (type == 0)
                 {
-                    dgvProfit.Rows[row].Cells[i + 2].Value = txtAmount.Value;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = Math.Round(txtAmount.Value,2);
                 }
                 else if (type == 1)
                 {
-                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = Math.Round(montoAcumulado,2);
                     montoAcumulado = montoAcumulado + numericUpDown1.Value;
                 }
                 else if (type == 2)
                 {
-                    dgvProfit.Rows[row].Cells[i + 2].Value = montoAcumulado;
+                    dgvProfit.Rows[row].Cells[i + 2].Value = Math.Round(montoAcumulado,2);
                     montoAcumulado = montoAcumulado + ((montoAcumulado * numericUpDown1.Value) / 100);
                 }
             }
@@ -245,16 +302,29 @@ namespace Economy.Forms
 
         private void editarToolStripMenuItem1_Click(object sender, EventArgs e)
         {// Editar
-            txtProfitName.Text = dgvProfit.CurrentRow.Cells[0].Value.ToString();
-            txtAmount.Value = decimal.Parse(dgvProfit.CurrentRow.Cells[2].Value.ToString());
-            txtAmount.UpButton();
-            txtAmount.DownButton();
-            radioButton1.Checked = true;
+            Cost cost= costService.GetByName(getNombre(), project.Id);
+            txtProfitName.Text = cost.Nombre;
+            //txtProfitName.Text = dgvProfit.CurrentRow.Cells[0].Value.ToString();
+            txtAmount.Value = cost.ValorInicial;
+            //txtAmount.Value = decimal.Parse(dgvProfit.CurrentRow.Cells[2].Value.ToString());
+            //txtAmount.UpButton();
+            //txtAmount.DownButton();
+            //radioButton1.Checked = true;
+            if (cost.TipoIncremento == 0) radioButton1.Checked = true;
+            else if (cost.TipoIncremento == 1) radioButton2.Checked = true;
+            else if (cost.TipoIncremento == 2) radioButton3.Checked = true;
+            numericUpDown1.Value = cost.ValorIncremento;
             edit = true;
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {// Eliminar
+            costService.Delete(new Cost
+            {
+                Nombre = getNombre(),
+                ProjectId = project.Id
+            });
+
             dgvProfit.Rows.RemoveAt(dgvProfit.CurrentRow.Index);
             profitNumber--;
             if (profitNumber == 0)
@@ -277,6 +347,17 @@ namespace Economy.Forms
 
             dgvProfit.CurrentCell = dgvProfit.Rows[e.RowIndex].Cells[e.ColumnIndex];
             contextMenuStrip1.Show(Cursor.Position);
+        }
+        private string getNombre()
+        {
+            NombreAnterior = dgvProfit.Rows[dgvProfit.CurrentRow.Index].Cells[0].Value.ToString();
+            return NombreAnterior;
+        }
+
+        private void FormAddCosts_Load(object sender, EventArgs e)
+        {
+            radioButton1.Checked = true;
+            if (BringingDataFromDB) BringingDBData();
         }
     }
 }

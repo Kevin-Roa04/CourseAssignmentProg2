@@ -1,6 +1,8 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Economy.Domain.Entities;
+using Microsoft.Office.Interop.Excel;
 using Microsoft.VisualBasic;
 using Org.BouncyCastle.Asn1.Cmp;
 using Proto1._0;
@@ -18,6 +20,13 @@ namespace Economy.Forms
     {
         bool calculated = false;
         double TMARMixtaTotal;
+        public IProfitService ProfitService { get; set; }
+        public ICostService CostService { get; set; }
+        public IInversionFNEService InversionService { get; set; }
+        public IActivosService ActivosService { get; set; }
+        public IDepreciacionService depreciacionService { get; set; }
+        public IAmorizacionService AmorizacionService { get; set; }
+        public IFNEService fneService { get; set; }
 
         private IAmortizacionServices amortizacionServices;
         private IDepreciationService depreciationService;
@@ -28,6 +37,8 @@ namespace Economy.Forms
         private FrmDepreciacion depreciacion;
         private FrmAssets frmAssets;
 
+        private Project project;
+        private Fne fne;
 
         double VPNFinanciamiento;
         double VPNSinFinanciamiento;
@@ -35,22 +46,92 @@ namespace Economy.Forms
         double TIRSinFinanciamiento;
         double RazonBeneficioCostoFinanciamiento = 0;
         double RazonBeneficioCostoSinFinanciamiento = 0;
+        bool BringingDataFromDB = false;
 
-        public FormFNE( IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
+        public FormFNE(Project project, IAmortizacionServices amortizacionServices, IDepreciationService depreciationService)
         {
             InitializeComponent();
-            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
-            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
+            addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
+            addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
             this.amortizacionServices = amortizacionServices;
             this.depreciationService = depreciationService;
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
-            frmAssets = new FrmAssets(depreciacion);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
+            frmAssets = new FrmAssets(depreciacion, project);
+            this.project = project;
         }
 
         private void FormFNE_Load(object sender, EventArgs e)
         {
             LoadFNETable();
+            if (fneService.GetByProjectId(project.Id) != null) BringingDBData();
+        }
+
+
+
+        private void AddFNEToDB()
+        {
+            if (fneService.GetByProjectId(project.Id) == null)
+            {
+                fneService.Create(new Fne
+                {
+                    ProjectId = project.Id,
+                    Years = (short)txtYears.Value,
+                    Tmar = (double)txtTMAR.Value
+                });
+            }
+            else
+            {
+                fneService.Update(new Fne
+                {
+                    ProjectId = project.Id,
+                    Years = (short)txtYears.Value,
+                    Tmar = (double)txtTMAR.Value
+                });
+            }
+
+        }
+
+        private void BringingDBData()
+        {
+            BringingDataFromDB = true;
+            fne = fneService.GetByProjectId(project.Id);
+            txtYears.Value = (decimal)fne.Years;
+            txtTMAR.Value = (decimal) fne.Tmar;
+            // profit
+            addProfit.profitService = this.ProfitService;
+            addProfit.BringingDataFromDB = true;
+            addProfit.ShowDialog();
+            if (FNEData.Profit != null) pictureBox1.BackColor = Color.LimeGreen;
+
+            //costs
+            addCost.costService = this.CostService;
+            addCost.BringingDataFromDB=true;
+            addCost.ShowDialog();
+            if(FNEData.Cost != null) pictureBox2.BackColor = Color.LimeGreen;
+
+            //Inversiones
+            frmAssets.inversionFNEService = this.InversionService;
+            frmAssets.activosService = this.ActivosService;
+            frmAssets.depreciacionService = this.depreciacionService;
+            frmAssets.BringingDataFromDB = true;
+            frmAssets.ShowDialog();
+            if (FNEData.Depreciacion == null) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (UserAssets.UAssets.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
+
+            //Prestamo
+            fmrCalendarioDePago.amorizacionService = this.AmorizacionService;
+            fmrCalendarioDePago.BringingDataFromDB = true;
+            fmrCalendarioDePago.ShowDialog();
+            ActivateFinancedProject();
+            if (FNEData.TasaInstitucionFinanciera > 0) pictureBox4.BackColor = Color.LimeGreen;
+            else if (FNEData.TasaInstitucionFinanciera == 0) pictureBox4.BackColor = Color.Gray;
+
+
+            BringingDataFromDB = false;
+
         }
 
 
@@ -112,17 +193,17 @@ namespace Economy.Forms
             dgvFNE.Rows[2].Cells[0].Value = "Intereses";
             dgvFNE.Rows[3].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[4].Cells[0].Value = "Utilidad antes de impuestos";
-            dgvFNE.Rows[4].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[4].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[5].Cells[0].Value = "IR";
             dgvFNE.Rows[6].Cells[0].Value = "Utilidad despues de impuestos";
-            dgvFNE.Rows[6].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[6].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             dgvFNE.Rows[7].Cells[0].Value = "Depreciacion";
             dgvFNE.Rows[8].Cells[0].Value = "Valor de rescate";
             dgvFNE.Rows[9].Cells[0].Value = "Prestamo";
             dgvFNE.Rows[10].Cells[0].Value = "Amortizacion del prestamo";
             dgvFNE.Rows[11].Cells[0].Value = "Inversiones Totales";
             dgvFNE.Rows[12].Cells[0].Value = "FNE";
-            dgvFNE.Rows[12].DefaultCellStyle.Font = new Font(dgvFNE.Font, FontStyle.Bold);
+            dgvFNE.Rows[12].DefaultCellStyle.Font = new System.Drawing.Font(dgvFNE.Font, FontStyle.Bold);
             FNEnotFinanced();
             calculateFNE();
         }
@@ -187,6 +268,7 @@ namespace Economy.Forms
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
+            addProfit.profitService = this.ProfitService;
             addProfit.ShowDialog();
             if(FNEData.Profit == null) pictureBox1.BackColor = Color.Gray;
             else if (FNEData.Profit.Count == 0) pictureBox1.BackColor = Color.Gray;
@@ -199,6 +281,7 @@ namespace Economy.Forms
             LoadFNETable();
             deactivateFinancedProject();
             resetImageColor();
+            if(!BringingDataFromDB)AddFNEToDB();
         }
 
         private void resetImageColor()
@@ -474,6 +557,7 @@ namespace Economy.Forms
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
+            addCost.costService = this.CostService;
             addCost.ShowDialog();
             if(FNEData.Cost == null) pictureBox2.BackColor = Color.Gray;
             else if (FNEData.Cost.Count == 0) pictureBox2.BackColor = Color.Gray;
@@ -482,16 +566,24 @@ namespace Economy.Forms
 
         private void rjButton3_Click(object sender, EventArgs e)
         {
+            frmAssets.inversionFNEService = this.InversionService;
+            frmAssets.activosService = this.ActivosService;
+            frmAssets.depreciacionService = this.depreciacionService;
             //depreciacion.ShowDialog();
             frmAssets.ShowDialog();
-            if(FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
+            if (FNEData.Depreciacion == null) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if(UserAssets.UAssets.Count == 0) pictureBox3.BackColor = Color.Gray;
+            else if (FNEData.Depreciacion != null) pictureBox3.BackColor = Color.LimeGreen;
         }
 
         private void rjButton4_Click(object sender, EventArgs e)
         {
+            fmrCalendarioDePago.amorizacionService = this.AmorizacionService;
             fmrCalendarioDePago.ShowDialog();
             ActivateFinancedProject();
             if(FNEData.TasaInstitucionFinanciera > 0 ) pictureBox4.BackColor = Color.LimeGreen;
+            else if(FNEData.TasaInstitucionFinanciera == 0) pictureBox4.BackColor = Color.Gray;
         }
 
         private void ActivateFinancedProject()
@@ -516,6 +608,7 @@ namespace Economy.Forms
             LoadFNETable();
             deactivateFinancedProject();
             resetImageColor();
+            if(!BringingDataFromDB)AddFNEToDB();
         }
 
         private void ValidateNegativeNumber(KeyEventArgs e, decimal DefaultNum, NumericUpDown num)
@@ -543,12 +636,12 @@ namespace Economy.Forms
 
         private void ResetFNEDataValues()
         {
-            addProfit = new FormAddProfit((int)txtYears.Value, dgvFNE);
-            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE);
-            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE);
-            addCost = new FormAddCosts((int)txtYears.Value, dgvFNE);
-            UserAssets.UAssets.Clear();
-            frmAssets = new FrmAssets(depreciacion);
+            addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
+            addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
+            if(UserAssets.UAssets != null)UserAssets.UAssets.Clear();
+            frmAssets = new FrmAssets(depreciacion, project);
             //reesetear valores de FNEData
             FNEData.resetValues();
         }
@@ -587,18 +680,23 @@ namespace Economy.Forms
 
         private void txtTMAR_ValueChanged(object sender, EventArgs e)
         {
+            if(!BringingDataFromDB)AddFNEToDB();
             SaveTMAR();
         }
 
         private void txtTMAR_KeyUp(object sender, KeyEventArgs e)
         {
             ValidateNegativeNumber(e, 1, txtTMAR);
-            if(e.KeyCode == Keys.Enter) SaveTMAR();
-                
+            if (e.KeyCode == Keys.Enter)
+            {
+                SaveTMAR();
+                if(!BringingDataFromDB)AddFNEToDB();
+            }
         }
 
         private void PbClose_Click(object sender, EventArgs e)
         {
+            ResetFNEDataValues();
             this.Close();
         }
     

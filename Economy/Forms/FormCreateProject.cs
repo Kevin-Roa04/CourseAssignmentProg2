@@ -39,6 +39,17 @@ namespace Economy.Forms
         public ICalculateServices<Serie> CalculateServicesSerie;
         public INominalServices nominal;
         #endregion
+
+        #region -> FNE
+        public IProfitService profitService { get; set; }
+        public ICostService costService { get; set; }
+        public IInversionFNEService inversionFNEService { get; set; }
+        public IActivosService activosService { get; set; }
+        public IDepreciacionService depreciacionService { get; set; }
+        public IAmorizacionService amortizacionService { get; set; }
+        public IFNEService fneService { get; set; }
+        #endregion
+
         private User GlobalUser;
         private int Selection = -1;
         public ISimpleService simpleService;
@@ -72,7 +83,7 @@ namespace Economy.Forms
             ProjectClick.Add("InterestConversion", null);
             ProjectClick.Add("Amortization", null);
             ProjectClick.Add("Depreciation", null);
-            ProjectClick.Add("FNE", null);
+            ProjectClick.Add("FNE", PCFne);
         }
         private void DictionaryProjectLetter()
         {
@@ -429,19 +440,26 @@ namespace Economy.Forms
             }
             else if (Selection == 4)
             {
-                FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null);
+                FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
                 fmrCalendarioDePago.ShowDialog();
 
             }
             else if (Selection == 5)
             {
-                FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
+                FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null, project);
                 depreciacion.ShowDialog();
 
             }
             else if (Selection == 6)
             {
-                FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
+                FormFNE FNE = new FormFNE(project, amortizacionServices, depreciationService);
+                FNE.ProfitService = this.profitService;
+                FNE.CostService = this.costService;
+                FNE.InversionService = this.inversionFNEService;
+                FNE.ActivosService = this.activosService;
+                FNE.depreciacionService = this.depreciacionService;
+                FNE.AmorizacionService = this.amortizacionService;
+                FNE.fneService = this.fneService;
                 FNE.ShowDialog();
 
             }
@@ -472,10 +490,12 @@ namespace Economy.Forms
             formGraphInterest.lblTypeIdgv.Visible = true;
             formGraphInterest.cmbTypeIdgv.Visible = true;
             formGraphInterest.pbInfRate.Visible = false;
+
             formGraphInterest.projectServices = this.projectServices;
             formGraphInterest.InterestServices = this.InterestServices;
             formGraphInterest.SerieServices = this.SerieServices;
             formGraphInterest.AnnuityServices = this.AnnuityServices;
+
             formGraphInterest.FormCreateProject = this;
             formGraphInterest.lblPR.Visible = false;
             formGraphInterest.lblDragDrop.Visible = true;
@@ -490,6 +510,37 @@ namespace Economy.Forms
             this.Show();
 
         }
+
+        private void PCFne(object sender, MouseEventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FormFNE fne = new FormFNE(project, amortizacionServices, depreciationService);
+            fne.ProfitService = this.profitService;
+            fne.CostService = this.costService;
+            fne.InversionService = this.inversionFNEService;
+            fne.ActivosService = this.activosService;
+            fne.depreciacionService = this.depreciacionService;
+            fne.AmorizacionService = this.amortizacionService;
+            fne.fneService = this.fneService;
+
+            this.Opacity = 0;
+            this.Hide();
+            fne.ShowDialog();
+            Selection = -1;
+
+            this.FadeIn.Start();
+            projects();
+            this.Show();
+        }
+
         private void PCExcel(object sender, MouseEventArgs e)
         {
             Project project;
@@ -531,6 +582,7 @@ namespace Economy.Forms
                 }
             }
         }
+
         private void CreatePieChart()
         {
 
@@ -648,9 +700,149 @@ namespace Economy.Forms
             this.PC6.LabelNameProject.MouseClick += new MouseEventHandler(PCMouseClick);
         }
 
+        //private void btnCreate_Click(object sender, EventArgs e)
+        //{
+        //    if (txtProjectName.Texts == "")
+        //    {
+        //        MessageBox.Show("Rellene el formulario.");
+        //        return;
+        //    }
+        //    else if (txtProjectName.Texts.Length > 20)
+        //    {
+        //        MessageBox.Show("El nombre del proyecto tiene que tener 20 letras.");
+        //        return;
+        //    }
+        //    try
+        //    {
+        //        Project project = new Project()
+        //        {
+        //            Name = txtProjectName.Texts,
+        //            Creation = DateTime.Now,
+        //            Type = ((TypeProject)Selection).ToString(),
+        //            User = GlobalUser,
+        //            UserId = GlobalUser.Id
+        //        };
+        //        projectServices.Create(project);
+        //        this.Hide();
+        //        if (Selection == 0)
+        //        {
+        //            FormGraphInterest formGraphInterest = new FormGraphInterest(project);
+        //            formGraphInterest.InterestServices = this.InterestServices;
+        //            formGraphInterest.projectServices = this.projectServices;
+        //            formGraphInterest.SerieServices = this.SerieServices;
+        //            formGraphInterest.AnnuityServices = this.AnnuityServices;
+        //            formGraphInterest.FormCreateProject = this;
+        //            formGraphInterest.ShowDialog();
+        //        }
+        //        else if (Selection == 1)
+        //        {
+        //            FormExcel formExcel = new FormExcel(calculateServicesAnnuity, CalculateServicesInterest, CalculateServicesSerie, txtProjectName.Texts);
+        //            formExcel.ShowDialog();
 
-       
-      
+
+        //        }
+        //        else if (Selection == 2)
+        //        {
+
+        //            FmrMenu fmrMenu = new FmrMenu(nominal);
+        //            fmrMenu.FormCreateProject = this;
+        //            fmrMenu.ShowDialog();
+
+        //        }
+        //        else if (Selection == 3)
+        //        {
+        //            Inicio ins = new Inicio(simpleService, compuestoService1, convertService1);
+        //            ins.FormCreateProject = this;
+        //            ins.ShowDialog();
+        //        }
+        //        else if (Selection == 4)
+        //        {
+        //            FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
+        //            fmrCalendarioDePago.ShowDialog();
+        //        }
+        //        else if (Selection == 5)
+        //        {
+        //            FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null, project);
+        //            depreciacion.ShowDialog();
+        //        }
+        //        else if (Selection == 6)
+        //        {
+        //            FormFNE FNE = new FormFNE(project, amortizacionServices, depreciationService);
+        //            FNE.ProfitService = this.profitService;
+        //            FNE.CostService = this.costService;
+        //            FNE.InversionService = this.inversionFNEService;
+        //            FNE.ActivosService = this.activosService;
+        //            FNE.depreciacionService = this.depreciacionService;
+        //            FNE.AmorizacionService = this.amortizacionService;
+        //            FNE.fneService = this.fneService;
+        //            FNE.ShowDialog();
+        //        }
+
+        //        Selection = -1;
+        //        txtProjectName.Visible = false;
+        //        lblLetters.Visible = false;
+        //        lblProjectName.Visible = false;
+        //        btnCreate.Visible = false;
+        //        lblTypeProject.Text = "";
+        //        lblTypeProject.Visible = false;
+        //        projects();
+        //        this.Opacity = 0;
+        //        this.FadeIn.Start();
+        //        CreatePieChart();
+        //        CreateLineChart();
+        //        this.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+        //FmrMenu fmrMenu = new FmrMenu (nominal);
+        //            fmrMenu.FormCreateProject = this;
+        //            fmrMenu.ShowDialog();
+
+        //        }
+        //        else if (Selection == 3)
+        //        {
+        //            Inicio ins = new Inicio(simpleService, compuestoService1, convertService1);
+        //            ins.FormCreateProject = this;
+        //            ins.ShowDialog();
+        //        }
+        //        else if (Selection == 4)
+        //        {
+        //            FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null);
+        //            fmrCalendarioDePago.ShowDialog();
+        //        }
+        //        else if (Selection == 5)
+        //        {
+        //            FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null);
+        //            depreciacion.ShowDialog();
+        //        }
+        //        else if (Selection == 6)
+        //        {
+        //            FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
+        //            FNE.ShowDialog();
+        //        }
+                
+        //        Selection = -1;
+        //        txtProjectName.Visible = false;
+        //        lblLetters.Visible = false;
+        //        lblProjectName.Visible = false;
+        //        btnCreate.Visible = false;
+        //        lblTypeProject.Text = "";
+        //        lblTypeProject.Visible = false;
+        //        projects();
+        //        this.Opacity = 0;
+        //        this.FadeIn.Start();
+        //        CreatePieChart();
+        //        CreateLineChart();
+        //        this.Show();
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void lblName_Click(object sender, EventArgs e)
         {

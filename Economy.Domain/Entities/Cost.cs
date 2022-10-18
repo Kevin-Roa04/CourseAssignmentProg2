@@ -12,8 +12,8 @@ namespace Economy.Domain.Entities
         public decimal ValorInicial { get; set; }
         public short TipoIncremento { get; set; }
         public decimal ValorIncremento { get; set; }
-        public int FneprojectId { get; set; }
+        public int ProjectId { get; set; }
 
-        public virtual Fneproject Fneproject { get; set; }
+        public virtual Project Project { get; set; }
     }
 }

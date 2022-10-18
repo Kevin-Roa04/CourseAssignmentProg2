@@ -30,6 +30,7 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAssets));
@@ -45,8 +46,12 @@ namespace Economy.Forms
             this.total = new System.Windows.Forms.Label();
             this.btnDepreciacion = new System.Windows.Forms.Button();
             this.PbClose = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editarMontoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +92,8 @@ namespace Economy.Forms
             this.dgvAssets.ColumnHeadersHeight = 30;
             this.dgvAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAssets.EnableHeadersVisualStyles = false;
-            this.dgvAssets.Location = new System.Drawing.Point(12, 78);
+            this.dgvAssets.Location = new System.Drawing.Point(24, 63);
+            this.dgvAssets.MaximumSize = new System.Drawing.Size(574, 383);
             this.dgvAssets.Name = "dgvAssets";
             this.dgvAssets.ReadOnly = true;
             this.dgvAssets.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -102,8 +108,9 @@ namespace Economy.Forms
             this.dgvAssets.RowHeadersVisible = false;
             this.dgvAssets.RowTemplate.Height = 25;
             this.dgvAssets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAssets.Size = new System.Drawing.Size(574, 383);
+            this.dgvAssets.Size = new System.Drawing.Size(491, 383);
             this.dgvAssets.TabIndex = 3;
+            this.dgvAssets.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAssets_CellMouseClick);
             // 
             // button1
             // 
@@ -118,7 +125,7 @@ namespace Economy.Forms
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(592, 78);
+            this.label2.Location = new System.Drawing.Point(521, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 15);
             this.label2.TabIndex = 5;
@@ -127,7 +134,7 @@ namespace Economy.Forms
             // notDepreciable
             // 
             this.notDepreciable.AutoSize = true;
-            this.notDepreciable.Location = new System.Drawing.Point(731, 78);
+            this.notDepreciable.Location = new System.Drawing.Point(660, 79);
             this.notDepreciable.Name = "notDepreciable";
             this.notDepreciable.Size = new System.Drawing.Size(17, 15);
             this.notDepreciable.TabIndex = 6;
@@ -136,7 +143,7 @@ namespace Economy.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(609, 111);
+            this.label3.Location = new System.Drawing.Point(538, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 7;
@@ -145,7 +152,7 @@ namespace Economy.Forms
             // Depreciable
             // 
             this.Depreciable.AutoSize = true;
-            this.Depreciable.Location = new System.Drawing.Point(731, 111);
+            this.Depreciable.Location = new System.Drawing.Point(660, 112);
             this.Depreciable.Name = "Depreciable";
             this.Depreciable.Size = new System.Drawing.Size(17, 15);
             this.Depreciable.TabIndex = 8;
@@ -154,7 +161,7 @@ namespace Economy.Forms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(693, 139);
+            this.label4.Location = new System.Drawing.Point(622, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 15);
             this.label4.TabIndex = 9;
@@ -163,7 +170,7 @@ namespace Economy.Forms
             // total
             // 
             this.total.AutoSize = true;
-            this.total.Location = new System.Drawing.Point(731, 139);
+            this.total.Location = new System.Drawing.Point(660, 140);
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(17, 15);
             this.total.TabIndex = 10;
@@ -171,11 +178,11 @@ namespace Economy.Forms
             // 
             // btnDepreciacion
             // 
-            this.btnDepreciacion.Location = new System.Drawing.Point(624, 179);
+            this.btnDepreciacion.Location = new System.Drawing.Point(553, 180);
             this.btnDepreciacion.Name = "btnDepreciacion";
             this.btnDepreciacion.Size = new System.Drawing.Size(138, 39);
             this.btnDepreciacion.TabIndex = 11;
-            this.btnDepreciacion.Text = "Configura la Depreciacion";
+            this.btnDepreciacion.Text = "Configura la Depreciación";
             this.btnDepreciacion.UseVisualStyleBackColor = true;
             this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
             // 
@@ -184,7 +191,7 @@ namespace Economy.Forms
             this.PbClose.BackColor = System.Drawing.Color.Transparent;
             this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
-            this.PbClose.Location = new System.Drawing.Point(775, 12);
+            this.PbClose.Location = new System.Drawing.Point(700, 12);
             this.PbClose.Name = "PbClose";
             this.PbClose.Size = new System.Drawing.Size(13, 13);
             this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -192,11 +199,33 @@ namespace Economy.Forms
             this.PbClose.TabStop = false;
             this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editarMontoToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // editarMontoToolStripMenuItem
+            // 
+            this.editarMontoToolStripMenuItem.Name = "editarMontoToolStripMenuItem";
+            this.editarMontoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarMontoToolStripMenuItem.Text = "Editar Monto";
+            this.editarMontoToolStripMenuItem.Click += new System.EventHandler(this.editarMontoToolStripMenuItem_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
             // FrmAssets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 473);
+            this.ClientSize = new System.Drawing.Size(725, 473);
             this.Controls.Add(this.PbClose);
             this.Controls.Add(this.btnDepreciacion);
             this.Controls.Add(this.total);
@@ -217,6 +246,7 @@ namespace Economy.Forms
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmAssets_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,5 +265,8 @@ namespace Economy.Forms
         private System.Windows.Forms.Label total;
         private System.Windows.Forms.Button btnDepreciacion;
         private System.Windows.Forms.PictureBox PbClose;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem editarMontoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
     }
 }

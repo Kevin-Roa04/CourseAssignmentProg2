@@ -142,7 +142,7 @@
             this.gbData.Size = new System.Drawing.Size(367, 397);
             this.gbData.TabIndex = 14;
             this.gbData.TabStop = false;
-            this.gbData.Text = "Datos";
+            this.gbData.Text = "Información";
             // 
             // btnCreate
             // 
@@ -171,6 +171,11 @@
             this.nudCoeficiente.Name = "nudCoeficiente";
             this.nudCoeficiente.Size = new System.Drawing.Size(191, 21);
             this.nudCoeficiente.TabIndex = 17;
+            this.nudCoeficiente.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.nudCoeficiente.Visible = false;
             // 
             // lblCoeficiente
@@ -350,8 +355,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDepreciacion";
-            this.Opacity = 0D;
-            this.Text = "Depreciacion";
+            this.Text = "Depreciación";
             this.Load += new System.EventHandler(this.Depreciacion_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmDepreciacion_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.nudInitialValue)).EndInit();

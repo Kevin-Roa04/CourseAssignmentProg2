@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,18 +92,28 @@ namespace Economy.Forms
         private ICalculateServices<Interest> CalculateServicesInterest;
         private ICalculateServices<Serie> calculateServicesSerie;
         #endregion
+
         private User User;
         private ISimpleService simpleService;
         private ICompuestoService compuestoService1;
         private IConvertService convertService1;
         private IDepreciationService depreciationService;
         private IAmortizacionServices amortizacionServices;
+        private IProfitService profitService;
+        private ICostService costService;
+        private IInversionFNEService inversionFNEService;
+        private IActivosService activosService;
+        private IDepreciacionService depreciacionService;
+        private IAmorizacionService amorizacionService;
+        private IFNEService FneService;
         public FormLogin(IUsersServices services, IProjectServices project, IInterestServices<Annuity> annuity,
             IInterestServices<Serie> Serie, IInterestServices<Interest> interest,
             ICalculateServices<Annuity> calculateServicesAnnuity,
             ICalculateServices<Interest> calculateServicesInterest, INominalServices nominal,
             ICalculateServices<Serie> calculateServicesSerie, ISimpleService simpleService, ICompuestoService compuestoService,
-            IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices
+            IConvertService convertService, IDepreciationService depreciationService, IAmortizacionServices amortizacionServices,
+            IProfitService profitService, ICostService costService, IInversionFNEService inversionFNEService, IActivosService activosService,
+            IDepreciacionService depreciacionService, IAmorizacionService amorizacionService, IFNEService FneService
             )
         {
             this.InterestServices = interest;
@@ -119,6 +130,13 @@ namespace Economy.Forms
             this.convertService1 = convertService;
             this.depreciationService = depreciationService;
             this.amortizacionServices = amortizacionServices;
+            this.profitService = profitService;
+            this.costService = costService;
+            this.inversionFNEService = inversionFNEService;
+            this.activosService = activosService;
+            this.depreciacionService = depreciacionService;
+            this.amorizacionService = amorizacionService;
+            this.FneService = FneService;
 
             InitializeComponent();
            
@@ -213,6 +231,14 @@ namespace Economy.Forms
                 formCreateProject.convertService1 = this.convertService1;
                 formCreateProject.depreciationService = this.depreciationService;
                 formCreateProject.amortizacionServices = this.amortizacionServices;
+                formCreateProject.profitService = this.profitService;
+                formCreateProject.costService = this.costService;
+                formCreateProject.inversionFNEService = this.inversionFNEService;
+                formCreateProject.activosService = this.activosService;
+                formCreateProject.depreciacionService = this.depreciacionService;
+                formCreateProject.amortizacionService = this.amorizacionService;
+                formCreateProject.fneService = this.FneService;
+
                 formCreateProject.ShowDialog();
 
             }
