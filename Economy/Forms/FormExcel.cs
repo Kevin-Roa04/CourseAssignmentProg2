@@ -181,12 +181,10 @@ namespace Economy.Forms
                 if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value is null)
                 {
                     btnFE.Visible = true;
-                    btnFB.Visible = true;
                 }
                 else
                 {
                     btnFE.Visible = false;
-                    btnFB.Visible = false;
                 }
 
                 if (column == lastColumn)
@@ -240,16 +238,14 @@ namespace Economy.Forms
             {
                 MessageBox.Show("Seleccione una celda vacía", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btnFE.Visible = false;
-                btnFB.Visible = false;
                 return;
             }
             singleton.MinRow = Rows;
             singleton.MinColumn = ColumnsIndex;
             ColumsnFunction = ColumnsIndex;
             RowsFunction = Rows;
-            FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie, 0);
+            FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie);
             formsFX.Show();
-            btnFB.Visible = false;
             btnFE.Visible = false;
             dgvExcel.EditMode = DataGridViewEditMode.EditOnKeystroke;
         }
@@ -586,19 +582,6 @@ namespace Economy.Forms
            // pnBotones.Controls.Remove(p);
         }
 
-        private void btnFB_MouseEnter(object sender, EventArgs e)
-        {
-            Button btn = new Button();
-           // pnBotones.Controls.Add(p);
-            p.BackColor = Color.FromArgb(0, 180, 185);
-            p.Size = new Size(170, 3);
-            p.Location = new Point(btn.Location.X + 605, btn.Location.Y + 35);
-        }
-        private void btnFB_MouseLeave(Object sender, EventArgs e)
-        {
-          //  pnBotones.Controls.Remove(p);
-        }
-
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Guardar(dgvExcel);
@@ -624,26 +607,6 @@ namespace Economy.Forms
                     fileName = ofd.FileName;
             }
             ImportarExcel(fileName);
-        }
-
-        private void btnFB_Click(object sender, EventArgs e)
-        {
-            GetRowAndColumn();
-            if (dgvExcel.Rows[Rows].Cells[ColumnsIndex].Value != null)
-            {
-                MessageBox.Show("Seleccionar una celda vacía", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btnFE.Visible = false;
-                btnFB.Visible = false;
-                return;
-            }
-            singleton.MinRow = Rows;
-            singleton.MinColumn = ColumnsIndex;
-            ColumsnFunction = ColumnsIndex;
-            RowsFunction = Rows;
-            FormFX formsFX = new FormFX(this, calculateServicesAnnuity, CalculateServicesInterest, calculateServicesSerie, 1);
-            formsFX.Show();
-            btnFB.Visible = false;
-            btnFE.Visible = false;
         }
 
         private void PbClose_Click(object sender, EventArgs e)
@@ -713,7 +676,14 @@ namespace Economy.Forms
                         Expression expression = new Expression(cellTextBox.Text.ToString().Substring(1));
                         dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = expression.calculate().
                             ToString();
-                        cadena = dgvExcel.CurrentCell.Value.ToString();
+                        if (dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value.ToString() ==
+                            "NaN")
+                        {
+                            MessageBox.Show("Error en la fórmula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = cadena;
+                            return base.ProcessCmdKey(ref msg, keyData);
+                        }
+                            cadena = dgvExcel.CurrentCell.Value.ToString();
                     }
                 }
                 return base.ProcessCmdKey(ref msg, keyData);

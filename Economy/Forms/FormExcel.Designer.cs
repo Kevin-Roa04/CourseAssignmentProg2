@@ -45,7 +45,6 @@ namespace Economy.Forms
             this.G1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.H1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblName = new System.Windows.Forms.Label();
-            this.btnFB = new Economy.BeatifulComponents.RJButton();
             this.btnFE = new Economy.BeatifulComponents.RJButton();
             this.msOpciones = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -178,29 +177,6 @@ namespace Economy.Forms
             this.lblName.TabIndex = 5;
             this.lblName.Text = "Nombre de la función:";
             // 
-            // btnFB
-            // 
-            this.btnFB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnFB.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnFB.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
-            this.btnFB.BorderRadius = 6;
-            this.btnFB.BorderSize = 0;
-            this.btnFB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFB.FlatAppearance.BorderSize = 0;
-            this.btnFB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFB.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFB.ForeColor = System.Drawing.Color.White;
-            this.btnFB.Location = new System.Drawing.Point(609, 36);
-            this.btnFB.Name = "btnFB";
-            this.btnFB.Size = new System.Drawing.Size(193, 49);
-            this.btnFB.TabIndex = 4;
-            this.btnFB.Text = "Funciones basicas";
-            this.btnFB.TextColor = System.Drawing.Color.White;
-            this.btnFB.UseVisualStyleBackColor = false;
-            this.btnFB.Click += new System.EventHandler(this.btnFB_Click);
-            this.btnFB.MouseEnter += new System.EventHandler(this.btnFB_MouseEnter);
-            this.btnFB.MouseLeave += new System.EventHandler(this.btnFB_MouseLeave);
-            // 
             // btnFE
             // 
             this.btnFE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
@@ -213,7 +189,7 @@ namespace Economy.Forms
             this.btnFE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFE.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFE.ForeColor = System.Drawing.Color.White;
-            this.btnFE.Location = new System.Drawing.Point(356, 36);
+            this.btnFE.Location = new System.Drawing.Point(612, 36);
             this.btnFE.Name = "btnFE";
             this.btnFE.Size = new System.Drawing.Size(207, 49);
             this.btnFE.TabIndex = 3;
@@ -376,7 +352,6 @@ namespace Economy.Forms
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.PbClose);
             this.Controls.Add(this.btnFE);
-            this.Controls.Add(this.btnFB);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -422,7 +397,6 @@ namespace Economy.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private BeatifulComponents.RJButton btnFB;
         private System.Windows.Forms.PictureBox PbClose;
         private BeatifulComponents.EllipseControl ellipseControl1;
         private BeatifulComponents.EllipseControl ellipseControl2;
