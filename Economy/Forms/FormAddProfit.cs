@@ -74,6 +74,7 @@ namespace Economy.Forms
                 ResetValues(); // reseteando el valor de los campos
             }
             BringingDataFromDB = false;
+            SetIngresos();
             this.Close();
         }
 

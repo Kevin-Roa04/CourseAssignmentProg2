@@ -145,6 +145,13 @@ namespace Proto1._0
             if (tmp) // traer datos de la base de datos
             {
                 Depreciacion inv = depreciationService.GetByProjectId(project.Id);
+                if (inv == null)
+                {
+                    this.tmp = false;
+                    this.Close();
+                    return;
+                }
+
                 nudResidualValue.Value = inv.ValorResidual;
                 FNEData.ValorDeRescate = inv.ValorResidual;
                 cmbMethod.SelectedIndex = inv.TipoDepreciacion;
