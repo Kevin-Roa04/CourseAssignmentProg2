@@ -41,6 +41,7 @@ namespace Economy.Infraestructure.Repository
             Depreciacion depreciacion = GetByProjectId(t.ProjectId);
             if (depreciacion == null) return 0;
 
+            depreciacion.ActivoId = t.ActivoId;
             depreciacion.TipoDepreciacion = t.TipoDepreciacion;
             depreciacion.Valor = t.Valor;
             depreciacion.ValorResidual = t.ValorResidual;

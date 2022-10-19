@@ -82,7 +82,7 @@ namespace Economy.Forms
             ProjectClick.Add("RateConversion", null);
             ProjectClick.Add("InterestConversion", null);
             ProjectClick.Add("Amortization", null);
-            ProjectClick.Add("Depreciation", null);
+            ProjectClick.Add("Depreciation", PCDepreciacion);
             ProjectClick.Add("FNE", PCFne);
         }
         private void DictionaryProjectLetter()
@@ -447,6 +447,8 @@ namespace Economy.Forms
             else if (Selection == 5)
             {
                 FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null, project);
+                depreciacion.activosService = this.activosService;
+                depreciacion.depreciationService = this.depreciacionService;
                 depreciacion.ShowDialog();
 
             }
@@ -534,6 +536,32 @@ namespace Economy.Forms
             this.Opacity = 0;
             this.Hide();
             fne.ShowDialog();
+            Selection = -1;
+
+            this.FadeIn.Start();
+            projects();
+            this.Show();
+        }
+
+
+        private void PCDepreciacion(object sender, MouseEventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService,0, null, project);
+            depreciacion.activosService = this.activosService;
+            depreciacion.depreciationService = this.depreciacionService;
+
+            this.Opacity = 0;
+            this.Hide();
+            depreciacion.ShowDialog();
             Selection = -1;
 
             this.FadeIn.Start();

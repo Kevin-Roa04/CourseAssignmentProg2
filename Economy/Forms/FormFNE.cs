@@ -65,6 +65,8 @@ namespace Economy.Forms
         {
             LoadFNETable();
             if (fneService.GetByProjectId(project.Id) != null) BringingDBData();
+            txtTMAR.UpButton();
+            txtTMAR.DownButton();
         }
 
 
@@ -94,10 +96,17 @@ namespace Economy.Forms
 
         private void BringingDBData()
         {
+            //FNE
             BringingDataFromDB = true;
             fne = fneService.GetByProjectId(project.Id);
             txtYears.Value = (decimal)fne.Years;
             txtTMAR.Value = (decimal) fne.Tmar;
+
+            addProfit = new FormAddProfit(project, (int)txtYears.Value, dgvFNE);
+            addCost = new FormAddCosts(project, (int)txtYears.Value, dgvFNE);
+            fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, (int)txtYears.Value, dgvFNE, project);
+            depreciacion = new FrmDepreciacion(depreciationService, (int)txtYears.Value, dgvFNE, project);
+            frmAssets = new FrmAssets(depreciacion, project);
             // profit
             addProfit.profitService = this.ProfitService;
             addProfit.BringingDataFromDB = true;
@@ -129,6 +138,20 @@ namespace Economy.Forms
             if (FNEData.TasaInstitucionFinanciera > 0) pictureBox4.BackColor = Color.LimeGreen;
             else if (FNEData.TasaInstitucionFinanciera == 0) pictureBox4.BackColor = Color.Gray;
 
+            // Boton Click 
+            calculateFNE();
+            calculated = true;
+            if (rbCF.Checked)
+            {
+                rbSF.Checked = true;
+                rbCF.Checked = true;
+            }
+            else
+            {
+                rbCF.Checked = true;
+                rbSF.Checked = true;
+            }
+            VisualizarConclusion.Visible = true;
 
             BringingDataFromDB = false;
 
