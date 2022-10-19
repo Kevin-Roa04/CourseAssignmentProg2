@@ -243,6 +243,7 @@ namespace Proto1._0
         private void datbaseDataNoFNE()
         {
             Depreciacion depreciacion = depreciationService.GetByProjectId(project.Id);
+            if (depreciacion == null) return;
             Activo activo = activosService.GetById((int)depreciacion.ActivoId);
             textBox1.Text = activo.NombreActivo;
             nudInitialValue.Value = depreciacion.Valor;
