@@ -181,7 +181,7 @@ Años
             double x = ((Math.Pow(FirstPart, Divided))-1) * CapitalizationN;
             double minal = x;
             double Nominal = Math.Round(minal, 6);
-            MessageBox.Show(Nominal.ToString());
+            
             double rate = (Nominal / PeriodValues[period]);
             rate = rate * 100;
            
@@ -587,11 +587,13 @@ Años
             lblTI.Visible = true;
             pbInterestInfomation.Visible = true;
             cmbTypeSA.Visible = true;
-
+            cmbCapitalization.Enabled = false;
 
         }
         public void DesactiveForm()
         {
+
+            cmbCapitalization.Enabled = true;
             pbInfTS.Visible = false;
             pbInfRate.Visible = true;
             cmbTime.Visible = true;

@@ -19,6 +19,20 @@ namespace Economy.Forms
 {
     public partial class FormAddCosts : Form
     {
+        #region -> FormShadow
+
+        private const int CS_DropShadow = 0x00020000;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+        #endregion
         public ICostService costService { get; set; }
 
         int years;
