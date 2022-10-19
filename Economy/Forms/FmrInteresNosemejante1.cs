@@ -429,6 +429,13 @@ namespace Economy.Forms
                 lblaños.Visible = true;
                 txtxaños.Visible = true;
                 groupBox1.Visible = true;
+                label4.Visible = true;
+                label5.Visible = true;
+                cmbanual.Visible = false;
+                cmbcuatrimestal.Visible = false;
+                cmbperiodo.Visible = true;
+                cmbsemestral.Visible = false;
+                cmbtrismtral.Visible = false;
 
             }
             else
@@ -442,6 +449,13 @@ namespace Economy.Forms
                     lblaños.Visible = true;
                     txtxaños.Visible = true;
                     groupBox1.Visible = true;
+                    label4.Visible = true;
+                    label5.Visible = true;
+                    cmbanual.Visible = false;
+                    cmbcuatrimestal.Visible = false;
+                    cmbperiodo.Visible = true;
+                    cmbsemestral.Visible = false;
+                    cmbtrismtral.Visible = false;
                 }
                 else
                 {
@@ -454,7 +468,13 @@ namespace Economy.Forms
                         lblfuturo.Visible = true;
                         llbpresente.Visible = true;
                         txtpresente.Visible = true;
-
+                        label4.Visible = false;
+                        label5.Visible = false;
+                        cmbanual.Visible = false;
+                        cmbcuatrimestal.Visible = false;
+                        cmbperiodo.Visible = false;
+                        cmbsemestral.Visible = false;
+                        cmbtrismtral.Visible = false;
                     }
                     else
                     {
