@@ -48,18 +48,13 @@ namespace Economy.Forms
             this.cmbmenu.BackColor = System.Drawing.Color.White;
             this.cmbmenu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
             this.cmbmenu.BorderSize = 1;
-            this.cmbmenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cmbmenu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbmenu.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbmenu.ForeColor = System.Drawing.Color.DimGray;
             this.cmbmenu.IconColor = System.Drawing.Color.Gray;
             this.cmbmenu.Items.AddRange(new object[] {
-            "Semanas",
-            "Mes",
-            "Bimestres",
-            "Trimestres",
-            "Cuatrimestres",
-            "Semestres",
-            "Años"});
+            "Periodo semejante a su interes nominal",
+            "Periodo no semejante a su interes nominal"});
             this.cmbmenu.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbmenu.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbmenu.Location = new System.Drawing.Point(12, 62);
