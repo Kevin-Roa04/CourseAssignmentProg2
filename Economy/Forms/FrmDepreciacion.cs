@@ -1,6 +1,7 @@
 ﻿using Appcore.Interface;
 using Economy.AppCore.Helper;
 using Economy.AppCore.IServices;
+using Economy.AppCore.Services;
 using Economy.Domain.Entities;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
@@ -32,9 +33,11 @@ namespace Proto1._0
         }
         #endregion
         public IDepreciacionService depreciationService { get; set; }
+        public IActivosService activosService { get; set; }
         private Project project;
         public bool flag = false;
         public bool tmp = false;
+        AutoCompleteStringCollection source;
 
         IDepreciationService dep;
         int years;
@@ -44,6 +47,7 @@ namespace Proto1._0
             this.dep = dep;
             this.years = years;
             InitializeComponent();
+            source = new AutoCompleteStringCollection();
             this.project = project;
             if (years > 0) // solo cuoando se ocupa en el FNE
             {
@@ -88,6 +92,16 @@ namespace Proto1._0
                 }
             }
         }
+        private void AutocompleteAssetsData()
+        { // autocopletar el texbox para seleccionar activos
+            foreach (Activo asset in AssetsData.assets)
+            {
+                source.Add(asset.NombreActivo);
+            }
+
+            this.textBox1.AutoCompleteCustomSource = source;
+        }
+
         private void setVR()
         {
             dgvFNE.Rows[8].Cells[years + 1].Value = (decimal)FNEData.ValorDeRescate;
@@ -127,6 +141,8 @@ namespace Proto1._0
         private void Depreciacion_Load(object sender, EventArgs e)
         {
             if (flag == true) this.Close();
+            AssetsData.assets = activosService.GetAll().Where(a => a.Depreciable == true).ToList();
+            AutocompleteAssetsData();
             if (cmbMethod.DataSource == null) cmbMethod.DataSource = Enum.GetValues(typeof(Depreciation));
             //cmbMethod.Items.AddRange(Enum.GetValues(typeof(Depreciation)).Cast<object>().ToArray());
 
@@ -135,14 +151,22 @@ namespace Proto1._0
 
             //if (FNEData.DepreciableAssetsValue == 0) return;
             //colocando valores para hacer la depreciacion
+            cmbMethod.SelectedIndex = 0;
+            FillDgv();
+            if (years == 0)// si es diferente de 0, es parte del FNE
+            {
+                label1.Visible = true;
+                textBox1.Visible = true;
+                datbaseDataNoFNE(); // trayendo datos cuando no pertenece al fne
+                FillDgv();
+                return;
+            }
+
             nudInitialValue.Enabled = false;
             nudInitialValue.Value = FNEData.DepreciableAssetsValue;
             nudYears.Enabled = false;
             nudYears.Value = years;
-            cmbMethod.SelectedIndex = 0;
-            FillDgv();
-            if (years == 0) return; // si es diferente de 0, es parte del FNE
-            if (tmp) // traer datos de la base de datos
+            if (tmp) // traer datos de la base de datos FNE
             {
                 Depreciacion inv = depreciationService.GetByProjectId(project.Id);
                 if (inv == null)
@@ -195,15 +219,15 @@ namespace Proto1._0
                 });
 
             }
-            if(UserAssets.UAssets.Count == 0)// si no hay activos, vr = 0
+            if (UserAssets.UAssets.Count == 0)// si no hay activos, vr = 0
             {
                 depreciationService.Update(new Depreciacion
                 {
 
-                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
-                        Valor = FNEData.Inversion,
-                        ValorResidual = 0,
-                        ProjectId = project.Id,
+                    TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                    Valor = FNEData.Inversion,
+                    ValorResidual = 0,
+                    ProjectId = project.Id,
                 });
                 nudResidualValue.Value = 0;
                 FillDgv();
@@ -214,6 +238,17 @@ namespace Proto1._0
                 setInersionesTotales();
                 setVR();
             }
+        }
+
+        private void datbaseDataNoFNE()
+        {
+            Depreciacion depreciacion = depreciationService.GetByProjectId(project.Id);
+            Activo activo = activosService.GetById((int)depreciacion.ActivoId);
+            textBox1.Text = activo.NombreActivo;
+            nudInitialValue.Value = depreciacion.Valor;
+            nudResidualValue.Value = depreciacion.ValorResidual;
+            nudYears.Value = activo.VidaUtil;
+            cmbMethod.SelectedIndex = depreciacion.TipoDepreciacion;
         }
 
 
@@ -376,13 +411,67 @@ namespace Proto1._0
             if (Validations())
             {
                 FillDgv();
-                if (years == 0) return;
+
+                if (years == 0) // ingresando valores a la base de datos si no pertenece al fne
+                {
+                    Activo activo = activosService.GetByName(textBox1.Text);
+                    if (activo == null)
+                    {
+                        MessageBox.Show("Error, Activo no registrado en la base de datos");
+                        return;
+                    }
+                    if (depreciationService.GetByProjectId(project.Id) == null)
+                    {
+                        depreciationService.Create(new Depreciacion
+                        {
+                            ActivoId = activo.Id,
+                            TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                            Valor = nudInitialValue.Value,
+                            ValorResidual = nudResidualValue.Value,
+                            ProjectId = project.Id,
+                        });
+                    }
+                    else
+                    {
+                        depreciationService.Update(new Depreciacion
+                        {
+                            ActivoId = activo.Id,
+                            TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                            Valor = nudInitialValue.Value,
+                            ValorResidual = nudResidualValue.Value,
+                            ProjectId = project.Id,
+                        });
+                    }
+                    return;
+                }
                 ExtraerData();
                 //colocando valores en la tabla FNE
                 setDepreciation(3);
                 setDepreciation(7);
                 setInersionesTotales();
                 setVR();
+                    //ingresando valores a la base de datos
+                    if (depreciationService.GetByProjectId(project.Id) == null)
+                {
+                    depreciationService.Create(new Depreciacion
+                    {
+                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                        Valor = FNEData.Inversion,
+                        ValorResidual = FNEData.ValorDeRescate,
+                        ProjectId = project.Id,
+                    });
+                }
+                else
+                {
+                    depreciationService.Update(new Depreciacion
+                    {
+                        TipoDepreciacion = (short)cmbMethod.SelectedIndex,
+                        Valor = FNEData.Inversion,
+                        ValorResidual = FNEData.ValorDeRescate,
+                        ProjectId = project.Id,
+                    });
+
+                }
             }
         }
 
@@ -411,6 +500,20 @@ namespace Proto1._0
                 FadeIn.Stop();
             }
             this.Opacity += 0.2;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Activo activo = AssetsData.assets.Where(a => a.NombreActivo == textBox1.Text).FirstOrDefault();
+            if (activo == null) { 
+                nudYears.Value = 0;
+                return;
+            }
+
+            if (textBox1.Text == activo.NombreActivo)
+            {
+                nudYears.Value = activo.VidaUtil;
+            }
         }
     }
 }

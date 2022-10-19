@@ -54,6 +54,7 @@ namespace Economy.Forms
             if (BringingDataFromDB)
             {
                 depreciacion.depreciationService = this.depreciacionService;
+                depreciacion.activosService = this.activosService;
                 depreciacion.tmp = true;
                 depreciacion.ShowDialog();
                 BringingDataFromDB = false;
@@ -100,6 +101,7 @@ namespace Economy.Forms
             dgvAssets.DataSource = UserAssets.DataExtraction();
             //colocar la sumatoria en pantalla
             calculateTotalAssets();
+            depreciacion.activosService = this.activosService;
             depreciacion.flag = true;
             depreciacion.depreciationService = this.depreciacionService;
             depreciacion.ShowDialog();
@@ -140,6 +142,7 @@ namespace Economy.Forms
         {
             //if(FNEData.DepreciableAssetsValue == 0) return;
             depreciacion.depreciationService = this.depreciacionService;
+            depreciacion.activosService = this.activosService;
             depreciacion.ShowDialog();
         }
 

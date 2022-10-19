@@ -39,6 +39,8 @@
             this.lblResidualValue = new System.Windows.Forms.Label();
             this.nudResidualValue = new System.Windows.Forms.NumericUpDown();
             this.gbData = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnCreate = new Economy.BeatifulComponents.RJButton();
             this.nudCoeficiente = new System.Windows.Forms.NumericUpDown();
             this.lblCoeficiente = new System.Windows.Forms.Label();
@@ -80,7 +82,7 @@
             this.lblInitialValue.AutoSize = true;
             this.lblInitialValue.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblInitialValue.ForeColor = System.Drawing.Color.DimGray;
-            this.lblInitialValue.Location = new System.Drawing.Point(10, 40);
+            this.lblInitialValue.Location = new System.Drawing.Point(10, 105);
             this.lblInitialValue.Name = "lblInitialValue";
             this.lblInitialValue.Size = new System.Drawing.Size(71, 18);
             this.lblInitialValue.TabIndex = 6;
@@ -89,7 +91,7 @@
             // nudInitialValue
             // 
             this.nudInitialValue.DecimalPlaces = 2;
-            this.nudInitialValue.Location = new System.Drawing.Point(170, 38);
+            this.nudInitialValue.Location = new System.Drawing.Point(170, 103);
             this.nudInitialValue.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -104,7 +106,7 @@
             this.lblResidualValue.AutoSize = true;
             this.lblResidualValue.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblResidualValue.ForeColor = System.Drawing.Color.DimGray;
-            this.lblResidualValue.Location = new System.Drawing.Point(10, 94);
+            this.lblResidualValue.Location = new System.Drawing.Point(10, 134);
             this.lblResidualValue.Name = "lblResidualValue";
             this.lblResidualValue.Size = new System.Drawing.Size(145, 18);
             this.lblResidualValue.TabIndex = 8;
@@ -113,7 +115,7 @@
             // nudResidualValue
             // 
             this.nudResidualValue.DecimalPlaces = 2;
-            this.nudResidualValue.Location = new System.Drawing.Point(170, 90);
+            this.nudResidualValue.Location = new System.Drawing.Point(170, 130);
             this.nudResidualValue.Maximum = new decimal(new int[] {
             100000000,
             0,
@@ -126,6 +128,8 @@
             // 
             // gbData
             // 
+            this.gbData.Controls.Add(this.textBox1);
+            this.gbData.Controls.Add(this.label1);
             this.gbData.Controls.Add(this.btnCreate);
             this.gbData.Controls.Add(this.nudCoeficiente);
             this.gbData.Controls.Add(this.lblCoeficiente);
@@ -144,6 +148,27 @@
             this.gbData.TabStop = false;
             this.gbData.Text = "Información";
             // 
+            // textBox1
+            // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.Location = new System.Drawing.Point(61, 49);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(250, 21);
+            this.textBox1.TabIndex = 36;
+            this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(90, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 15);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Escriba el nombre del activo a depreciar";
+            this.label1.Visible = false;
+            // 
             // btnCreate
             // 
             this.btnCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
@@ -156,7 +181,7 @@
             this.btnCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreate.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.btnCreate.ForeColor = System.Drawing.Color.White;
-            this.btnCreate.Location = new System.Drawing.Point(94, 327);
+            this.btnCreate.Location = new System.Drawing.Point(90, 243);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(159, 49);
             this.btnCreate.TabIndex = 34;
@@ -167,7 +192,7 @@
             // 
             // nudCoeficiente
             // 
-            this.nudCoeficiente.Location = new System.Drawing.Point(170, 268);
+            this.nudCoeficiente.Location = new System.Drawing.Point(170, 216);
             this.nudCoeficiente.Name = "nudCoeficiente";
             this.nudCoeficiente.Size = new System.Drawing.Size(191, 21);
             this.nudCoeficiente.TabIndex = 17;
@@ -183,7 +208,7 @@
             this.lblCoeficiente.AutoSize = true;
             this.lblCoeficiente.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblCoeficiente.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCoeficiente.Location = new System.Drawing.Point(10, 270);
+            this.lblCoeficiente.Location = new System.Drawing.Point(10, 218);
             this.lblCoeficiente.Name = "lblCoeficiente";
             this.lblCoeficiente.Size = new System.Drawing.Size(72, 18);
             this.lblCoeficiente.TabIndex = 16;
@@ -199,7 +224,7 @@
             "Linea Recta",
             "Suma de Digito Años",
             "Saldo Decreciente"});
-            this.cmbMethod.Location = new System.Drawing.Point(170, 203);
+            this.cmbMethod.Location = new System.Drawing.Point(170, 184);
             this.cmbMethod.Name = "cmbMethod";
             this.cmbMethod.Size = new System.Drawing.Size(191, 26);
             this.cmbMethod.TabIndex = 15;
@@ -210,7 +235,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.DimGray;
-            this.label6.Location = new System.Drawing.Point(10, 206);
+            this.label6.Location = new System.Drawing.Point(10, 187);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(146, 18);
             this.label6.TabIndex = 14;
@@ -218,7 +243,8 @@
             // 
             // nudYears
             // 
-            this.nudYears.Location = new System.Drawing.Point(170, 148);
+            this.nudYears.Enabled = false;
+            this.nudYears.Location = new System.Drawing.Point(170, 157);
             this.nudYears.Name = "nudYears";
             this.nudYears.Size = new System.Drawing.Size(191, 21);
             this.nudYears.TabIndex = 11;
@@ -228,7 +254,7 @@
             this.lblYears.AutoSize = true;
             this.lblYears.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblYears.ForeColor = System.Drawing.Color.DimGray;
-            this.lblYears.Location = new System.Drawing.Point(9, 150);
+            this.lblYears.Location = new System.Drawing.Point(10, 160);
             this.lblYears.Name = "lblYears";
             this.lblYears.Size = new System.Drawing.Size(34, 18);
             this.lblYears.TabIndex = 10;
@@ -394,5 +420,7 @@
         private Economy.BeatifulComponents.EllipseControl ellipseControl2;
         private System.Windows.Forms.PictureBox PbClose;
         private System.Windows.Forms.Timer FadeIn;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
