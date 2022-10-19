@@ -403,10 +403,10 @@ namespace Economy.Forms
 
         private void Clean()
         {
-            txtfuturo.Clear();
-            txtinteres.Clear();
-            txtpresente.Clear();
-            txtxaños.Clear();
+            txtfuturo.Texts ="";
+            txtinteres.Texts ="";
+            txtpresente.Texts = "";
+            txtxaños.Texts = "";
             cmbtrismtral.SelectedIndex = -1;
             cmbcuatrimestal.SelectedIndex = -1;
             cmbperiodo.SelectedIndex = -1;
@@ -592,6 +592,16 @@ namespace Economy.Forms
                     }
                 }
             }
+        }
+
+        private void llbcapital_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label1.Text);
         }
     }
 }

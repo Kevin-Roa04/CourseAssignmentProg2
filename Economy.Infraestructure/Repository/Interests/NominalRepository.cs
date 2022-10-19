@@ -18,10 +18,10 @@ namespace Economy.Infraestructure.Repository.Interests
         public double ConvertEfectiva(double nominal, double M)
         {
             double J = nominal / 100;
-            double x = (Math.Pow(Math.Sqrt(1 + J ), M) -1) * M;
-            //double y = x * 100;
-            //double efectiva = Math.Round(x, 2);
-            return x;
+            double x = (Math.Pow(1 + J, 1 / M));
+            double y = (x - 1) * M; 
+            y = Math.Round(y, 2);
+            return y;
         }
 
         public double ConvertExponencial(double nominal)

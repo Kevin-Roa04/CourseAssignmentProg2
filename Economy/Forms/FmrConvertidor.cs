@@ -28,23 +28,7 @@ namespace InteresPratica
             this.cmbnominal.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
-        private void texnominal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-                if (char.IsLetter(e.KeyChar))
-                {
-                    e.Handled = true;
-                    MessageBox.Show("No se pueden Letras");
-            }
-            else if (
-       e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
-       || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
-            {
-                e.Handled = true;
-                MessageBox.Show("No se acepatan caracteres");
-            }
 
-        }
 
         private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -63,27 +47,9 @@ namespace InteresPratica
 
         }
 
-        private void txtxotranominal_TextChanged(object sender, EventArgs e)
-        {
+       
 
-        }
-
-        private void txtxotranominal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-                MessageBox.Show("No se pueden Letras");
-            }
-            else if (
-           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
-           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
-            {
-                e.Handled = true;
-                MessageBox.Show("No se acepatan caracteres");
-            }
-
-        }
+       
 
         private void txtefectivacontinua_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -250,18 +216,18 @@ namespace InteresPratica
 
         private void btnnominal_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(texnominal.Text))
+            if (string.IsNullOrEmpty(txtnominal.Text))
             {
                 MessageBox.Show("Tienes que rellenar todos los formularios.");
                 return;
             }
-            if (double.Parse(texnominal.Text) <= 0)
+            if (double.Parse(txtnominal.Text) <= 0)
             {
                 MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
                 return;
             }
-            double M = ConvertM();
-            label12.Text = nominalServices.ConvertEfectiva(double.Parse(texnominal.Text), M).ToString();
+            double M = ConvertM2();
+            label12.Text = nominalServices.ConvertEfectiva(double.Parse(txtnominal.Text), M).ToString();
             Clean();
         }
 
@@ -329,13 +295,15 @@ namespace InteresPratica
 
         public void Clean()
         {
-            txtefectiva.Clear();
-            txtefectivacontinua.Clear();
-            txtxotranominal.Clear();
-            texnominal.Clear();
+            txtefectiva.Texts ="";
+            txtefectivacontinua.Texts= "";
+            txtxotranominal.Texts ="";
+            txtnominal.Texts = "";
+
             cmbactual.SelectedIndex = -1;
             cmbdespues.SelectedIndex = -1;
             cmbnominal.SelectedIndex = -1;
+      
         }
 
         private void FmrConvertidor_Load(object sender, EventArgs e)
@@ -346,6 +314,73 @@ namespace InteresPratica
         private void cmbactual_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void texnominal__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtnominal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("No se pueden Letras");
+            }
+            else if (
+          e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+          || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+        }
+
+        private void txtxotranominal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("No se pueden Letras");
+            }
+            else if (
+           e.KeyChar == '+' || e.KeyChar == '¿' || e.KeyChar == '/' || e.KeyChar == '*' || e.KeyChar == '?' || e.KeyChar == '=' || e.KeyChar == ')'
+           || e.KeyChar == '(' || e.KeyChar == '¡' || e.KeyChar == '-' || e.KeyChar == ',')
+            {
+                e.Handled = true;
+                MessageBox.Show("No se acepatan caracteres");
+            }
+        }
+
+        private void cmbTime_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label12.Text);
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label16.Text);
+        }
+
+        private void lblrespuesta_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lblrespuesta.Text);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label2.Text);
         }
     }
 }

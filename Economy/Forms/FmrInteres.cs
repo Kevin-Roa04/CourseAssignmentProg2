@@ -234,10 +234,10 @@ namespace InteresPratica
 
         private void Clean()
         {
-            txtfuturo.Clear();
-            txtinteres.Clear();
-            txtpresente.Clear();
-            txtxaños.Clear();
+            txtfuturo.Texts ="";
+            txtinteres.Texts = "";
+            txtpresente.Texts = "";
+            txtxaños.Texts = "";
             cmbcapital.SelectedIndex =- 1;
         }
 
@@ -298,6 +298,11 @@ namespace InteresPratica
         private void FmrInteres_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label1.Text);
         }
     }
 }
