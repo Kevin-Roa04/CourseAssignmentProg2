@@ -6,8 +6,15 @@
       "version": "5.0.0"
     },
     "additionalProbingPaths": [
+<<<<<<< HEAD
       "C:\\Users\\Cristina\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\Cristina\\.nuget\\packages"
+=======
+      "C:\\Users\\Quezada\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Quezada\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+      "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+>>>>>>> capitalizatinFormGraphInterest
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true

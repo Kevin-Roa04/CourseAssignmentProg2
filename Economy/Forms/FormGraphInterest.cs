@@ -101,12 +101,15 @@ namespace Economy.Forms
         public decimal rate = -1;
         private Project Project;
         public FormCreateProject FormCreateProject;
+        string Capitalization = "";
+        public string Effective = "";
 
         #region -> Interests service
         public IInterestServices<Annuity> AnnuityServices { get; set; }
         public IInterestServices<Serie> SerieServices { get; set; }
         public IInterestServices<Interest> InterestServices { get; set; }
         #endregion
+        
         public FormGraphInterest(Project project)
         {
 
@@ -118,7 +121,102 @@ namespace Economy.Forms
             this.pbDelete.Image = Properties.Resources.dump;
             this.pbDelete.AllowDrop = true;
            
+        }
+        /*
+            Semanal
+            Mensual
+            Bimestral
+            Trimestral
+            Cuatrimestral
+            Semestral
+            Anual
+         */
+        Dictionary<string, int> CapitalizationValues = new Dictionary<string, int>()
+        {
+            {"Semanal",52 },
+            {"Mensual",12 },
+            {"Bimestral", 6},
+            {"Trimestral",4 },
+            {"Cuatrimestal",3 },
+            {"Semestral",2 },
+            {"Anual",1 }
+        };
+        /*
+         * Semanas
+Mes
+Bimestres
+Trimestres
+Cuatrimestres
+Semestres
+Años
+         * 
+         */
+        Dictionary<string, int> PeriodValues = new Dictionary<string, int>()
+        {
+            {"Semanas",52 },
+            {"Mes",12 },
+            {"Bimestres", 6},
+            {"Trimestres",4 },
+            {"Cuatrimestes",3 },
+            {"Semestres",2 },
+            {"Años",1 }
+        };
+        private decimal PeriodEqualToCapitalization()
+        {
+            decimal rate = Convert.ToDecimal(txtRate.Texts.ToString()) / CapitalizationValues[Capitalization];
+            rate = Math.Round(rate, 4);
+            return rate;
+           
 
+        }
+
+        private double PeriodDiferentToCapitalization()
+        {
+
+            double firstRate = Convert.ToDouble(txtRate.Texts.ToString())/100;
+            double CapitalizationM = CapitalizationValues[Capitalization];
+            double FirstPart = 1 + ((1.0 * firstRate) /( 1.0 * CapitalizationM));
+            double CapitalizationN = PeriodValues[period];
+            double Divided = (1.0 * CapitalizationM) / (1.0 * CapitalizationN);
+            double x = ((Math.Pow(FirstPart, Divided))-1) * CapitalizationN;
+            double minal = x;
+            double Nominal = Math.Round(minal, 6);
+            MessageBox.Show(Nominal.ToString());
+            double rate = (Nominal / PeriodValues[period]);
+            rate = rate * 100;
+           
+            return rate;
+        }
+        private decimal PeriodAnualAndCapitalization()
+        {
+            return Convert.ToDecimal(txtRate.Texts);
+        }
+        private decimal PeriodicEffectiveEqualToPeriod()
+        {
+            decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
+            decimal nominal = rate * PeriodValues[period];
+            decimal EffectivaRate=nominal/ PeriodValues[period]; 
+            EffectivaRate=Math.Round(EffectivaRate, 4);
+            EffectivaRate = EffectivaRate * 100;
+            return EffectivaRate;
+        }
+        private decimal PeriodicEffectiveDiferentToPeriod()
+        {
+            decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
+            decimal nominal = rate * PeriodValues[Effective];
+            double firstRate = Convert.ToDouble(nominal);
+            double CapitalizationM = PeriodValues[Effective];
+            double FirstPart = 1 + ((1.0 * firstRate) / (1.0 * CapitalizationM));
+            double CapitalizationN = PeriodValues[period];
+            double Divided = (1.0 * CapitalizationM) / (1.0 * CapitalizationN);
+            double x = ((Math.Pow(FirstPart, Divided)) - 1) * CapitalizationN;
+            double minal = x;
+            double Nominal2 = Math.Round(minal, 6);
+
+            decimal effectiveRate= Convert.ToDecimal(Nominal2 / PeriodValues[period]);
+            effectiveRate = effectiveRate * 100;
+            effectiveRate = Math.Round(effectiveRate, 4);
+            return effectiveRate;
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
@@ -337,6 +435,12 @@ namespace Economy.Forms
                 MessageBox.Show("La duración no puede ser 0 ni 1");
                 return;
             }
+            if (cmbTime.SelectedIndex == -1)
+            {
+                MessageBox.Show("Escriba el período (Mes, años, cuatrimestre, etc)");
+                return;
+            }
+         
             if (TotalPeriod != -1 && rate != -1)
             {
                 if (!ValidateDuration())
@@ -344,9 +448,44 @@ namespace Economy.Forms
                     MessageBox.Show("Existe un flujo de caja que tiene más años que la duración.");
                     return;
                 }
-                TotalPeriod = Convert.ToInt32(txtDuration.Texts);
-                rate = Convert.ToDecimal(txtRate.Texts);
+                if(Effective.Length>0 && cmbCapitalization.SelectedIndex == -1)
+                {
+                    if (Effective != period)
+                    {
+                        rate = PeriodicEffectiveDiferentToPeriod();
+                    }
+                    else if (Effective == period)
+                    {
+                        rate = PeriodicEffectiveEqualToPeriod();
+                    }
 
+                }
+                else if(Effective.Length>0 && cmbCapitalization.SelectedIndex > -1){
+
+                    if (PeriodValues[period] == CapitalizationValues[Capitalization])
+                    {
+                        if (period == "Años" && Capitalization == "Anual")
+                        {
+                            rate = PeriodAnualAndCapitalization();
+                        }
+                        else
+                        {
+                            rate = PeriodEqualToCapitalization();
+                        }
+
+                    }
+                    else if (PeriodValues[period] != CapitalizationValues[Capitalization])
+                    {
+                        rate = Convert.ToDecimal(PeriodDiferentToCapitalization());
+                    }
+                }
+
+                TotalPeriod = Convert.ToInt32(txtDuration.Texts);
+                txtRate.Texts = rate.ToString();
+                Project.Period = ((Period)cmbTime.SelectedIndex).ToString();
+                projectServices.Update(Project);
+                Effective = period;
+                cmbCapitalization.SelectedIndex = -1;
                 UpdateInterests();
                 ClearPanel();
                 graph_Paint(null, null);
@@ -358,10 +497,29 @@ namespace Economy.Forms
             }
             else
             {
+                if (PeriodValues[period] == CapitalizationValues[Capitalization])
+                {
+                        if (period == "Años" && Capitalization=="Anual" )
+                    {
+                        rate = PeriodAnualAndCapitalization();
+                    }
+                    else
+                    {
+                        rate = PeriodEqualToCapitalization();
+                    }
+                       
+                }
+                else if(PeriodValues[period] != CapitalizationValues[Capitalization])
+                {
+                    rate =Convert.ToDecimal(PeriodDiferentToCapitalization());
+                }
+             
                 TotalPeriod = Convert.ToInt32(txtDuration.Texts);
-                rate = Convert.ToDecimal(txtRate.Texts);
+                txtRate.Texts = rate.ToString();
+                Effective = period;
                 Project.Period = ((Period)cmbTime.SelectedIndex).ToString();
                 projectServices.Update(Project);
+                cmbCapitalization.SelectedIndex = -1;
                 ActivateForm();
                 lblValues(0, 0);
                 lblPR.Visible = false;
@@ -1846,6 +2004,23 @@ namespace Economy.Forms
             {
                 pbNext_Click(null, null);
             }
+        }
+      
+        private void cmbCapitalization_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCapitalization.SelectedIndex == -1)
+            {
+                Capitalization = "";
+            }
+            else
+            {
+                Capitalization = cmbCapitalization.SelectedItem.ToString();
+            }
+        }
+        string period = "";
+        private void cmbTime_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            period=cmbTime.SelectedItem.ToString();
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
