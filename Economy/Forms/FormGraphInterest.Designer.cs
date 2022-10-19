@@ -30,11 +30,12 @@ namespace Economy.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGraphInterest));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbInfCapitalization = new System.Windows.Forms.PictureBox();
             this.cmbCapitalization = new Economy.BeatifulComponents.RJComboBox();
             this.lblCapitalization = new System.Windows.Forms.Label();
             this.pbFlowType = new System.Windows.Forms.PictureBox();
@@ -93,8 +94,8 @@ namespace Economy.Forms
             this.lblPR = new System.Windows.Forms.Label();
             this.lblDragDrop = new System.Windows.Forms.Label();
             this.lblSelection = new System.Windows.Forms.Label();
-            this.pbInfCapitalization = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFlowType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInfTS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInfRate)).BeginInit();
@@ -111,7 +112,6 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -161,6 +161,18 @@ namespace Economy.Forms
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
+            // pbInfCapitalization
+            // 
+            this.pbInfCapitalization.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbInfCapitalization.Image = ((System.Drawing.Image)(resources.GetObject("pbInfCapitalization.Image")));
+            this.pbInfCapitalization.Location = new System.Drawing.Point(368, 78);
+            this.pbInfCapitalization.Name = "pbInfCapitalization";
+            this.pbInfCapitalization.Size = new System.Drawing.Size(13, 13);
+            this.pbInfCapitalization.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbInfCapitalization.TabIndex = 60;
+            this.pbInfCapitalization.TabStop = false;
+            this.pbInfCapitalization.WaitOnLoad = true;
+            // 
             // cmbCapitalization
             // 
             this.cmbCapitalization.BackColor = System.Drawing.Color.White;
@@ -171,13 +183,13 @@ namespace Economy.Forms
             this.cmbCapitalization.ForeColor = System.Drawing.Color.DimGray;
             this.cmbCapitalization.IconColor = System.Drawing.Color.Gray;
             this.cmbCapitalization.Items.AddRange(new object[] {
-            "Semanas",
-            "Mes",
-            "Bimestres",
-            "Trimestres",
-            "Cuatrimestres",
-            "Semestres",
-            "Años"});
+            "Semanal",
+            "Mensual",
+            "Bimestral",
+            "Trimestral",
+            "Cuatrimestral",
+            "Semestral",
+            "Anual"});
             this.cmbCapitalization.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbCapitalization.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbCapitalization.Location = new System.Drawing.Point(255, 103);
@@ -186,6 +198,7 @@ namespace Economy.Forms
             this.cmbCapitalization.Size = new System.Drawing.Size(116, 30);
             this.cmbCapitalization.TabIndex = 58;
             this.cmbCapitalization.Texts = "";
+            this.cmbCapitalization.OnSelectedIndexChanged += new System.EventHandler(this.cmbCapitalization_OnSelectedIndexChanged);
             // 
             // lblCapitalization
             // 
@@ -273,6 +286,7 @@ namespace Economy.Forms
             this.cmbTime.Size = new System.Drawing.Size(116, 30);
             this.cmbTime.TabIndex = 54;
             this.cmbTime.Texts = "";
+            this.cmbTime.OnSelectedIndexChanged += new System.EventHandler(this.cmbTime_OnSelectedIndexChanged);
             // 
             // pbChanged
             // 
@@ -1052,18 +1066,6 @@ namespace Economy.Forms
             this.lblSelection.Text = "Seleccione algún tipo de interés";
             this.lblSelection.Visible = false;
             // 
-            // pbInfCapitalization
-            // 
-            this.pbInfCapitalization.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbInfCapitalization.Image = ((System.Drawing.Image)(resources.GetObject("pbInfCapitalization.Image")));
-            this.pbInfCapitalization.Location = new System.Drawing.Point(368, 78);
-            this.pbInfCapitalization.Name = "pbInfCapitalization";
-            this.pbInfCapitalization.Size = new System.Drawing.Size(13, 13);
-            this.pbInfCapitalization.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbInfCapitalization.TabIndex = 60;
-            this.pbInfCapitalization.TabStop = false;
-            this.pbInfCapitalization.WaitOnLoad = true;
-            // 
             // FormGraphInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1096,6 +1098,7 @@ namespace Economy.Forms
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFlowType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInfTS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInfRate)).EndInit();
@@ -1113,7 +1116,6 @@ namespace Economy.Forms
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompare)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInfCapitalization)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

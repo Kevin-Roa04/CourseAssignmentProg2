@@ -342,5 +342,10 @@ namespace InteresPratica
         {
 
         }
+
+        private void cmbactual_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

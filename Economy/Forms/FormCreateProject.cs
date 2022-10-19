@@ -490,7 +490,7 @@ namespace Economy.Forms
             formGraphInterest.lblTypeIdgv.Visible = true;
             formGraphInterest.cmbTypeIdgv.Visible = true;
             formGraphInterest.pbInfRate.Visible = false;
-
+            formGraphInterest.Effective = project.Period;
             formGraphInterest.projectServices = this.projectServices;
             formGraphInterest.InterestServices = this.InterestServices;
             formGraphInterest.SerieServices = this.SerieServices;

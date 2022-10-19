@@ -30,6 +30,10 @@ namespace InteresPratica
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.bntcontefec = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,10 +59,6 @@ namespace InteresPratica
             this.label8 = new System.Windows.Forms.Label();
             this.txtefectiva = new System.Windows.Forms.TextBox();
             this.texnominal = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,42 @@ namespace InteresPratica
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Convertidor de tasas";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(695, 253);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 15);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "%";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(706, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 15);
+            this.label6.TabIndex = 48;
+            this.label6.Text = "%";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(325, 181);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 15);
+            this.label5.TabIndex = 47;
+            this.label5.Text = "%";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(289, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 15);
+            this.label4.TabIndex = 46;
+            this.label4.Text = "%";
             // 
             // bntcontefec
             // 
@@ -248,6 +284,7 @@ namespace InteresPratica
             this.cmbactual.Name = "cmbactual";
             this.cmbactual.Size = new System.Drawing.Size(187, 23);
             this.cmbactual.TabIndex = 31;
+            this.cmbactual.SelectedIndexChanged += new System.EventHandler(this.cmbactual_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -328,42 +365,6 @@ namespace InteresPratica
             this.texnominal.Size = new System.Drawing.Size(60, 23);
             this.texnominal.TabIndex = 13;
             this.texnominal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.texnominal_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(289, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 15);
-            this.label4.TabIndex = 46;
-            this.label4.Text = "%";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(325, 181);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 15);
-            this.label5.TabIndex = 47;
-            this.label5.Text = "%";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(706, 127);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 15);
-            this.label6.TabIndex = 48;
-            this.label6.Text = "%";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(695, 253);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 15);
-            this.label7.TabIndex = 49;
-            this.label7.Text = "%";
             // 
             // FmrConvertidor
             // 
