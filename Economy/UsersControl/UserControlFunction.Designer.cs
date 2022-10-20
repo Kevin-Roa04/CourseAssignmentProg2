@@ -195,6 +195,7 @@ namespace Economy.UsersControl
             this.txbString4.Size = new System.Drawing.Size(100, 26);
             this.txbString4.TabIndex = 20;
             this.txbString4.Click += new System.EventHandler(this.txbString4_Click);
+            this.txbString4.TextChanged += new System.EventHandler(this.txbString4_TextChanged);
             this.txbString4.DoubleClick += new System.EventHandler(this.txbString4_DoubleClick);
             this.txbString4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString4_KeyPress);
             // 
@@ -208,6 +209,7 @@ namespace Economy.UsersControl
             this.txbString2.Size = new System.Drawing.Size(100, 26);
             this.txbString2.TabIndex = 16;
             this.txbString2.Click += new System.EventHandler(this.txbString2_Click);
+            this.txbString2.TextChanged += new System.EventHandler(this.txbString2_TextChanged);
             this.txbString2.DoubleClick += new System.EventHandler(this.txbString2_DoubleClick);
             this.txbString2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbString2_KeyPress);
             // 

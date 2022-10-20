@@ -88,3 +88,21 @@ C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache
 C:\Users\Quezada\Desktop\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.deps.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.runtimeconfig.dev.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.AppCore.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\bin\Debug\net5.0\Economy.Domain.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.AssemblyReference.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.AssemblyInfoInputs.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.AssemblyInfo.cs
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.CoreCompileInputs.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.csproj.CopyComplete
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\ref\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy.AppCore\obj\Debug\net5.0\Economy.AppCore.genruntimeconfig.cache

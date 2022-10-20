@@ -6479,19 +6479,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Cristina\\.nuget\\packages\\": {}
+    "C:\\Users\\Kevin Roa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+      "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
       "projectName": "Economy.AppCore",
-      "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
-      "packagesPath": "C:\\Users\\Cristina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.AppCore\\obj\\",
+      "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.AppCore\\Economy.AppCore.csproj",
+      "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.AppCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6505,8 +6505,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
-              "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
+            "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj": {
+              "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Domain\\Economy.Domain.csproj"
             }
           }
         }
@@ -6555,7 +6555,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   }

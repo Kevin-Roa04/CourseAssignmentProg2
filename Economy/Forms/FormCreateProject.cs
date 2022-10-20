@@ -81,7 +81,7 @@ namespace Economy.Forms
             ProjectClick.Add("Excel", PCExcel);
             ProjectClick.Add("RateConversion", null);
             ProjectClick.Add("InterestConversion", null);
-            ProjectClick.Add("Amortization", null);
+            ProjectClick.Add("Amortization", PCAmortization);
             ProjectClick.Add("Depreciation", PCDepreciacion);
             ProjectClick.Add("FNE", PCFne);
         }
@@ -609,6 +609,28 @@ namespace Economy.Forms
                     MessageBox.Show("Ha ocurrido un problema para cargar el archivo, ha borrado el archivo donde se encontraba la información", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        private void PCAmortization(object sender, EventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FmrCalendarioDePago calendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
+            calendarioDePago.amorizacionService = amortizacionService;
+            this.Opacity = 0;
+            this.Hide();
+            calendarioDePago.ShowDialog();
+            Selection = -1;
+
+            this.FadeIn.Start();
+            projects();
+            this.Show();
         }
 
         private void CreatePieChart()

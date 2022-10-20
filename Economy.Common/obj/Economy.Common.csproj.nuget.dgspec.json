@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {}
+    "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
+    "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
         "projectName": "Economy.Common",
-        "projectPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
-        "packagesPath": "C:\\Users\\Cristina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristina\\OneDrive\\Escritorio\\Nueva carpeta (6)\\CourseAssignmentProg2\\Economy.Common\\obj\\",
+        "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+        "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
         }
       }
     }
