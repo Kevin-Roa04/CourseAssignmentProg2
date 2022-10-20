@@ -102,6 +102,7 @@ namespace Economy.Forms
             this.PC0.NameProject = "";
             this.PC0.Size = new System.Drawing.Size(97, 95);
             this.PC0.TabIndex = 0;
+            this.PC0.Paint += new System.Windows.Forms.PaintEventHandler(this.PC0_Paint);
             // 
             // PC1
             // 
@@ -321,11 +322,11 @@ namespace Economy.Forms
             this.lblNumberDate.BackColor = System.Drawing.Color.Transparent;
             this.lblNumberDate.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNumberDate.ForeColor = System.Drawing.Color.Silver;
-            this.lblNumberDate.Location = new System.Drawing.Point(872, 411);
+            this.lblNumberDate.Location = new System.Drawing.Point(864, 415);
             this.lblNumberDate.Name = "lblNumberDate";
-            this.lblNumberDate.Size = new System.Drawing.Size(116, 18);
+            this.lblNumberDate.Size = new System.Drawing.Size(191, 18);
             this.lblNumberDate.TabIndex = 64;
-            this.lblNumberDate.Text = "Funciones por días:";
+            this.lblNumberDate.Text = "Funciones al cuál entro por días:";
             // 
             // lblClickFunction
             // 

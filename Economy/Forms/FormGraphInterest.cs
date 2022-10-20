@@ -163,8 +163,10 @@ Años
         };
         private decimal PeriodEqualToCapitalization()
         {
+
             decimal rate = Convert.ToDecimal(txtRate.Texts.ToString()) / CapitalizationValues[Capitalization];
             rate = Math.Round(rate, 4);
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Capitalization}","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return rate;
 
 
@@ -183,7 +185,7 @@ Años
 
             double rate = (Nominal / PeriodValues[period]);
             rate = rate * 100;
-
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Capitalization}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return rate;
         }
 
@@ -216,20 +218,9 @@ Años
             decimal effectiveRate = Convert.ToDecimal(Nominal2 / PeriodValues[period]);
             effectiveRate = effectiveRate * 100;
             effectiveRate = Math.Round(effectiveRate, 4);
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Effective}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return effectiveRate;
         }
-       //private decimal EffectiveAnualDiferentToPeriod()
-       // {
-       //     decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
-       //     decimal nominal = rate * PeriodValues[Effective];
-       //     double firstRate = Convert.ToDouble(nominal);
-       //     double CapitalizationM = PeriodValues[Effective];
-       //     double FirstPart = 1 + ((1.0 * firstRate) / (1.0 * CapitalizationM));
-       //     double CapitalizationN = PeriodValues[period];
-       //     double Divided = (1.0 * CapitalizationM) / (1.0 * CapitalizationN);
-       //     double x = ((Math.Pow(FirstPart, Divided)) - 1) * CapitalizationN;
-       //     double Nomimal2
-       // }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
         {
 
@@ -349,7 +340,13 @@ Años
             toolTipImage.SetToolTip(this.btnImage, "Crear imagen del gráfico.");
             ToolTip toolTipCompare = new ToolTip();
             toolTipCompare.SetToolTip(this.pbCompare, "Comparar más flujos de cajas");
+
+            ToolTip toolTipCapitalization = new ToolTip();
+            toolTipCapitalization.ToolTipIcon = ToolTipIcon.Info;
+            toolTipCapitalization.SetToolTip(pbInfCapitalization, "\nCobrar intereses sobre intereses no pagados, lo que equivale a capitalizar los intereses.");
+            toolTipCapitalization.SetToolTip(lblCapitalization, "\nCobrar intereses sobre intereses no pagados, lo que equivale a capitalizar los intereses.");
         }
+
         public int VerificateInterest(object t)
         {
 
