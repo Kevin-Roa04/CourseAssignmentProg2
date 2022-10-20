@@ -109,7 +109,7 @@ namespace Economy.Forms
         public IInterestServices<Serie> SerieServices { get; set; }
         public IInterestServices<Interest> InterestServices { get; set; }
         #endregion
-        
+
         public FormGraphInterest(Project project)
         {
 
@@ -120,7 +120,7 @@ namespace Economy.Forms
             this.graphWidth = graph.Width;
             this.pbDelete.Image = Properties.Resources.dump;
             this.pbDelete.AllowDrop = true;
-           
+
         }
         /*
             Semanal
@@ -137,7 +137,7 @@ namespace Economy.Forms
             {"Mensual",12 },
             {"Bimestral", 6},
             {"Trimestral",4 },
-            {"Cuatrimestal",3 },
+            {"Cuatrimestral",3 },
             {"Semestral",2 },
             {"Anual",1 }
         };
@@ -157,36 +157,38 @@ Años
             {"Mes",12 },
             {"Bimestres", 6},
             {"Trimestres",4 },
-            {"Cuatrimestes",3 },
+            {"Cuatrimestres",3 },
             {"Semestres",2 },
             {"Años",1 }
         };
         private decimal PeriodEqualToCapitalization()
         {
+
             decimal rate = Convert.ToDecimal(txtRate.Texts.ToString()) / CapitalizationValues[Capitalization];
             rate = Math.Round(rate, 4);
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Capitalization}","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return rate;
-           
+
 
         }
-
         private double PeriodDiferentToCapitalization()
         {
 
-            double firstRate = Convert.ToDouble(txtRate.Texts.ToString())/100;
+            double firstRate = Convert.ToDouble(txtRate.Texts.ToString()) / 100;
             double CapitalizationM = CapitalizationValues[Capitalization];
-            double FirstPart = 1 + ((1.0 * firstRate) /( 1.0 * CapitalizationM));
+            double FirstPart = 1 + ((1.0 * firstRate) / (1.0 * CapitalizationM));
             double CapitalizationN = PeriodValues[period];
             double Divided = (1.0 * CapitalizationM) / (1.0 * CapitalizationN);
-            double x = ((Math.Pow(FirstPart, Divided))-1) * CapitalizationN;
+            double x = ((Math.Pow(FirstPart, Divided)) - 1) * CapitalizationN;
             double minal = x;
             double Nominal = Math.Round(minal, 6);
-            
+
             double rate = (Nominal / PeriodValues[period]);
             rate = rate * 100;
-           
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Capitalization}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return rate;
         }
+
         private decimal PeriodAnualAndCapitalization()
         {
             return Convert.ToDecimal(txtRate.Texts);
@@ -195,8 +197,8 @@ Años
         {
             decimal rate = (Convert.ToDecimal(txtRate.Texts) / 100);
             decimal nominal = rate * PeriodValues[period];
-            decimal EffectivaRate=nominal/ PeriodValues[period]; 
-            EffectivaRate=Math.Round(EffectivaRate, 4);
+            decimal EffectivaRate = nominal / PeriodValues[period];
+            EffectivaRate = Math.Round(EffectivaRate, 4);
             EffectivaRate = EffectivaRate * 100;
             return EffectivaRate;
         }
@@ -213,9 +215,10 @@ Años
             double minal = x;
             double Nominal2 = Math.Round(minal, 6);
 
-            decimal effectiveRate= Convert.ToDecimal(Nominal2 / PeriodValues[period]);
+            decimal effectiveRate = Convert.ToDecimal(Nominal2 / PeriodValues[period]);
             effectiveRate = effectiveRate * 100;
             effectiveRate = Math.Round(effectiveRate, 4);
+            MessageBox.Show($"Se ha cambiado la tasa debido a que se necesita una tasa efectiva de {period} y tu colocaste una tasa nominal capitalizable {Effective}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return effectiveRate;
         }
         private void OnTimedEvent(object source, System.Timers.ElapsedEventArgs e)
@@ -323,7 +326,7 @@ Años
             toolTipRate.SetToolTip(this.pbInfRate, "\nSignifica el interés en el cuál trabajaremos todo el proyecto. \n Ejemplo: La tasa de interés del banco.\n");
             ToolTip toolTipSerieType = new ToolTip();
             toolTipSerieType.SetToolTip(this.lblTypeSerie, "\nAritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
-            toolTipSerieType.ToolTipIcon= ToolTipIcon.Info;
+            toolTipSerieType.ToolTipIcon = ToolTipIcon.Info;
             toolTipSerieType.SetToolTip(this.pbInfTS, "\nAritmética: Significa que los pagos se incrementarán o decrementarán en valor monetario. \nGeométrica: Significa que los pagos se incrementarán o decrementarán en términos porcentuales.");
             ToolTip toolTipFlowType = new ToolTip();
             toolTipFlowType.SetToolTip(this.lblFlowType, "\nEntrada: Significa que ese interés le genera un ingreso (Entrada de dinero). \n\nSalida: Significa que ese interés le genera un egreso (Salida de dinero).");
@@ -333,11 +336,17 @@ Años
             toolTipInitial.SetToolTip(this.lblInitial, "Inicio de pago");
             ToolTip toolTipEnd = new ToolTip();
             toolTipInitial.SetToolTip(this.lblEnd, "Final de pago");
-            ToolTip toolTipImage =new ToolTip();
+            ToolTip toolTipImage = new ToolTip();
             toolTipImage.SetToolTip(this.btnImage, "Crear imagen del gráfico.");
             ToolTip toolTipCompare = new ToolTip();
             toolTipCompare.SetToolTip(this.pbCompare, "Comparar más flujos de cajas");
+
+            ToolTip toolTipCapitalization = new ToolTip();
+            toolTipCapitalization.ToolTipIcon = ToolTipIcon.Info;
+            toolTipCapitalization.SetToolTip(pbInfCapitalization, "\nCobrar intereses sobre intereses no pagados, lo que equivale a capitalizar los intereses.");
+            toolTipCapitalization.SetToolTip(lblCapitalization, "\nCobrar intereses sobre intereses no pagados, lo que equivale a capitalizar los intereses.");
         }
+
         public int VerificateInterest(object t)
         {
 
@@ -440,7 +449,7 @@ Años
                 MessageBox.Show("Escriba el período (Mes, años, cuatrimestre, etc)");
                 return;
             }
-         
+
             if (TotalPeriod != -1 && rate != -1)
             {
                 if (!ValidateDuration())
@@ -448,7 +457,7 @@ Años
                     MessageBox.Show("Existe un flujo de caja que tiene más años que la duración.");
                     return;
                 }
-                if(Effective.Length>0 && cmbCapitalization.SelectedIndex == -1)
+                if (Effective.Length > 0 && cmbCapitalization.SelectedIndex == -1)
                 {
                     if (Effective != period)
                     {
@@ -460,7 +469,31 @@ Años
                     }
 
                 }
-                else if(Effective.Length>0 && cmbCapitalization.SelectedIndex > -1){
+
+                if (Effective.Length == 0 && cmbCapitalization.SelectedIndex > -1)
+                {
+                    
+                    if (PeriodValues[period] == CapitalizationValues[Capitalization])
+                    {
+                        if (period == "Años" && Capitalization == "Anual")
+                        {
+                            rate = PeriodAnualAndCapitalization();
+                        }
+                        else
+                        {
+                            rate = PeriodEqualToCapitalization();
+                        }
+
+                    }
+                    else if (PeriodValues[period] != CapitalizationValues[Capitalization])
+                    {
+                        rate = Convert.ToDecimal(PeriodDiferentToCapitalization());
+                    }
+
+                }
+
+                else if (Effective.Length > 0 && cmbCapitalization.SelectedIndex > -1)
+                {
 
                     if (PeriodValues[period] == CapitalizationValues[Capitalization])
                     {
@@ -492,14 +525,13 @@ Años
 
                 lblValues(0, 0);
                 FillDGV();
-
                 ActivateForm();
             }
             else
             {
                 if (PeriodValues[period] == CapitalizationValues[Capitalization])
                 {
-                        if (period == "Años" && Capitalization=="Anual" )
+                    if (period == "Años" && Capitalization == "Anual")
                     {
                         rate = PeriodAnualAndCapitalization();
                     }
@@ -507,13 +539,13 @@ Años
                     {
                         rate = PeriodEqualToCapitalization();
                     }
-                       
+
                 }
-                else if(PeriodValues[period] != CapitalizationValues[Capitalization])
+                else if (PeriodValues[period] != CapitalizationValues[Capitalization])
                 {
-                    rate =Convert.ToDecimal(PeriodDiferentToCapitalization());
+                    rate = Convert.ToDecimal(PeriodDiferentToCapitalization());
                 }
-             
+
                 TotalPeriod = Convert.ToInt32(txtDuration.Texts);
                 txtRate.Texts = rate.ToString();
                 Effective = period;
@@ -1037,7 +1069,7 @@ Años
             if (interests.Count > 0)
             {
 
-         //       DrawPlane(TotalPeriod, graphics);
+                //       DrawPlane(TotalPeriod, graphics);
                 decimal? PresentEntry = 0;
                 decimal? PresentExit = 0;
 
@@ -1964,12 +1996,12 @@ Años
                 {
                     interests.Add(item);
                 }
-             
+
             }
             lblEditMode.Visible = true;
             ClearPanel();
         }
-        
+
 
         private void pbCompare_Click(object sender, EventArgs e)
         {
@@ -2007,22 +2039,27 @@ Años
                 pbNext_Click(null, null);
             }
         }
-      
+
         private void cmbCapitalization_OnSelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (cmbCapitalization.SelectedIndex == -1)
             {
                 Capitalization = "";
             }
             else
             {
+                if (Effective.Length > 0)
+                {
+                    Effective = "";
+                }
                 Capitalization = cmbCapitalization.SelectedItem.ToString();
             }
         }
         string period = "";
         private void cmbTime_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            period=cmbTime.SelectedItem.ToString();
+            period = cmbTime.SelectedItem.ToString();
         }
 
         private void DoNull(Serie serie = null, Annuity annuity = null, Interest interest = null)
