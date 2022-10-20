@@ -5,6 +5,7 @@ using Economy.AppCore.Services;
 using Economy.Domain.Entities;
 using Economy.Domain.Entities.DTO;
 using Economy.Domain.Enums;
+using iTextSharp.text.xml;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -301,11 +302,11 @@ namespace Proto1._0
                     depreciationDTO.Depreciation_Acumulada = depreciationDTO.Depreciation + Math.Round(depreciationDTO.Depreciation_Acumulada, 2);
                     depreciationDTO.Year = i;
                     depreciationDTO.Valor_Libro = Math.Round(depreciationDTO.Valor_Libro, 2) - depreciationDTO.Depreciation;
-                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, depreciationDTO.Depreciation, depreciationDTO.Depreciation_Acumulada,
-                        depreciationDTO.Valor_Libro);
+                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, Math.Round(depreciationDTO.Depreciation, 2), Math.Round(depreciationDTO.Depreciation_Acumulada, 2),
+                        Math.Round(depreciationDTO.Valor_Libro, 2));
                 }
             }
-            else if (cmbMethod.SelectedIndex == 1)
+            else if (cmbMethod.SelectedIndex == 1) // sda
             {
                 for (int i = 0; i <= nudYears.Value; i++)
                 {
@@ -314,13 +315,13 @@ namespace Proto1._0
                         this.DgvDepreciation.Rows.Add(0, 0, 0, depreciationDTO.Valor_Libro);
                         continue;
                     }
-                    depreciationDTO.Depreciation = dep.DepreciationSDA(double.Parse(nudInitialValue.Value.ToString()),
-                    double.Parse(nudResidualValue.Value.ToString()), Int32.Parse(nudYears.Value.ToString()), i);
+                    depreciationDTO.Depreciation = dep.DepreciationSDA((double)nudResidualValue.Value, (double)nudInitialValue.Value, (int)nudYears.Value, i);
+                    //depreciationDTO.Depreciation_Acumulada = depreciationDTO.Depreciation + Math.Round(depreciationDTO.Depreciation_Acumulada, 2);
                     depreciationDTO.Depreciation_Acumulada = depreciationDTO.Depreciation + Math.Round(depreciationDTO.Depreciation_Acumulada, 2);
                     depreciationDTO.Year = i;
                     depreciationDTO.Valor_Libro = Math.Round(depreciationDTO.Valor_Libro, 2) - depreciationDTO.Depreciation;
-                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, depreciationDTO.Depreciation, depreciationDTO.Depreciation_Acumulada,
-                       depreciationDTO.Valor_Libro);
+                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, Math.Round(depreciationDTO.Depreciation, 2), Math.Round(depreciationDTO.Depreciation_Acumulada, 2),
+                       Math.Round(depreciationDTO.Valor_Libro, 2));
                 }
             }
             else if(cmbMethod.SelectedIndex == 2)
@@ -342,8 +343,8 @@ namespace Proto1._0
                     }
                     depreciationDTO.Depreciation_Acumulada = depreciationDTO.Depreciation + Math.Round(depreciationDTO.Depreciation_Acumulada, 2);
                     depreciationDTO.Valor_Libro = Math.Round(depreciationDTO.Valor_Libro, 2) - depreciationDTO.Depreciation;
-                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, depreciationDTO.Depreciation, depreciationDTO.Depreciation_Acumulada,
-                       depreciationDTO.Valor_Libro);
+                    this.DgvDepreciation.Rows.Add(depreciationDTO.Year, Math.Round(depreciationDTO.Depreciation, 2), Math.Round(depreciationDTO.Depreciation_Acumulada, 2),
+                       Math.Round(depreciationDTO.Valor_Libro, 2));
                     
                 }
             }

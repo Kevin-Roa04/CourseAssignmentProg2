@@ -35,7 +35,7 @@ namespace Economy.Infraestructure.Repository.Interests
         {
             AmortizationDTO amortizacion = new AmortizationDTO();
             double y = (double)amotizacion.TasaPrestamo / 100;
-            amortizacion.payment = Math.Round((double)amotizacion.ValorInversion * (y * Math.Pow(1 + y, amotizacion.Plazo)) / (Math.Pow(1 + y, amotizacion.Plazo) - 1));
+            amortizacion.payment = Math.Round((double)amotizacion.ValorInversion * (double)(y * Math.Pow(1 + y, (double)amotizacion.Plazo)) / (double)(Math.Pow(1 + y, (double)amotizacion.Plazo) - 1), 2);
             amortizacion.interest = Math.Round(saldo * y, 2);
             amortizacion.Credit_memo = Math.Round(amortizacion.payment - amortizacion.interest, 2);
             if(amortizacion.Credit_memo > saldo)

@@ -275,12 +275,12 @@ namespace Economy.Forms
                     if (index == 0)
                     {
                         amortizationDTO =  amortizacionServices.Metodo1(amo, saldo);
-                        this.dgvAmortization.Rows.Add(i, amortizationDTO.Credit_memo, amortizationDTO.interest, amortizationDTO.payment, amortizationDTO.outstanding_balance);
+                        this.dgvAmortization.Rows.Add(i, Math.Round(amortizationDTO.Credit_memo, 2), Math.Round(amortizationDTO.interest, 2), Math.Round(amortizationDTO.payment, 2), Math.Round(amortizationDTO.outstanding_balance, 2));
                     }
                     else if (index == 1)
                     {
                         amortizationDTO = amortizacionServices.Metodo2(amo, saldo);
-                        this.dgvAmortization.Rows.Add(i, amortizationDTO.Credit_memo, amortizationDTO.interest, amortizationDTO.payment, amortizationDTO.outstanding_balance);
+                        this.dgvAmortization.Rows.Add(i, Math.Round(amortizationDTO.Credit_memo, 2), Math.Round(amortizationDTO.interest, 2), Math.Round(amortizationDTO.payment, 2), Math.Round(amortizationDTO.outstanding_balance, 2));
                     }
                 }
                 saldo = amortizationDTO.outstanding_balance;

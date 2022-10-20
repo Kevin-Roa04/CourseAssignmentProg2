@@ -40,12 +40,19 @@ namespace Infraestructure.Repository
         public double DepreciationSDA(double Residual, double Value, int years, int period)
         {
             int Sum = 0;
-            for (int i = 1; i <= years; i++)
+            //for (int i = 1; i <= years; i++)
+            //{
+            //    Sum += (i * (i + 1)) / 2;
+            //}
+
+            for(int i = 0; i <= years; i++)
             {
-                Sum = (i * (i + 1)) / 2;
+                Sum += i;
             }
 
-            return Math.Round(((years - period + 1) / Sum) * (Value - Residual), 2);
+            //return Math.Round(((years - period + 1) / Sum) * (Value - Residual), 2);
+            double resul = ((double)(years - period +1) / (double)Sum) * (Value - Residual); //466    233     0
+            return Math.Round(resul, 2);
         }
 
         public double DepreciationDDB(double Residual, double value, int year, int coeficiente)
