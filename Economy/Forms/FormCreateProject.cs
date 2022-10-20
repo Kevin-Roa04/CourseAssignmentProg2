@@ -495,6 +495,7 @@ namespace Economy.Forms
             else if (Selection == 4)
             {
                 FmrCalendarioDePago fmrCalendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
+                fmrCalendarioDePago.amorizacionService = amortizacionService;
                 fmrCalendarioDePago.ShowDialog();
 
             }
