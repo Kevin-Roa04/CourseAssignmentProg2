@@ -15,6 +15,7 @@ namespace Infraestructure.Repository
         {
             double x = (double)(1 + ((i/100) / m));
             decimal I =(decimal) (Math.Pow(x, (double)m))-1;
+            I = I * 100;
             return I;
            
         }
@@ -22,12 +23,16 @@ namespace Infraestructure.Repository
         public decimal ConvertNominalToPeriodicEfective(decimal i, int m)
         {
             decimal Ip = ((i/100) / m);
+            Ip = Math.Round(Ip, 2);
+            Ip=Ip* 100;
             return Ip;
         }
 
         public decimal ConvertPeriodicEfectiveToNominal(decimal i, int m)
         {
             decimal J = ((i/100)*m);
+            J = Math.Round(J, 2);
+            J = J * 100;
             return J;
         }
 

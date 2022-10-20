@@ -409,7 +409,7 @@ namespace Economy.Forms
             int i = -1;
             try
             {
-                i = (int)Convert.ToUInt64((sender as ProjectComponent).Name.Substring(2));
+               i = (int)Convert.ToUInt64((sender as ProjectComponent).Name.Substring(2));
             }
             catch
             {

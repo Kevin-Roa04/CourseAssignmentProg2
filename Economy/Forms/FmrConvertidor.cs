@@ -26,6 +26,10 @@ namespace InteresPratica
             this.cmbactual.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cmbdespues.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cmbnominal.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtnominal1.KeyPress += new KeyPressEventHandler(txtnominal_KeyPress);
+            txtxotranominal.KeyPress += new KeyPressEventHandler(txtxotranominal_KeyPress);
+            txtefectivacontinua.KeyPress += new KeyPressEventHandler(txtefectivacontinua_KeyPress);
+            txtefectiva.KeyPress += new KeyPressEventHandler(txtefectivacontinua_KeyPress);
         }
 
 
@@ -167,7 +171,7 @@ namespace InteresPratica
 
         public double ConvertM2()
         {
-
+            
             if (cmbnominal.SelectedIndex == 0)
             {
                 double M2 = 1;
@@ -214,91 +218,19 @@ namespace InteresPratica
             }
         }
 
-        private void btnnominal_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtnominal.Text))
-            {
-                MessageBox.Show("Tienes que rellenar todos los formularios.");
-                return;
-            }
-            if (double.Parse(txtnominal.Text) <= 0)
-            {
-                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
-                return;
-            }
-            double M = ConvertM2();
-            label12.Text = nominalServices.ConvertEfectiva(double.Parse(txtnominal.Text), M).ToString();
-            Clean();
-        }
 
-        private void btnotratasa_Click(object sender, EventArgs e)
-        {
+     
 
-            if (string.IsNullOrEmpty(txtxotranominal.Text))
-            {
-                MessageBox.Show("Tienes que rellenar todos los formularios.");
-                return;
-            }
-            if (double.Parse(txtxotranominal.Text) <=0)
-            {
-                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
-                return;
-            }
-            double m1 = ConvertM();
-            double m2 = ConvertM1();
-            label16.Text = nominalServices.ConvetNominal(double.Parse(txtxotranominal.Text), m1, m2).ToString();
-            Clean();
-        }
+     
 
-        private void btnefectiva_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtefectiva.Text))
-            {
-                MessageBox.Show("Tienes que rellenar todos los formularios.");
-                return;
-            }
-            if (double.Parse(txtefectiva.Text) <= 0)
-            {
-                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
-                return;
-            }
-            lblrespuesta.Text = nominalServices.ConvertExponencial(double.Parse(txtefectiva.Text)).ToString();
-            if (string.IsNullOrEmpty(txtefectiva.Text))
-            {
-                MessageBox.Show("Tienes que rellenar todos los formularios.");
-                return;
-            }
-            if (double.Parse(txtefectiva.Text) <= 0)
-            {
-                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
-                return;
-                
-            }
-            Clean();
-        }
-
-        private void bntcontefec_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtefectivacontinua.Text))
-            {
-                MessageBox.Show("Tienes que rellenar todos los formularios.");
-                return;
-            }
-            if (double.Parse(txtefectivacontinua.Text) <= 0)
-            {
-                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
-                return;
-            }
-            label2.Text = nominalServices.EfectivaContinua(double.Parse(txtefectivacontinua.Text)).ToString();
-            Clean();
-        }
+    
 
         public void Clean()
         {
             txtefectiva.Texts ="";
             txtefectivacontinua.Texts= "";
             txtxotranominal.Texts ="";
-            txtnominal.Texts = "";
+            txtnominal1.Texts = "";
 
             cmbactual.SelectedIndex = -1;
             cmbdespues.SelectedIndex = -1;
@@ -306,25 +238,7 @@ namespace InteresPratica
       
         }
 
-        private void FmrConvertidor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbactual_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void texnominal__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void txtnominal_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -381,6 +295,111 @@ namespace InteresPratica
         private void label2_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(label2.Text);
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnnominal_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtnominal1.Texts))
+            {
+                MessageBox.Show("Tienes que rellenar todos los formularios.");
+                return;
+            }
+            if (double.Parse(txtnominal1.Texts) <= 0)
+            {
+                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                return;
+            }
+            double M = ConvertM2();
+            label12.Text = Math.Round(nominalServices.ConvertEfectiva(double.Parse(txtnominal1.Texts), M),2).ToString()+"% "+cmbnominal.SelectedItem.ToString();
+            Clean();
+        }
+
+
+        private void btnotratasa_Click_1(object sender, EventArgs e)
+        {
+
+            if (string.IsNullOrEmpty(txtxotranominal.Texts))
+            {
+                MessageBox.Show("Tienes que rellenar todos los formularios.");
+                return;
+            }
+            if (double.Parse(txtxotranominal.Texts) <= 0)
+            {
+                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                return;
+            }
+            double m1 = ConvertM();
+            double m2 = ConvertM1();
+            label16.Text = Math.Round(nominalServices.ConvetNominal(double.Parse(txtxotranominal.Texts), m1, m2),2).ToString()+"% "+cmbdespues.SelectedItem.ToString();
+            Clean();
+        }
+
+        private void btnefectiva_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtefectiva.Texts))
+            {
+                MessageBox.Show("Tienes que rellenar todos los formularios.");
+                return;
+            }
+            if (double.Parse(txtefectiva.Texts) <= 0)
+            {
+                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                return;
+            }
+            lblrespuesta.Text = Math.Round(nominalServices.ConvertExponencial(double.Parse(txtefectiva.Text)),2).ToString()+" %";
+            if (string.IsNullOrEmpty(txtefectiva.Texts))
+            {
+                MessageBox.Show("Tienes que rellenar todos los formularios.");
+                return;
+            }
+            if (double.Parse(txtefectiva.Texts) <= 0)
+            {
+                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                return;
+
+            }
+            Clean();
+        }
+
+        private void bntcontefec_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtefectivacontinua.Texts))
+            {
+                MessageBox.Show("Tienes que rellenar todos los formularios.");
+                return;
+            }
+            if (double.Parse(txtefectivacontinua.Texts) <= 0)
+            {
+                MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
+                return;
+            }
+            label2.Text = Math.Round(nominalServices.EfectivaContinua(double.Parse(txtefectivacontinua.Text)),2).ToString()+"%";
+            Clean();
+        }
+
+        private void pbClipBoardNominal_Click(object sender, EventArgs e)
+        {
+            label12_Click(null, null);
+        }
+
+        private void pbClipBoardNominalCapitalizable_Click(object sender, EventArgs e)
+        {
+            label16_Click(null, null);
+        }
+
+        private void pbClipBoardEfectiva_Click(object sender, EventArgs e)
+        {
+            lblrespuesta_Click(null, null);
+        }
+
+        private void pbClipBoardNominalEfectiva_Click(object sender, EventArgs e)
+        {
+            label2_Click(null, null);
         }
     }
 }

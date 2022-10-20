@@ -1,21 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {}
+    "C:\\Users\\Quezada\\Desktop\\kfassjdf\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
+    "C:\\Users\\Quezada\\Desktop\\kfassjdf\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+        "projectUniqueName": "C:\\Users\\Quezada\\Desktop\\kfassjdf\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
         "projectName": "Economy.Common",
-        "projectPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
-        "packagesPath": "C:\\Users\\Kevin Roa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kevin Roa\\Desktop\\adfun\\CourseAssignmentProg2\\Economy.Common\\obj\\",
+        "projectPath": "C:\\Users\\Quezada\\Desktop\\kfassjdf\\CourseAssignmentProg2\\Economy.Common\\Economy.Common.csproj",
+        "packagesPath": "C:\\Users\\Quezada\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Quezada\\Desktop\\kfassjdf\\CourseAssignmentProg2\\Economy.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Kevin Roa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Quezada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -60,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -29,6 +29,7 @@ namespace InteresPratica
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmrInteres));
             this.label1 = new System.Windows.Forms.Label();
             this.lblinteres = new System.Windows.Forms.Label();
             this.lblfuturo = new System.Windows.Forms.Label();
@@ -38,16 +39,18 @@ namespace InteresPratica
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
-            this.button1 = new Economy.BeatifulComponents.RJButton();
-            this.cmbmostrasr = new Economy.BeatifulComponents.RJComboBox();
-            this.txtfuturo = new Economy.RJTextBox();
             this.txtxaños = new Economy.RJTextBox();
             this.txtinteres = new Economy.RJTextBox();
             this.txtpresente = new Economy.RJTextBox();
             this.cmbcapital = new Economy.BeatifulComponents.RJComboBox();
+            this.txtfuturo = new Economy.RJTextBox();
+            this.button1 = new Economy.BeatifulComponents.RJButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
+            this.cmbmostrasr = new Economy.BeatifulComponents.RJComboBox();
+            this.PbClose = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,6 +66,7 @@ namespace InteresPratica
             // lblinteres
             // 
             this.lblinteres.AutoSize = true;
+            this.lblinteres.ForeColor = System.Drawing.Color.DimGray;
             this.lblinteres.Location = new System.Drawing.Point(57, 158);
             this.lblinteres.Name = "lblinteres";
             this.lblinteres.Size = new System.Drawing.Size(53, 18);
@@ -72,6 +76,7 @@ namespace InteresPratica
             // lblfuturo
             // 
             this.lblfuturo.AutoSize = true;
+            this.lblfuturo.ForeColor = System.Drawing.Color.DimGray;
             this.lblfuturo.Location = new System.Drawing.Point(57, 30);
             this.lblfuturo.Name = "lblfuturo";
             this.lblfuturo.Size = new System.Drawing.Size(46, 18);
@@ -81,6 +86,7 @@ namespace InteresPratica
             // llbpresente
             // 
             this.llbpresente.AutoSize = true;
+            this.llbpresente.ForeColor = System.Drawing.Color.DimGray;
             this.llbpresente.Location = new System.Drawing.Point(47, 77);
             this.llbpresente.Name = "llbpresente";
             this.llbpresente.Size = new System.Drawing.Size(58, 18);
@@ -90,6 +96,7 @@ namespace InteresPratica
             // lblaños
             // 
             this.lblaños.AutoSize = true;
+            this.lblaños.ForeColor = System.Drawing.Color.DimGray;
             this.lblaños.Location = new System.Drawing.Point(57, 235);
             this.lblaños.Name = "lblaños";
             this.lblaños.Size = new System.Drawing.Size(51, 18);
@@ -99,6 +106,7 @@ namespace InteresPratica
             // llbcapital
             // 
             this.llbcapital.AutoSize = true;
+            this.llbcapital.ForeColor = System.Drawing.Color.DimGray;
             this.llbcapital.Location = new System.Drawing.Point(35, 305);
             this.llbcapital.Name = "llbcapital";
             this.llbcapital.Size = new System.Drawing.Size(83, 18);
@@ -108,15 +116,16 @@ namespace InteresPratica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(392, 11);
+            this.label2.Location = new System.Drawing.Point(175, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 18);
+            this.label2.Size = new System.Drawing.Size(119, 18);
             this.label2.TabIndex = 41;
-            this.label2.Text = " ¿ Que Desea Hacer ?";
+            this.label2.Text = " ¿Qué desea hacer?";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
             this.label3.Location = new System.Drawing.Point(67, 364);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 18);
@@ -139,7 +148,7 @@ namespace InteresPratica
             this.groupBox1.Controls.Add(this.llbpresente);
             this.groupBox1.Controls.Add(this.lblaños);
             this.groupBox1.Controls.Add(this.llbcapital);
-            this.groupBox1.Location = new System.Drawing.Point(236, 113);
+            this.groupBox1.Location = new System.Drawing.Point(19, 113);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -147,90 +156,6 @@ namespace InteresPratica
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Calculos";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(273, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(21, 24);
-            this.label4.TabIndex = 50;
-            this.label4.Text = "%";
-            // 
-            // ellipseControl1
-            // 
-            this.ellipseControl1.CornerRadius = 25;
-            this.ellipseControl1.TargetControl = this;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Silver;
-            this.button1.BackgroundColor = System.Drawing.Color.Silver;
-            this.button1.BorderColor = System.Drawing.Color.White;
-            this.button1.BorderRadius = 10;
-            this.button1.BorderSize = 0;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(281, 353);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 40);
-            this.button1.TabIndex = 61;
-            this.button1.Text = "Aceptar";
-            this.button1.TextColor = System.Drawing.Color.Black;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Visible = false;
-            // 
-            // cmbmostrasr
-            // 
-            this.cmbmostrasr.BackColor = System.Drawing.Color.White;
-            this.cmbmostrasr.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.cmbmostrasr.BorderSize = 1;
-            this.cmbmostrasr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cmbmostrasr.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cmbmostrasr.ForeColor = System.Drawing.Color.DimGray;
-            this.cmbmostrasr.IconColor = System.Drawing.Color.Gray;
-            this.cmbmostrasr.Items.AddRange(new object[] {
-            "Semanas",
-            "Mes",
-            "Bimestres",
-            "Trimestres",
-            "Cuatrimestres",
-            "Semestres",
-            "Años"});
-            this.cmbmostrasr.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cmbmostrasr.ListTextColor = System.Drawing.Color.DimGray;
-            this.cmbmostrasr.Location = new System.Drawing.Point(370, 49);
-            this.cmbmostrasr.Name = "cmbmostrasr";
-            this.cmbmostrasr.Padding = new System.Windows.Forms.Padding(1);
-            this.cmbmostrasr.Size = new System.Drawing.Size(169, 30);
-            this.cmbmostrasr.TabIndex = 58;
-            this.cmbmostrasr.Texts = "";
-            // 
-            // txtfuturo
-            // 
-            this.txtfuturo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtfuturo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
-            this.txtfuturo.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
-            this.txtfuturo.BorderRadius = 6;
-            this.txtfuturo.BorderSize = 2;
-            this.txtfuturo.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtfuturo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtfuturo.Location = new System.Drawing.Point(134, 15);
-            this.txtfuturo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtfuturo.Multiline = false;
-            this.txtfuturo.Name = "txtfuturo";
-            this.txtfuturo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txtfuturo.PasswordChar = false;
-            this.txtfuturo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
-            this.txtfuturo.PlaceholderText = "";
-            this.txtfuturo.Size = new System.Drawing.Size(116, 33);
-            this.txtfuturo.TabIndex = 59;
-            this.txtfuturo.Texts = "";
-            this.txtfuturo.UnderlinedStyle = false;
             // 
             // txtxaños
             // 
@@ -307,14 +232,6 @@ namespace InteresPratica
             this.cmbcapital.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cmbcapital.ForeColor = System.Drawing.Color.DimGray;
             this.cmbcapital.IconColor = System.Drawing.Color.Gray;
-            this.cmbcapital.Items.AddRange(new object[] {
-            "Semanas",
-            "Mes",
-            "Bimestres",
-            "Trimestres",
-            "Cuatrimestres",
-            "Semestres",
-            "Años"});
             this.cmbcapital.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cmbcapital.ListTextColor = System.Drawing.Color.DimGray;
             this.cmbcapital.Location = new System.Drawing.Point(125, 293);
@@ -324,23 +241,121 @@ namespace InteresPratica
             this.cmbcapital.TabIndex = 64;
             this.cmbcapital.Texts = "";
             // 
+            // txtfuturo
+            // 
+            this.txtfuturo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtfuturo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.txtfuturo.BorderFocusColor = System.Drawing.Color.DeepSkyBlue;
+            this.txtfuturo.BorderRadius = 6;
+            this.txtfuturo.BorderSize = 2;
+            this.txtfuturo.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtfuturo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtfuturo.Location = new System.Drawing.Point(134, 15);
+            this.txtfuturo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfuturo.Multiline = false;
+            this.txtfuturo.Name = "txtfuturo";
+            this.txtfuturo.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtfuturo.PasswordChar = false;
+            this.txtfuturo.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(164)))), ((int)(((byte)(163)))));
+            this.txtfuturo.PlaceholderText = "";
+            this.txtfuturo.Size = new System.Drawing.Size(116, 33);
+            this.txtfuturo.TabIndex = 59;
+            this.txtfuturo.Texts = "";
+            this.txtfuturo.UnderlinedStyle = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.button1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(179)))), ((int)(((byte)(151)))));
+            this.button1.BorderColor = System.Drawing.Color.White;
+            this.button1.BorderRadius = 10;
+            this.button1.BorderSize = 0;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(281, 353);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 40);
+            this.button1.TabIndex = 61;
+            this.button1.Text = "Aceptar";
+            this.button1.TextColor = System.Drawing.Color.White;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(273, 152);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 18);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "%";
+            // 
+            // ellipseControl1
+            // 
+            this.ellipseControl1.CornerRadius = 10;
+            this.ellipseControl1.TargetControl = this;
+            // 
+            // cmbmostrasr
+            // 
+            this.cmbmostrasr.BackColor = System.Drawing.Color.White;
+            this.cmbmostrasr.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(248)))), ((int)(((byte)(247)))));
+            this.cmbmostrasr.BorderSize = 1;
+            this.cmbmostrasr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cmbmostrasr.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cmbmostrasr.ForeColor = System.Drawing.Color.DimGray;
+            this.cmbmostrasr.IconColor = System.Drawing.Color.Gray;
+            this.cmbmostrasr.Items.AddRange(new object[] {
+            "Futuro",
+            "Presente",
+            "Período"});
+            this.cmbmostrasr.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cmbmostrasr.ListTextColor = System.Drawing.Color.DimGray;
+            this.cmbmostrasr.Location = new System.Drawing.Point(153, 56);
+            this.cmbmostrasr.Name = "cmbmostrasr";
+            this.cmbmostrasr.Padding = new System.Windows.Forms.Padding(1);
+            this.cmbmostrasr.Size = new System.Drawing.Size(169, 30);
+            this.cmbmostrasr.TabIndex = 58;
+            this.cmbmostrasr.Texts = "";
+            this.cmbmostrasr.OnSelectedIndexChanged += new System.EventHandler(this.cmbmostrasr_OnSelectedIndexChanged);
+            // 
+            // PbClose
+            // 
+            this.PbClose.BackColor = System.Drawing.Color.Transparent;
+            this.PbClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PbClose.Image = ((System.Drawing.Image)(resources.GetObject("PbClose.Image")));
+            this.PbClose.Location = new System.Drawing.Point(472, 12);
+            this.PbClose.Name = "PbClose";
+            this.PbClose.Size = new System.Drawing.Size(13, 13);
+            this.PbClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PbClose.TabIndex = 59;
+            this.PbClose.TabStop = false;
+            this.PbClose.Click += new System.EventHandler(this.PbClose_Click);
+            // 
             // FmrInteres
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(990, 601);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(497, 601);
+            this.Controls.Add(this.PbClose);
             this.Controls.Add(this.cmbmostrasr);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FmrInteres";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Interés  Nominal";
             this.Load += new System.EventHandler(this.FmrInteres_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FmrInteres_MouseDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,6 +380,7 @@ namespace InteresPratica
         public Economy.RJTextBox txtinteres;
         public Economy.RJTextBox txtpresente;
         public Economy.BeatifulComponents.RJComboBox cmbcapital;
+        private System.Windows.Forms.PictureBox PbClose;
     }
 }
 

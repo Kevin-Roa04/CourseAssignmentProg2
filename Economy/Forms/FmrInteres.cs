@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,8 +18,21 @@ namespace InteresPratica
     public partial class FmrInteres : Form
     {
         public INominalServices nominalServices ;
-       
-     
+
+        #region -> FormShadow
+
+        private const int CS_DropShadow = 0x00020000;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+        #endregion
         public FmrInteres(INominalServices services)
         {
             
@@ -27,8 +41,12 @@ namespace InteresPratica
             this.nominalServices = services;
             this.cmbmostrasr.DropDownStyle = ComboBoxStyle.DropDownList;
             this.cmbcapital.DropDownStyle = ComboBoxStyle.DropDownList;
-
-
+            txtfuturo.KeyPress+=new KeyPressEventHandler(txtfuturo_KeyPress);
+            txtinteres.KeyPress += new KeyPressEventHandler(txtinteres_KeyPress);
+            txtpresente.KeyPress += new KeyPressEventHandler(txtfuturo_KeyPress);
+            txtxaños.KeyPress += new KeyPressEventHandler(txtinteres_KeyPress);
+            button1.Click += new EventHandler(button1_Click);
+            cmbmostrasr.OnSelectedIndexChanged += new EventHandler(cmbmostrasr_SelectedIndexChanged);
             groupBox1.Visible = false;
         }
 
@@ -91,7 +109,7 @@ namespace InteresPratica
             double m = ConvertM();
             if (cmbmostrasr.SelectedIndex == 0)
             {
-                if (string.IsNullOrEmpty(txtpresente.Text) || string.IsNullOrEmpty(txtinteres.Text) || string.IsNullOrEmpty(txtxaños.Text))
+                if (string.IsNullOrEmpty(txtpresente.Texts) || string.IsNullOrEmpty(txtinteres.Texts) || string.IsNullOrEmpty(txtxaños.Texts))
                 {
                     MessageBox.Show("Tienes que rellenar todos los formularios.");
                     return;
@@ -103,27 +121,27 @@ namespace InteresPratica
                     MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
                     return;
                 }
-                label1.Text = nominalServices.Getfuturo(double.Parse(txtinteres.Text), m, double.Parse(txtpresente.Text), double.Parse(txtxaños.Text)).ToString();
+                label1.Text = nominalServices.Getfuturo(double.Parse(txtinteres.Texts), m, double.Parse(txtpresente.Texts), double.Parse(txtxaños.Texts)).ToString();
             }
             else
             {
                 if(cmbmostrasr.SelectedIndex == 1)
                 {
 
-                    if (string.IsNullOrEmpty(txtfuturo.Text) || string.IsNullOrEmpty(txtinteres.Text) || string.IsNullOrEmpty(txtxaños.Text))
+                    if (string.IsNullOrEmpty(txtfuturo.Texts) || string.IsNullOrEmpty(txtinteres.Texts) || string.IsNullOrEmpty(txtxaños.Texts))
                     {
                         MessageBox.Show("Tienes que rellenar todos los formularios.");
                         return;
                     }
-                    if (double.Parse(txtfuturo.Text) <= 0
-                        || double.Parse(txtinteres.Text) <= 0
-                        || double.Parse(txtxaños.Text) <= 0)
+                    if (double.Parse(txtfuturo.Texts) <= 0
+                        || double.Parse(txtinteres.Texts) <= 0
+                        || double.Parse(txtxaños.Texts) <= 0)
                     {
                         MessageBox.Show("Los Datos No puede ser Negativos  y Tampoco Puden ser cero");
                         return;
                     }
 
-                    label1.Text = nominalServices.GetPresente(double.Parse(txtinteres.Text), m, double.Parse(txtfuturo.Text), double.Parse(txtxaños.Text)).ToString();
+                    label1.Text = nominalServices.GetPresente(double.Parse(txtinteres.Texts), m, double.Parse(txtfuturo.Texts), double.Parse(txtxaños.Texts)).ToString();
                 }
                 else
                 {
@@ -303,6 +321,30 @@ namespace InteresPratica
         private void label1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(label1.Text);
+        }
+
+        private void cmbmostrasr_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        #region -> form movement
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        #endregion
+
+
+        private void FmrInteres_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void PbClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
