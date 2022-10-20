@@ -404,9 +404,9 @@ namespace Economy.Forms
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Seleccione un dato válido para la operación", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -693,7 +693,7 @@ namespace Economy.Forms
                         if (cellTextBox.Text == "NaN")
                         {
                             MessageBox.Show("Error en la fórmula", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            dgvExcel.Rows[dgvExcel.CurrentCell.RowIndex].Cells[dgvExcel.CurrentCell.ColumnIndex].Value = cadena;
+                            cellTextBox.Text = "=" + expression.getExpressionString();
                             return base.ProcessCmdKey(ref msg, keyData);
                         }
                             cadena = dgvExcel.CurrentCell.Value.ToString();

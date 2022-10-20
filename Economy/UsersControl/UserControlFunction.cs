@@ -693,21 +693,15 @@ namespace Economy.UsersControl
                         MessageBox.Show("Debe de ingresar el FNE y la inversión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                     }
+                    if(singleton.Entry[0] >= 0)
+                    {
+                        MessageBox.Show("No se puede realizar el cálculo de la TIR debido a que no se posee una inversión",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
                     Double[] values = new Double[singleton.Entry.Count];
                     for (int i = 0; i < singleton.Entry.Count; i++)
                     {
-                        if (i == 0)
-                        {
-                            if (singleton.Entry[i] < 0)
-                            {
-                                values[i] = singleton.Entry[i];
-                            }
-                            else if (singleton.Entry[i] > 0)
-                            {
-                                values[i] = -(singleton.Entry[i]);
-                            }
-                            continue;
-                        }
                         values[i] = singleton.Entry[i];
                     }
                     try
@@ -1387,7 +1381,8 @@ namespace Economy.UsersControl
                     }
                     if (txbString3.Focused)
                     {
-                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                        txbInfo.Text = "Indica la tasa efectiva en porcentaje (%). El tipo de tasa debe " +
+                            "de coincidir con el tipo de período en el que se realizan los pagos.";
                     }
                     if (txbString4.Focused)
                     {
@@ -1408,7 +1403,8 @@ namespace Economy.UsersControl
                     }
                     if (txbString2.Focused)
                     {
-                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                        txbInfo.Text = "Indica la tasa efectiva en porcentaje (%). El tipo de tasa debe " +
+                            "de coincidir con el tipo de período en el que se realizan los pagos.";
                     }
                     if (txbString3.Focused)
                     {
@@ -1421,7 +1417,7 @@ namespace Economy.UsersControl
                     if (txbString5.Focused)
                     {
                         txbInfo.Text = "Si desea trabajar con una anualidad ordinaria ingrese \"0\", " +
-                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vaccio será 0.";
+                            "anualidad anticipada \"1\" o anualidad diferida \"2\". El valor si deja vacio será 0.";
                     }
                     break;
                 case 6:
@@ -1439,7 +1435,8 @@ namespace Economy.UsersControl
                     }
                     if (txbString3.Focused)
                     {
-                        txbInfo.Text = "Indica la tasa efectiva (anual) del periodo en porcentaje (%).";
+                        txbInfo.Text = "Indica la tasa efectiva en porcentaje (%). El tipo de tasa debe " +
+                            "de coincidir con el tipo de período en el que se realizan los pagos.";
                     }
                     if (txbString4.Focused)
                     {
@@ -1470,11 +1467,12 @@ namespace Economy.UsersControl
                     if (txbString2.Focused)
                     {
                         txbInfo.Text = "Es la cantidad de dinero que se gasta al inicio del proyecto, " +
-                            "para que pueda operarse el proyecto de una manera correcta.";
+                            "para que pueda operarse el proyecto de una manera correcta. Si el valor está en postivo este " +
+                            "automáticamente se convierte a negativo en los cálculos.";
                     }
                     if (txbString3.Focused)
                     {
-                        txbInfo.Text = "Indica la tasa efectiva (anual) del proyecto en porcentaje (%).";
+                        txbInfo.Text = "Indica la tasa efectiva del proyecto en porcentaje (%).";
                     }
                     break;
                 case 9:
@@ -1485,7 +1483,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString2.Focused)
                     {
-                        txbInfo.Text = "Indica la tasa efectiva (anual) del proyecto en porcentaje (%). Si " +
+                        txbInfo.Text = "Indica la tasa efectiva del proyecto en porcentaje (%). Si " +
                             "se deja vacío el valor será de 10%.";
                     }
                     break;
