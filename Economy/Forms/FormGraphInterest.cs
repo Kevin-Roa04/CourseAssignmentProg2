@@ -529,6 +529,23 @@ Años
             }
             else
             {
+                if (Capitalization.Length == 0)
+                {
+                    rate = Convert.ToDecimal(txtRate.Texts);
+
+                    TotalPeriod = Convert.ToInt32(txtDuration.Texts);
+                    txtRate.Texts = rate.ToString();
+                    Effective = period;
+                    Project.Period = ((Period)cmbTime.SelectedIndex).ToString();
+                    projectServices.Update(Project);
+                    cmbCapitalization.SelectedIndex = -1;
+                    ActivateForm();
+                    lblValues(0, 0);
+                    lblPR.Visible = false;
+                    pbChanged.Visible = true;
+                    pbInfRate.Visible = false;
+                    return;
+                }
                 if (PeriodValues[period] == CapitalizationValues[Capitalization])
                 {
                     if (period == "Años" && Capitalization == "Anual")
