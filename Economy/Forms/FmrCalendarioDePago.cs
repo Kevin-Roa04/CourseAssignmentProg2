@@ -19,20 +19,20 @@ namespace Economy.Forms
     public partial class FmrCalendarioDePago : Form
     {
         public IAmorizacionService amorizacionService { get; set; }
-        private Project project;
-
         public IAmortizacionServices amortizacionServices;
+        private Project project;
         int years;
         public bool BringingDataFromDB = false;
         DataGridView dgvFNE;
         public FmrCalendarioDePago(IAmortizacionServices services, int years, DataGridView dgvFNE, Project project)
         {
             InitializeComponent();
-            this.amortizacionServices = services;
+            amortizacionServices = services;
+
             this.cmelegir.DropDownStyle = ComboBoxStyle.DropDownList;
             this.years = years;
             this.dgvFNE = dgvFNE;
-            this.project = project; 
+            this.project = project;
         }
 
 
@@ -99,7 +99,7 @@ namespace Economy.Forms
                 }
                 FillDGV(cmelegir.SelectedIndex);
             }
-            else if(cmelegir.SelectedIndex == -1)
+            else if (cmelegir.SelectedIndex == -1)
             {
                 MessageBox.Show("You must fill the type of amortization", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -126,13 +126,38 @@ namespace Economy.Forms
 
             //extrayendo datos para FNE
             InterestData();
-            if (years == 0) return; // si es diferente de 0 , es parte del FNE
+            if (years == 0)
+            {
+                if (amorizacionService.GetByProjectId(project.Id) == null)
+                {
+                    amorizacionService.Create(new Amortizacion
+                    {
+                        TasaPrestamo = decimal.Parse(txtinters.Text),
+                        ValorInversion = decimal.Parse(txtknversion.Text),
+                        Plazo = int.Parse(txtplazo.Text),
+                        TipoAmortizacion = (short)cmelegir.SelectedIndex,
+                        ProjectId = project.Id
+                    });
+                }
+                else
+                {
+                    amorizacionService.Update(new Amortizacion
+                    {
+                        TasaPrestamo = decimal.Parse(txtinters.Text),
+                        ValorInversion = decimal.Parse(txtknversion.Text),
+                        Plazo = int.Parse(txtplazo.Text),
+                        TipoAmortizacion = (short)cmelegir.SelectedIndex,
+                        ProjectId = project.Id
+                    });
+                }
+                return;
+            }  // si es diferente de 0 , es parte del FNE
             setInterest();
             setPrestamo();
             setAmortizacionDelPrestamo();
             setInersionesTotales();
             SaveTasaInstitucionFinanciera();
-            if(amorizacionService.GetByProjectId(project.Id) == null)
+            if (amorizacionService.GetByProjectId(project.Id) == null)
             {
                 amorizacionService.Create(new Amortizacion
                 {
@@ -203,9 +228,9 @@ namespace Economy.Forms
             FNEData.Prestamo = decimal.Parse(txtknversion.Text);
             List<decimal> interest = new List<decimal>();
             List<decimal> amortization = new List<decimal>();
-            for(int i=0; i<years; i++)
+            for (int i = 0; i < years; i++)
             {
-                interest.Add(decimal.Parse(dgvAmortization.Rows[i+1].Cells[2].Value.ToString()));
+                interest.Add(decimal.Parse(dgvAmortization.Rows[i + 1].Cells[2].Value.ToString()));
                 amortization.Add(decimal.Parse(dgvAmortization.Rows[i + 1].Cells[1].Value.ToString()));
             }
             FNEData.Interest = interest;
@@ -214,11 +239,25 @@ namespace Economy.Forms
 
         private void FmrCalendarioDePago_Load(object sender, EventArgs e)
         {
-            if(years > 2)
+            if (years > 2)
             {
                 txtplazo.Text = years.ToString();
                 txtplazo.Enabled = false;
             }
+            if(years == 0)
+            {
+                Amortizacion amortizacion = amorizacionService.GetByProjectId(project.Id);
+                if (amortizacion == null)
+                {
+                    return;
+                }
+                txtinters.Text = amortizacion.TasaPrestamo.ToString();
+                txtknversion.Text = amortizacion.ValorInversion.ToString();
+                txtplazo.Text = amortizacion.Plazo.ToString();
+                cmelegir.SelectedIndex = amortizacion.TipoAmortizacion;
+                FillDGV(cmelegir.SelectedIndex);
+            }
+            
             if(cmelegir.DataSource == null ) cmelegir.DataSource = Enum.GetValues(typeof(TypeAmortization));
             //cmelegir.SelectedIndex = -1;
             grpocaculos.Visible = true;
@@ -296,6 +335,21 @@ namespace Economy.Forms
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void pbtPrestamo_MouseHover(object sender, EventArgs e)
+        {
+            ttpInfo.SetToolTip(ptbPrestamo, "Se debe de ingresar la cantidad monetaria del préstamo adquirido");
+        }
+
+        private void ptbInteres_MouseHover(object sender, EventArgs e)
+        {
+            ttpInfo.SetToolTip(ptbInteres, "Se debe de ingresar la tasa efectiva (anual) de la amortización");
+        }
+
+        private void ptbPlazo_MouseHover(object sender, EventArgs e)
+        {
+            ttpInfo.SetToolTip(ptbPlazo, "Representa la cantidad de años en que se pagará la amortización");
         }
     }
 }

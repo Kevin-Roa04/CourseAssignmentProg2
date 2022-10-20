@@ -653,6 +653,7 @@ namespace Economy.UsersControl
                         }
                         counter++;
                     }
+                    singleton.Selection = true;
                     bandera = true;
                     FormExcel.Activate();
                     break;
@@ -740,7 +741,9 @@ namespace Economy.UsersControl
                     }
                     singleton.ValueFunction = Math.Round((decimal)Financial.SLN(double.Parse(txbString1.Text), double.Parse(txbString2.Text), double.Parse(txbString3.Text)), 2);
                     singleton.MaxColumn = Int32.Parse(txbString3.Text);
+                    singleton.Selection = true;
                     bandera = true;
+                    singleton.Index = 10;
                     FormExcel.Activate();
                     break;
                 case 11: // Depreciacion Doble Saldo Decreciente
@@ -793,6 +796,8 @@ namespace Economy.UsersControl
                         singleton.ValueFunctionList.Add(piv);
                     }
                     bandera = true;
+                    singleton.Index = 11;
+                    singleton.Selection = true;
                     FormExcel.Activate();
                     break;
                 case 12: // Depreciacion Suma Digito de los Años
@@ -833,6 +838,8 @@ namespace Economy.UsersControl
                         singleton.ValueFunctionList.Add(aux);
                     }
                     bandera = true;
+                    singleton.Index = 12;
+                    singleton.Selection = true;
                     FormExcel.Activate();
                     break;
                 case 13: //TMAR_Mixta
@@ -1384,7 +1391,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString4.Focused)
                     {
-                        txbInfo.Text = "Indica el período en el que se realizo el último pago.";
+                        txbInfo.Text = "Indica el período en el que se realizó el último pago.";
                     }
                     if(txbString5.Focused)
                     {
@@ -1426,7 +1433,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString2.Focused)
                     {
-                        txbInfo.Text = "El gradiente aritmético o el gradiente geometrico representa el incremento " +
+                        txbInfo.Text = "El gradiente aritmético o el gradiente geometrico representa el incremento o decremento " +
                             "de la anualidad durante todo el período de la serie. El gradiente aritmético es una" +
                             "cantidad de dinero constante, mientras que el gradiente geometrico es un porcentaje (%).";
                     }
@@ -1440,7 +1447,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString5.Focused)
                     {
-                        txbInfo.Text = "Si desea trabajar con la serie aritmetica ingrese \"0\" " +
+                        txbInfo.Text = "Si desea trabajar con la serie aritmética ingrese \"0\" " +
                              "o serie geometrica \"1\". El valor si deja vacio será 0.";
                     }
                     break;
@@ -1494,7 +1501,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString3.Focused)
                     {
-                        txbInfo.Text = "Son los años que se depreciará el actvo fijo.";
+                        txbInfo.Text = "Son los años que se depreciará el activo fijo.";
                     }
                     break;
                 case 11:
@@ -1513,7 +1520,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString4.Focused)
                     {
-                        txbInfo.Text = "Indica en que año quiere comenar a depreciar el activo fijo. " +
+                        txbInfo.Text = "Indica en que año quiere comenzar a depreciar el activo fijo. " +
                             "El período debe de ser menor a la vida útil.";
                     }
                     if (txbString5.Focused)
@@ -1537,7 +1544,7 @@ namespace Economy.UsersControl
                     }
                     if (txbString4.Focused)
                     {
-                        txbInfo.Text = "Indica en que año quiere comenar a depreciar el activo fijo. " +
+                        txbInfo.Text = "Indica en que año quiere comenzar a depreciar el activo fijo. " +
                             "El período debe de ser menor a la vida útil.";
                     }
                     break;

@@ -134,3 +134,275 @@ C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.pdb
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
 C:\Users\User\Desktop\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.exe
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\AppSettings.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.dll.config
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.deps.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.runtimeconfig.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.runtimeconfig.dev.json
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Autofac.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Guna.Charts.WinForms.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Humanizer.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\itextsharp.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\MathParser.org-mXparser.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Hosting.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Console.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Debug.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Identity.Client.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Drawing.Common.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Runtime.Caching.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.AccessControl.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.Permissions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Windows.Extensions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Security.AccessControl.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.AppCore.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Common.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Domain.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Infraestructure.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.AppCore.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Domain.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Infraestructure.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Common.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.AssemblyReference.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.ResolveComReference.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.AnnutiesComponents.OrdinaryAnnuity.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ComponentsInterest.GraphInterest.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.EllipseControl.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ProjectComponent.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.RJComboBox.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.RJTextBox.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.FormCreateUser.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.CalculateInt.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.ConclusionFNE.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrCalendarioDePago.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\InteresPratica.FmrConvertidor.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\InteresPratica.FmrInteres.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrInteresNosemejante1.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrMenu.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAddCosts.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAddProfit.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAnalyst.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormCreateProject.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormExcel.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFNE.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFunction.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFX.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormGraphInterest.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormLogin.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormNameProject.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssetAmount.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssets.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.FrmDepreciacion.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmInformation.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.Inicio.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.Prueba.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Properties.Resources.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.UsersControl.UserControlFunction.resources
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.GenerateResource.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.AssemblyInfoInputs.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.AssemblyInfo.cs
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.CoreCompileInputs.cache
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.CopyComplete
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.pdb
+C:\Users\Kevin Roa\Desktop\adfun\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.exe
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\AppSettings.json
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.dll.config
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.deps.json
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.runtimeconfig.json
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.runtimeconfig.dev.json
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Autofac.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\BouncyCastle.Crypto.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Guna.Charts.WinForms.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Humanizer.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\itextsharp.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\MathParser.org-mXparser.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Hosting.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Console.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.Debug.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Identity.Client.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Newtonsoft.Json.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Drawing.Common.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Runtime.Caching.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.AccessControl.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Security.Permissions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\System.Windows.Extensions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Security.AccessControl.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.1\System.Windows.Extensions.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.AppCore.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Common.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Domain.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Infraestructure.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.AppCore.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Domain.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Infraestructure.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\bin\Debug\net5.0-windows\Economy.Common.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.AssemblyReference.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.ResolveComReference.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.AnnutiesComponents.OrdinaryAnnuity.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ComponentsInterest.GraphInterest.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.EllipseControl.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.ProjectComponent.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.BeatifulComponents.RJComboBox.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.RJTextBox.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.FormCreateUser.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.CalculateInt.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.ConclusionFNE.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrCalendarioDePago.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\InteresPratica.FmrConvertidor.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\InteresPratica.FmrInteres.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrInteresNosemejante1.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FmrMenu.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAddCosts.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAddProfit.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormAnalyst.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormCreateProject.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormExcel.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFNE.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFunction.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormFX.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormGraphInterest.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormLogin.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FormNameProject.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssetAmount.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmAssets.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.FrmDepreciacion.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.FrmInformation.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Proto1._0.Inicio.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Forms.Prueba.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.Properties.Resources.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.UsersControl.UserControlFunction.resources
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.GenerateResource.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.AssemblyInfoInputs.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.AssemblyInfo.cs
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.CoreCompileInputs.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.csproj.CopyComplete
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\refint\Economy.dll
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.pdb
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\Economy.genruntimeconfig.cache
+C:\Users\Quezada\Desktop\kfassjdf\CourseAssignmentProg2\Economy\obj\Debug\net5.0-windows\ref\Economy.dll

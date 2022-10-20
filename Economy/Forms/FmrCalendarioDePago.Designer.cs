@@ -29,9 +29,10 @@ namespace Economy.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmrCalendarioDePago));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FmrCalendarioDePago));
             this.cmelegir = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,10 @@ namespace Economy.Forms
             this.txtplazo = new System.Windows.Forms.TextBox();
             this.txtinters = new System.Windows.Forms.TextBox();
             this.grpocaculos = new System.Windows.Forms.GroupBox();
+            this.ptbPlazo = new System.Windows.Forms.PictureBox();
+            this.ptbInteres = new System.Windows.Forms.PictureBox();
+            this.ptbPrestamo = new System.Windows.Forms.PictureBox();
+            this.lblPercent = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.dgvAmortization = new System.Windows.Forms.DataGridView();
             this.Años = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +56,11 @@ namespace Economy.Forms
             this.PbClose = new System.Windows.Forms.PictureBox();
             this.ellipseControl1 = new Economy.BeatifulComponents.EllipseControl();
             this.ellipseControl2 = new Economy.BeatifulComponents.EllipseControl();
+            this.ttpInfo = new System.Windows.Forms.ToolTip(this.components);
             this.grpocaculos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPlazo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbInteres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPrestamo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).BeginInit();
             this.SuspendLayout();
@@ -80,17 +89,17 @@ namespace Economy.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(33, 167);
+            this.label2.Location = new System.Drawing.Point(20, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 18);
+            this.label2.Size = new System.Drawing.Size(51, 18);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Interés %";
+            this.label2.Text = "Interés ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(33, 215);
+            this.label3.Location = new System.Drawing.Point(20, 203);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 18);
             this.label3.TabIndex = 3;
@@ -100,7 +109,7 @@ namespace Economy.Forms
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(33, 124);
+            this.label4.Location = new System.Drawing.Point(20, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 18);
             this.label4.TabIndex = 4;
@@ -108,27 +117,31 @@ namespace Economy.Forms
             // 
             // txtknversion
             // 
-            this.txtknversion.Location = new System.Drawing.Point(137, 121);
+            this.txtknversion.Location = new System.Drawing.Point(112, 122);
             this.txtknversion.Name = "txtknversion";
             this.txtknversion.Size = new System.Drawing.Size(126, 23);
             this.txtknversion.TabIndex = 5;
             // 
             // txtplazo
             // 
-            this.txtplazo.Location = new System.Drawing.Point(137, 212);
+            this.txtplazo.Location = new System.Drawing.Point(112, 201);
             this.txtplazo.Name = "txtplazo";
             this.txtplazo.Size = new System.Drawing.Size(126, 23);
             this.txtplazo.TabIndex = 7;
             // 
             // txtinters
             // 
-            this.txtinters.Location = new System.Drawing.Point(137, 164);
+            this.txtinters.Location = new System.Drawing.Point(112, 162);
             this.txtinters.Name = "txtinters";
             this.txtinters.Size = new System.Drawing.Size(126, 23);
             this.txtinters.TabIndex = 8;
             // 
             // grpocaculos
             // 
+            this.grpocaculos.Controls.Add(this.ptbPlazo);
+            this.grpocaculos.Controls.Add(this.ptbInteres);
+            this.grpocaculos.Controls.Add(this.ptbPrestamo);
+            this.grpocaculos.Controls.Add(this.lblPercent);
             this.grpocaculos.Controls.Add(this.label4);
             this.grpocaculos.Controls.Add(this.btnAceptar);
             this.grpocaculos.Controls.Add(this.label1);
@@ -144,6 +157,54 @@ namespace Economy.Forms
             this.grpocaculos.TabIndex = 10;
             this.grpocaculos.TabStop = false;
             this.grpocaculos.Text = "Propiedades del proyecto";
+            // 
+            // ptbPlazo
+            // 
+            this.ptbPlazo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptbPlazo.Image = ((System.Drawing.Image)(resources.GetObject("ptbPlazo.Image")));
+            this.ptbPlazo.Location = new System.Drawing.Point(84, 208);
+            this.ptbPlazo.Name = "ptbPlazo";
+            this.ptbPlazo.Size = new System.Drawing.Size(13, 13);
+            this.ptbPlazo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbPlazo.TabIndex = 58;
+            this.ptbPlazo.TabStop = false;
+            this.ptbPlazo.WaitOnLoad = true;
+            this.ptbPlazo.MouseHover += new System.EventHandler(this.ptbPlazo_MouseHover);
+            // 
+            // ptbInteres
+            // 
+            this.ptbInteres.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptbInteres.Image = ((System.Drawing.Image)(resources.GetObject("ptbInteres.Image")));
+            this.ptbInteres.Location = new System.Drawing.Point(84, 169);
+            this.ptbInteres.Name = "ptbInteres";
+            this.ptbInteres.Size = new System.Drawing.Size(13, 13);
+            this.ptbInteres.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbInteres.TabIndex = 57;
+            this.ptbInteres.TabStop = false;
+            this.ptbInteres.WaitOnLoad = true;
+            this.ptbInteres.MouseHover += new System.EventHandler(this.ptbInteres_MouseHover);
+            // 
+            // ptbPrestamo
+            // 
+            this.ptbPrestamo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ptbPrestamo.Image = ((System.Drawing.Image)(resources.GetObject("ptbPrestamo.Image")));
+            this.ptbPrestamo.Location = new System.Drawing.Point(84, 129);
+            this.ptbPrestamo.Name = "ptbPrestamo";
+            this.ptbPrestamo.Size = new System.Drawing.Size(13, 13);
+            this.ptbPrestamo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbPrestamo.TabIndex = 56;
+            this.ptbPrestamo.TabStop = false;
+            this.ptbPrestamo.WaitOnLoad = true;
+            this.ptbPrestamo.MouseHover += new System.EventHandler(this.pbtPrestamo_MouseHover);
+            // 
+            // lblPercent
+            // 
+            this.lblPercent.AutoSize = true;
+            this.lblPercent.Location = new System.Drawing.Point(244, 165);
+            this.lblPercent.Name = "lblPercent";
+            this.lblPercent.Size = new System.Drawing.Size(17, 15);
+            this.lblPercent.TabIndex = 12;
+            this.lblPercent.Text = "%";
             // 
             // btnAceptar
             // 
@@ -272,6 +333,9 @@ namespace Economy.Forms
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FmrCalendarioDePago_MouseDown);
             this.grpocaculos.ResumeLayout(false);
             this.grpocaculos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPlazo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbInteres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbPrestamo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAmortization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PbClose)).EndInit();
             this.ResumeLayout(false);
@@ -299,5 +363,10 @@ namespace Economy.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Outstanding_Balance;
         private BeatifulComponents.EllipseControl ellipseControl1;
         private BeatifulComponents.EllipseControl ellipseControl2;
+        private System.Windows.Forms.Label lblPercent;
+        private System.Windows.Forms.ToolTip ttpInfo;
+        public System.Windows.Forms.PictureBox ptbPlazo;
+        public System.Windows.Forms.PictureBox ptbInteres;
+        public System.Windows.Forms.PictureBox ptbPrestamo;
     }
 }

@@ -81,7 +81,7 @@ namespace Economy.Forms
             ProjectClick.Add("Excel", PCExcel);
             ProjectClick.Add("RateConversion", null);
             ProjectClick.Add("InterestConversion", null);
-            ProjectClick.Add("Amortization", null);
+            ProjectClick.Add("Amortization", PCAmortization);
             ProjectClick.Add("Depreciation", PCDepreciacion);
             ProjectClick.Add("FNE", PCFne);
         }
@@ -117,7 +117,7 @@ namespace Economy.Forms
             ProjectColor.Add("FNE", Color.FromArgb(125, 157, 156));
         }
 
-     
+
         #region -> form movement
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -159,121 +159,127 @@ namespace Economy.Forms
             {
                 foreach (Project project in projectServices.GetProjectByUser(GlobalUser.Id))
                 {
-
-                    ProjectComponent projectComponent = new ProjectComponent()
+                    if (project.Type != "RateConversion")
                     {
-                        NameProject = project.Name,
-                        Description = ProjectDescription[project.Type],
-                        Letter = ProjectLetter[project.Type],
-                        BackColor = ProjectColor[project.Type],
-                        BorderRadius = 16,
-
-                        Tag = project.Id,
-
-                    };
-                    if (project.Type == "FNE")
-                    {
-                        projectComponent.FontLetter = 23;
-                        projectComponent.FontDescription = 10;
-                    }
-                    else
-                    {
-                        projectComponent.FontLetter = 28;
-                        projectComponent.FontDescription = 9;
-                    }
-                    projectComponent.Size = new Size(120, 120);
-
-                    projectComponent.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelDescription.Tag = project.Id;
-                    projectComponent.LabelLetter.Tag = project.Id;
-                    projectComponent.LabelNameProject.Tag = project.Id;
-                    projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
-
-                    if (project.Type.Equals("Excel") && directory.Exists)
-                    {
-                        if (files.Length == 0)
+                        ProjectComponent projectComponent = new ProjectComponent()
                         {
-                            projectServices.Delete(project);
-                            continue;
+                            NameProject = project.Name,
+                            Description = ProjectDescription[project.Type],
+                            Letter = ProjectLetter[project.Type],
+                            BackColor = ProjectColor[project.Type],
+                            BorderRadius = 16,
+
+                            Tag = project.Id,
+
+                        };
+                        if (project.Type == "FNE")
+                        {
+                            projectComponent.FontLetter = 23;
+                            projectComponent.FontDescription = 10;
                         }
-                        for (int i = 0; i < files.Length; i++)
+                        else
                         {
-                            if (files[i].Name == project.Name + ".xls")
-                            {
-                                flpProjects.Controls.Add(projectComponent);
-                                break;
-                            }
-                            else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                            projectComponent.FontLetter = 28;
+                            projectComponent.FontDescription = 9;
+                        }
+                        projectComponent.Size = new Size(120, 120);
+
+                        projectComponent.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelDescription.Tag = project.Id;
+                        projectComponent.LabelLetter.Tag = project.Id;
+                        projectComponent.LabelNameProject.Tag = project.Id;
+                        projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
+
+                        if (project.Type.Equals("Excel") && directory.Exists)
+                        {
+                            if (files.Length == 0)
                             {
                                 projectServices.Delete(project);
+                                continue;
                             }
+                            for (int i = 0; i < files.Length; i++)
+                            {
+                                if (files[i].Name == project.Name + ".xls")
+                                {
+                                    flpProjects.Controls.Add(projectComponent);
+                                    break;
+                                }
+                                else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                                {
+                                    projectServices.Delete(project);
+                                }
+                            }
+                            continue;
                         }
-                        continue;
+                        flpProjects.Controls.Add(projectComponent);
                     }
-                    flpProjects.Controls.Add(projectComponent);
                 }
             }
             else
             {
                 TypeProject type = ((TypeProject)cmbFunctionType.SelectedIndex);
-                foreach (Project project in projectServices.GetProjectByUser(GlobalUser.Id).Where(x=>x.Type==((TypeProject)cmbFunctionType.SelectedIndex-1).ToString()))
+                foreach (Project project in projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == ((TypeProject)cmbFunctionType.SelectedIndex - 1).ToString()))
                 {
 
-                    ProjectComponent projectComponent = new ProjectComponent()
+                    if (project.Type != "RateConversion")
                     {
-                        NameProject = project.Name,
-                        Description = ProjectDescription[project.Type],
-                        Letter = ProjectLetter[project.Type],
-                        BackColor = ProjectColor[project.Type],
-                        BorderRadius = 16,
-
-                        Tag = project.Id,
-
-                    };
-                    if (project.Type == "FNE")
-                    {
-                        projectComponent.FontLetter = 23;
-                        projectComponent.FontDescription = 10;
-                    }
-                    else
-                    {
-                        projectComponent.FontLetter = 28;
-                        projectComponent.FontDescription = 9;
-                    }
-                    projectComponent.Size = new Size(120, 120);
-
-                    projectComponent.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelDescription.Tag = project.Id;
-                    projectComponent.LabelLetter.Tag = project.Id;
-                    projectComponent.LabelNameProject.Tag = project.Id;
-                    projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
-                    projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
-
-                    if (project.Type.Equals("Excel") && directory.Exists)
-                    {
-                        if (files.Length == 0)
+                        ProjectComponent projectComponent = new ProjectComponent()
                         {
-                            projectServices.Delete(project);
-                            continue;
+                            NameProject = project.Name,
+                            Description = ProjectDescription[project.Type],
+                            Letter = ProjectLetter[project.Type],
+                            BackColor = ProjectColor[project.Type],
+                            BorderRadius = 16,
+
+                            Tag = project.Id,
+
+                        };
+                        if (project.Type == "FNE")
+                        {
+                            projectComponent.FontLetter = 23;
+                            projectComponent.FontDescription = 10;
                         }
-                        for (int i = 0; i < files.Length; i++)
+                        else
                         {
-                            if (files[i].Name == project.Name + ".xls")
-                            {
-                                flpProjects.Controls.Add(projectComponent);
-                                break;
-                            }
-                            else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                            projectComponent.FontLetter = 28;
+                            projectComponent.FontDescription = 9;
+                        }
+                        projectComponent.Size = new Size(120, 120);
+
+                        projectComponent.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelDescription.Tag = project.Id;
+                        projectComponent.LabelLetter.Tag = project.Id;
+                        projectComponent.LabelNameProject.Tag = project.Id;
+                        projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
+
+                        if (project.Type.Equals("Excel") && directory.Exists)
+                        {
+                            if (files.Length == 0)
                             {
                                 projectServices.Delete(project);
+                                continue;
                             }
+                            for (int i = 0; i < files.Length; i++)
+                            {
+                                if (files[i].Name == project.Name + ".xls")
+                                {
+                                    flpProjects.Controls.Add(projectComponent);
+                                    break;
+                                }
+                                else if (!(files[i].Name == project.Name + "xls") && i == files.Length - 1)
+                                {
+                                    projectServices.Delete(project);
+                                }
+                            }
+                            continue;
                         }
-                        continue;
+                        flpProjects.Controls.Add(projectComponent);
                     }
-                    flpProjects.Controls.Add(projectComponent);
+
                 }
             }
         }
@@ -314,37 +320,85 @@ namespace Economy.Forms
         }
         private void ProjectByName(string name)
         {
+
             flpProjects.Controls.Clear();
-            foreach (Project project in projectServices.GetProjectsByName(name, GlobalUser.Id))
+
+            if (cmbFunctionType.SelectedIndex == 0)
             {
-                ProjectComponent projectComponent = new ProjectComponent()
+                foreach (Project project in projectServices.GetProjectsByName(name, GlobalUser.Id))
                 {
-                    NameProject = project.Name,
-                    Description = ProjectDescription[project.Type],
-                    Letter = ProjectLetter[project.Type],
-                    BackColor = ProjectColor[project.Type],
-                    BorderRadius = 16,
-                    Tag = project.Id
-                };
-                if (project.Type == "FNE")
-                {
-                    projectComponent.FontLetter = 23;
-                    projectComponent.FontDescription = 10;
+                    if (project.Type != "RateConversion")
+                    {
+                        ProjectComponent projectComponent = new ProjectComponent()
+                        {
+                            NameProject = project.Name,
+                            Description = ProjectDescription[project.Type],
+                            Letter = ProjectLetter[project.Type],
+                            BackColor = ProjectColor[project.Type],
+                            BorderRadius = 16,
+                            Tag = project.Id
+                        };
+                        if (project.Type == "FNE")
+                        {
+                            projectComponent.FontLetter = 23;
+                            projectComponent.FontDescription = 10;
+                        }
+                        else
+                        {
+                            projectComponent.FontLetter = 28;
+                            projectComponent.FontDescription = 9;
+                        }
+                        projectComponent.Size = new Size(120, 120);
+                        projectComponent.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelDescription.Tag = project.Id;
+                        projectComponent.LabelLetter.Tag = project.Id;
+                        projectComponent.LabelNameProject.Tag = project.Id;
+                        projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
+                        flpProjects.Controls.Add(projectComponent);
+
+                    }
                 }
-                else
+               
+            }
+            else
+            {
+                foreach (Project project in projectServices.GetProjectsByName(name, GlobalUser.Id).Where(x => x.Type == ((TypeProject)cmbFunctionType.SelectedIndex - 1).ToString()))
                 {
-                    projectComponent.FontLetter = 28;
-                    projectComponent.FontDescription = 9;
+                    if (project.Type != "RateConversion")
+                    {
+                        ProjectComponent projectComponent = new ProjectComponent()
+                        {
+                            NameProject = project.Name,
+                            Description = ProjectDescription[project.Type],
+                            Letter = ProjectLetter[project.Type],
+                            BackColor = ProjectColor[project.Type],
+                            BorderRadius = 16,
+                            Tag = project.Id
+                        };
+                        if (project.Type == "FNE")
+                        {
+                            projectComponent.FontLetter = 23;
+                            projectComponent.FontDescription = 10;
+                        }
+                        else
+                        {
+                            projectComponent.FontLetter = 28;
+                            projectComponent.FontDescription = 9;
+                        }
+                        projectComponent.Size = new Size(120, 120);
+                        projectComponent.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelDescription.Tag = project.Id;
+                        projectComponent.LabelLetter.Tag = project.Id;
+                        projectComponent.LabelNameProject.Tag = project.Id;
+                        projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
+                        projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
+                        flpProjects.Controls.Add(projectComponent);
+
+                    }
                 }
-                projectComponent.Size = new Size(120, 120);
-                projectComponent.MouseClick += ProjectClick[project.Type];
-                projectComponent.LabelDescription.Tag = project.Id;
-                projectComponent.LabelLetter.Tag = project.Id;
-                projectComponent.LabelNameProject.Tag = project.Id;
-                projectComponent.LabelDescription.MouseClick += ProjectClick[project.Type];
-                projectComponent.LabelLetter.MouseClick += ProjectClick[project.Type];
-                projectComponent.LabelNameProject.MouseClick += ProjectClick[project.Type];
-                flpProjects.Controls.Add(projectComponent);
             }
         }
 
@@ -355,7 +409,7 @@ namespace Economy.Forms
             int i = -1;
             try
             {
-                i = (int)Convert.ToUInt64((sender as ProjectComponent).Name.Substring(2));
+               i = (int)Convert.ToUInt64((sender as ProjectComponent).Name.Substring(2));
             }
             catch
             {
@@ -381,7 +435,7 @@ namespace Economy.Forms
                 form.Location = this.Location;
                 form.ShowInTaskbar = false;
                 form.Show();
-               
+
                 formName.Owner = form;
                 formName.ShowDialog();
                 project = formName.Project;
@@ -400,7 +454,7 @@ namespace Economy.Forms
                 CreateLineChart();
                 this.Show();
             }
-        
+
 
         }
         private void OpenForms(Project project)
@@ -555,7 +609,7 @@ namespace Economy.Forms
             {
                 project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
             }
-            FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService,0, null, project);
+            FrmDepreciacion depreciacion = new FrmDepreciacion(depreciationService, 0, null, project);
             depreciacion.activosService = this.activosService;
             depreciacion.depreciationService = this.depreciacionService;
 
@@ -610,6 +664,28 @@ namespace Economy.Forms
                 }
             }
         }
+        private void PCAmortization(object sender, EventArgs e)
+        {
+            Project project;
+            try
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as ProjectComponent).Tag.ToString()), GlobalUser.Id);
+            }
+            catch
+            {
+                project = projectServices.FindbyId((int)Convert.ToUInt64((sender as Label).Tag.ToString()), GlobalUser.Id);
+            }
+            FmrCalendarioDePago calendarioDePago = new FmrCalendarioDePago(amortizacionServices, 0, null, project);
+            calendarioDePago.amorizacionService = amortizacionService;
+            this.Opacity = 0;
+            this.Hide();
+            calendarioDePago.ShowDialog();
+            Selection = -1;
+
+            this.FadeIn.Start();
+            projects();
+            this.Show();
+        }
 
         private void CreatePieChart()
         {
@@ -625,10 +701,6 @@ namespace Economy.Forms
             dataset.FillColors.Add(ProjectColor["InterestWithGraph"]);
             dataset.DataPoints.Add("FE", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Excel.ToString()).Count());
             dataset.FillColors.Add(ProjectColor["Excel"]);
-            dataset.DataPoints.Add("IN", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.RateConversion.ToString()).Count());
-            dataset.FillColors.Add(ProjectColor["RateConversion"]);
-            dataset.DataPoints.Add("CI", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.InterestConversion.ToString()).Count());
-            dataset.FillColors.Add(ProjectColor["InterestConversion"]);
             dataset.DataPoints.Add("A", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Amortization.ToString()).Count());
             dataset.FillColors.Add(ProjectColor["Amortization"]);
             dataset.DataPoints.Add("D", projectServices.GetProjectByUser(GlobalUser.Id).Where(x => x.Type == TypeProject.Depreciation.ToString()).Count());
@@ -637,7 +709,7 @@ namespace Economy.Forms
             dataset.FillColors.Add(ProjectColor["FNE"]);
             gunaChart1.Datasets.Add(dataset);
             gunaChart1.Update();
-            lblNumberProject.Text = "Número de projectos: " + projectServices.GetProjectByUser(GlobalUser.Id).ToList().Count().ToString();
+            lblNumberProject.Text = "Número de projectos: " + projectServices.GetProjectByUser(GlobalUser.Id).Where(x=>x.Type!= "RateConversion").ToList().Count().ToString();
         }
         private void CreateLineChart()
         {
@@ -697,7 +769,7 @@ namespace Economy.Forms
             return Value;
         }
 
-      
+
         private void AddClickLabels()
         {
             this.PC0.LabelDescription.MouseClick += new MouseEventHandler(PCMouseClick);
@@ -713,7 +785,7 @@ namespace Economy.Forms
             this.PC2.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC2.LabelNameProject.MouseClick += new MouseEventHandler(PCMouseClick);
 
-            
+
 
             this.PC4.LabelDescription.MouseClick += new MouseEventHandler(PCMouseClick);
             this.PC4.LabelLetter.MouseClick += new MouseEventHandler(PCMouseClick);
@@ -851,7 +923,7 @@ namespace Economy.Forms
         //            FormFNE FNE = new FormFNE(amortizacionServices, depreciationService);
         //            FNE.ShowDialog();
         //        }
-                
+
         //        Selection = -1;
         //        txtProjectName.Visible = false;
         //        lblLetters.Visible = false;
@@ -931,6 +1003,11 @@ namespace Economy.Forms
         private void FormCreateProject_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void PC0_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

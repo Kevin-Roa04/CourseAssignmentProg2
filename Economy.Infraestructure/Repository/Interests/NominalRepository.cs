@@ -21,6 +21,7 @@ namespace Economy.Infraestructure.Repository.Interests
             double x = (Math.Pow(1 + J, 1 / M));
             double y = (x - 1) * M; 
             y = Math.Round(y, 2);
+            y = y * 100;
             return y;
         }
 
